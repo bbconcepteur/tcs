@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <!-----------------------------------BEGIN: Images of Banner-------------------------------------->
+  @*  <!-----------------------------------BEGIN: Images of Banner-------------------------------------->
     <div class="hundred_percent_css">
         <div class="banner_css">
             @{
@@ -103,9 +103,9 @@
                             <td align = "left" valign="top" class="td_css">@Html.Raw(HCSV.Resources.GlobalResource.MAT_KHAU)</td>
                             <td align = "left" valign="top"><input type = "password" size="25" name="passwd" class="user_pass_css" /></td>
 
-                            @*Begin Captcha*@
+                            $1$Begin Captcha#1#
                             <td colspan="5" valign="top" class="td_css">
-                                @*@ Html.Captcha("Try another", "Enter the text you see above:", 5, "Is required field", true)*@
+                                @#1# Html.Captcha("Try another", "Enter the text you see above:", 5, "Is required field", true)#1#
                                 <div>
                                     <img src="/AWBTracking_Agent/GetCaptchaImage" class="capcha_img_css" title="Captcha" />
                                     <input type="text" name="clientCaptcha" placeholder="@Html.Raw(HCSV.Resources.GlobalResource.GO_CAPCHA)" class="capcha_css" required />
@@ -115,7 +115,7 @@
                                     <input type="hidden" name="return_url" value="/" />
                                 </div>
                             </td>
-                            @*End Captcha*@
+                            $1$End Captcha#1#
 
                             <td align="right" valign="top" class="td_css"><a href="#" class="btn btnLoginAgent"><span>@Html.Raw(HCSV.Resources.GlobalResource.DANG_NHAP)</span></a></td>
                         </tr>                           
@@ -133,7 +133,7 @@
                             <td align="left" valign="top" class="td_css">@Html.Raw(HCSV.Resources.GlobalResource.MAT_KHAU)</td>
                             <td align="left" valign="top"><input type="password" size="25" name="passwd" class="user_pass_css" /></td>
 
-                            @*Begin Captcha*@
+                            $1$Begin Captcha#1#
                         
                             <td valign="top" class="td_css">
                                 <div>
@@ -145,7 +145,7 @@
 
                             </td>
                         
-                            @*End Captcha*@
+                            $1$End Captcha#1#
 
                             <td valign="top" align="right" class="td_css"><a href="#" class="btn btnLoginAirlines"><span>@Html.Raw(HCSV.Resources.GlobalResource.DANG_NHAP)</span></a></td>
                         </tr>
@@ -344,5 +344,5 @@
 
     
     
-</script>
+</script>*@
 

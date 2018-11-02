@@ -13,7 +13,7 @@ namespace HCSV.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
+            /*routes.MapRoute(
                 name: "Gioi thieu",
                 url: "gioi-thieu",
                 defaults: new { controller = "Content", action = "Details"},
@@ -74,7 +74,7 @@ namespace HCSV.Web
                 url: "careers/{metatitle}-{id}",
                 defaults: new { controller = "Careers", action = "Details", id = UrlParameter.Optional },
                 namespaces: new[] { "HCSV.Web.Controllers" }
-            );
+            );*/
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
