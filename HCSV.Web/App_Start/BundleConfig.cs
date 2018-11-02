@@ -9,7 +9,13 @@ namespace HCSV.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Content/TcsTemplate/mysite/javascript/jquery.tools.min.js",
+                        "~/Content/TcsTemplate/mysite/javascript/tooltip.js",
+                        "~/Content/TcsTemplate/mysite/javascript/superfish.js",
+                        "~/Content/TcsTemplate/mysite/javascript/jquery.ui.core.js",
+                        "~/Content/TcsTemplate/mysite/javascript/jquery.ui.widget.js",
+                        "~/Content/TcsTemplate/mysite/javascript/jquery.ui.accordion.js",
+                        "~/Content/TcsTemplate/mysite/javascript/jScrollPane.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,7 +31,16 @@ namespace HCSV.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/TcsTemplate/mysite/css/prettyPhoto7d5c.css",
+                      "~/Content/TcsTemplate/themes/orange/css/scroll4427.css",
+                      "~/Content/TcsTemplate/themes/orange/css/mainae55.css",
+                      "~/Content/TcsTemplate/themes/orange/css/superfishb322.css",
+                      "~/Content/TcsTemplate/themes/orange/css/tabs8f80.css",
+                      "~/Content/TcsTemplate/themes/orange/css/jquery.ui.accordion9932.css",
+                      "~/Content/TcsTemplate/themes/orange/css/jScrollPane5bc9.css",
+                      "~/Content/TcsTemplate/themes/orange/css/awb_main.css",
+                      "~/Content/TcsTemplate/awb/report_tcs/common/css/base.css",
+                      "~/Content/TcsNewTemplate/css/default.css"));
         }
     }
 }

@@ -1,0 +1,44 @@
+﻿@{ 
+    //if (HCSVNewWebsite.Commons.Commons.checkHomePage(Request)) //Home Page
+    {
+        HCSVNewWebsite.Models.cpanelEntities entities = new HCSVNewWebsite.Models.cpanelEntities();
+        int intLangId = HCSVNewWebsite.Commons.Commons.getLanguageID(this.Request, entities);
+        var lstLogoLinks = HCSVNewWebsite.Commons.Commons.getLogoLinks(intLangId, entities);
+        
+          <div id="scroller_container">
+                <div class="jscroller2_left jscroller2_speed-50" style="">
+                    
+                    @{
+                            if ((lstLogoLinks != null) && (lstLogoLinks.Count > 0))
+                            {
+                                foreach (var item in lstLogoLinks)
+                                {
+                                    <a href="@Html.Raw(item.link)" target="_blank" class="logo_link_css_1">
+                                        @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.image))
+                                    </a>
+                                }
+
+                            }
+                    }
+
+                </div>
+
+                <div class="jscroller2_left_endless">
+
+                    @{
+                            if ((lstLogoLinks != null) && (lstLogoLinks.Count > 0))
+                            {
+                                foreach (var item in lstLogoLinks)
+                                {
+                                    <a href="@Html.Raw(item.link)" target="_blank" class="logo_link_css_1">
+                                        @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.image))
+                                    </a>
+                                }
+
+                            }
+                    }
+
+                </div>
+            </div>
+    }    
+}

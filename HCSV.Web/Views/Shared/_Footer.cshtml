@@ -1,0 +1,37 @@
+﻿@model IEnumerable<HCSV.Models.ViewModels.Menu>
+<!-- Footer -->
+<footer class="page-footer font-small unique-color-dark">
+    <div style="background-color: #ffa401;">
+        <div class="container">
+
+            <!-- Grid row-->
+            <div class="row py-4 d-flex align-items-center">
+
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-8 text-center text-md-left mb-4 mb-md-0">
+                    &reg; 2010 Copyright by Tan Son Nhat Cargo Services Company Limited
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-4 text-center text-md-right">
+                    @if (Model.Any())
+                    {
+                        <span>|</span>
+                        foreach (var item in Model)
+                        {
+                            <a href="@item.Url">
+                                @item.Name
+                            </a>
+                            <span>|</span>
+                        }
+                    }
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row-->
+
+        </div>
+    </div>
+</footer>
+<!-- Footer -->

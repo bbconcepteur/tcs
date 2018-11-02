@@ -1,0 +1,173 @@
+﻿<h1>@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("TIM_KIEM_VAN_DON"))<img src="~/Content/TcsTemplate/themes/orange/images/search.png" alt="" style="float:right;" /></h1>
+<script type="text/javascript">
+    var selected_tab = 0;
+</script>
+<div class="content_left_bg" id="search_accordion">
+    <h2 class="current">@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGUOI_NHAN_TT"))</h2>
+    <div class="pane" id="derictPerson" @Html.Raw(string.IsNullOrEmpty(@ViewBag.ErrorLogin_DirectPerson) ? "" : "error_message_title")>
+        <form id="customer_form" action="/AWBTracking_DirectConsignee/SearchKVD" method="post">
+            <input type="hidden" name="section" value="customer" />
+            <input type="hidden" name="layout" value="03_cs" />
+            <input type="hidden" size="15" name="locale" value="vi_VN" />
+            <input type="submit" style="display:none" id="customer_form_submit" />
+            <input type="hidden" name="return_url" value="/" />
+            <table>
+                <tr>
+                    <td colspan="3">
+                        <div id="customer_errorBox" class="">
+                            <ul></ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr><td colspan="3">@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VD"))</td></tr>
+                <tr>
+                    <td><input type="text" size="3" name="awbFirst" id="awbFirst" /></td>
+                    <td>
+                        <input type="text" size="15" name="awbLast" id="awbLast" />                        
+                    </td>
+                    <td><a href="#" class="btn btnLoginCustomer"><span>@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("GO"))</span></a></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <h2>@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("DAI_LY"))</h2>
+    <div class="pane" id="agent_pane_id" title="@Html.Raw(string.IsNullOrEmpty(@ViewBag.ErrorLogin_Agent) ?"": "error_message_title")">
+        <form id="agent_form" action="/AWBTracking_Agent/Index" method="post">
+            <input type="hidden" name="return_url" value="/" />
+            <table>
+
+                <tr>
+                    <td>
+                        <div id="agent_errorBox" class="home_error_message_box">
+                            <ul></ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="agent_errorBox" class="home_error_message_box">
+                            <ul></ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr><td align="left">@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("TEN_DANG_NHAP"))</td></tr>
+                <tr><td align="left"><input type="text" size="25" name="user" style="width:200px;" /></td></tr>
+                <tr><td align="left">@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("MAT_KHAU"))</td></tr>
+                <tr><td align="left"><input type="password" size="25" name="passwd" style="width:200px;" /></td></tr>
+
+                @*Begin Captcha*@
+                <tr>
+                    <td>
+                        @*@ Html.Captcha("Try another", "Enter the text you see above:", 5, "Is required field", true)*@
+                        <div>
+                            <img src="/AWBTracking_Agent/GetCaptchaImage" style="width:200px;" title="Captcha" />
+                            <br />
+                            <input type="text" name="clientCaptcha" placeholder="@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("GO_CAPCHA"))" style="width:200px;" required />
+                            <p style="font-weight:bold;color:red;">@ViewBag.ErrorLogin_Agent</p>
+                        </div>
+
+                    </td>
+
+
+                </tr>
+                @*End Captcha*@
+
+                <tr><td align="right"><a href="#" class="btn btnLoginAgent"><span>@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_NHAP"))</span></a></td></tr>
+            </table>
+        </form>
+    </div>
+    <h2>@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_HANG_KHONG"))</h2>
+    <div class="pane" id="airline_pane_id" title="@Html.Raw(string.IsNullOrEmpty(@ViewBag.ErrorLogin_Airline) ? "" : "error_message_title")">
+        <form id="airline_form" action="/Airline/ImportCargoTracking_default" method="post">
+            <input type="hidden" name="return_url" value="/" />
+            <table>
+
+                <tr>
+                    <td>
+                        <div id="airline_errorBox" class="home_error_message_box">
+                            <ul></ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr><td align="left">@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("TEN_DANG_NHAP"))</td></tr>
+                <tr><td align="left"><input type="text" size="25" name="user" style="width:200px;" /></td></tr>
+                <tr><td align="left">@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("MAT_KHAU"))</td></tr>
+                <tr><td align="left"><input type="password" size="25" name="passwd" style="width:200px;" /></td></tr>
+
+                @*Begin Captcha*@
+                <tr>
+                    <td>
+                        <div>
+                            <img src="/Airline/GetCaptchaImage" style="width:200px;" title="Captcha" />
+                            <br />
+                            <input type="text" name="clientCaptcha_Airlines" placeholder="@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("GO_CAPCHA"))" style="width:200px;" required />
+                            <p style="font-weight:bold;color:red;">@ViewBag.ErrorLogin_Airline</p>
+                        </div>
+
+                    </td>
+                </tr>
+                @*End Captcha*@
+
+                <tr><td align="right"><a href="#" class="btn btnLoginAirlines"><span>@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_NHAP"))</span></a></td></tr>
+            </table>
+        </form>
+    </div>
+</div>
+<!-- TIM KIEM VAN DON END -->
+<div class="hotline">(84-8)38486489</div>
+<script type="text/javascript" src="/Content/TcsTemplate/sapphire/javascript/i18n5bfd.js?m=1279594350"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/sapphire/javascript/lang/en_US3121.js?m=1279536988"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/sapphire/javascript/lang/vi_VN114e.js?m=1279536704"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/mysite/javascript/lang/en_US0a99.js?m=1279643062"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/mysite/javascript/lang/vi_VNaf9f.js?m=1279643048"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/newsletter/thirdparty/jquery-validate/jquery.validate.min3540.js?m=1260157262"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/newsletter/thirdparty/jquery-validate/localization/messages_vid8ad.js?m=1280197066"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/mysite/javascript/main0775.js?m=1301464048"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/mysite/javascript/HomePagec916.js?m=1298793606"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/mysite/javascript/jscrollere367.js?m=1282077202"></script>
+<script type="text/javascript">
+    (function ($) {
+        $('document').ready(function () {
+            
+            if ($.browser.msie && $.browser.version < 7) {
+                var filter_tabs = $("#search_accordion div.pane");
+                $.each($("#search_accordion div.pane"), function () {                    
+                    var pane = $(this);
+                    pane.prev('h2').click(function () {
+                        $('#search_accordion h2').removeClass('current');
+                        $(this).addClass('current');
+                        $("#search_accordion div.pane").hide();
+                        pane.show();
+                    });
+                });
+
+                $(filter_tabs[selected_tab]).prev('h2').click();
+            } else {                
+                if ($("#derictPerson").attr("title") == "error_message_title") {
+                    selected_tab = 0;
+                }
+                else if ($("#agent_pane_id").attr("title") == "error_message_title")
+                {                    
+                    selected_tab = 1;
+                }
+                else if ($("#airline_pane_id").attr("title") == "error_message_title") {                    
+                    selected_tab = 2;
+                }
+                $("#search_accordion").tabs("#search_accordion div.pane", { tabs: 'h2', effect: 'slide', initialIndex: selected_tab });
+            }
+        });
+        //$("#agent_pane_id").css("display", "block");
+    })(jQuery);
+
+    $('.btnLoginAgent').click(function () {
+        document.getElementById('agent_form').submit();
+    });
+    $('.btnLoginAirlines').click(function () {
+        document.getElementById('airline_form').submit();
+    });
+    $('.btnLoginCustomer').click(function () {
+        document.getElementById('customer_form').submit();
+    });
+    
+</script>
+

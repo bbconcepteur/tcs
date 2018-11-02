@@ -14,6 +14,8 @@ namespace HCSV.Business
         ILanguageBusiness LanguageBusiness { get; }
         INewsBusiness NewsBusiness { get; }
         IAccountBusiness AccountBusiness { get; }
+
+        IDashbroadBussiness DashbroadBussiness { get; }
     }
 
     public class UnitOfWork : IUnitOfWork
@@ -89,6 +91,8 @@ namespace HCSV.Business
         public INewsBusiness NewsBusiness => new NewsBusiness(_context);
 
         public IAccountBusiness AccountBusiness => new AccountBusiness(_context);
+
+        public IDashbroadBussiness DashbroadBussiness  => new DashbroadBussiness(_context);
         #endregion
     }
 }
