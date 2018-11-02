@@ -1,0 +1,53 @@
+﻿@model HCSVNewWebsite.Models.jos_content
+
+@{
+    ViewBag.Title = "Services";
+    ViewBag.Page = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="service_form" action="@this.Url.Action()" method="post">
+    <div class="matginT10">
+        <h4>@{ if (Model.LEFT != null)
+               {
+                    @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.LEFT.introtext))       
+               }                   
+            }
+        </h4>
+        <ul class="tabs">
+            @{
+                if ((Model.NEWS != null) && (Model.NEWS.Count() > 0))
+                {
+                    string strCSS = "";
+                    foreach (var item in Model.NEWS)
+                    {
+                        if (item.id == Model.RIGHT.id)
+                        {
+                            strCSS = "current";
+                        }
+                        else
+                        {
+                            strCSS = "";
+                        }
+                        <li><a href="#" class="@strCSS content_tab_css" id="@item.id"><span>@Html.Raw(item.title)</span></a></li>
+                    }
+                }
+            }
+
+        </ul>
+        <div class="panes" id="quotation_panes" style="width:710px;">
+            <div style="display:block">
+                @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.RIGHT.introtext))
+            </div>
+        </div>
+    </div>
+
+
+    <input type="text" size="15" name="contentID" style="visibility:hidden" id="contentID" />
+    <script>
+        $(".content_tab_css").click(function () {
+            $("#contentID").val($(this).attr("id"));
+            document.getElementById('service_form').submit();
+        });
+    </script>
+</form>

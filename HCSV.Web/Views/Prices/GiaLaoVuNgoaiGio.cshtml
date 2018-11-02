@@ -1,0 +1,673 @@
+﻿@{
+    ViewBag.Title = "GiaLaoVuNgoaiGio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+
+    <div>
+
+        <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=customer&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <title>TCS - A Joint Venture between VIETNAM AIRLINES, SASCO and SATS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="tcs.css" type="text/css">
+
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="awb_title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("BANG_GIA_AP_DUNG")</td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="price" align="right" cellspacing="0" cellpadding="2" border="0" width="36%">
+                            <tbody>
+                                <tr>
+                                    <td width="9%">
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+                                    <td width="91%">
+                                        <a href="/Prices/Index">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LUU_KHO")</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+
+                                    <td><a href="/Prices/ServiceCharge">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_PHUC_VU")</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+
+                                    <td><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("PHU_THU_GIA_LAO_VU_NGOAI_GIO")</strong> </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+
+                                    <td>
+                                        <a href="/Prices/GiaDichVuKhac">
+                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_CAC_LOAI_DICH_VU_KHAC")
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top"></td>
+                </tr>
+                <tr>
+                    <td valign="top">
+
+                        ?&gt;
+
+                        &gt;
+                        <table class="tbl02" width="100%">
+                            <tbody>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="2" class="title" align="center" width="4%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("STT")</td>
+                                    <td rowspan="2" class="title" align="center" width="43%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NOI_DUNG_CAC_KHOAN_THU")</td>
+                                    <td rowspan="2" class="title" align="center" width="8%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DON_VI_TINH")</td>
+                                    <td rowspan="2" class="title" align="center" width="8%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LAO_VU_CHO_HANG_GUI_KHO")</td>
+                                    <td colspan="3" class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CAC_MUC_PHU_THU")</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="title" align="center" width="11%">Từ 17:00 đến 21:59 từ thứ Hai đến thứ Bảy</td>
+                                    <td class="title" align="center" width="13%">
+                                        <p>- Từ 22:00 đến 05:59 sáng hôm sau các ngày từ thứ Hai đến thứ Sáu</p>
+                                        <p>- Từ 22:00 đến 23:59 thứ Bảy và 00:00 đến 05:59 thứ Hai</p>
+                                    </td>
+                                    <td class="title" align="center" width="13%">Từ 00:00 đến 23:59 các ngày Chủ nhật, ngày nghĩ Lễ, Tết, ngày nghỉ bù của Lễ, Tết theo quy định của nhà nước</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td align="center"><strong>A. </strong></td>
+                                    <td colspan="6"><strong>Chính sách giá lao vụ và các mức phụ thu cho hàng nhập khẩu gửi lại kho</strong>  </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="2" align="center">1</td>
+                                    <td class="tbl01" height="20" width="43%"><strong>Hàng thông thường</strong></td>
+                                    <td class="tbl01" align="center" width="8%">&nbsp;</td>
+                                    <td class="tbl01" align="right" width="8%">&nbsp;</td>
+                                    <td class="tbl01" align="right" width="11%">&nbsp;</td>
+                                    <td class="tbl01" align="right" width="13%">&nbsp;</td>
+                                    <td class="tbl01" align="right" width="13%">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Đơn giá</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">560</td>
+                                    <td class="tbl01" align="right">50</td>
+                                    <td class="tbl01" align="right">101</td>
+                                    <td class="tbl01" align="right">151</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td align="center">&nbsp;</td>
+                                    <td class="tbl01">Giá tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="3" align="center">2</td>
+                                    <td class="tbl01"><strong>Hàng chuyển phát nhanh</strong></td>
+                                    <td class="tbl01" align="center">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Đơn giá</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">1.250</td>
+                                    <td class="tbl01" align="right">113</td>
+                                    <td class="tbl01" align="right">225</td>
+                                    <td class="tbl01" align="right">338</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">7.000</td>
+                                    <td class="tbl01" align="right">14.000</td>
+                                    <td class="tbl01" align="right">20.000</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="3" align="center">3</td>
+                                    <td class="tbl01"><strong>Hàng dễ hư hỏng</strong></td>
+                                    <td class="tbl01" align="center">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Đơn giá</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">625</td>
+                                    <td class="tbl01" align="right">56</td>
+                                    <td class="tbl01" align="right">113</td>
+                                    <td class="tbl01" align="right">169</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">75.000</td>
+                                    <td class="tbl01" align="right">7.000</td>
+                                    <td class="tbl01" align="right">14.000</td>
+                                    <td class="tbl01" align="right">20.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="3" align="center">4</td>
+                                    <td class="tbl01"><strong>Hàng quý hiếm</strong></td>
+                                    <td class="tbl01" align="center">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Đơn giá</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">2.625</td>
+                                    <td class="tbl01" align="right">236</td>
+                                    <td class="tbl01" align="right">473</td>
+                                    <td class="tbl01" align="right">709</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">500.000</td>
+                                    <td class="tbl01" align="right">45.000</td>
+                                    <td class="tbl01" align="right">90.000</td>
+                                    <td class="tbl01" align="right">135.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="3" align="center">5</td>
+                                    <td class="tbl01"><strong>Hàng động vật sống</strong></td>
+                                    <td class="tbl01" align="center">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Đơn giá</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">1.250</td>
+                                    <td class="tbl01" align="right">113</td>
+                                    <td class="tbl01" align="right">225</td>
+                                    <td class="tbl01" align="right">338</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">125.000</td>
+                                    <td class="tbl01" align="right">11.000</td>
+                                    <td class="tbl01" align="right">23.000</td>
+                                    <td class="tbl01" align="right">34.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="2" align="center">6</td>
+                                    <td class="tbl01"><strong>Quan tài</strong></td>
+                                    <td class="tbl01" align="center">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Đơn giá</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">625.000</td>
+                                    <td class="tbl01" align="right">56.000</td>
+                                    <td class="tbl01" align="right">113.000</td>
+                                    <td class="tbl01" align="right">169.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td align="center"> <strong>B. </strong></td>
+                                    <td><strong>Bảng giá phụ thu</strong></td>
+                                    <td>&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp; </td>
+                                    <td align="right">&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="2" class="tbl01" align="center">1</td>
+                                    <td class="tbl01"><strong>Hàng thông thường xuất khẩu</strong></td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">68</td>
+                                    <td class="tbl01" align="right">137</td>
+                                    <td class="tbl01" align="right">205</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá tối thiểu - Hàng xuất khẩu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">15.000</td>
+                                    <td class="tbl01" align="right">15.000</td>
+                                    <td class="tbl01" align="right">15.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="11" class="tbl01" align="center">2</td>
+                                    <td class="tbl01"><strong>Hàng thông thường nhập khẩu</strong></td>
+                                    <td class="tbl01" align="center">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng từ 1,5 - 3 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">450</td>
+                                    <td class="tbl01" align="right">900</td>
+                                    <td class="tbl01" align="right">1.350</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">54.000</td>
+                                    <td class="tbl01" align="right">81.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng từ 3 - 6 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">315</td>
+                                    <td class="tbl01" align="right">630</td>
+                                    <td class="tbl01" align="right">945</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">54.000</td>
+                                    <td class="tbl01" align="right">81.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng từ 6 - 9 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">225</td>
+                                    <td class="tbl01" align="right">450</td>
+                                    <td class="tbl01" align="right">675</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">13.500</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">40.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng từ 9 - 12 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">162</td>
+                                    <td class="tbl01" align="right">324</td>
+                                    <td class="tbl01" align="right">486</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">13.500</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">40.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng sau 12 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">101</td>
+                                    <td class="tbl01" align="right">202</td>
+                                    <td class="tbl01" align="right">302</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">13.500</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">40.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="7" class="tbl01" align="center">3</td>
+                                    <td class="tbl01"><strong>Hàng chuyển phát nhanh nhập khẩu</strong></td>
+                                    <td class="tbl01" align="center">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng từ 1,5 - 3 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">450</td>
+                                    <td class="tbl01" align="right">900</td>
+                                    <td class="tbl01" align="right">1.350</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">54.000</td>
+                                    <td class="tbl01" align="right">81.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng từ 3 - 6 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">315</td>
+                                    <td class="tbl01" align="right">630</td>
+                                    <td class="tbl01" align="right">945</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">54.000</td>
+                                    <td class="tbl01" align="right">81.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng sau 6 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">225</td>
+                                    <td class="tbl01" align="right">450</td>
+                                    <td class="tbl01" align="right">675</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">13.500</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">40.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="7" class="tbl01" align="center">4</td>
+                                    <td class="tbl01"><strong>Hàng dễ hư hỏng nhập khẩu</strong></td>
+                                    <td class="tbl01" align="center">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng từ 1,5 - 3 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">405</td>
+                                    <td class="tbl01" align="right">810</td>
+                                    <td class="tbl01" align="right">1.215</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">54.000</td>
+                                    <td class="tbl01" align="right">81.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng từ 3 - 6 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">284</td>
+                                    <td class="tbl01" align="right">567</td>
+                                    <td class="tbl01" align="right">851</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">54.000</td>
+                                    <td class="tbl01" align="right">81.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giao hàng sau 6 giờ sau khi máy bay đáp</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">113</td>
+                                    <td class="tbl01" align="right">225</td>
+                                    <td class="tbl01" align="right">338</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá giao hàng tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">13.500</td>
+                                    <td class="tbl01" align="right">27.000</td>
+                                    <td class="tbl01" align="right">40.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td rowspan="5" class="tbl01" align="center">5</td>
+                                    <td class="tbl01"><strong>Hàng quý hiếm ( VAL)</strong></td>
+                                    <td class="tbl01" align="center">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Hàng xuất</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">473</td>
+                                    <td class="tbl01" align="right">945</td>
+                                    <td class="tbl01" align="right">1.418</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Giá tối thiểu</td>
+                                    <td class="tbl01" align="center">VND/lần</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">100.000</td>
+                                    <td class="tbl01" align="right">100.000</td>
+                                    <td class="tbl01" align="right">100.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="tbl01">Hàng nhập</td>
+                                    <td class="tbl01" align="center">VND/Kg</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                    <td class="tbl01" align="right">473</td>
+                                    <td class="tbl01" align="right">945</td>
+                                    <td class="tbl01" align="right">1.418</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Giá tối thiểu</td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">90.000</td>
+                                    <td align="right">180.000</td>
+                                    <td align="right">270.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td rowspan="5" align="center">6</td>
+                                    <td><strong>Hàng động vật sống</strong></td>
+                                    <td align="center">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Hàng xuất</td>
+                                    <td align="center">VND/Kg</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">86</td>
+                                    <td align="right">171</td>
+                                    <td align="right">257</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Giá tối thiểu</td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">25.000</td>
+                                    <td align="right">25.000</td>
+                                    <td align="right">25.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Hàng nhập</td>
+                                    <td align="center">VND/Kg</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">225</td>
+                                    <td align="right">450</td>
+                                    <td align="right">675</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Giá tối thiểu</td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">22.500</td>
+                                    <td align="right">45.000</td>
+                                    <td align="right">67.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td rowspan="3" align="center">7</td>
+                                    <td><strong>Hàng có giá trị cao ( VUN)</strong></td>
+                                    <td align="center">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Hàng xuất</td>
+                                    <td align="center">VND/Kg</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">77</td>
+                                    <td align="right">153</td>
+                                    <td align="right">230</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Giá tối thiểu</td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">20.000</td>
+                                    <td align="right">20.000</td>
+                                    <td align="right">20.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td rowspan="3" align="center">8</td>
+                                    <td><strong>Hàng nguy hiểm ( DGR)</strong></td>
+                                    <td align="center">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Hàng xuất</td>
+                                    <td align="center">VND/Kg</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">130</td>
+                                    <td align="right">259</td>
+                                    <td align="right">389</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Giá tối thiểu</td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">20.000</td>
+                                    <td align="right">20.000</td>
+                                    <td align="right">20.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td rowspan="3" align="center">9</td>
+                                    <td><strong>Quan tài</strong></td>
+                                    <td align="center">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Hàng xuất</td>
+                                    <td align="center">VND/Kg</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">63.000</td>
+                                    <td align="right">126.000</td>
+                                    <td align="right">189.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>Hàng nhập</td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">&nbsp;</td>
+                                    <td align="right">125.000</td>
+                                    <td align="right">250.000</td>
+                                    <td align="right">375.000</td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td align="center" valign="top"><strong>C</strong>.</td>
+                                    <td colspan="6">
+                                        <p><strong>Chính sách miễn lưu kho hàng nhập thông thường, hàng xuất thông thường</strong></p>
+                                        <p>TCS vẫn áp dụng chính sách miễn lưu kho như trước đây bao gồm :</p>
+                                        <p>- Hàng nhập thông thường : Không tính lưu kho 2 ngày kể từ ngày chuyến bay đến ( bao gồm ngày chủ nhật và ngày lễ nếu có), ngày chủ nhật , ngày lễ và ngày phát hàng.</p>
+                                        <p>- Hàng xuất thông thường : Không tính lưu kho 2 ngày kể từ ngày tiếp nhận ( bao gồm ngày chủ nhật và ngày lễ nếu có), ngày chủ nhật , ngày lễ và ngày hàng được giữ chổ cho chuyến bay.</p>
+                                        <p>- Tiền lưu kho được tính theo ngày dương lịch.</p>
+                                        <p><em>( các mức giá trên chưa bao gồm thuế GTGT )</em></p>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+

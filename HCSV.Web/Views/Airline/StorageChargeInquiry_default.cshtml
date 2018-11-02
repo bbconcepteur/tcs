@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "StorageChargeInquiry_default";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li class="current"><a href="@Url.Action("ImportCargoTracking_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA_NHAP_KHAU")</span></a></li>
+                <li><a href="@Url.Action("InwardFlightServiceReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="@Url.Action("NoneDeliveryReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoStatus_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG_HANG_HOA_XUAT_KHAU")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoInWareHouse_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_XUAT_KHAU_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ChangePassword", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=airline&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="tcs.css" type="text/css">
+
+
+        <div class="text" id="spiffycalendar"></div>
+        <form name="lk_yc" id="lk_yc_id" action="index.php" method="get">
+            <input type="hidden" name="section" value="airline">
+            <input type="hidden" name="layout" value="lk_yc_imp_cs_e">
+            <input type="Hidden" name="hawb_no" value="69508842794">
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+
+                        <td class="awb_title"> @HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LUU_KHO_TAI_THOI_DIEM_HANG_NHAP")</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table class="awb_tbl02" width="80%">
+                                <tbody>
+                                    <tr bordercolor="#FDECE1" bgcolor="#FDECE1">
+                                        <td valign="top" bordercolor="#FFFFFF" bgcolor="#FFFFFF"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VAN_DON"): 695-08842794</strong> </td>
+                                    </tr>
+                                    <tr bordercolor="#FDECE1" bgcolor="#FDECE1">
+                                        <td valign="top" bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                            <table class="form" width="100%" border="0" cellspacing="0" cellpadding="3">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="36%" align="right"><b><font size="2" face="Arial, Helvetica, sans-serif">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHON") @HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY"):</font></b></td>
+                                                        <td width="64%" valign="top" nowrap="">
+                                                            <link href="includes/spiffyCal_v2_1.css" type="text/css" rel="stylesheet">
+                                                            <script language="JavaScript" src="includes/spiffyCal_v2_1.js"></script>
+                                                            <script language="javascript">var dateExpires = new ctlSpiffyCalendarBox("dateExpires", "lk_yc", "expires_date", "btnDate1", "1/6/2017", scBTNMODE_CUSTOMBLUE);</script>
+                                                            <script language="javascript">dateExpires.writeControl(); dateExpires.dateFormat = "dd/MM/yyyy";</script><input class="cal-TextBox" type="text" name="expires_date" onchange="                                                                    calMgr.validateDate(document.lk_yc.expires_date, dateExpires.required);" onblur="                                                                    calMgr.formatDate(document.lk_yc.expires_date, dateExpires.dateFormat);" size="12" value="1/6/2017"><a class="so-BtnLink" onmouseover="                                                                    calMgr.swapImg(dateExpires, '.imgOver', false);" onmouseout="                                                                    calMgr.swapImg(dateExpires, '.imgUp', false);" onclick="                                                                    calMgr.swapImg(dateExpires, '.imgDown', true); dateExpires.show();"><img align="absmiddle" border="0" name="btnDate1" src="images/btn_date1_up.gif" width="22" height="17"></a>
+                                                            <input type="Text" style="text-align:center" size="1" maxlength="2" class="form" value="14" name="hh">&nbsp;:
+                                                            <input type="Text" style="text-align:center" size="1" maxlength="2" class="form" value="30" name="pp"> @HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIO_PHUT") (hh:mm)
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="center">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div align="center" class="marginT10">
+                                                    <a href="@Url.Action("StorageChargeInquiry_loaded", "Airline", "Views")" class="btn" value="69508842794" form="lk_yc_id"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHON")</span></a>
+                                                    <a href="@Url.Action("ImportCargoTracking_loaded", "Airline", "Views")" class="btn" form="lk_yc"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("BO_QUA")</span></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <p>&nbsp;</p>
+
+
+        <!-- iware add javascript handle form -->
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $(".btn").click(function () {
+                    value = $(this).attr('value');
+                    form_id = $(this).attr('form');
+                    action_input_id = form_id + '_action';
+                    $('#' + action_input_id).attr({ 'value': value });
+                    $('#' + form_id).submit();
+                });
+            });
+        </script>
+        <!-- iware end -->
+    </div>
+</div>
+

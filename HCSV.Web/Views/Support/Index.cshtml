@@ -1,0 +1,80 @@
+﻿@model HCSVNewWebsite.Models.jos_content
+@{
+    ViewBag.Title = "Support";
+    ViewBag.Page = "Support";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg_100percent_css menu_title_css home_title_css">
+    <div class="container">
+        <h1>@Model.name_page</h1>
+        <span class="success_css">@Html.Raw(ViewBag.Mess_Success)</span>
+    </div>
+</div>
+
+<div class="bg_100percent_css support_css_1">
+    <div class="container">                
+        
+        <div class="col-md-6 contact_info_css">
+            <span class="suppor_line_css">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.RIGHT.title))</span>
+            @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.RIGHT.fulltext))
+            <div class="s20">
+                <form action="/support" method="post" class="s20wrapper" id="CntctFrm0wrapper">
+                    <span class="title_txt_css">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NAME")</span>
+                    <input type="text" @(ViewBag.Name == true ? "autofocus" : "") placeholder="@(ViewBag.Name == true ? ViewBag.Mess : "")" style="@(ViewBag.Name == true?"border-color:red":"")" value="@(ViewBag.lst != null? ViewBag.lst[0]:"")" class="s20_required s20nameField remove_special_characters" name="Name">
+
+                    <span class="title_txt_css">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("EMAIL")
+                        <span class="error_css">
+                            @Html.Raw(ViewBag.Invalid_Email == true ? "(" + ViewBag.Mess + ")" : "")
+                        </span>
+                    </span>
+                    <input type="text" @(ViewBag.Email == true || (ViewBag.Invalid_Email == true) ? "autofocus" : "") placeholder="@((ViewBag.Email == true) || (ViewBag.Invalid_Email == true) ? ViewBag.Mess : "")" style="@(ViewBag.Email == true || (ViewBag.Invalid_Email == true) ? "border-color:red" : "")" value="@(ViewBag.lst != null? ViewBag.lst[1]:"")" class="s20_required s20emailField email_css_100" name="Email">                    
+
+                    <span class="title_txt_css">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("PHONE")</span>
+                    <input type="text" placeholder="" style="@(ViewBag.Phone == true ? "border-color:red" : "")" value="@(ViewBag.lst != null? ViewBag.lst[2]:"")" class="s20_hidden s20phoneField remove_special_characters" name="Phone">
+                    
+                    <span class="title_txt_css">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("ADDRESS")</span>
+                    <input type="text" placeholder="" style="@(ViewBag.Address == true ? "border-color:red" : "")" value="@(ViewBag.lst != null? ViewBag.lst[3]:"")" class="s20_hidden s20addressField remove_special_characters" name="Address">
+                    
+                    <span class="title_txt_css">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SUBJECT")</span>
+                    <input type="text" @(ViewBag.Subject == true ? "autofocus" : "") placeholder="@(ViewBag.Subject == true ? ViewBag.Mess : "")" style="@(ViewBag.Subject == true ? "border-color:red" : "")" value="@(ViewBag.lst != null? ViewBag.lst[4]:"")" class="s20subjectField remove_special_characters" name="Subject">
+                    
+                    <span class="title_txt_css">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("MESSAGE")</span>
+                    <textarea @(ViewBag.Message == true ? "autofocus" : "") placeholder="@(ViewBag.Message == true ? ViewBag.Mess : "")" style="@(ViewBag.Message == true ? "border-color:red" : "")" class="s20messageField message_css remove_special_characters" name="Message">@(ViewBag.lst != null ? ViewBag.lst[5] : "")</textarea>
+                    
+                    <div class="bg_100percent_css btn_1 btn_2">
+                        <button class="btn_click_css btn_bg_css" id="CntctFrm0submit"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SEND")</span></button>
+                    </div>
+                    <span data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$PAGES_CONTAINER.1.1.$SITE_PAGES.$c3vn.1.$CntctFrm0.0.7" id="CntctFrm0notifications" class="s20_success s20notifications">
+                    </span>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6 map_css">
+            <div class="s19bg">
+                <iframe width="100%" height="260" frameborder="0" style="border:0;"
+                        src="https://www.google.com/maps/embed/v1/place?q=Simco%20Building%2C%20M%E1%BB%B9%20%C4%90%C3%ACnh%202%2C%20Hanoi%2C%20Vietnam&key=AIzaSyAe801SMid6NoEpkG1AnR-VZi34m0pxOMc"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>    
+    $('.remove_special_characters').focusout(function () {
+        var str = $(this).val();
+        var strTemp = str.replace(/[^a-zA-Z 0-9 .]+/g, '');
+        if (str != strTemp) {
+            //havingError("Invalid content (The content has some special characters)");
+            $(this).val(strTemp);
+        }
+    });
+
+    $('.email_css_100').focusout(function () {
+        var str = $(this).val();        
+        var strTemp = str.replace(/[< / \\ - >]+/g, '');
+        if (str != strTemp) {
+            //havingError("Invalid content (The content has some special characters)");
+            $(this).val(strTemp);
+        }
+    });
+</script>

@@ -1,0 +1,358 @@
+﻿@{
+    ViewBag.Title = "Storage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+  //session_start();
+  string WEB_BASE_URL = "www.tcs.com.vn"; //include_once 'con_t/_config.php';
+  
+  string layout = "08_cs"; //$layout = $_GET['layout'];
+  string section = "agent";// $section = $_GET['section'];
+  string nav_file = section + "_navigation"; // $nav_file = $section.'_navigation';
+  
+  // handle locale
+  string locale  = "vi_VN"; //$locale  = 'vi_VN'; // default locale
+  
+  string awbFirst = Request.QueryString["awbFirst"]; //$awbFirst= $_GET['awbFirst'];
+  string awbLast = Request.QueryString["awbLast"];//$awbLast= $_GET['awbLast'];
+
+  // handle lang
+  //$lang = array();
+  //$lang[$locale] = array();
+  //include_once "lang/$locale.php";
+
+  //function _t($label){
+  //  global $locale;
+  //  global $lang;
+  //  return  $lang[$locale][$label];
+  //}
+
+      
+  string user_code = (string)Session[HCSVNewWebsite.Commons.Commons.user_code];// $user_code = isset($_SESSION['user_code'])?$_SESSION['user_code']:'';
+  awbFirst = (string)Session[HCSVNewWebsite.Commons.Commons.awbFirst];//$awbFirst = isset($_SESSION['awbFirst'])?$_SESSION['awbFirst']:'';
+  awbLast = (string)Session[HCSVNewWebsite.Commons.Commons.awbLast];//$awbLast = isset($_SESSION['awbLast'])?$_SESSION['awbLast']:'';
+  string awbFst = (string)Session[HCSVNewWebsite.Commons.Commons.awbFst];//$awbFst = isset($_SESSION['awbFst'])?$_SESSION['awbFst']:'';
+  string awbLst = (string)Session[HCSVNewWebsite.Commons.Commons.awbLst];//$awbLst = isset($_SESSION['awbLst'])?$_SESSION['awbLst']:'';
+  string lg_codesgshdgsksasa = (string)Session[HCSVNewWebsite.Commons.Commons.lg_codesgshdgsksasa];//$lg_codesgshdgsksasa = isset($_SESSION['lg_codesgshdgsksasa'])?$_SESSION['lg_codesgshdgsksasa']:'';
+  string serie = (string)Session[HCSVNewWebsite.Commons.Commons.serie];//$serie = isset($_SESSION['serie'])?$_SESSION['serie']:'';
+
+  /*
+
+// get menu
+  $header='';
+  if($locale == 'en_US'){
+    $header = 'a:2:{s:6:"header";a:8:{i:0;a:3:{s:5:"title";s:4:"Home";s:4:"link";s:12:"/home-en-US/";s:8:"children";a:0:{}}i:1;a:3:{s:5:"title";s:8:"About Us";s:4:"link";s:19:"/introdution-en-US/";s:8:"children";a:5:{i:0;a:2:{s:5:"title";s:28:"Mission, Vision, Core Values";s:4:"link";s:34:"/introdution-en-US/mission-vision/";}i:1;a:2:{s:5:"title";s:7:"History";s:4:"link";s:33:"/introdution-en-US/history-en-US/";}i:2;a:2:{s:5:"title";s:12:"Shareholders";s:4:"link";s:43:"/introdution-en-US/shareholderholder-en-US/";}i:3;a:2:{s:5:"title";s:18:"Organization Chart";s:4:"link";s:46:"/introdution-en-US/organizational-chart-en-US/";}i:4;a:2:{s:5:"title";s:25:"Professional Certificates";s:4:"link";s:45:"/introdution-en-US/professional-certificates/";}}}i:2;a:3:{s:5:"title";s:8:"Services";s:4:"link";s:36:"/service-en-US/export-service-en-US/";s:8:"children";a:6:{i:0;a:2:{s:5:"title";s:21:"Export Cargo Services";s:4:"link";s:36:"/service-en-US/export-service-en-US/";}i:1;a:2:{s:5:"title";s:21:"Import Cargo Services";s:4:"link";s:36:"/service-en-US/import-service-en-US/";}i:2;a:2:{s:5:"title";s:21:"Office space for rent";s:4:"link";s:39:"/service-en-US/v-n-ph-ng-cho-thu-en-US/";}i:3;a:2:{s:5:"title";s:14:"Other Services";s:4:"link";s:68:"/service-en-US/d-ch-v-t-m-ki-m-h-ng-h-ng-chuy-n-ti-p-t-i-xu-t-en-US/";}i:4;a:2:{s:5:"title";s:16:"Handling Charges";s:4:"link";s:38:"/service-en-US/handling-charges-en-US/";}i:5;a:2:{s:5:"title";s:17:"Application Forms";s:4:"link";s:39:"/service-en-US/registration-form-en-US/";}}}i:3;a:3:{s:5:"title";s:6:"Guides";s:4:"link";s:41:"/guide-en-US/step-to-collect-cargo-en-US/";s:8:"children";a:3:{i:0;a:2:{s:5:"title";s:21:"Step to collect cargo";s:4:"link";s:41:"/guide-en-US/step-to-collect-cargo-en-US/";}i:1;a:2:{s:5:"title";s:22:"Step to dispatch cargo";s:4:"link";s:44:"/guide-en-US/step-to-dispatch-cargo-2-en-US/";}i:2;a:2:{s:5:"title";s:17:"Customs procedure";s:4:"link";s:37:"/guide-en-US/customs-procedure-en-US/";}}}i:4;a:3:{s:5:"title";s:4:"News";s:4:"link";s:32:"/news-en-US/customer-news-en-US/";s:8:"children";a:5:{i:0;a:2:{s:5:"title";s:13:"Customer News";s:4:"link";s:32:"/news-en-US/customer-news-en-US/";}i:1;a:2:{s:5:"title";s:15:"Industrial News";s:4:"link";s:34:"/news-en-US/airfreight-news-en-US/";}i:2;a:2:{s:5:"title";s:8:"TCS News";s:4:"link";s:32:"/news-en-US/internal-news-en-US/";}i:3;a:2:{s:5:"title";s:24:"Recruiting and Training ";s:4:"link";s:30:"/news-en-US/career-news-en-US/";}i:4;a:2:{s:5:"title";s:15:"TCS Honor Board";s:4:"link";s:38:"/news-en-US/internal-gold-pages-en-US/";}}}i:5;a:3:{s:5:"title";s:10:"Statistics";s:4:"link";s:12:"/statistics/";s:8:"children";a:0:{}}i:6;a:3:{s:5:"title";s:4:"Link";s:4:"link";s:12:"/link-en-US/";s:8:"children";a:0:{}}i:7;a:3:{s:5:"title";s:3:"FAQ";s:4:"link";s:11:"/q-a-en-US/";s:8:"children";a:0:{}}}s:6:"footer";a:3:{i:0;a:2:{s:5:"title";s:8:"Feedback";s:4:"link";s:20:"/offer-advise-en-US/";}i:1;a:2:{s:5:"title";s:7:"Contact";s:4:"link";s:15:"/contact-en-US/";}i:2;a:2:{s:5:"title";s:7:"Sitemap";s:4:"link";s:15:"/sitemap-en-US/";}}}';
+//    $header = file_get_contents('http://'.WEB_BASE_URL.'/home-en-US/get_menus');
+  }
+  else{
+    $header = 'a:2:{s:6:"header";a:8:{i:0;a:3:{s:5:"title";s:11:"Trang chủ";s:4:"link";s:1:"/";s:8:"children";a:0:{}}i:1;a:3:{s:5:"title";s:14:"Giới thiệu";s:4:"link";s:13:"/introdution/";s:8:"children";a:6:{i:0;a:2:{s:5:"title";s:47:"Sứ mệnh, Tầm nhìn, Giá trị cốt lõi";s:4:"link";s:29:"/introdution/s-m-nh-t-m-nh-n/";}i:1;a:2:{s:5:"title";s:16:"Các cổ đông";s:4:"link";s:31:"/introdution/shareholderholder/";}i:2;a:2:{s:5:"title";s:24:"Lịch sử hình thành";s:4:"link";s:33:"/introdution/history-en-US-vi-VN/";}i:3;a:2:{s:5:"title";s:21:"Sơ đồ tổ chức";s:4:"link";s:34:"/introdution/organizational-chart/";}i:4;a:2:{s:5:"title";s:18:"Kỷ yếu 20 năm";s:4:"link";s:26:"/introdution/k-y-u-20-n-m/";}i:5;a:2:{s:5:"title";s:32:"Các chứng chỉ nghiệp vụ";s:4:"link";s:35:"/introdution/inboundcertifications/";}}}i:2;a:3:{s:5:"title";s:11:"Dịch vụ";s:4:"link";s:24:"/service/export-service/";s:8:"children";a:7:{i:0;a:2:{s:5:"title";s:24:"Phục vụ hàng xuất";s:4:"link";s:24:"/service/export-service/";}i:1;a:2:{s:5:"title";s:24:"Phục vụ hàng nhập";s:4:"link";s:24:"/service/import-service/";}i:2;a:2:{s:5:"title";s:21:"Văn phòng cho thuê";s:4:"link";s:27:"/service/v-n-ph-ng-cho-thu/";}i:3;a:2:{s:5:"title";s:26:"Trung Tâm Đào Tạo TCS";s:4:"link";s:29:"/service/trung-t-m-o-t-o-tcs/";}i:4;a:2:{s:5:"title";s:22:"Các dịch vụ khác";s:4:"link";s:56:"/service/d-ch-v-t-m-ki-m-h-ng-h-ng-chuy-n-ti-p-t-i-xu-t/";}i:5;a:2:{s:5:"title";s:23:"Bảng giá dịch vụ";s:4:"link";s:26:"/service/handling-charges/";}i:6;a:2:{s:5:"title";s:28:"Các biểu mẫu đăng ký";s:4:"link";s:27:"/service/registration-form/";}}}i:3;a:3:{s:5:"title";s:14:"Hướng dẫn";s:4:"link";s:29:"/guide/step-to-collect-cargo/";s:8:"children";a:3:{i:0;a:2:{s:5:"title";s:24:"Nhận hàng quốc tế";s:4:"link";s:29:"/guide/step-to-collect-cargo/";}i:1;a:2:{s:5:"title";s:23:"Gửi hàng quốc tế";s:4:"link";s:32:"/guide/step-to-dispatch-cargo-2/";}i:2;a:2:{s:5:"title";s:22:"Thủ tục hải quan";s:4:"link";s:25:"/guide/customs-procedure/";}}}i:4;a:3:{s:5:"title";s:9:"Tin tức";s:4:"link";s:20:"/news/customer-news/";s:8:"children";a:4:{i:0;a:2:{s:5:"title";s:26:"Tin dành cho khách hàng";s:4:"link";s:20:"/news/customer-news/";}i:1;a:2:{s:5:"title";s:18:"Tin chuyên ngành";s:4:"link";s:22:"/news/airfreight-news/";}i:2;a:2:{s:5:"title";s:14:"Tin nội bộ";s:4:"link";s:20:"/news/internal-news/";}i:3;a:2:{s:5:"title";s:34:"Tin tuyển dụng và đào tạo";s:4:"link";s:18:"/news/career-news/";}}}i:5;a:3:{s:5:"title";s:11:"Thống kê";s:4:"link";s:9:"/th-ng-k/";s:8:"children";a:0:{}}i:6;a:3:{s:5:"title";s:11:"Liên kết";s:4:"link";s:6:"/link/";s:8:"children";a:0:{}}i:7;a:3:{s:5:"title";s:13:"Hỏi & Đáp";s:4:"link";s:5:"/q-a/";s:8:"children";a:0:{}}}s:6:"footer";a:3:{i:0;a:2:{s:5:"title";s:7:"Góp ý";s:4:"link";s:14:"/offer-advise/";}i:1;a:2:{s:5:"title";s:10:"Liên hệ";s:4:"link";s:9:"/contact/";}i:2;a:2:{s:5:"title";s:7:"Sitemap";s:4:"link";s:9:"/sitemap/";}}}';
+//  $header = file_get_contents('http://'.WEB_BASE_URL.'/home/get_menus');
+  }
+
+  $menus =  unserialize($header);
+  $header_menus= $menus['header'];
+  $footer_menus = $menus['footer'];
+  $ogri_layout = $layout;
+  // handle layout multi lang
+  if($locale=='en_US'){
+    if(substr($nav_file,strlen($nav_file)-2,strlen($nav_file)-1)!='_e'){
+      $nav_file = $nav_file.'_e';
+    }
+    if(substr($layout,strlen($layout)-2,strlen($layout)-1)!='_e'){
+      $layout = $layout.'_e';
+    }
+  }
+  // show user profile
+  $show_userprofile = empty($_SESSION['user_code'])? false:true;
+   */ 
+}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>   
+</head>
+<body>
+    <div>
+
+        <div class="wrap">
+            <div class="inner_container">
+                <div>
+
+                    //*****************BEGIN: <?php include_once "$nav_file.php";?>
+                    <div>
+	                    <ul class="awb_tabs">
+                     @{ 
+                        //include('fun_t/function.php'); 
+                        if (lg_codesgshdgsksasa =="ad") 
+	                    {
+		
+                     }	
+    	                     <li><a href="index.php?section=agent&layout=03_cs_e"><span>Cargo Tracking</span></a></li>
+		                    <li><a href="index.php?section=agent&layout=07_SS_cs_e"><span>Report for Inbound Shipment</span></a></li>
+                            <li><a href="index.php?section=agent&layout=07_SS_EXP_cs_e"><span>Report for Outbound Shipment</span></a></li>
+
+                            <li><a href="index.php?section=agent&layout=cp_06"><span>Change Password</span></a></li>
+                    @{
+	                    }
+		                else
+			            {
+                    }
+                            <li><a href="index.php?section=agent&layout=03_cs"><span>Thông tin hàng hóa</span></a></li>
+		                    <li><a href="index.php?section=agent&layout=07_cs"><span>In báo cáo</span></a></li>
+		                    <li><a href="index.php?section=agent&layout=08_cs"><span>Hàng trong kho</span></a></li>
+		                    <li><a href="index.php?section=agent&layout=cp_06"><span>Thay đổi mật khẩu</span></a></li>
+       
+		
+                    @{                          
+                        } 
+                    }  
+	                    </ul>
+                    </div>
+                    //*****************END: <?php include_once "$nav_file.php";?>
+
+                </div>
+                <div class="clear"></div>
+                <div class="layout">
+                    
+                    <!-------************************************************************************************************************------>
+                    <!------------------------------BEGIN: LAYOUT - 08_cs: <?php include_once "$layout.php";?>--------------------------------->
+                    <!-- DANH SACH -->
+                    <div class="ui_awb">
+                        @{
+                            string endpoint = "http://192.168.14.10:8080/COSYS.asmx";//include('fun_t/connect_tion.php');
+                            
+                            //BEGIN: include('con_t/_config-08.php');
+                            int N01_COD_AWB_PFX = 0;
+		                    int N02_COD_AWB_NUM = 1;
+		                    int N03_COD_AWB_SFX = 2;
+		                    int N04_AWB_NUM = 3;
+		                    int N05_COD_HWB_NUM = 4;
+		                    int N06_FLIGHT_NO = 5;
+		                    int N07_FLIGHT_DATE = 6;
+		                    int N08_ROUTING = 7;
+		                    int N09_PCS = 8;
+		                    int N10_WGT = 9;
+		                    int N11_NATURE_OF_GOODS = 10;
+		                    int N12_NUM_NOTIFY = 11;
+
+		                    //TEN KHACH HANG
+		                    int C01_CUSTOMER_NAME = 0;
+		                    int C02_COD_CMP_CMS = 1;
+                            //END: include('con_t/_config-08.php');
+                        }
+
+                        @{
+                        /*
+                        if(!session_is_registered("user_code"))
+                        {
+                        $user_code="";
+                        session_register("user_code");
+                        session_unregister("user_code");
+                        $HTTP_POST_VARS['user']="";
+                        //exit();
+                        }
+                        else
+                        {
+                        $agent_code=$user_code;
+                        }
+                        ?>
+                        <?
+                        $agent_code=$user_code;
+
+                        if(!empty($_POST['action']))
+                        {
+                        if($_POST['action']=='refresh')
+                        {
+                        if ($user_code=="admi")
+                        {
+                        $agent_code=$_POST['txt_agent_code'];
+                        }
+                        else
+                        {
+                        $agent_code=$user_code;
+                        }
+                        //echo $agent_code;
+                        }
+
+                        if($_POST['action']=='print')
+                        {
+
+                        }
+
+                        }
+
+                        ?>
+                        */
+                        
+                            string agent_code=user_code;
+                        }
+
+                        <h5>Danh sách hàng hóa chưa được giao nhận</h5>
+
+
+                        <form id="agent_nondlv_report" action="index.php?section=<? echo $section?>&layout=08_cs" method="post">
+                            <input type="hidden" name="action" id="agent_nondlv_report_action" />
+
+                            <table width="1000" class="bdr">
+                                <tr>
+                                    <? if ($user_code=="admi")
+                                    {
+                                    ?>
+                                    <td width="494"><div align="right">Mã đại lý:</div></td>
+                                    <td width="494"><input type="text" name="txt_agent_code" value="<? echo $agent_code ;?>" /></td>
+                                    <? } ?>
+                                </tr>
+
+                                <tr>
+
+                                    <td align="right"><a href="#" class="btn" value="refresh" form="agent_nondlv_report"><span>Refresh</span> </a></td>
+                                    <td align="left"><a href="javascript:window.print();" class="btn"><span>Print</span></a></td>
+
+                                </tr>
+                            </table>
+
+                        </form>
+
+                        @{
+                            
+                        if (!String.IsNullOrEmpty(agent_code))                        
+                        {                            
+                            //DOc ra thong tin ve Dai ly
+                            string client = new SoapClient($endpoint.'?wsdl');//$client = new SoapClient($endpoint.'?wsdl');
+                            string result = $client->GET_CUSTOMER_NAME(array('STR_CONNECT'=>'sss','CUSTOMER_CODE'=>$agent_code));//$result = $client->GET_CUSTOMER_NAME(array('STR_CONNECT'=>'sss','CUSTOMER_CODE'=>$agent_code));
+                            $str_cus = $result->GET_CUSTOMER_NAMEResult;
+                            $row_cus = explode('~|$|~', $str_cus);
+                            $agent_name = $row_cus[C01_CUSTOMER_NAME];
+                            $agent_code = $row_cus[C02_COD_CMP_CMS];
+
+                            //$agent_name = 'Vietnam Airlines';// Se lay tu COSYS sau
+
+                            $d1=date("m/d/Y", mktime(0,0,0,date("m")-6,date("d")-1,date("Y")));
+                            $d2=date("m/d/Y", mktime(0,0,0,date("m"),date("d")-1,date("Y")));
+                            $cnt_goods=0;
+                        } 
+                        <h5>Danh sách</h5>
+                        <table width="1000" class="tbl02">
+                            <tr><td colspan="9">Đại lý: <?  echo $agent_code."-".$agent_name  ?></td></tr>
+                            <tr><td colspan="9">Hàng nhập kho từ ngày: <? echo date("d/m/Y", mktime(0,0,0,date("m")-6,date("d")-1,date("Y"))); ?> đến ngày: <? echo date("d/m/Y", mktime(0,0,0,date("m"),date("d")-1,date("Y"))); ?></td></tr>
+                            <tr>
+                                <td colspan="2" class="title" align="center">Số không vận đơn</td>
+                                <td colspan="2" class="title" align="center">Chuyến bay</td>
+                                <td rowspan="2" class="title" align="center">ORG/DES</td>
+                                <td rowspan="2" class="title" align="center">Số kiện</td>
+                                <td rowspan="2" class="title" align="center">Trọng lượng</td>
+                                <td rowspan="2" class="title" align="center">Loại hàng</td>
+                                <td rowspan="2" class="title" align="center">Đã thông báo cho khách </td>
+                            </tr>
+                            <tr>
+                                <td class="title" align="center">MAWB</td>
+                                <td class="title" align="center">HAWB</td>
+                                <td class="title" align="center">Số</td>
+                                <td class="title" align="center">Ngày</td>
+                            </tr>
+                            <?
+                            $result = $client->GET_AGENT_NONEDLV_LIST(array('STR_CONNECT'=>'sss','AGENT_CODE'=>$agent_code,'CARRIER_CODE'=>''));
+                            $str = $result->GET_AGENT_NONEDLV_LISTResult;
+                            //echo $str;
+                            $param_arrays = explode('*-$-*', $str);//~|$|~
+
+                            foreach($param_arrays as $val)
+                            {
+                            $cnt_goods=$cnt_goods+1;
+                            $row_goods_temp = explode('~|$|~', $val);
+                            ?>
+                            <tr>
+                                <td><? echo rtrim($row_goods_temp[N04_AWB_NUM]); ?></td>
+                                <td align="right"><? echo rtrim($row_goods_temp[N05_COD_HWB_NUM]); ?></td>
+                                <td><? echo rtrim($row_goods_temp[N06_FLIGHT_NO]);?></td>
+                                <td align="center"><? echo rtrim($row_goods_temp[N07_FLIGHT_DATE]); ?></td>
+                                <td><? echo $row_goods_temp[N08_ROUTING]; ?></td>
+                                <td align="right"><? echo $row_goods_temp[N09_PCS]; ?></td>
+                                <td align="right"><? echo $row_goods_temp[N10_WGT]; ?></td>
+                                <td align="right"><? echo rtrim($row_goods_temp[N11_NATURE_OF_GOODS]);		?></td>
+                                <td><? echo rtrim("L".$row_goods_temp[N12_NUM_NOTIFY]);?></td>
+                            </tr>
+                            <?
+                            }//while ($row_goods_ndl = mssql_fetch_array($result_goods_ndl))
+
+                            ?>
+
+                            <tr><td colspan="9">Tổng cộng: <? echo $cnt_goods ; ?></td></tr>
+                            <tr>
+                                <td colspan="9">
+                                    <?
+
+                                    $a=date("H")-1;
+                                    echo "Ngày, giờ in báo cáo : ". date("d M Y $a:i") ;
+
+
+                                    ?>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table width="1000">
+                            <tr>
+                                <td>Ghi chú:</td>
+                                <td colspan="8">
+                                    <strong>L0</strong> : Chưa thông báo.
+                                    <strong>L1</strong> : Thông báo lần 1.
+                                    <strong> L2</strong> : Thông báo lần 2.
+
+                                </td>
+                            </tr>
+                        </table>
+                        <?
+                        }
+                        ?>
+
+                    </div>
+
+
+
+                    <p>&nbsp;</p>
+                    <div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+                    <!-- iware add javascript handle form -->
+
+                    <script type="text/javascript">
+                        $('document').ready(function () {
+                            $(".btn").click(function () {
+                                value = $(this).attr('value');
+                                form_id = $(this).attr('form');
+                                action_input_id = form_id + '_action';
+                                $('#' + action_input_id).attr({ 'value': value });
+                                $('#' + form_id).submit();
+                            });
+                            $('#agent_nondlv_report').keypress(function (event) {
+                                if (event.keyCode == '13') {
+                                    $(this).find('.btn').click();
+                                }
+                            });
+                        });
+                    </script>
+                    <!-- iware end -->
+
+
+
+
+
+
+
+
+
+                    <!------------------------------END: LAYOUT - 08_cs: <?php include_once "$layout.php";?>--------------------------------->
+                    <!-------************************************************************************************************************------>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <!-- END CONTAINER -->        
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Statistics_default";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="rp_wrapper">
+    <form id="statlogin" name="statlogin" method="post" action="/Airline/Statistics">
+        <table width="100%" border="0" class="">
+            <tbody>
+                <tr>
+                    <td height="34" colspan="3" align="center" class="tieude">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("VUI_LONG_DIEN_THONG_TIN_DANG_NHAP")</td>
+                </tr>
+                <tr>
+                    <td width="46%" height="30" align="right">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TEN_DANG_NHAP"):</td>
+                    <td width="1%">&nbsp;</td>
+                    <td width="53%" height="45">
+                        <label>
+                            <input name="user" type="text" class="txt" id="user">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("MAT_KHAU"):</td>
+                    <td>&nbsp;</td>
+                    <td height="45">
+                        <label>
+                            <input name="passwd" type="password" class="txt" id="passwd">
+                            <input type="text" class="hidden_css_9" value="@this.Url.Action()" name="txtURL" />
+                            <input type="text" class="hidden_css_9" value="@HCSVNewWebsite.Commons.Commons.getActiveMenu(Request)" name="txtMenuID" />
+                        </label>
+                    </td>
+                </tr>
+                @*Begin Captcha*@
+                <tr>
+                    <td colspan="2"></td>
+                    <td>
+                        <div>
+                            <img src="/Airline/GetCaptchaImage" style="width:200px;" title="Captcha" />
+                            <br />
+                            <input type="text" name="clientCaptcha_Airlines" placeholder="@Html.Raw(HCSVNewWebsite.Commons.TitleConst.getTitleConst("GO_CAPCHA"))" style="width:200px;" required />
+                            <p style="font-weight:bold;color:red;">
+                                @{
+                                    @Html.Raw(Session[HCSVNewWebsite.Commons.Commons.SESSION_ERROR_CAPCHA]);
+                                                                                                   Session[HCSVNewWebsite.Commons.Commons.SESSION_ERROR_CAPCHA] = null;
+                                }
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                @*End Captcha*@
+
+                <tr>
+                    <td height="32" align="right">&nbsp;</td>
+                    <td height="32" align="right">&nbsp;</td>
+                    <td height="32" align="left">
+                        <span class="search">                            
+                            <input type="submit" name="btn_thoat" id="btn_thoat" value="@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_NHAP")" class="btnLeaf piecss3 btn" style="line-height: 16px;">
+                        </span>
+                    </td>
+                    <td height="32"><p class="search">&nbsp;</p></td>
+                </tr>
+            </tbody>
+        </table>        
+    </form>
+</div>

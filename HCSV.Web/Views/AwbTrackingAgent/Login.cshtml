@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+
+    <div>
+
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <script language="JavaScript">
+            function checkForm() {
+                if (window.document.login.user.value.length == 0) {
+                    alert("Vui long nhap 'Ten'");
+                    return false;
+                }
+                if (window.document.login.passwd.value.length == 0) {
+                    alert("Vui long nhap 'Mat Khau'");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+        <table cellspacing="0" cellpadding="0" border="0" width="640">
+            <!--DWLayoutTable-->
+            <tbody>
+                <tr valign="top">
+                    <td width="640">
+                        <form name="login" id="login_id" onsubmit="return checkForm();" method="post" action="index.php?section=customer&amp;layout=sign_in&amp;awbFirst=695&amp;awbLast=05967802">
+                            <!-- <input type="hidden" name="layout" value="sigin"/> -->
+
+                            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <!--DWLayoutTable-->
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3" height="19" width="640">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="awb_title" height="42">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_NHAP")</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="awb_title" height="10">
+                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("XEM_THONG_TIN_KVD")
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" height="44" valign="top">
+                                            <table align="center" cellspacing="1" cellpadding="1" bordercolor="#FFFFFF" border="1" bgcolor="#FFFFFF" width="60%">
+                                                <tbody>
+                                                    <tr bordercolor="#FDECE1" bgcolor="#FDECE1">
+                                                        <td colspan="3" valign="top">
+                                                            <table class="form" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                                                <tbody>
+                                                                    <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                                                                        <td><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TEN")</strong></td>
+                                                                        <td><input name="user" class="form" size="15" value="" type="text"></td>
+                                                                    </tr>
+                                                                    <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                                                                        <td><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("MAT_KHAU")</strong></td>
+                                                                        <td><input name="passwd" class="form" size="15" value="" type="Password"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td colspan="6" align="center">
+                                            <a href="/AWBTracking_Agent/InfoTracking" class="btn" value="sigin" ><span>Đăng nhập</span></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table cellspacing="0" cellpadding="0" border="0" width="640">
+            <!--DWLayoutTable-->
+            <tbody>
+                <tr valign="top">
+                    <td width="640"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="marginT10" align="center"><a href="../download/dangky.doc" target="_blank" class="btn"><span>Mẫu đăng ký</span></a> </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><!--DWLayoutEmptyCell-->&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- iware add javascript handle form -->
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $(".btn").click(function () {
+                    value = $(this).attr('value');
+                    form_id = $(this).attr('form');
+                    action_input_id = form_id + '_action';
+                    $('#' + action_input_id).attr({ 'value': value });
+                    $('#' + form_id).submit();
+                });
+            });
+        </script>
+        <!-- iware end -->
+    </div>
+
+</div>
+

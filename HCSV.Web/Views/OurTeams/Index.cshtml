@@ -1,0 +1,64 @@
+﻿@model HCSVNewWebsite.Models.jos_content
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg_100percent_css menu_title_css home_title_css">
+    <div class="container">
+        <h1>Our Teams</h1>
+    </div>
+</div>
+<div class="bg_100percent_css">
+
+    <div class="container our_teams_css">
+        <div class="intro_out_teams_css">
+            @Html.Raw(Model.POS_1 != null ? HCSVNewWebsite.Commons.Commons.convertContent(Model.POS_1.introtext) : "")
+        </div>
+
+        @{ if ((Model.BANNER != null) && (Model.BANNER.Count() > 0))
+         {
+             int i = 0;
+             foreach (var item in Model.BANNER)
+             {
+                 i++;
+                 if (i == 1)//CEO
+                 {
+                     <div class="bg_100percent_css">
+                         <div class="our_teams_item_css">
+                             <div class="img_our_team_css">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.images))</div>
+                             <div class="name_our_team_css">@Html.Raw(item.title)</div>
+                             <div class="title_our_team_css">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.introtext))</div>
+                         </div>
+                     </div>
+                 }
+                 else if (i >= 2 && i <= 4)
+                 {
+                    <div class="col-md-4">
+                        <div class="our_teams_item_css">
+                            <div class="img_our_team_css">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.images))</div>
+                            <div class="name_our_team_css">@Html.Raw(item.title)</div>
+                            <div class="title_our_team_css">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.introtext))</div>
+                        </div>
+                    </div>
+                 }
+                 else
+                 {
+                    <div class="col-md-3">
+                        <div class="our_teams_item_css">
+                            <div class="img_our_team_css">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.images))</div>
+                            <div class="name_our_team_css">@Html.Raw(item.title)</div>
+                            <div class="title_our_team_css">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.introtext))</div>
+                        </div>
+                    </div>
+                 }
+
+                
+             }
+
+         }
+   }
+    </div>
+</div>
+

@@ -1,0 +1,335 @@
+﻿
+@{
+    ViewBag.Title = "TCSCargoHandlingCharges_OtherFees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li><a href="@Url.Action("ImportCargoTracking_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA_NHAP_KHAU")</span></a></li>
+                <li><a href="@Url.Action("InwardFlightServiceReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="@Url.Action("NoneDeliveryReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoStatus_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG_HANG_HOA_XUAT_KHAU")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoInWareHouse_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_XUAT_KHAU_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ChangePassword", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=airline&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="awb_title">
+                       @HCSVNewWebsite.Commons.TitleConst.getTitleConst("BANG_GIA_HIEN_HANH")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="price" width="30%" border="0" align="right" cellpadding="2" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td width="9%">
+                                        <img src="../images/arroww.gif" width="11" height="11">
+                                    </td>
+                                    <td width="91%">
+                                        <strong><a href="@Url.Action("TCSCargoHandlingCharges_StorageCharge", "Airline", "Views")">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LUU_KHO")</a></strong>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" width="11" height="11">
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("TCSCargoHandlingCharges_ServiceCharge", "Airline", "Views")">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_PHUC_VU")</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" width="11" height="11">
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("TCSCargoHandlingCharges_SurchargeRateForOvertimeService", "Airline", "Views")">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("PHU_THU_GIA_LAO_VU_NGOAI_GIO")</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" width="11" height="11">
+                                    </td>
+                                    <td>
+                                        <strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_DICH_VU_KHAC")</strong>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="center">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <table width="100%" class="tbl02">
+                            <tbody>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td width="4%">
+                                        <div align="center">
+                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("STT")
+                                        </div>
+                                    </td>
+                                    <td width="74%">
+                                        <div align="center">
+                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("NOI_DUNG_CAC_KHOAN_THU")
+                                        </div>
+                                    </td>
+                                    <td width="10%">
+                                        <div align="center">
+                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DON_VI_TINH")
+                                        </div>
+                                    </td>
+                                    <td width="12%">
+                                        <div align="center">
+                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("MUC_THU")
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>
+                                        3.
+                                    </td>
+                                    <td>
+                                        <strong>OTHER FEES</strong>
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>3.1</td>
+                                    <td>House Airwaybill fee (HAWB)</td>
+                                    <td align="center">HAWB</td>
+                                    <td align="right">250,000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>
+                                        3.2
+                                    </td>
+                                    <td>
+                                        Charge for valuable cargo escort service
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Service
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            1,455,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>3.3</td>
+                                    <td>Cancellation of Delivery Order</td>
+                                    <td><div align="center">Shipment</div></td>
+                                    <td><div align="right">60,000</div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>3.4</td>
+                                    <td>Amendment of document</td>
+                                    <td><div align="center">Service</div></td>
+                                    <td><div align="right">60,000</div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>
+                                        3.5
+                                    </td>
+                                    <td>
+                                        Reweighing of shipment
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Shipment
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            140,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>3.6</td>
+                                    <td>Copy of document</td>
+                                    <td><div align="center">AWB</div></td>
+                                    <td><div align="right">60,000</div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>
+                                        3.7
+                                    </td>
+                                    <td>
+                                        Handling missing cargo, returned cargo, transit cargo
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Service
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            280,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>
+                                        3.8
+                                    </td>
+                                    <td>
+                                        Disposal of abandon shipments
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Shipment
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            280,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>
+                                        3.9
+                                    </td>
+                                    <td>
+                                        Re-labelling
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>
+                                        &nbsp;
+                                    </td>
+                                    <td>
+                                        - Service charge
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Piece
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            2,180
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>&nbsp;</td>
+                                    <td>- Minimum</td>
+                                    <td><div align="center">Shipment</div></td>
+                                    <td><div align="right">60,000</div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>3.10</td>
+                                    <td>Document box for rental</td>
+                                    <td><div align="center">Box/month</div></td>
+                                    <td><div align="right">420,000</div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>3.11</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>3.12</td>
+                                    <td>Providing video from TCS's security camera system (CCTV</td>
+                                    <td><div align="center"></div></td>
+                                    <td><div align="right"></div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <p>- Charge rate: 1,400,000 VND/shipment.</p>
+                                        <p>- Collect and refund policy: TCS shall collect upon receiving repuest anhd refund if the fault occurs in TCS's exploiting process.</p>
+                                        <p>- TCS collect charge from customers who request.</p>
+                                    </td>
+                                    <td><div align="center"></div></td>
+                                    <td><div align="right"></div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>3.13</td>
+                                    <td>Take and send photographic images for shipments</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <p>- Charge rate: 43,000 VND/AWB ( AWB or HAWB), up to a maximum of 10 photos</p>
+                                        <p>- From the 11th photo, an additional free of 10,000 VND/photos</p>
+                                        <p>- TCS will not collect this service charge of the following case:</p>
+                                        <blockquote>
+                                            <p>* Export Vun cargo service.</p>
+                                            <p>* Irregular issues caused by TCS</p>
+                                        </blockquote>
+                                        <p>- TCS collect charge from Cargo Agents and Forwarders who request</p>
+                                    </td>
+                                    <td><div align="center"></div></td>
+                                    <td><div align="right"></div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td colspan="4">
+                                        <strong>NOTE: </strong>The above charges are exclusive
+                                        of VAT
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>&nbsp;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text"></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>

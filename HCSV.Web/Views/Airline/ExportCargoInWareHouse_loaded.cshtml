@@ -1,0 +1,1108 @@
+﻿
+@{
+    ViewBag.Title = "ExportCargoInWareHouse_loaded";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li><a href="@Url.Action("ImportCargoTracking_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA_NHAP_KHAU")</span></a></li>
+                <li><a href="@Url.Action("InwardFlightServiceReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="@Url.Action("NoneDeliveryReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoStatus_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG_HANG_HOA_XUAT_KHAU")</span></a></li>
+                <li class="current"><a href="@Url.Action("ExportCargoInWareHouse_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_XUAT_KHAU_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ChangePassword", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=airline&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <!-- DANH SACH -->
+        <div class="ui_awb">
+
+            <h5 align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANH_SACH_MAWB")</h5>
+            <form id="airlines_nondlv_report" action="https://www.tcs.com.vn/awb/index.php?section=airline&amp;layout=12_cs" method="post">
+                <input type="hidden" name="action" id="airlines_nondlv_report_action">
+
+
+                <table width="1000" class="bdr">
+                    <tbody>
+                        <tr>
+                            <td width="339">&nbsp;</td>
+                            <td width="155" align="right"><div align="right">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_HIEU_CHUYEN_BAY") : </div></td>
+                            <td width="195" align="left">
+                                <input name="txt_flight_no" type="text" value="BR" maxlength="10">
+                            </td>
+                            <td width="291">&nbsp;</td>
+                        </tr>
+
+                        <tr>
+
+                            <td height="39" align="right">&nbsp;</td>
+                            <td align="right"><a href="@Url.Action("ExportCargoInWareHouse_loaded", "Airline", "Views")" class="btn" value="refresh" form="airlines_nondlv_report"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("LAM_MOI")</span></a></td>
+                            <td align="left">&nbsp;<a href="javascript:window.print();" class="btn"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_MAN_HINH")</span></a></td>
+                            <td align="center">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </form>
+            <script>
+                $(document).ready(function () {
+                    $(".hang2:odd").addClass("chan");
+                    $(".hang2:even").addClass("le");
+                    $(".hang2").mouseover(function () {
+                        $(this).addClass("abc");
+                    });
+                    $(".hang2").mouseout(function () {
+                        $(this).removeClass("abc");
+                    });
+
+
+                });
+            </script>
+            <h5 align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANH_SACH") </h5>
+
+            <table width="1000" class="tbl02">
+                <tbody>
+                    <tr>
+                        <td colspan="18">
+                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_HIEU_CHUYEN_BAY")
+                            :
+                            BR-EVA AIR
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="28" rowspan="2" align="center" class="title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("STT")</td>
+                        <td colspan="2" align="center" class="title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHUYEN_BAY")</td>
+                        <td width="118" rowspan="2" align="center" class="title">ULD</td>
+                        <td width="50" rowspan="2" align="center" class="title">Contour</td>
+                        <td width="95" rowspan="2" align="center" class="title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("KHONG_VAN_DON")</td>
+                        <td width="76" rowspan="2" align="center" class="title">
+                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("TONG_SO_KIEN")
+                        </td>
+                        <td width="69" rowspan="2" align="center" class="title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KIEN")</td>
+                        <td width="81" rowspan="2" align="center" class="title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TRONG_LUONG")</td>
+                        <td width="75" rowspan="2" class="title" lign="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DIEM_DEN")</td>
+                        <td colspan="2" class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHUYEN_BAY_DA_DAT_CHO")</td>
+                        <td width="84" rowspan="2" align="center" class="title">SHC</td>
+                        <td width="71" rowspan="2" align="center" class="title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG")</td>
+                    </tr>
+                    <tr>
+                        <td width="59" align="center" class="title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_HIEU")</td>
+                        <td width="48" align="center" class="title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY")</td>
+                        <td width="72" class="title" lign="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_HIEU")</td>
+                        <td width="68" align="center" class="title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY")</td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            1
+                        </td>
+                        <td>
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td align="left">
+                            PAG52779BR
+                        </td>
+                        <td align="center">
+                            QP
+                        </td>
+                        <td class="canhtrai">
+                            69508507203
+                        </td>
+                        <td class="canhphai">
+                            18
+                        </td>
+                        <td class="canhphai">
+                            14
+                        </td>
+                        <td class="canhphai">
+                            1535
+                        </td>
+                        <td class="canhgiua">
+                            FUK
+                        </td>
+                        <td class="canhtrai">
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            DON
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            2
+                        </td>
+                        <td>
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td align="left"></td>
+                        <td align="center">
+                            QP
+                        </td>
+                        <td class="canhtrai">
+                            69508511882
+                        </td>
+                        <td class="canhphai">
+                            172
+                        </td>
+                        <td class="canhphai">
+                            6
+                        </td>
+                        <td class="canhphai">
+                            170
+                        </td>
+                        <td class="canhgiua">
+                            ORD
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            DON
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            3
+                        </td>
+                        <td>
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td align="left">
+                            PLA68465BR
+                        </td>
+                        <td align="center">
+                            QP
+                        </td>
+                        <td class="canhtrai">
+                            69508507203
+                        </td>
+                        <td class="canhphai">
+                            18
+                        </td>
+                        <td class="canhphai">
+                            4
+                        </td>
+                        <td class="canhphai">
+                            437
+                        </td>
+                        <td class="canhgiua">
+                            FUK
+                        </td>
+                        <td class="canhtrai">
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            DON
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            4
+                        </td>
+                        <td>
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td align="left"></td>
+                        <td align="center">
+                            QP
+                        </td>
+                        <td class="canhtrai">
+                            69508511882
+                        </td>
+                        <td class="canhphai">
+                            172
+                        </td>
+                        <td class="canhphai">
+                            24
+                        </td>
+                        <td class="canhphai">
+                            500
+                        </td>
+                        <td class="canhgiua">
+                            ORD
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            DON
+                        </td>
+                    </tr>
+                    <tr class="hang2 le abc">
+                        <td align="center">
+                            5
+                        </td>
+                        <td>
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td align="left">
+                            PMC09434BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508511882
+                        </td>
+                        <td class="canhphai">
+                            172
+                        </td>
+                        <td class="canhphai">
+                            24
+                        </td>
+                        <td class="canhphai">
+                            465
+                        </td>
+                        <td class="canhgiua">
+                            ORD
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            LOD
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            6
+                        </td>
+                        <td>
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td align="left"></td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508512022
+                        </td>
+                        <td class="canhphai">
+                            6
+                        </td>
+                        <td class="canhphai">
+                            3
+                        </td>
+                        <td class="canhphai">
+                            633
+                        </td>
+                        <td class="canhgiua">
+                            TPE
+                        </td>
+                        <td class="canhtrai">
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            LOD
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            7
+                        </td>
+                        <td>
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td align="left">
+                            PMC11448BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508509863
+                        </td>
+                        <td class="canhphai">
+                            278
+                        </td>
+                        <td class="canhphai">
+                            135
+                        </td>
+                        <td class="canhphai">
+                            1033
+                        </td>
+                        <td class="canhgiua">
+                            PVG
+                        </td>
+                        <td class="canhtrai">
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            DON
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            8
+                        </td>
+                        <td>
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td align="left">
+                            PMC11495BR
+                        </td>
+                        <td align="center"></td>
+                        <td class="canhtrai">
+                            69508512022
+                        </td>
+                        <td class="canhphai">
+                            6
+                        </td>
+                        <td class="canhphai">
+                            3
+                        </td>
+                        <td class="canhphai">
+                            633
+                        </td>
+                        <td class="canhgiua">
+                            TPE
+                        </td>
+                        <td class="canhtrai">
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            LOD
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            9
+                        </td>
+                        <td>
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td align="left">
+                            PMC12023BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508509863
+                        </td>
+                        <td class="canhphai">
+                            278
+                        </td>
+                        <td class="canhphai">
+                            143
+                        </td>
+                        <td class="canhphai">
+                            1040
+                        </td>
+                        <td class="canhgiua">
+                            PVG
+                        </td>
+                        <td class="canhtrai">
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            DON
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            10
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            WAREHOUSE
+                        </td>
+                        <td align="center"></td>
+                        <td class="canhtrai">
+                            69508508916
+                        </td>
+                        <td class="canhphai">
+                            2
+                        </td>
+                        <td class="canhphai"></td>
+                        <td class="canhphai"></td>
+                        <td class="canhgiua">
+                            YYZ
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            02Jun2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            ACPT
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            11
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            EG01
+                        </td>
+                        <td align="center"></td>
+                        <td class="canhtrai">
+                            69508511403
+                        </td>
+                        <td class="canhphai">
+                            1
+                        </td>
+                        <td class="canhphai">
+                            1
+                        </td>
+                        <td class="canhphai">
+                            5
+                        </td>
+                        <td class="canhgiua">
+                            SFO
+                        </td>
+                        <td class="canhtrai">
+                            BR0396
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua">
+                            PER/ICE
+                        </td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            12
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left"></td>
+                        <td align="center"></td>
+                        <td class="canhtrai">
+                            69508511521
+                        </td>
+                        <td class="canhphai">
+                            8
+                        </td>
+                        <td class="canhphai">
+                            2
+                        </td>
+                        <td class="canhphai">
+                            315.50
+                        </td>
+                        <td class="canhgiua">
+                            JFK
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            13
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            AAF56146BR
+                        </td>
+                        <td align="center"></td>
+                        <td class="canhtrai">
+                            69508511731
+                        </td>
+                        <td class="canhphai">
+                            180
+                        </td>
+                        <td class="canhphai">
+                            150
+                        </td>
+                        <td class="canhphai">
+                            1800
+                        </td>
+                        <td class="canhgiua">
+                            PHX
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            14
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            AKE39151BR
+                        </td>
+                        <td align="center"></td>
+                        <td class="canhtrai">
+                            69508510456
+                        </td>
+                        <td class="canhphai">
+                            376
+                        </td>
+                        <td class="canhphai">
+                            19
+                        </td>
+                        <td class="canhphai">
+                            410
+                        </td>
+                        <td class="canhgiua">
+                            ORD
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            30May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            15
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left"></td>
+                        <td align="center"></td>
+                        <td class="canhtrai">
+                            69508511882
+                        </td>
+                        <td class="canhphai">
+                            172
+                        </td>
+                        <td class="canhphai">
+                            14
+                        </td>
+                        <td class="canhphai">
+                            256
+                        </td>
+                        <td class="canhgiua">
+                            ORD
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            16
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            PMC05089BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508510644
+                        </td>
+                        <td class="canhphai">
+                            1308
+                        </td>
+                        <td class="canhphai">
+                            522
+                        </td>
+                        <td class="canhphai">
+                            1185
+                        </td>
+                        <td class="canhgiua">
+                            ATL
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            29May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            17
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            PMC07468BR
+                        </td>
+                        <td align="center"></td>
+                        <td class="canhtrai">
+                            69508511521
+                        </td>
+                        <td class="canhphai">
+                            8
+                        </td>
+                        <td class="canhphai">
+                            6
+                        </td>
+                        <td class="canhphai">
+                            946.50
+                        </td>
+                        <td class="canhgiua">
+                            JFK
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            18
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            PMC07684BR
+                        </td>
+                        <td align="center">
+                            QP
+                        </td>
+                        <td class="canhtrai">
+                            69508510456
+                        </td>
+                        <td class="canhphai">
+                            376
+                        </td>
+                        <td class="canhphai">
+                            114
+                        </td>
+                        <td class="canhphai">
+                            2125
+                        </td>
+                        <td class="canhgiua">
+                            ORD
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            30May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            19
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            PMC09227BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508510250
+                        </td>
+                        <td class="canhphai">
+                            300
+                        </td>
+                        <td class="canhphai">
+                            110
+                        </td>
+                        <td class="canhphai">
+                            1310
+                        </td>
+                        <td class="canhgiua">
+                            SFO
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            20
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            PMC10052BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508510261
+                        </td>
+                        <td class="canhphai">
+                            170
+                        </td>
+                        <td class="canhphai">
+                            106
+                        </td>
+                        <td class="canhphai">
+                            1260
+                        </td>
+                        <td class="canhgiua">
+                            SFO
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            01Jun2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            21
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            PMC10344BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508510250
+                        </td>
+                        <td class="canhphai">
+                            300
+                        </td>
+                        <td class="canhphai">
+                            99
+                        </td>
+                        <td class="canhphai">
+                            1240
+                        </td>
+                        <td class="canhgiua">
+                            SFO
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            22
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            PMC10388BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508511882
+                        </td>
+                        <td class="canhphai">
+                            172
+                        </td>
+                        <td class="canhphai">
+                            32
+                        </td>
+                        <td class="canhphai">
+                            930
+                        </td>
+                        <td class="canhgiua">
+                            ORD
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            23
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            PMC11468BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508510456
+                        </td>
+                        <td class="canhphai">
+                            376
+                        </td>
+                        <td class="canhphai">
+                            8
+                        </td>
+                        <td class="canhphai">
+                            140
+                        </td>
+                        <td class="canhgiua">
+                            ORD
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            30May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 chan">
+                        <td align="center">
+                            24
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left"></td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508511882
+                        </td>
+                        <td class="canhphai">
+                            172
+                        </td>
+                        <td class="canhphai">
+                            42
+                        </td>
+                        <td class="canhphai">
+                            1185
+                        </td>
+                        <td class="canhgiua">
+                            ORD
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            31May2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr class="hang2 le">
+                        <td align="center">
+                            25
+                        </td>
+                        <td></td>
+                        <td class="canhtrai"></td>
+                        <td align="left">
+                            PMC11968BR
+                        </td>
+                        <td align="center">
+                            QF
+                        </td>
+                        <td class="canhtrai">
+                            69508510261
+                        </td>
+                        <td class="canhphai">
+                            170
+                        </td>
+                        <td class="canhphai">
+                            64
+                        </td>
+                        <td class="canhphai">
+                            876
+                        </td>
+                        <td class="canhgiua">
+                            SFO
+                        </td>
+                        <td class="canhtrai">
+                            BR0392
+                        </td>
+                        <td class="canhtrai">
+                            01Jun2017
+                        </td>
+                        <td class="canhgiua"></td>
+                        <td class="canhgiua">
+                            SCR
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="18">
+                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("TONG_CONG")
+                            :
+                            25
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DIEN_GIAI_TINH_TRANG"):</td>
+                        <td colspan="15">
+                            <strong>ACPT</strong>:@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DA_TIEP_NHAN"), <strong>LBXR</strong>: @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DA_XEP_CHAT_TRUOC_MAY_SOI"), <strong>SCR</strong>: @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DA_QUA_SOI_CHIEU"), <strong>LOD</strong>: @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DA_LEN_PRE_MANIFEST"), <strong>DON</strong>: @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DA_HOAN_TAT_SAP_XEP").
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="18">
+                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY_GIO_IN_BAO_CAO") 
+                            : 
+                            31 May 2017 9:58
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $(".btn").click(function () {
+                    value = $(this).attr('value');
+                    form_id = $(this).attr('form');
+                    action_input_id = form_id + '_action';
+                    $('#' + action_input_id).attr({ 'value': value });
+                    $('#' + form_id).submit();
+                });
+                $('#airlines_nondlv_report').keypress(function (event) {
+                    if (event.keyCode == '13') {
+                        $(this).find('.btn').click();
+                    }
+                });
+            });
+        </script>
+        <!-- iware end -->
+
+    </div>
+</div>

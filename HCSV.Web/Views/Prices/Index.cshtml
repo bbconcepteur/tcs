@@ -1,0 +1,674 @@
+﻿@{
+    ViewBag.Title = "Prices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+
+    <div>
+
+        <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=customer&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <title>TCS - A Joint Venture between VIETNAM AIRLINES, SASCO and SATS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="tcs.css" type="text/css">
+
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="awb_title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("BANG_GIA_AP_DUNG")</td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="price" align="right" cellspacing="0" cellpadding="2" border="0" width="36%">
+                            <tbody>
+                                <tr>
+                                    <td width="9%">
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+                                    <td width="91%">
+                                        <strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LUU_KHO")</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+
+                                    <td><a href="/Prices/ServiceCharge">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_PHUC_VU")</a></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+
+                                    <td><a href="/Prices/GiaLaoVuNgoaiGio">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("PHU_THU_GIA_LAO_VU_NGOAI_GIO")</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+
+                                    <td>
+                                        <a href="/Prices/GiaDichVuKhac">
+                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_CAC_LOAI_DICH_VU_KHAC")
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tbl02" width="100%">
+                            <tbody>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="title" align="center" width="3%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("STT")</td>
+                                    <td class="title" align="center" width="75%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NOI_DUNG_CAC_KHOAN_THU")</td>
+                                    <td class="title" align="center" width="10%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DON_VI_TINH")</td>
+                                    <td class="title" align="center" width="12%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("MUC_THU")</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td><strong>GIÁ PHỤC VỤ ĐẠI LÝ VÀ KHÁCH HÀNG</strong></td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1 </td>
+                                    <td><strong>GIÁ LƯU KHO</strong></td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.1 </td>
+                                    <td><strong>Giá lưu kho hàng thông thường hàng nhập khẩu</strong> </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Không tính lưu kho 2 ngày đầu, ngày chủ nhật, ngày lễ và ngày phát
+                                        hàng
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Tiền lưu kho sẽ được tính theo ngày dương lịch</td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">+ Từ ngày thứ 1 đến ngày thứ 3</td>
+                                    <td class="tbl01">&nbsp;</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">- Lô hàng nhỏ hơn hoặc bằng 250kg</td>
+                                    <td class="tbl01">VND/kg/ngày</td>
+                                    <td class="tbl01" align="right">1.330</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">- Lô hàng lớn hơn 250kg</td>
+                                    <td class="tbl01">VND/kg/ngày</td>
+                                    <td class="tbl01" align="right">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01" align="left">
+                                        <blockquote>
+                                            <p>* 250 kg đầu</p>
+                                        </blockquote>
+                                    </td>
+                                    <td class="tbl01">VND/kg/ngày</td>
+                                    <td class="tbl01" align="right">1.330</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01"><blockquote>* Trọng lượng ngoài 250 kg đầu ngày thứ 1</blockquote></td>
+                                    <td class="tbl01">VND/kg/ngày</td>
+                                    <td class="tbl01" align="right">560</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01"><blockquote>* Trọng lượng ngoài 250 kg đầu ngày thứ 2</blockquote></td>
+                                    <td class="tbl01">VND/kg/ngày</td>
+                                    <td class="tbl01" align="right">600</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td height="33">&nbsp;</td>
+                                    <td class="tbl01"><blockquote>* Trọng lượng ngoài 250 kg đầu ngày thứ 3</blockquote></td>
+                                    <td class="tbl01">VND/kg/ngày</td>
+                                    <td class="tbl01" align="right">900</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td height="33">&nbsp;</td>
+                                    <td class="tbl01">+ Từ ngày thứ 4 đến ngày thứ 7 </td>
+                                    <td class="tbl01">VND/kg/ngày</td>
+                                    <td class="tbl01" align="right">1.110</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td height="33">&nbsp;</td>
+                                    <td class="tbl01">+ Từ ngày thứ 8 trở đi</td>
+                                    <td class="tbl01">VND/kg/ngày</td>
+                                    <td class="tbl01" align="right">1.450</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td height="33">&nbsp;</td>
+                                    <td class="tbl01">Giá lưu kho tối thiểu</td>
+                                    <td class="tbl01"><div align="center">VND/lần</div></td>
+                                    <td class="tbl01" align="right"><div align="right">150.000</div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.2 </td>
+                                    <td><strong>Giá lưu kho hàng thông thường hàng xuất khẩu </strong> </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Không tính lưu kho 2 ngày trước ngày giữ chỗ chuyến bay (kể cả
+                                        ngày tiếp nhận) và ngày hàng được giữ chỗ chuyến bay
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Không tính lưu kho ngày chủ nhật, ngày lễ</td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Tiền lưu kho sẽ được tính theo ngày dương lịch</td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Từ ngày thứ
+                                        1
+                                        đến ngày thứ
+                                        2
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Lô hàng nhỏ hơn hoặc bằng
+                                        200
+                                        kg
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Kg
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            1,160
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Lô hàng lớn hơn
+                                        200
+                                        kg
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;.
+                                        200
+                                        kg đầu
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Kg
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            1,160
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;. Trọng lượng ngoài
+                                        200
+                                        kg đầu
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Kg
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            560
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        - Từ ngày thứ
+                                        3
+                                        đến ngày thứ
+                                        6
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Kg/ngày
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            725
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        - Từ ngày thứ
+                                        7
+
+                                        đến ngày thứ
+                                        9999
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                            Kg/ngày
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            1,160&lt;
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Giá lưu kho tối thiểu </td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            99.000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3 </td>
+                                    <td><strong>Giá lưu kho loại hàng đặc biệt&nbsp;</strong> </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.1</td>
+                                    <td><strong>Hàng quý hiếm ( VAL)</strong></td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Không miễn lưu kho từ lúc tiếp nhận hoặc từ khi máy
+                                        bay đáp
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Không miễn lưu kho ngày chủ nhật, ngày lễ và ngày phát hàng </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Tiền lưu kho sẽ được tính theo ngày dương lịch</td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho</td>
+                                    <td> <div align="center"> Kg/ngày </div></td>
+                                    <td>
+                                        <div align="right">
+                                            5,5000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá tối thiểu</td>
+                                    <td> <div align="center"> Ngày</div></td>
+                                    <td>
+                                        <div align="right">
+                                            900,0000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.2</td>
+                                    <td><strong>Hàng chứa trong kho lạnh</strong> </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Không miễn lưu kho kể từ khi hàng được yêu cầu để kho lạnh</td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Tiền lưu kho sẽ được tính theo ngày (24 giờ/ngày) </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho đối với hàng nhập khẩu</td>
+                                    <td> <div align="center"> Kg/ngày </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,450
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho đối với hàng xuất khẩu</td>
+                                    <td> <div align="center"> Kg/ngày </div></td>
+
+                                    <td>
+                                        <div align="right">
+                                            1,450
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho tối thiểu </td>
+                                    <td> <div align="center"> Ngày</div></td>
+                                    <td>
+                                        <div align="right">
+                                            220,000
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.3</td>
+                                    <td><strong>Hàng động vật sống</strong> </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Đối với hàng nhập khẩu: không miễn lưu kho cho ngày chuyến bay
+                                        đến, không miễn lưu kho vào ngày chủ nhật, ngày lễ và hàng phát hàng.&nbsp;
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Ðối với hàng xuất khẩu: không tính lưu kho cho ngày tiếp nhận hàng,
+                                        ngày chủ nhật, ngày lễ và ngày hàng hoá được giữ chỗ chuyến bay
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Tiền lưu kho sẽ được tính theo ngày dương lịch</td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho</td>
+                                    <td> <div align="center"> Kg/ngày </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,100
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho tối thiểu</td>
+                                    <td> <div align="center"> Ngày</div></td>
+                                    <td>
+                                        <div align="right">
+                                            500,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.4</td>
+                                    <td><strong> Hàng vũ khí, chất nổ</strong></td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Ðối với hàng nhập khẩu: không miễn lưu kho cho ngày hàng đến, không
+                                        miễn lưu kho vào ngày chủ nhật, ngày lễ và ngày phát hàng
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Ðối với hàng xuất khẩu: không miễn lưu kho cho ngày tiếp nhận hàng,
+                                        ngày chủ nhật, ngày lễ và ngày hàng hoá được giữ chỗ chuyến bay
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Tiền lưu kho sẽ được tính theo ngày dương lịch</td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho </td>
+                                    <td> <div align="center"> Kg/ngày </div></td>
+                                    <td>
+                                        <div align="right">
+                                            3,600
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho tối thiểu </td>
+                                    <td> <div align="center"> Ngày</div></td>
+                                    <td>
+                                        <div align="right">
+                                            600,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.5</td>
+                                    <td><strong>Hàng nguy hiểm</strong></td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Ðối với hàng nhập khẩu: không miễn lưu kho cho ngày hàng đến, không
+                                        miễn lưu kho vào ngày chủ nhật, ngày lễ và ngày phát hàng .
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Ðối với hàng xuất khẩu: không miễn lưu kho cho ngày tiếp nhận hàng,
+                                        ngày chủ nhật, ngày lễ và ngày hàng hoá được giữ chỗ chuyến bay .
+                                    </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Tiền lưu kho sẽ được tính theo ngày dương lịch.</td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho .</td>
+                                    <td> <div align="center"> Kg/ngày </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,8200
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho tối thiểu .</td>
+                                    <td> <div align="center"> Ngày</div></td>
+                                    <td>
+                                        <div align="right">
+                                            150,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td> 1.3.6</td>
+                                    <td><strong>Hàng có giá trị cao (VUN)</strong></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <p>
+                                            + Ðối với hàng xuất khẩu: không miễn lưu kho cho ngày tiếp nhận hàng và ngày
+                                            hàng hoá được giữ chỗ chuyến bay, không miễn lưu kho ngày chủ nhật, ngày
+                                            lễ, Tết.
+                                        </p>
+                                        <p>
+                                            + Ðối với hàng nhập khẩu: không miễn lưu kho cho ngày hàng đến, không miễn lưu kho ngày chủ nhật, ngày
+                                            lễ, Tết và ngày phát hàng.
+                                        </p>
+                                    </td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td> Tiền lưu kho sẽ được tính theo ngày dương lịch</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho .</td>
+                                    <td> <div align="center"> Kg/ngày </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,3900
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá lưu kho tối thiểu .</td>
+                                    <td> <div align="center"> Ngày</div></td>
+                                    <td>
+                                        <div align="right">
+                                            150,000
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

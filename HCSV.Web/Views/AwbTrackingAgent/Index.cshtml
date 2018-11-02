@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li class="current"><a href="/AWBTracking_Agent/InfoTracking"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA")</span></a></li>
+                <li><a href="/AWBTracking_Agent/PrintReport"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="/AWBTracking_Agent/Storage"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="/AWBTracking_Agent/ChangePass"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+                                  <a href="/Home/Index?frontPage=1&menu=39">
+                                      @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+                                  </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+
+        <title>TCS - A Joint Venture between VIETNAM AIRLINES, SASCO and SATS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="css/awb_main.css" type="text/css">
+        <script language="javascript">
+            function visitSite(the_site) {
+                window.location = the_site;
+            }
+        </script>
+        @Html.Partial("SearchKVD") <!--gọi form tìm kiếm không vận đơn -->
+
+        <table id="formchinh" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr valign="top">
+                    <td>
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+
+                                    <td class="awb_title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("XIN_MOI_NHAP_KVD")</td>
+
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p>&nbsp;</p>
+
+    </div>
+
+</div>
+
+

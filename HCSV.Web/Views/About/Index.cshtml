@@ -1,0 +1,45 @@
+﻿@model HCSV.Models.jos_content
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg_100percent_css menu_title_css home_title_css">
+    <div class="container">
+        <h1>@Model.name_page</h1>
+    </div>
+</div>
+<div class="bg_100percent_css about_css">
+    <div class="container">
+        <div class="col-md-8">
+            <div class="home_content_css">
+                @{ if ((Model.BANNER != null) && (Model.BANNER.Count() > 0))
+                    {
+                        int i = 0;
+                        foreach (var item in Model.BANNER)
+                        {
+                            i++;
+                            <div class="s20bg_css item_@i">
+                                <div class="header">
+                                    <h6>
+                                        <span>
+                                            <span class="color_11">@Html.Raw(item.title)</span>
+                                        </span>
+                                    </h6>
+                                </div>
+                                @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.fulltext))
+                            </div>
+                        }
+
+                    }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="about_img_css">
+                @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.RIGHT != null ? Model.RIGHT.images : ""))
+                <p class="title_1">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.RIGHT != null ? Model.RIGHT.title : ""))</p>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "PrintReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+
+
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li><a href="/AWBTracking_Agent/InfoTracking"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA")</span></a></li>
+                <li class="current"><a href="/AWBTracking_Agent/PrintReport"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="/AWBTracking_Agent/Storage"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="/AWBTracking_Agent/ChangePass"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+            </ul>
+        </div>               
+        <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=agent&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <link rel="stylesheet" href="css_test/demos.css">
+        <script src="css/jquery-1.7.2.js"></script>
+        <link rel="stylesheet" href="css/themes/base/jquery.ui.all.css">
+        <script src="css/ui/jquery.ui.core.js"></script>
+        <script src="css/ui/jquery.ui.widget.js"></script>
+        <script src="css/ui/jquery.ui.datepicker.js"></script>
+        <script src="css/ui/jquery.ui.datepicker.js"></script>
+
+        <script>
+
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+
+            });
+            $(function () {
+                $("#datepicker_2").datepicker({ dateFormat: 'dd/mm/yy' });
+
+            });
+        </script>
+        <link rel="stylesheet" href="tcs.css" type="text/css">
+        <div class="text" id="spiffycalendar"></div>
+        <div class="ui_awb">
+            <h5>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO_TINH_TRANG_TAI_LIEU_VA_HANG_HOA")</h5>
+            <form id="agent_hdl_report" action="index.php?section=agent&amp;layout=07_cs" method="post">
+                <input name="action" id="agent_hdl_report_action" type="hidden">
+                <table class="bdr" width="1000">
+                    <tbody>
+                        <tr>
+                            <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VAN_DON")</td>
+                            <td><input name="txt_mawb" value="*" type="text"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHUYEN_BAY"):</td>
+                            <td><input name="txt_flight_no" value="" type="text"></td>
+                            <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TU_NGAY")</td>
+                            <td>
+                                <div class="demo">
+                                    <p><input name="txt_start_date" id="datepicker" value="12/6/2017" class="hasDatepicker" type="text"></p>
+                                </div>
+                            </td>
+                            <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DEN_NGAY")</td>
+                            <td>
+                                <div class="demo">
+                                    <p><input name="txt_end_date" id="datepicker_2" value="12/6/2017" class="hasDatepicker" type="text"></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                Nhập số không vận đơn nếu quý khách muốn xem thông tin
+                                về tài liệu và hàng hóa theo từng không vận đơn.<br>
+                                Nhập số chuyến bay + ngày tháng nếu quý khách muốn xem thông tin về
+                                tài liệu và hàng hóa theo ngày hoặc theo chuyến bay.
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="6" align="center">
+                                <a href="/AWBTracking_Agent/Report_StatusDocument" class="btn" value="choose" form="agent_hdl_report"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHON")</span></a>&nbsp;
+                                <a href="javascript:window.print();" class="btn"><span>Print</span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $(".btn").click(function () {
+                    value = $(this).attr('value');
+                    form_id = $(this).attr('form');
+                    action_input_id = form_id + '_action';
+                    $('#' + action_input_id).attr({ 'value': value });
+                    $('#' + form_id).submit();
+                });
+            });
+        </script>
+    </div>
+
+
+</div>
+

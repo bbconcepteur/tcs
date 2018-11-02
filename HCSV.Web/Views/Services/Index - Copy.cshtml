@@ -1,0 +1,129 @@
+﻿@model HCSVNewWebsite.Models.jos_content
+
+@{
+    ViewBag.Title = "Services";
+    ViewBag.Page = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="bg_100percent_css menu_title_css">
+    <div class="container">
+        <h1>@Model.name_page</h1>
+    </div>
+</div>
+
+<!--Begin: Page Container-->
+<div class="bg_100percent_css service_css">    
+    <div class="container">
+        <div id="PAGES_CONTAINER">
+            @{
+                if ((Model.POS_2_LIST != null) && (Model.POS_2_LIST.Count() > 0))
+                {
+                    foreach (var item in Model.POS_2_LIST)
+                    {
+                         <div class="col-md-4">
+                            <div class="box_title">
+                                <div class="img__css img__css_1">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.introtext))</div>
+                                <div class="title__css">@Html.Raw(item != null ? item.title : "")</div>
+                                <div class="intro__css">@Html.Raw(item != null ? item.fulltext : "")</div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+                    
+           
+
+            
+        </div>
+    </div>
+</div>
+<!--End: Page Container-->
+
+<!--Begin: Business Model-->
+<div class="bg_100percent_css bg_services_css_8">
+    <span class="title_system_inter_css">Engagement Model</span>
+    
+</div>
+<div class="bg_100percent_css line_red_css_1">
+    <span class="line_red_css"></span>
+</div>
+
+<div class=" bg_100percent_css bg_services_css_9">
+    <div class="container">
+        
+    @{
+        if ((Model.BANNER != null) && (Model.BANNER.Count() > 0))
+        {            
+            foreach (var item in Model.BANNER)
+            {
+                <div class="item_css" id="item_@item.id">
+                    <div class="bg_100percent_css services_title_css_2">@Html.Raw(item.title)</div>
+                    <div class="bg_100percent_css services_content_css_3">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.introtext))</div>
+                    <a href="#item_@item.id" id="link_item_@item.id" class="invisible_css"></a>
+                 </div>
+            }
+        }
+    }
+        
+    </div>
+</div>
+
+
+
+<!--End: Business Model-->
+<!-- nav -->
+<nav id="nav" class="nav_2 invisible_css">    
+    <ul class="nav navbar-nav nav-9">
+        <li style="border-bottom:1px solid #dbdbdb"><a class="page-scroll" href="#PAGES_CONTAINER" style="border-radius:5px 5px 0 0;">Services</a></li>
+        <li style="border-bottom:1px solid #dbdbdb"><a class="page-scroll" href="#SystemIntegration">System Integration</a></li>
+        <li>                                        <a class="page-scroll" href="#BusinessModel" style="border-radius:0 0 5px 5px;">Business Model</a></li>
+    </ul>
+</nav>
+<a href="#" id="service_id" class="invisible_css" >&nbsp;</a>
+
+<style>
+    .nav-9 {
+        display:  none;
+    }
+    .item_css {
+        float: left;
+    }
+</style>
+    
+<script src="~/Scripts/jquery.easing.min.js"></script>
+<script src="~/Scripts/scrollspy.js"></script>
+<script type="text/javascript">
+    $('a.page-scroll').bind('click', function (event) {
+        var $anchor = $(this);
+        $('html, body').stop().animate({
+            scrollTop: ($($anchor.attr('href')).offset().top - 80)
+        }, 1250, 'easeInOutExpo');
+        event.preventDefault();
+    });
+    $('body').scrollspy({
+        target: '#nav',
+        offset: 100
+    })
+
+
+    var queryString = window.location.search.substring(1);
+    var varArray = queryString.split("&");
+    for (var i = 0; i < varArray.length; i++) {
+        var param = varArray[i].split("=");
+        //parameter-value pair
+        if (param[0] == "item") {
+            var intNumber = param[1];                    
+            var $anchor = $("#link_item_" + intNumber);
+                    
+            $('html, body').stop().animate({
+                scrollTop: ($($anchor.attr('href')).offset().top - 0)
+            }, 1250, 'easeInOutExpo'); 
+        }
+
+    }
+
+</script>
+

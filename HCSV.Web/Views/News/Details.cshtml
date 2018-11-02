@@ -1,0 +1,62 @@
+﻿@model HCSV.Models.jos_content
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="bg_content_css">
+    <div class="container detail_news_css">
+        <h2>@Html.Raw(Model.title)</h2>
+        <div class="bg_100percent_css fb_css">
+            <span class="like_fb_css"></span>
+            <span class="share_fb_css"></span>
+        </div>
+        <span class="content_col_css">
+            @Html.Raw(Model.introtext)
+            @Html.Raw(Model.fulltext)
+        </span>
+    </div>
+</div>
+<div class="bg_100percent_css news_css">
+    <div class="container">
+        @{
+            if ((Model.BANNER != null) && Model.BANNER.Any())
+            {
+                <span class="other_news_css">@HCSV.Resources.GlobalResource.OTHER_NEWS</span>
+
+                int intCount = Model.BANNER.Count();
+                int i = 0;
+                string strLastItemCss = "";
+
+                foreach (var item in Model.BANNER)
+                {
+                    i++;
+                    if (i == intCount)
+                    {
+                        strLastItemCss = "last_item";
+                    }
+
+                    <div class="row_news_css @strLastItemCss">
+                        <div class="col-md-3">
+                            <span class='img_news_css'>@Html.Raw(item.images)</span>
+                        </div>
+                        <div class='col-md-9 content_col_css'>
+                            <h3>@Html.Raw(item.title)</h3>
+                            <span class="content_news_css">
+                                @Html.Raw(item.introtext)
+                            </span>
+                            <div class="btn_news_css">
+                                <a href="@Url.Action("Details", "News", new {id = item.id})"><span>@HCSV.Resources.GlobalResource.XEM_TIEP</span></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        }
+    </div>
+</div>
+
+
+

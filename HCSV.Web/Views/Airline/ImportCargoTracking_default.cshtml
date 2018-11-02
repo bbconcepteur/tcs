@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li class="current"><a href="@Url.Action("ImportCargoTracking_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA_NHAP_KHAU")</span></a></li>
+                <li><a href="@Url.Action("InwardFlightServiceReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="@Url.Action("NoneDeliveryReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoStatus_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG_HANG_HOA_XUAT_KHAU")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoInWareHouse_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_XUAT_KHAU_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ChangePassword", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=airline&amp;locale=vi_VN">
+                 @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <link rel="stylesheet" href="./TCS - A joint venture between Vietnam Airlines, SASCO and SATS_files/awb_main.css" type="text/css">
+        <script language="javascript">
+            function visitSite(the_site) {
+                window.location = the_site;
+            }
+        </script>
+
+
+
+
+        <form name="frmAwb" id="input_awb" action="https://www.tcs.com.vn/awb/index.php?section=airline&amp;layout=03_cs" method="get" target="_self" onsubmit="return checkForm();">
+
+            <input type="hidden" name="section" id="input_awb_action">
+            <input type="hidden" name="layout" value="03_cs">
+
+            <table width="1000" class="bdr">
+                <tbody>
+                    <tr>
+                        <td width="132" class="awb_title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("KHONG_VAN_DON") :</td>
+                        <td width="856">
+                            <input name="awbFirst" type="text" onkeyup="onKeyUpField();" maxlength="3" size="2" value="695">
+                            <input type="text" maxlength="8" name="awbLast" size="8" value="08842794">
+                            <a href="@Url.Action("ImportCargoTracking_loaded", "Airline", "Views")" class="btn" value="airline" form="input_awb"><span>Go</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr valign="top">
+                    <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+
+                                    <td align="center" class="awb_title">SỐ KHÔNG VẬN ĐƠN KHÔNG TỒN TẠI </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&nbsp;</p>
+
+
+
+        <script language="JavaScript">
+            function checkForm() {
+                var awbFirst = document.frmAwb.awbFirst.value;
+                var awbLast = document.frmAwb.awbLast.value;
+                var serie = awbLast.substring(awbLast.length - 1);
+
+                if (awbFirst.length != 3) {
+                    alert("So Khong Van Don Khong Hop Le");
+                    return false;
+                }
+                if (awbLast.length != 8) {
+                    alert("So Khong Van Don Khong Hop Le");
+                    return false;
+                }
+                for (i = 0; i < awbFirst.length; i++) {
+                    if ((awbFirst.charAt(i) != 0) && (awbFirst.charAt(i) != 1) && (awbFirst.charAt(i) != 2) && (awbFirst.charAt(i) != 3) && (awbFirst.charAt(i) != 4) && (awbFirst.charAt(i) != 5) && (awbFirst.charAt(i) != 6) && (awbFirst.charAt(i) != 7) && (awbFirst.charAt(i) != 8) && (awbFirst.charAt(i) != 9)) {
+                        alert("So Khong Van Don Khong Hop Le");
+                        return false;
+                    }
+                }
+                for (i = 0; i < awbLast.length; i++) {
+                    if ((awbLast.charAt(i) != 0) && (awbLast.charAt(i) != 1) && (awbLast.charAt(i) != 2) && (awbLast.charAt(i) != 3) && (awbLast.charAt(i) != 4) && (awbLast.charAt(i) != 5) && (awbLast.charAt(i) != 6) && (awbLast.charAt(i) != 7) && (awbLast.charAt(i) != 8) && (awbLast.charAt(i) != 9)) {
+                        alert("So Khong Van Don Khong Hop Le");
+                        return false;
+                    }
+                }
+
+                if ((serie % 7) != awbLast.charAt(awbLast.length - 1)) {
+                    alert("So Khong Van Don Khong Hop Le");
+                    return false;
+                }
+
+                return true;
+            }
+        </script>
+
+        <script language="JavaScript">
+            function onKeyUpField() {
+                var iLen = document.frmAwb.awbFirst.value.length;
+
+                if (iLen == 3) {
+                    eval("document.frmAwb.awbLast.focus()");
+                    eval("document.frmAwb.awbLast.select()");
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $(".btn").click(function () {
+                    value = $(this).attr('value');
+                    form_id = $(this).attr('form');
+                    action_input_id = form_id + '_action';
+                    $('#' + action_input_id).attr({ 'value': value });
+                    $('#' + form_id).submit();
+                });
+
+                $('#input_awb').keypress(function (event) {
+                    if (event.keyCode == '13') {
+                        $(this).find('.btn').click();
+                    }
+                });
+                //	}
+            });
+        </script>
+    </div>
+</div>

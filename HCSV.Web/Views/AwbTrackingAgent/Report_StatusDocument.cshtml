@@ -1,0 +1,282 @@
+﻿
+@{
+    ViewBag.Title = "Report_StatusDocument";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li><a href="/AWBTracking_Agent/InfoTracking"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA")</span></a></li>
+                <li class="current"><a href="/AWBTracking_Agent/PrintReport"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="/AWBTracking_Agent/Storage"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="/AWBTracking_Agent/ChangePass"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=agent&amp;locale=vi_VN">
+              @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <link rel="stylesheet" href="css_test/demos.css">
+        <script src="css/jquery-1.7.2.js"></script>
+        <link rel="stylesheet" href="css/themes/base/jquery.ui.all.css">
+        <script src="css/ui/jquery.ui.core.js"></script>
+        <script src="css/ui/jquery.ui.widget.js"></script>
+        <script src="css/ui/jquery.ui.datepicker.js"></script>
+        <script src="css/ui/jquery.ui.datepicker.js"></script>
+
+        <script>
+
+            $(function () {
+                $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+
+            });
+            $(function () {
+                $("#datepicker_2").datepicker({ dateFormat: 'dd/mm/yy' });
+
+            });
+        </script>
+        <link rel="stylesheet" href="tcs.css" type="text/css">
+        <div class="text" id="spiffycalendar"></div>
+        <div class="ui_awb">
+            <h5>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO_TINH_TRANG_TAI_LIEU_VA_HANG_HOA")</h5>
+            <form id="agent_hdl_report" action="index.php?section=agent&amp;layout=07_cs" method="post">
+                <input name="action" id="agent_hdl_report_action" type="hidden">
+                <table class="bdr" width="1000">
+                    <tbody>
+                        <tr>
+                            <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VAN_DON")</td>
+                            <td><input name="txt_mawb" value="*" type="text"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHUYEN_BAY"):</td>
+                            <td><input name="txt_flight_no" value="*" type="text"></td>
+                            <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TU_NGAY")</td>
+                            <td>
+                                <div class="demo">
+                                    <p><input name="txt_start_date" id="datepicker" value="12/6/2017" class="hasDatepicker" type="text"></p>
+                                </div>
+                            </td>
+                            <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DEN_NGAY")</td>
+                            <td>
+                                <div class="demo">
+                                    <p><input name="txt_end_date" id="datepicker_2" value="12/6/2017" class="hasDatepicker" type="text"></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                Nhập số không vận đơn nếu quý khách muốn xem thông tin
+                                về tài liệu và hàng hóa theo từng không vận đơn.<br>
+                                Nhập số chuyến bay + ngày tháng nếu quý khách muốn xem thông tin về
+                                tài liệu và hàng hóa theo ngày hoặc theo chuyến bay.
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td colspan="6" align="center">
+                                <a href="#" class="btn" value="choose" form="agent_hdl_report"><span>Chọn</span></a>&nbsp;
+                                <a href="javascript:window.print();" class="btn"><span>Print</span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <!-- END IN BAO CAO -->
+        <div class="clear"></div>
+        <!-- BANG NHAP HANG CHO KH TRUC TIEP - KHONG LOGIN -->
+        <div class="ui_awb">
+            <h5>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("PHIEU_THONG_BAO_TINH_TRANG_TAI_LIEU")</h5>
+            <table class="tbl02" width="1000">
+                <tbody>
+                    <tr>
+                        <td colspan="7">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DAI_LY"): 0934-PANALPINA WORLD TRANSPORT</td>
+                    </tr>
+                    <tr>
+                        <td class="title" align="center" width="57">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHUYEN_BAY")</td>
+                        <td class="title" align="center" width="92">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY")</td>
+                        <td class="title" align="center" width="131">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VAN_DON")</td>
+                        <td class="title" align="center" width="64">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TONG_SO_HAWB")</td>
+                        <td class="title" align="center" width="84">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TAI_LIEU_KEM_HAWB")</td>
+                        <td class="title" align="center" width="286">
+                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_PHUC_VU_HANG_HOA")
+                        </td>
+                        <td class="title" align="center" width="254">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_BAT_THUONG")</td>
+                    </tr>
+
+                    <tr>
+                        <td>VN0599</td>
+                        <td align="center">
+                            12-Jun-2017
+                        </td>
+                        <td align="left">
+                            <!--So AWB-->
+                            <strong>73817076695</strong>
+                        </td>
+                        <td align="right">
+                            2
+                        </td>
+
+                        <td align="center">
+                            &nbsp;
+                        </td>
+                        <td>
+                            //
+                        </td>
+                        <td>
+                            /
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td align="center">
+                            &nbsp;
+                        </td>
+                        <td align="left">
+                            <!--So AWB-->
+                            <strong>HKG00218771</strong>
+                        </td>
+                        <td align="right">
+                            &nbsp;
+                        </td>
+
+                        <td align="center">
+                            &nbsp;
+                        </td>
+                        <td>
+                            //
+                        </td>
+                        <td>
+                            /
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td align="center">
+                            &nbsp;
+                        </td>
+                        <td align="left">
+                            <!--So AWB-->
+                            <strong>HKG00218778</strong>
+                        </td>
+                        <td align="right">
+                            &nbsp;
+                        </td>
+
+                        <td align="center">
+                            &nbsp;
+                        </td>
+                        <td>
+                            //
+                        </td>
+                        <td>
+                            /
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td colspan="7">
+                            <strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TONG_CONG") </strong>:@HCSVNewWebsite.Commons.TitleConst.getTitleConst("WAWB"):
+                            1        @HCSVNewWebsite.Commons.TitleConst.getTitleConst("HAWB"):
+                            2
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h5>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("PHIEU_THONG_BAO_HANG_DEN")</h5>
+            <table class="tbl02" width="1000">
+                <tbody>
+                    <tr>
+                        <td colspan="10">
+                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DAI_LY"):
+                            0934-PANALPINA WORLD TRANSPORT
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="title" width="112">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHUYEN_BAY")</td>
+                        <td rowspan="2" class="title" width="102">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY")</td>
+                        <td colspan="2" class="title"><div align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VAN_DON")</div></td>
+                        <td colspan="2" class="title"><div align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TAI_LIEU")</div></td>
+                        <td colspan="2" class="title"><div align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THUC_TE")</div></td>
+                        <td rowspan="2" class="title" width="114">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG")</td>
+                        <td rowspan="2" class="title" width="51">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GHI_CHU")</td>
+                    </tr>
+                    <tr>
+                        <td class="title" width="112"> @HCSVNewWebsite.Commons.TitleConst.getTitleConst("WAWB")</td>
+                        <td class="title" width="72">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HAWB")</td>
+                        <td class="title" width="37">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KIEN")</td>
+                        <td class="title" width="61">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TRONG_LUONG")</td>
+                        <td class="title" width="36">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KIEN")</td>
+                        <td class="title" width="59">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TRONG_LUONG")</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            01-Jan-1970
+                        </td>
+                        <td>
+                            <strong>
+                                <a href="/awb/index.php?section=agent&amp;layout=03_cs&amp;awbFirst=&amp;awbLast=" target="_blank"></a>
+                            </strong>
+                        </td>
+                        <td>
+                            <a href="/awb/index.php?section=agent&amp;layout=Letter_v_cs&amp;mawb_no=&amp;hawb_no=" target="_blank"></a>
+                        </td>
+                        <td align="right"></td>
+                        <td align="right"></td>
+                        <td align="right"></td>
+                        <td align="right"></td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            <strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TONG_CONG"):</strong>
+                            1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY_GIO_IN_BAO_CAO") : 12 Jun 2017 10:09
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GHI_CHU"):</td>
+                        <td colspan="9"></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+    <script type="text/javascript">
+        $('document').ready(function () {
+            $(".btn").click(function () {
+                value = $(this).attr('value');
+                form_id = $(this).attr('form');
+                action_input_id = form_id + '_action';
+                $('#' + action_input_id).attr({ 'value': value });
+                $('#' + form_id).submit();
+            });
+        });
+    </script>
+
+</div> 
+

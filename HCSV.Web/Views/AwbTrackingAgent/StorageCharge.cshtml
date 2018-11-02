@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "StorageCharge";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li><a href="/AWBTracking_Agent/InfoTracking"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA")</span></a></li>
+                <li><a href="/AWBTracking_Agent/PrintReport"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="/AWBTracking_Agent/Storage"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="/AWBTracking_Agent/ChangePass"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+            </ul>
+        </div>                
+        <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=agent&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+
+        <title>TCS - A Joint Venture between VIETNAM AIRLINES, SASCO and SATS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="tcs.css" type="text/css">
+
+        <div class="text" id="spiffycalendar"></div>
+        <form name="lk_yc" id="lk_yc_id" action="index.php" method="get">
+            <input name="section" value="agent" type="hidden">
+            <input name="layout" value="lk_yc_imp_cs" type="hidden">
+            <input name="hawb_no" value="69508965342" type="Hidden">
+
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tbody>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+
+                        <td class="awb_title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LUU_KHO_TAI_THOI_DIEM")-HÀNG NHẬN</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <table class="awb_tbl02" width="80%">
+                                <tbody>
+                                    <tr bordercolor="#FDECE1" bgcolor="#FDECE1">
+                                        <td bordercolor="#FFFFFF" bgcolor="#FFFFFF" valign="top"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VAN_DON")&nbsp;: 695-08965342</strong> </td>
+                                    </tr>
+                                    <tr bordercolor="#FDECE1" bgcolor="#FDECE1">
+                                        <td bordercolor="#FFFFFF" bgcolor="#FFFFFF" valign="top">
+                                            <table class="form" cellspacing="0" cellpadding="3" border="0" width="100%">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="right" width="36%"><b><font face="Arial, Helvetica, sans-serif" size="2">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHON_NGAY"):</font></b></td>
+                                                        <td width="64%" valign="top" nowrap="">
+                                                            <link href="includes/spiffyCal_v2_1.css" type="text/css" rel="stylesheet">
+                                                            <script language="JavaScript" src="includes/spiffyCal_v2_1.js"></script>
+                                                            <script language="javascript">var dateExpires = new ctlSpiffyCalendarBox("dateExpires", "lk_yc", "expires_date", "btnDate1", "29/03/2017", scBTNMODE_CUSTOMBLUE);</script>
+                                                            <script language="javascript">dateExpires.writeControl(); dateExpires.dateFormat = "dd/MM/yyyy";</script><input class="cal-TextBox" name="expires_date" onchange="                                                                    calMgr.validateDate(document.lk_yc.expires_date, dateExpires.required);" onblur="                                                                    calMgr.formatDate(document.lk_yc.expires_date, dateExpires.dateFormat);" size="12" value="29/03/2017" type="text"><a class="so-BtnLink" onmouseover="                                                                    calMgr.swapImg(dateExpires, '.imgOver', false);" onmouseout="                                                                    calMgr.swapImg(dateExpires, '.imgUp', false);" onclick="                                                                    calMgr.swapImg(dateExpires, '.imgDown', true); dateExpires.show();"><img name="btnDate1" src="images/btn_date1_up.gif" height="17" align="absmiddle" border="0" width="22"></a>
+                                                            <input style="text-align:center" size="1" maxlength="2" class="form" value="02" name="hh" type="Text">&nbsp;:
+                                                            <input style="text-align:center" size="1" maxlength="2" class="form" value="39" name="pp" type="Text"> giờ:phút (hh:mm)
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="center">
+                                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="marginT10" align="center">
+                                                    <a href="/AWBTracking_Agent/Storage" class="btn" value="69508965342" form="lk_yc_id"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHON")</span></a>
+                                                    <a href="/AWBTracking_Agent/InfoTracking" class="btn" form="lk_yc">
+                                                        <span>
+                                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("BO_QUA")
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <p>&nbsp;</p>
+
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $(".btn").click(function () {
+                    value = $(this).attr('value');
+                    form_id = $(this).attr('form');
+                    action_input_id = form_id + '_action';
+                    $('#' + action_input_id).attr({ 'value': value });
+                    $('#' + form_id).submit();
+                });
+            });
+        </script>
+    </div>
+
+</div>
+

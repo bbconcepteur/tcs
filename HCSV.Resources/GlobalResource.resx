@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BANG_GIA" xml:space="preserve">
+    <value>Bảng giá áp dụng</value>
+  </data>
+  <data name="BANG_GIA_AP_DUNG" xml:space="preserve">
+    <value>Bảng giá áp dụng</value>
+  </data>
+  <data name="BANG_GIA_AP_DUNG_HIEN_HANH" xml:space="preserve">
+    <value>BẢNG GIÁ ÁP DỤNG HIỆN HÀNH
+    TẠI CÔNG TY TNHH DỊCH VỤ HÀNG HÓA TSN</value>
+  </data>
+  <data name="BANG_GIA_HIEN_HANH" xml:space="preserve">
+    <value>BẢNG GIÁ ÁP DỤNG HIỆN HÀNH TẠI CÔNG TY TNHH DỊCH VỤ HÀNG HÓA TSN</value>
+  </data>
+  <data name="BAO_CAO_CHUYEN_BAY_DEN" xml:space="preserve">
+    <value>Báo cáo phục vụ chuyến bay đến</value>
+  </data>
+  <data name="BO_QUA" xml:space="preserve">
+    <value>Bỏ qua</value>
+  </data>
+  <data name="CAC_HANG_HANG_KHONG" xml:space="preserve">
+    <value>Các hãng hàng không</value>
+  </data>
+  <data name="CAC_MUC_PHU_THU" xml:space="preserve">
+    <value>Các mức phụ thu</value>
+  </data>
+  <data name="CA_TRUONG_CS_IMPORT" xml:space="preserve">
+    <value>Ca trưởng (CS - Import)</value>
+  </data>
+  <data name="CHANGE_PASSWORD" xml:space="preserve">
+    <value>CHANGE PASSWORD</value>
+  </data>
+  <data name="CHON" xml:space="preserve">
+    <value>Chọn</value>
+  </data>
+  <data name="CHON_NGAY" xml:space="preserve">
+    <value>Chọn ngày</value>
+  </data>
+  <data name="CHUYEN_BAY" xml:space="preserve">
+    <value>Chuyến bay</value>
+  </data>
+  <data name="CHUYEN_BAY_DA_DAT_CHO" xml:space="preserve">
+    <value>Chuyến bay đã đặt chỗ</value>
+  </data>
+  <data name="CHU_DE" xml:space="preserve">
+    <value>Chủ đề</value>
+  </data>
+  <data name="DAI_LY" xml:space="preserve">
+    <value>Đại lý</value>
+  </data>
+  <data name="DANG_NHAP" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="DANG_TEP" xml:space="preserve">
+    <value>Dạng tệp</value>
+  </data>
+  <data name="DANG_XUAT" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="DANH_SACH" xml:space="preserve">
+    <value>Danh sách</value>
+  </data>
+  <data name="DANH_SACH_HANG_HOA_CHUA_DUOC_GIAO_NHAN" xml:space="preserve">
+    <value>Danh sách hàng hóa chưa được giao nhận</value>
+  </data>
+  <data name="DANH_SACH_MAWB" xml:space="preserve">
+    <value>DANH SÁCH MAWB</value>
+  </data>
+  <data name="DA_CHAT_XEP" xml:space="preserve">
+    <value>Đã chất xếp</value>
+  </data>
+  <data name="DA_GUI_THU_THONG_BAO" xml:space="preserve">
+    <value>Đã gửi thư thông báo</value>
+  </data>
+  <data name="DA_HOAN_TAT_SAP_XEP" xml:space="preserve">
+    <value>Đã hoàn tất chất xếp</value>
+  </data>
+  <data name="DA_LEN_PRE_MANIFEST" xml:space="preserve">
+    <value>Đã lên Pre-Manifest chuyến bay</value>
+  </data>
+  <data name="DA_QUA_SOI_CHIEU" xml:space="preserve">
+    <value>Đã qua soi chiếu</value>
+  </data>
+  <data name="DA_THONG_BAO_CHO_KHACH" xml:space="preserve">
+    <value>Đã thông báo cho khách</value>
+  </data>
+  <data name="DA_TIEP_NHAN" xml:space="preserve">
+    <value>Đã tiếp nhận</value>
+  </data>
+  <data name="DA_XEP_CHAT_TRUOC_MAY_SOI" xml:space="preserve">
+    <value>Đã chất xếp trước máy soi</value>
+  </data>
+  <data name="DEN" xml:space="preserve">
+    <value>Đến</value>
+  </data>
+  <data name="DEN_NGAY" xml:space="preserve">
+    <value>Đến ngày</value>
+  </data>
+  <data name="DIA_CHI" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="DIA_CHI_EMAIL" xml:space="preserve">
+    <value>Địa chỉ mail</value>
+  </data>
+  <data name="DIEM_DEN" xml:space="preserve">
+    <value>Điểm đến</value>
+  </data>
+  <data name="DIEN_GIAI" xml:space="preserve">
+    <value>Diễn giải</value>
+  </data>
+  <data name="DIEN_GIAI_TINH_TRANG" xml:space="preserve">
+    <value>Diễn giải tình trạng</value>
+  </data>
+  <data name="DIEN_THOAI" xml:space="preserve">
+    <value>Điện thoại</value>
+  </data>
+  <data name="DON_VI_TINH" xml:space="preserve">
+    <value>Đơn vị tính</value>
+  </data>
+  <data name="DUONG_DAY_NONG" xml:space="preserve">
+    <value>Đường dây nóng</value>
+  </data>
+  <data name="ERROR_MSG_BLOCKED_USER" xml:space="preserve">
+    <value>Tài khoản này đã bị khóa is blocked</value>
+  </data>
+  <data name="ERROR_MSG_INVALID_CAPCHA" xml:space="preserve">
+    <value>Gõ sai thông tin Capcha</value>
+  </data>
+  <data name="ERROR_MSG_INVALID_USER" xml:space="preserve">
+    <value>Gõ sai Username hoặc Password</value>
+  </data>
+  <data name="FAX" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="GHI_CHU" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="GIA_CAC_LOAI_DICH_VU_KHAC" xml:space="preserve">
+    <value>GIÁ CÁC LOẠI DỊCH VỤ KHÁC</value>
+  </data>
+  <data name="GIA_LAO_VU_CHO_HANG_GUI_KHO" xml:space="preserve">
+    <value>Giá lao vụ cho hàng gửi lại kho</value>
+  </data>
+  <data name="GIA_LAO_VU_HANG_GUI_LAI_KHO" xml:space="preserve">
+    <value>Giá lao vụ cho hàng gửi lại kho</value>
+  </data>
+  <data name="GIA_LUU_KHO" xml:space="preserve">
+    <value>GIÁ LƯU KHO</value>
+  </data>
+  <data name="GIA_LUU_KHO_TAI_THOI_DIEM" xml:space="preserve">
+    <value>Giá lưu kho tại thời điểm</value>
+  </data>
+  <data name="GIA_LUU_KHO_TAI_THOI_DIEM_HANGNHAP" xml:space="preserve">
+    <value>Giá lưu kho tại thời điểm-Hàng nhập</value>
+  </data>
+  <data name="GIA_LUU_KHO_TAI_THOI_DIEM_HANG_NHAP" xml:space="preserve">
+    <value>GIÁ LƯU KHO TẠI THỜI ĐIỂM - HÀNG NHẬP</value>
+  </data>
+  <data name="GIA_PHUC_VU" xml:space="preserve">
+    <value>GIÁ PHỤC VỤ</value>
+  </data>
+  <data name="GIO_DEN" xml:space="preserve">
+    <value>Giờ đến</value>
+  </data>
+  <data name="GIO_KET_THUC" xml:space="preserve">
+    <value>Giờ kết thúc</value>
+  </data>
+  <data name="GIO_PHUT" xml:space="preserve">
+    <value>giờ:phút</value>
+  </data>
+  <data name="GO_CAPCHA" xml:space="preserve">
+    <value>Gõ lại dòng chữ ở trên</value>
+  </data>
+  <data name="GO_LAI_MAT_KHAU_MOI" xml:space="preserve">
+    <value>Gõ lại mật khẩu mới</value>
+  </data>
+  <data name="HAI_QUAN" xml:space="preserve">
+    <value>Hải quan</value>
+  </data>
+  <data name="HANG_HANG_KHONG" xml:space="preserve">
+    <value>Hãng hàng không</value>
+  </data>
+  <data name="HANG_NHAP_KHO_TU_NGAY" xml:space="preserve">
+    <value>Hàng nhập kho từ ngày</value>
+  </data>
+  <data name="HANG_TRONG_KHO" xml:space="preserve">
+    <value>Hàng trong kho</value>
+  </data>
+  <data name="HANG_VAN_CHUYEN" xml:space="preserve">
+    <value>Hãng vận chuyển</value>
+  </data>
+  <data name="HANG_XUAT_KHAU_TRONG_KHO" xml:space="preserve">
+    <value>Hàng xuất khẩu trong kho</value>
+  </data>
+  <data name="HAWB" xml:space="preserve">
+    <value>HAWB</value>
+  </data>
+  <data name="HO_TEN" xml:space="preserve">
+    <value>Họ tên</value>
+  </data>
+  <data name="IN_BAO_CAO" xml:space="preserve">
+    <value>In báo cáo</value>
+  </data>
+  <data name="IN_BAO_CAO_CHUYEN_BAY_DEN" xml:space="preserve">
+    <value>In báo cáo phục vụ chuyến bay đến</value>
+  </data>
+  <data name="IN_BAO_CAO_TINH_TRANG_TAI_LIEU_VA_HANG_HOA" xml:space="preserve">
+    <value>In báo cáo tình trạng tài liệu và hàng hoá</value>
+  </data>
+  <data name="IN_MAN_HINH" xml:space="preserve">
+    <value>In</value>
+  </data>
+  <data name="KHONG_VAN_DON" xml:space="preserve">
+    <value>Không vận đơn</value>
+  </data>
+  <data name="KHONG_VAN_DON_KHONG_TON_TAI" xml:space="preserve">
+    <value>SỐ KHÔNG VẬN ĐƠN KHÔNG TỒN TẠI</value>
+  </data>
+  <data name="KIEM_HANG_OA_CHECKER" xml:space="preserve">
+    <value>Kiểm hàng (OA - Checker)</value>
+  </data>
+  <data name="LAM_MOI" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="LIEN_KET_NHANH" xml:space="preserve">
+    <value>Liên kết nhanh</value>
+  </data>
+  <data name="LOAI" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="LOAI_HANG" xml:space="preserve">
+    <value>Loại hàng</value>
+  </data>
+  <data name="LOAI_LUU_KHO" xml:space="preserve">
+    <value>Loại lưu kho</value>
+  </data>
+  <data name="LOAI_PHUC_VU" xml:space="preserve">
+    <value>Loại phục vụ</value>
+  </data>
+  <data name="MAT_KHAU" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="MAT_KHAU_CU" xml:space="preserve">
+    <value>Mật khẩu cũ</value>
+  </data>
+  <data name="MAT_KHAU_MOI" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="MAWB" xml:space="preserve">
+    <value>MAWB</value>
+  </data>
+  <data name="MIEN_PHI" xml:space="preserve">
+    <value>Miễn phí</value>
+  </data>
+  <data name="MUC_THU" xml:space="preserve">
+    <value>MỨC THU (VND)</value>
+  </data>
+  <data name="NGAY" xml:space="preserve">
+    <value>Ngày</value>
+  </data>
+  <data name="NGAY_GIO_IN_BAO_CAO" xml:space="preserve">
+    <value>Ngày giờ in báo cáo</value>
+  </data>
+  <data name="NGAY_LE" xml:space="preserve">
+    <value>Chủ nhật, Ngày lễ</value>
+  </data>
+  <data name="NGAY_NGHI_LE_TET" xml:space="preserve">
+    <value>Từ 00:00 đến 23:59 các ngày Chủ nhật, ngày nghĩ Lễ, Tết, ngày nghỉ bù của Lễ, Tết theo quy định của nhà nước</value>
+  </data>
+  <data name="NGAY_NHAP_KHO" xml:space="preserve">
+    <value>Ngày nhập kho</value>
+  </data>
+  <data name="NGAY_XUAT_KHO" xml:space="preserve">
+    <value>Ngày xuất kho</value>
+  </data>
+  <data name="NGUOI_GOI" xml:space="preserve">
+    <value>Người gửi</value>
+  </data>
+  <data name="NGUOI_GUI" xml:space="preserve">
+    <value>Người gửi</value>
+  </data>
+  <data name="NGUOI_NHAN" xml:space="preserve">
+    <value>Người nhận</value>
+  </data>
+  <data name="NGUOI_NHAN_TT" xml:space="preserve">
+    <value>Người nhận trực tiếp</value>
+  </data>
+  <data name="NHAN_VIEN_BO_PHAN" xml:space="preserve">
+    <value>Nhân viên / bộ phận</value>
+  </data>
+  <data name="NHAP_SO_NGAY_CHUYEN_BAY" xml:space="preserve">
+    <value>Hãy nhập số và ngày của chuyến bay để tiếp tục.</value>
+  </data>
+  <data name="NOI_DEN" xml:space="preserve">
+    <value>Nơi đến</value>
+  </data>
+  <data name="NOI_DUNG" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="NOI_DUNG_CAC_KHOAN_THU" xml:space="preserve">
+    <value>NỘI DUNG CÁC KHOẢN THU</value>
+  </data>
+  <data name="NOI_XUAT_PHAT" xml:space="preserve">
+    <value>Nơi xuất phát</value>
+  </data>
+  <data name="ORG" xml:space="preserve">
+    <value>ORG</value>
+  </data>
+  <data name="OTHER_NEWS" xml:space="preserve">
+    <value>Tin khác</value>
+  </data>
+  <data name="PHAN_A" xml:space="preserve">
+    <value>Phần A</value>
+  </data>
+  <data name="PHAN_B" xml:space="preserve">
+    <value>Phần B</value>
+  </data>
+  <data name="PHAN_C" xml:space="preserve">
+    <value>Phần C</value>
+  </data>
+  <data name="PHIEU_THONG_BAO_HANG_DEN" xml:space="preserve">
+    <value>Phiếu thông báo hàng đến</value>
+  </data>
+  <data name="PHIEU_THONG_BAO_TINH_TRANG_TAI_LIEU" xml:space="preserve">
+    <value>Phiếu thông báo tình trạng tài liệu</value>
+  </data>
+  <data name="PHU_THU_GIA_LAO_VU_NGOAI_GIO" xml:space="preserve">
+    <value>PHỤ THU GIÁ LAO VỤ NGOÀI GIỜ</value>
+  </data>
+  <data name="QUY_DOI" xml:space="preserve">
+    <value>Quy đổi</value>
+  </data>
+  <data name="SO" xml:space="preserve">
+    <value>Số</value>
+  </data>
+  <data name="SO_HIEU" xml:space="preserve">
+    <value>Số hiệu</value>
+  </data>
+  <data name="SO_HIEU_CHUYEN_BAY" xml:space="preserve">
+    <value>Số hiệu chuyến bay</value>
+  </data>
+  <data name="SO_KHONG_VAN_DON" xml:space="preserve">
+    <value>Số không vận đơn</value>
+  </data>
+  <data name="SO_KHONG_VD" xml:space="preserve">
+    <value>Số không vận đơn</value>
+  </data>
+  <data name="SO_KIEN" xml:space="preserve">
+    <value>Số kiện</value>
+  </data>
+  <data name="SO_KIEN_HANG" xml:space="preserve">
+    <value>Số kiện hàng</value>
+  </data>
+  <data name="SO_NGAY_TINH_PHI" xml:space="preserve">
+    <value>Số ngày tính phí</value>
+  </data>
+  <data name="SO_NOI_BO" xml:space="preserve">
+    <value>Số nội bộ</value>
+  </data>
+  <data name="SO_TRANG_MNF" xml:space="preserve">
+    <value>Số trang MNF</value>
+  </data>
+  <data name="STT" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="SU_KHAC_BIET_DANH_SACH_HANG_HOA" xml:space="preserve">
+    <value>Sự khác biệt của bản danh sách hàng hóa</value>
+  </data>
+  <data name="SU_KHAC_BIET_KHONG_VAN_DON" xml:space="preserve">
+    <value>Sự khác biệt của không vận đơn</value>
+  </data>
+  <data name="SU_KHAC_BIET_TINH_TRANG_HANG_HOA" xml:space="preserve">
+    <value>Sự khác biệt về tình trạng hàng hóa</value>
+  </data>
+  <data name="SU_MENH_TAM_NHIN_GTCL" xml:space="preserve">
+    <value>Sứ mệnh, Tầm nhìn, Giá trị cốt lõi</value>
+  </data>
+  <data name="TAI_LIEU" xml:space="preserve">
+    <value>Tài liệu</value>
+  </data>
+  <data name="TAI_LIEU_KEM_HAWB" xml:space="preserve">
+    <value>Tài liệu kèm HAWB</value>
+  </data>
+  <data name="TAI_LIEU_OA_DOC" xml:space="preserve">
+    <value>Tài liệu (OA - Document)</value>
+  </data>
+  <data name="TAI_VE" xml:space="preserve">
+    <value>Tải về</value>
+  </data>
+  <data name="TEN" xml:space="preserve">
+    <value>Tên</value>
+  </data>
+  <data name="TEN_DANG_NHAP" xml:space="preserve">
+    <value>Tên đăng nhập</value>
+  </data>
+  <data name="TEN_NGUOI_DUNG" xml:space="preserve">
+    <value>Tên người dùng</value>
+  </data>
+  <data name="THAY_DOI_MAT_KHAU" xml:space="preserve">
+    <value>Thay đổi mật khẩu</value>
+  </data>
+  <data name="THE_TICH" xml:space="preserve">
+    <value>Thể tích</value>
+  </data>
+  <data name="THOAT" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="THONG_KE" xml:space="preserve">
+    <value>Thống kê</value>
+  </data>
+  <data name="THONG_TIN_BAT_THUONG" xml:space="preserve">
+    <value>Thông tin bất thường</value>
+  </data>
+  <data name="THONG_TIN_GIA_CA" xml:space="preserve">
+    <value>Thông tin giá cả</value>
+  </data>
+  <data name="THONG_TIN_HANG_HOA" xml:space="preserve">
+    <value>Thông tin hàng hóa</value>
+  </data>
+  <data name="THONG_TIN_HANG_HOA_NHAP_KHAU" xml:space="preserve">
+    <value>Thông tin hàng hóa nhập khẩu</value>
+  </data>
+  <data name="THONG_TIN_PHUC_VU_HANG_HOA" xml:space="preserve">
+    <value>Thông tin về phục vụ hàng hóa</value>
+  </data>
+  <data name="THONG_TIN_VAN_CHUYEN" xml:space="preserve">
+    <value>Thông tin vận chuyển</value>
+  </data>
+  <data name="THUC_TE" xml:space="preserve">
+    <value>Thực tế</value>
+  </data>
+  <data name="THUE" xml:space="preserve">
+    <value>Thuế</value>
+  </data>
+  <data name="TIM_KIEM_VAN_DON" xml:space="preserve">
+    <value>Tra cứu vận đơn</value>
+  </data>
+  <data name="TINH_CHAT_KHAC_BIET_XU_LY" xml:space="preserve">
+    <value>Tính chất khác biệt/ xử lý</value>
+  </data>
+  <data name="TINH_TRANG" xml:space="preserve">
+    <value>Tình trạng</value>
+  </data>
+  <data name="TINH_TRANG_HANG_HOA_XUAT_KHAU" xml:space="preserve">
+    <value>Tình trạng hàng hoá xuất khẩu</value>
+  </data>
+  <data name="TINH_TRANG_HANG_NHAP" xml:space="preserve">
+    <value>TÌNH TRẠNG HÀNG NHẬP</value>
+  </data>
+  <data name="TIN_CHUYEN_NGANH" xml:space="preserve">
+    <value>&lt;span style="color:#000000"&gt;Tin &lt;/span&gt;
+    &lt;span style="color:#ffa400"&gt;chuyên ngành&lt;/span&gt;</value>
+  </data>
+  <data name="TIN_DANH_CHO_KH" xml:space="preserve">
+    <value>&lt;span style="color:#000000"&gt;Tin &lt;/span&gt;
+    &lt;span style="color:#ffa400"&gt;dành cho khách hàng&lt;/span&gt;</value>
+  </data>
+  <data name="TIN_MOI" xml:space="preserve">
+    <value>Tin mới</value>
+  </data>
+  <data name="TIN_TCS" xml:space="preserve">
+    <value>&lt;span style="color:#000000"&gt;Tin &lt;/span&gt;
+    &lt;span style="color:#ffa400"&gt;TCS&lt;/span&gt;</value>
+  </data>
+  <data name="TONG_CONG" xml:space="preserve">
+    <value>Tổng cộng</value>
+  </data>
+  <data name="TONG_SO_HAWB" xml:space="preserve">
+    <value>Tổng số HAWB</value>
+  </data>
+  <data name="TONG_SO_KIEN" xml:space="preserve">
+    <value>Tổng số kiện</value>
+  </data>
+  <data name="TRANG_THAI" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="TRONG_LUONG" xml:space="preserve">
+    <value>Trọng lượng</value>
+  </data>
+  <data name="TRONG_LUONG_CAN_LAI" xml:space="preserve">
+    <value>Trọng lượng cân lại (nếu có)</value>
+  </data>
+  <data name="TRO_LAI" xml:space="preserve">
+    <value>Trở lại</value>
+  </data>
+  <data name="TU" xml:space="preserve">
+    <value>Từ</value>
+  </data>
+  <data name="TU_1700_2159_THU2_THU7" xml:space="preserve">
+    <value>Từ 17:00 đến 21:59 từ thứ Hai đến thứ Bảy</value>
+  </data>
+  <data name="TU_2200_0559_THU2_THU6" xml:space="preserve">
+    <value>- Từ 22:00 đến 05:59 sáng hôm sau các ngày từ thứ Hai đến thứ Sáu</value>
+  </data>
+  <data name="TU_2200_2359_THU7_VA_0000_0559_THU2" xml:space="preserve">
+    <value>- Từ 22:00 đến 23:59 thứ Bảy và 00:00 đến 05:59 thứ Hai</value>
+  </data>
+  <data name="TU_NGAY" xml:space="preserve">
+    <value>Từ ngày:</value>
+  </data>
+  <data name="VUI_LONG_DIEN_THONG_TIN_DANG_NHAP" xml:space="preserve">
+    <value>Vui lòng điền thông tin đăng nhập</value>
+  </data>
+  <data name="XAC_NHAN" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="XEM_THONG_TIN_KVD" xml:space="preserve">
+    <value>Để xem thông tin KVĐ phụ hoặc in báo cáo - (Dùng cho Đại lý hoặc Airlines)</value>
+  </data>
+  <data name="XEM_TIEP" xml:space="preserve">
+    <value>Xem tiếp</value>
+  </data>
+  <data name="XIN_MOI_NHAP_KVD" xml:space="preserve">
+    <value>Xin mời nhập Không vận đơn</value>
+  </data>
+  <data name="YEAR" xml:space="preserve">
+    <value>Năm</value>
+  </data>
+</root>

@@ -1,0 +1,27 @@
+﻿.awb_title {
+color:#FB4312;
+font-size:16px;
+font-weight:bold;
+text-align:center;
+}
+div .layout {margin-top:10px}
+.awb_tbl02 {border-collapse:collapse;}
+.awb_tbl02 td {padding:3px 5px; border:1px solid #aaa;}
+td .noborder {border-width: 0px;}
+/* tabs */
+.awb_tabs {list-style:none; padding:0; height:21px; margin-top:5px; float:left}
+.awb_tabs li {float:left; list-style-type:none;}
+.awb_tabs li a {background:url(../images/bg_tab.png) no-repeat right 0px; display:inline-block; height:21px; padding:0px 10px 0px 0px; margin-right:2px; }
+.awb_tabs li a span {background:url(../images/bg_tab_span.png) no-repeat left 0px; font-size:12px; font-weight:bold; display:inline-block; height:21px; line-height:20px; text-decoration:none; color:#131313; padding:0px 0px 0px 10px; cursor:pointer;}
+.awb_tabs li a:hover {background:url(../images/bg_tab.png) no-repeat right 0px; display:inline-block; height:21px; padding:0px 10px 0px 0px; margin-right:2px; }
+.awb_tabs li a:hover span {background:url(../images/bg_tab_span.png) no-repeat left 0px; font-size:12px; font-weight:bold; display:inline-block; height:21px; line-height:20px; text-decoration:none; color:#0076a7; padding:0px 0px 0px 10px; cursor:pointer;}
+/* active tab uses a class name "current". it's highlight is also done by moving the background image. */
+.awb_tabs .current span, .awb_tabs .current:hover span, .awb_tabs li.current a span {color:#FFF;}
+.inner_container {min-height: 310px;}
+.canhphai{text-align:right}
+.canhgiua{text-align:center}
+.canhtrai{text-align:left}
+.hang2{border:solid 1px #CCC;}
+.chan{background-color:#FFF;}
+.le{background-color:#FFF;}
+.abc{background-color:#f08e18; color:#FFF}

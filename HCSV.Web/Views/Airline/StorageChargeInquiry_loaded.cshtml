@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "StorageChargeInquiry_loaded";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li class="current"><a href="@Url.Action("ImportCargoTracking_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA_NHAP_KHAU")</span></a></li>
+                <li><a href="@Url.Action("InwardFlightServiceReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="@Url.Action("NoneDeliveryReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoStatus_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG_HANG_HOA_XUAT_KHAU")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoInWareHouse_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_XUAT_KHAU_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ChangePassword", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=airline&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+    
+        <link rel="stylesheet" href="tcs.css" type="text/css">
+
+
+        <div class="text" id="spiffycalendar"></div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr valign="top">
+                    <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td span="" class="awb_title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LUU_KHO_TAI_THOI_DIEM_HANG_NHAP")</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <table class="awb_tbl02" width="94%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                            <tbody>
+                                                <tr bordercolor="#EAEAEA">
+                                                    <td colspan="4" width="100%" valign="top" bgcolor="#EAEAEA">
+                                                        <strong>
+                                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO")
+                                                            MAWB: &nbsp;
+                                                            695-08842794
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                                <tr bordercolor="#FFFFFF">
+                                                    <td colspan="2" align="center" valign="top" bgcolor="#FFFFFF"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KIEN_HANG")</strong></td>
+                                                    <td colspan="2" align="center" valign="top" bgcolor="#FFFFFF"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TRONG_LUONG")</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" align="center" bgcolor="#FFFFFF" valign="top">
+                                                        10                  &nbsp;
+                                                    </td>
+                                                    <td colspan="2" align="center" bgcolor="#FFFFFF" valign="top">
+                                                        76                  kg&nbsp;
+                                                    </td>
+                                                </tr>
+                                                <tr bordercolor="#EAEAEA">
+                                                    <td width="100%" colspan="4" valign="top" bgcolor="#EAEAEA"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_GIA_CA")</strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model HCSVNewWebsite.Models.jos_content
+
+@{
+    ViewBag.Title = "Services";
+    ViewBag.Page = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--Begin: Page Container-->
+<div class="bg_content_css">
+    <div id="service_accordion" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons" role="tablist">
+        @{
+            if ((Model.NEWS != null) && (Model.NEWS.Count() > 0))
+            {
+                foreach (var item in Model.NEWS)
+                {
+                    <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all" role="tab" aria-expanded="false" tabindex="-1">
+                        <span class="ui-icon ui-icon-triangle-1-e"></span>
+                        <a href="index.html#section1" class="link">@Html.Raw(item.title)</a>
+                    </h3>
+                    <div class="pane ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none; overflow: auto; padding-top: 5px; padding-bottom: 10px;">
+                        <div>
+                            @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.introtext))
+                        </div>
+                    </div>
+                }
+
+            }
+        }
+    </div>
+</div>
+
+<script type="text/javascript" src="/Content/TcsTemplate/mysite/javascript/ServiceHolder0676.js"></script>
+<script type="text/javascript" src="/Content/TcsTemplate/mysite/javascript/content_scroll.js"></script>

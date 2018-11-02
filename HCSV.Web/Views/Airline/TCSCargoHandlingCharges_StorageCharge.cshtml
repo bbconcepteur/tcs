@@ -1,0 +1,706 @@
+﻿
+@{
+    ViewBag.Title = "TCSCargoHandlingCharges_StorageCharge";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li><a href="@Url.Action("ImportCargoTracking_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA_NHAP_KHAU")</span></a></li>
+                <li><a href="@Url.Action("InwardFlightServiceReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="@Url.Action("NoneDeliveryReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoStatus_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG_HANG_HOA_XUAT_KHAU")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoInWareHouse_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_XUAT_KHAU_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ChangePassword", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=airline&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="awb_title">
+                        @HCSVNewWebsite.Commons.TitleConst.getTitleConst("BANG_GIA_HIEN_HANH")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="price" width="30%" border="0" align="right" cellpadding="2" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td width="9%">
+                                        <img src="../images/arroww.gif" width="11" height="11">
+                                    </td>
+                                    <td width="91%">
+                                        <strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LUU_KHO")</strong>&nbsp;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" width="11" height="11">
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("TCSCargoHandlingCharges_ServiceCharge", "Airline", "Views")">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_PHUC_VU")</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" width="11" height="11">
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("TCSCargoHandlingCharges_SurchargeRateForOvertimeService", "Airline", "Views")">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("PHU_THU_GIA_LAO_VU_NGOAI_GIO")</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" width="11" height="11">
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("TCSCargoHandlingCharges_OtherFees", "Airline", "Views")">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_DICH_VU_KHAC")</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="center">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        &gt;
+                        <table width="100%" class="tbl02">
+                            <tbody>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td width="4%"> <div align="center"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("STT")</strong> </div></td>
+                                    <td width="73%">
+                                        <div align="center">
+                                            <strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NOI_DUNG_CAC_KHOAN_THU")</strong>
+                                        </div>
+                                    </td>
+                                    <td width="10%" align="center">
+                                        <div align="center">
+                                            <strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DON_VI_TINH")</strong>
+                                        </div>
+                                    </td>
+                                    <td width="13%">
+                                        <div align="center">
+                                            <strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("MUC_THU")</strong>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td><strong>HANDLING CHARGES FOR CARGO AGENTS, CUSTOMERS</strong> </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1 </td>
+                                    <td><strong>STORAGE CHARGE</strong> </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.1 </td>
+                                    <td><strong>General cargo (Import)</strong> </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Free storage charge is given on Sundays, Holidays, the first two
+                                        days of flight arrival and on delivery day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        The computation of storage charge per calendar day is calculated
+                                        as follows:
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">- From the 01 to the 03 day</td>
+                                    <td align="center" class="tbl01">&nbsp;</td>
+                                    <td class="tbl01">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">
+                                        + For shipments weighing less than or equal to 250
+                                        kg
+                                    </td>
+                                    <td align="center" class="tbl01"><div align="center">VND/kg/day </div></td>
+                                    <td class="tbl01"><div align="right">1,330</div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">+ For shipments weighing more than 250 kg</td>
+                                    <td align="center" class="tbl01">&nbsp;</td>
+                                    <td class="tbl01">&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">&nbsp;&nbsp;&nbsp;. For the first 250 kgs</td>
+                                    <td align="center" class="tbl01"><div align="center">VND/kg/day</div></td>
+                                    <td class="tbl01"><div align="right">1,330</div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">
+                                        &nbsp;&nbsp;&nbsp;. For shipments weighing more than
+                                        250 kg from the 1 to 1 day
+                                    </td>
+                                    <td align="center" class="tbl01"><div align="center">VND/kg/day</div></td>
+                                    <td class="tbl01"><div align="right">560</div></td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td class="tbl01">
+                                        &nbsp;&nbsp;&nbsp;. For shipments weighing more than
+                                        250 kg from the 2 to 2 day
+                                    </td>
+                                    <td align="center" class="tbl01">VND/kg/day</td>
+                                    <td align="right" class="tbl01">600</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">
+                                        &nbsp;&nbsp;&nbsp;. For shipments weighing more than
+                                        250 kg from the 3 to 3 day
+                                    </td>
+                                    <td align="center" class="tbl01"><div align="center">VND/kg/day</div></td>
+                                    <td class="tbl01"><div align="right">900</div></td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td class="tbl01">+ From the 4 to 7 day</td>
+                                    <td align="center" class="tbl01">VND/kg/day</td>
+                                    <td align="right" class="tbl01">1,110</td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td class="tbl01">+ From the 8 day</td>
+                                    <td align="center" class="tbl01">VND/kg/day</td>
+                                    <td align="right" class="tbl01">1,450</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td class="tbl01">Minimum charge</td>
+                                    <td align="center" class="tbl01"><div align="center">VND/service</div></td>
+                                    <td class="tbl01"><div align="right">150,000</div></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.2 </td>
+                                    <td><strong>General cargo (Export)</strong> </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        Free storage charge is given on Sundays, Holidays, two days before
+                                        booking day (including acceptance) and on booking day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        The computation of storage charge per calendar day is calculated
+                                        as follows :
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        - From the
+                                        1
+
+                                        to
+
+                                        2 day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        + For shipment weighing less than or equal to
+
+                                        200 kg
+                                    </td>
+                                    <td align="center">
+                                        <div align="center">
+                                            Kg
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            1,160
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        + For shipment weighing more than
+
+                                        200 kg
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;. For the first
+
+                                        200 kgs
+                                    </td>
+                                    <td align="center">
+                                        <div align="center">
+                                            Kg
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            1,160
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> &nbsp;&nbsp;&nbsp;. For the subsequent kgs </td>
+                                    <td align="center">
+                                        <div align="center">
+                                            Kg
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            560
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        - From the
+                                        3
+
+                                        to
+                                        6
+
+                                        day
+                                    </td>
+                                    <td align="center">
+                                        <div align="center">
+                                            Kg/day
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            725
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        - From the
+                                        7
+
+                                        to
+                                        999
+
+                                        day
+                                    </td>
+                                    <td align="center">
+                                        <div align="center">
+                                            Kg/day
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                            1,160
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Minimum charge </td>
+                                    <td align="center"> <div align="center"> Shipment </div></td>
+                                    <td>
+                                        <div align="right">
+                                            99,000
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3 </td>
+                                    <td><strong>Special cargo</strong> </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.1</td>
+                                    <td><strong>Valuable charge ( VAL )</strong></td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>No free storage charge from acceptance or flight arrival</td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        No free storage charge is given on Sundays, Holidays and delivery
+                                        day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        The computation of storage charge per calendar day is calculated
+                                        as follows :
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Storage charge </td>
+                                    <td align="center"> <div align="center"> Kg/day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            5,500
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Minimum </td>
+                                    <td align="center"> <div align="center"> Day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            900,000
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.2</td>
+                                    <td><strong>Coldroom charge</strong> </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        No free storage charge is given on the day when cargo is stored
+                                        is coldroom on request basis
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        The computation of storage charge per day (24 hours/day) is calculated
+                                        as follows :
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Storage charge for import cargo </td>
+                                    <td align="center"> <div align="center"> Kg/day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,450
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Storage charge for export cargo </td>
+                                    <td align="center"> <div align="center"> Kg/day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,450
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Minimum </td>
+                                    <td align="center"> <div align="center"> Day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            220,000
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.3</td>
+                                    <td><strong>Livestock</strong> </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        - For import cargo : No free storage charge is given on the day
+                                        of flight arrival, Sundays, Holidays, and delivery day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        - For export cargo : Free storage charge is given on the acceptance
+                                        day, Sundays, Holidays and on booking day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        The computation of storage charge per calendar day is calculated
+                                        as follows :
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Storage charge </td>
+                                    <td align="center"> <div align="center"> Kg/day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,100
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Minimum </td>
+                                    <td align="center"> <div align="center"> Day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            500,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.4</td>
+                                    <td><strong>Arms, explosives</strong> </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        - For import cargo : No free storage charge is given on the day
+                                        of flight arrival, Sundays, Holidays, and delivery day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        - For export cargo :No free storage charge is given on the acceptance
+                                        day, Sundays, Holidays and on booking day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Storage charge </td>
+                                    <td align="center"> <div align="center"> Kg/day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            3,600
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Minimum </td>
+                                    <td align="center"> <div align="center"> Day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            900,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 1.3.5</td>
+                                    <td><strong>Dangerous goods</strong> </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        - For import cargo : No free storage charge is given on the day
+                                        of flight arrival, Sundays, Holidays, and delivery day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td>
+                                        - For export cargo :No free storage charge is given on the acceptance
+                                        day, Sundays, Holidays and on booking day
+                                    </td>
+                                    <td align="center">&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Storage charge </td>
+                                    <td align="center"> <div align="center"> Kg/day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,820
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Minimum </td>
+                                    <td align="center"> <div align="center"> Day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            150,000
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td> 1.3.6</td>
+                                    <td><strong>Vulnerable cargo (VUN)</strong></td>
+                                    <td align="center">&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="tbl01">
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <p>
+                                            - For export cargo : No free storage charge is given on the acceptance
+                                            day, Sundays, Holidays, and booking day.
+                                        </p>
+                                        <p>- The computation of storage charge is based on calendar day.</p>
+                                        <p>
+                                            - For import cargo : No free storage charge is given on the day
+                                            of flight arrival, Sundays, Holidays, and delivery day.
+                                        </p>
+                                        <p>- The computation of storage charge is based on calendar day.</p>
+                                    </td>
+                                    <td align="center">s</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Storage charge </td>
+                                    <td align="center"> <div align="center"> Kg/day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,3900
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> - Minimum </td>
+                                    <td align="center"> <div align="center"> Day </div></td>
+                                    <td>
+                                        <div align="right">
+                                            150,000
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text"></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>

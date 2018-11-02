@@ -1,0 +1,2344 @@
+﻿
+@{
+    ViewBag.Title = "NoneDeliveryReport_loaded";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li><a href="@Url.Action("ImportCargoTracking_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA_NHAP_KHAU")</span></a></li>
+                <li><a href="@Url.Action("InwardFlightServiceReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li class="current"><a href="@Url.Action("NoneDeliveryReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoStatus_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG_HANG_HOA_XUAT_KHAU")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoInWareHouse_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_XUAT_KHAU_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ChangePassword", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=airline&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <!-- DANH SACH -->
+        <div class="ui_awb">
+            <h5>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANH_SACH_HANG_HOA_CHUA_DUOC_GIAO_NHAN")</h5>
+            <form id="airlines_nondlv_report" action="https://www.tcs.com.vn/awb/index.php?section=airline&amp;layout=10_cs" method="post">
+                <input type="hidden" name="action" id="airlines_nondlv_report_action">
+
+                <table width="1000" class="bdr">
+                    <tbody>
+                        <tr></tr>
+
+                        <tr>
+
+                            <td align="right"><a href="@Url.Action("NoneDeliveryReport_loaded", "Airline", "Views")" class="btn" value="refresh" form="airlines_nondlv_report"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("LAM_MOI")</span> </a></td>
+                            <td align="left"><a href="javascript:window.print();" class="btn"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_MAN_HINH")</span></a></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </form>
+
+            <h5>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANH_SACH")</h5>
+            <table width="1000" class="tbl02">
+                <tbody>
+                    <tr><td colspan="9">
+                        @HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_VAN_CHUYEN")
+                        : BR-EVA AIR</td></tr>
+                    <tr><td colspan="9">
+                        @HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_NHAP_KHO_TU_NGAY")
+                        : 30/11/2016 
+                        @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DEN_NGAY")
+                        : 30/05/2017</td></tr>
+                    <tr>
+                        <td colspan="2" class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VAN_DON")</td>
+                        <td colspan="2" class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHUYEN_BAY")</td>
+                        <td rowspan="2" class="title" align="center">ORG/DES</td>
+                        <td rowspan="2" class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KIEN")</td>
+                        <td rowspan="2" class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TRONG_LUONG")</td>
+                        <td rowspan="2" class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("LOAI_HANG")</td>
+                        <td rowspan="2" class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DA_GUI_THU_THONG_BAO")</td>
+                    </tr>
+                    <tr>
+                        <td class="title" align="center">MAWB</td>
+                        <td class="title" align="center">HAWB</td>
+                        <td class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO")</td>
+                        <td class="title" align="center">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY")</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509342922</td>
+                        <td align="right">7ET4831</td>
+                        <td>BR0381</td>
+                        <td align="center">21DEC2016</td>
+                        <td>ATL/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">600.10</td>
+                        <td align="right">IVORY ALOE OLAY</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559048883</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">05JAN2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">8.50</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509989921</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">05JAN2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">58</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559943203</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">12JAN2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">46.60</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508842293</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">08FEB2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">8</td>
+                        <td align="right">101</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559945281</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">22FEB2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">6.90</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508842794</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">03MAR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">10</td>
+                        <td align="right">76</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559944474</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">09MAR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">12</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559943321</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">15MAR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">1.80</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559944953</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">16MAR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">1.90</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559943730</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">22MAR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">3.20</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559947392</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">30MAR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">1</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559946106</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">07APR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">17.60</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508845200</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">07APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">28</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509277380</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">07APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">11</td>
+                        <td align="right">66</td>
+                        <td align="right">DOCUMENT AND SA</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559948066</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">12APR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">44.50</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508845620</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">12APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">21</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509277800</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">12APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">8</td>
+                        <td align="right">44</td>
+                        <td align="right">DOCUMENT AND SA</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559948173</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">13APR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">15.50</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559948416</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">19APR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">10</td>
+                        <td align="right">92.70</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507524370</td>
+                        <td align="right">JC936004600</td>
+                        <td>BR0395</td>
+                        <td align="center">22APR2017</td>
+                        <td>SFO/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">179</td>
+                        <td align="right">GIFT</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508030035</td>
+                        <td align="right">4812081050</td>
+                        <td>BR0395</td>
+                        <td align="center">24APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">41</td>
+                        <td align="right">518</td>
+                        <td align="right">IC</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508030035</td>
+                        <td align="right">4812081057</td>
+                        <td>BR0395</td>
+                        <td align="center">24APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">4</td>
+                        <td align="right">IC</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508030035</td>
+                        <td align="right">4812081063</td>
+                        <td>BR0395</td>
+                        <td align="center">24APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">46</td>
+                        <td align="right">IC</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508030035</td>
+                        <td align="right">4812081077</td>
+                        <td>BR0395</td>
+                        <td align="center">24APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">18</td>
+                        <td align="right">IC</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508309346</td>
+                        <td align="right">A0117048005</td>
+                        <td>BR0395</td>
+                        <td align="center">24APR2017</td>
+                        <td>ICN/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">1753</td>
+                        <td align="right">ASSY ROTOR</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559943531</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">25APR2017</td>
+                        <td>OKA/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">27.20</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559947020</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">26APR2017</td>
+                        <td>OKA/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">21</td>
+                        <td align="right">CONSOL</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69505566831</td>
+                        <td align="right">4090336411</td>
+                        <td>BR0391</td>
+                        <td align="center">26APR2017</td>
+                        <td>ATL/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">588.50</td>
+                        <td align="right">DISPENSERS</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508846305</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">26APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">96</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559947160</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">28APR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">1</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559948980</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">28APR2017</td>
+                        <td>OKA/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">13.50</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508008140</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">28APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">24</td>
+                        <td align="right">DOCUMENT</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508845981</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">28APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">47</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559947230</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">29APR2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">10</td>
+                        <td align="right">CONSOL</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508008151</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">29APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">9</td>
+                        <td align="right">24</td>
+                        <td align="right">DOCUMENT</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508845631</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">29APR2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">31</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508052483</td>
+                        <td align="right">90L16710002</td>
+                        <td>BR0391</td>
+                        <td align="center">07MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">76</td>
+                        <td align="right">GIFTS</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508052483</td>
+                        <td align="right">91L16710003</td>
+                        <td>BR0391</td>
+                        <td align="center">07MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">76</td>
+                        <td align="right">GIFTS</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508052483</td>
+                        <td align="right">92L16710004</td>
+                        <td>BR0391</td>
+                        <td align="center">07MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">58</td>
+                        <td align="right">GIFTS</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559946250</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">12MAY2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">5.10</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559948000</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">12MAY2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">17.20</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508008711</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">12MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">40</td>
+                        <td align="right">DOCUMENT AND SA</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508846552</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">12MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">37</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507638794</td>
+                        <td align="right">74752035A</td>
+                        <td>BR0391</td>
+                        <td align="center">13MAY2017</td>
+                        <td>SFO/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">9</td>
+                        <td align="right">AUDIO EQUIPMENT</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508009061</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">16MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">10</td>
+                        <td align="right">36</td>
+                        <td align="right">DOCUMENT AD SAM</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508237213</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">16MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">35</td>
+                        <td align="right">LIVE TROPICAL FISH</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895110</td>
+                        <td align="right">FWSGN170736</td>
+                        <td>BR0391</td>
+                        <td align="center">16MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">20</td>
+                        <td align="right">GIFTS CANDIE TO</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559948221</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">17MAY2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">23.40</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508009072</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">17MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">36</td>
+                        <td align="right">DOCUMENT AND SA</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69544566933</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">17MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">17</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69549199706</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">17MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">71</td>
+                        <td align="right">CONSOL</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69549199765</td>
+                        <td align="right"></td>
+                        <td>BR0381</td>
+                        <td align="center">17MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">80</td>
+                        <td align="right">CONSOL</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559948350</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">18MAY2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">61.70</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508385495</td>
+                        <td align="right">IAH171607</td>
+                        <td>BR0395</td>
+                        <td align="center">18MAY2017</td>
+                        <td>IAH/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">130</td>
+                        <td align="right">UN1219 CLASS3 U</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559946703</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">19MAY2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">8.80</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506910352</td>
+                        <td align="right">CLT932001137</td>
+                        <td>BR0395</td>
+                        <td align="center">19MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">14</td>
+                        <td align="right">RAW MATERIAL FO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69538086860</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">19MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">13</td>
+                        <td align="right">91</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559948464</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">20MAY2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">7.30</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508846294</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">20MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">54</td>
+                        <td align="right">EXPRESS CARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507504626</td>
+                        <td align="right">PVG00125687</td>
+                        <td>BR0391</td>
+                        <td align="center">21MAY2017</td>
+                        <td>PVG/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">206</td>
+                        <td align="right">PARTS FOR THE MANUFA</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508076375</td>
+                        <td align="right">TORD3177175</td>
+                        <td>BR0391</td>
+                        <td align="center">21MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">196</td>
+                        <td align="right">OTHER PILLOWS CUSHIO</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508107470</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">21MAY2017</td>
+                        <td>MCI/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">31.50</td>
+                        <td align="right">CNSL-VACCINES F</td>
+                        <td>L3</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508385506</td>
+                        <td align="right">IAH171800</td>
+                        <td>BR0391</td>
+                        <td align="center">21MAY2017</td>
+                        <td>IAH/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">4977</td>
+                        <td align="right">STEEL SEAL</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507708256</td>
+                        <td align="right">A176967</td>
+                        <td>BR0395</td>
+                        <td align="center">22MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">22</td>
+                        <td align="right">462</td>
+                        <td align="right">PAINT RELATED M</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508107470</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">22MAY2017</td>
+                        <td>MCI/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">31.50</td>
+                        <td align="right">CNSL-MEDICINE</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509445855</td>
+                        <td align="right">LAX20129445</td>
+                        <td>BR0395</td>
+                        <td align="center">22MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">5</td>
+                        <td align="right">POWER SUPPLY</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69538472932</td>
+                        <td align="right">S00597522</td>
+                        <td>BR0391</td>
+                        <td align="center">22MAY2017</td>
+                        <td>PDX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">21</td>
+                        <td align="right">CONSUMABLE GOOD</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508049856</td>
+                        <td align="right">D468648</td>
+                        <td>BR0391</td>
+                        <td align="center">23MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">64</td>
+                        <td align="right">JOHN DEERE SPARE PAR</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508161101</td>
+                        <td align="right">CHI714088</td>
+                        <td>BR0391</td>
+                        <td align="center">23MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">45</td>
+                        <td align="right">CEILING FANS PA</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>20559949960</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">24MAY2017</td>
+                        <td>NGO/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">39.60</td>
+                        <td align="right">PARCEL EXPRESS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508009466</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">24MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">8</td>
+                        <td align="right">34</td>
+                        <td align="right">DOCUMENT AND SA</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508017844</td>
+                        <td align="right">417471276</td>
+                        <td>BR0391</td>
+                        <td align="center">24MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">107.50</td>
+                        <td align="right">MEDICAL SUPPLIES</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508161101</td>
+                        <td align="right">CHI714088</td>
+                        <td>BR0391</td>
+                        <td align="center">24MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">45</td>
+                        <td align="right">CEILING FANS PA</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508613415</td>
+                        <td align="right">DTT905056</td>
+                        <td>BR0391</td>
+                        <td align="center">24MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">2.70</td>
+                        <td align="right">RAIL FUEL</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69546137442</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">24MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">26</td>
+                        <td align="right">EXPRESSCARGO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506992510</td>
+                        <td align="right">7IAO034</td>
+                        <td>BR0395</td>
+                        <td align="center">26MAY2017</td>
+                        <td>BKK/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">592</td>
+                        <td align="right">LIQUID DETERGEN</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507876396</td>
+                        <td align="right">ST563361</td>
+                        <td>BR0391</td>
+                        <td align="center">26MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">3</td>
+                        <td align="right">MACHINE PARTS</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507876396</td>
+                        <td align="right">ST563362</td>
+                        <td>BR0391</td>
+                        <td align="center">26MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">2</td>
+                        <td align="right">MACHINE PARTS</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508060032</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">26MAY2017</td>
+                        <td>HGH/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">56</td>
+                        <td align="right">GABAPENTIN</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506885104</td>
+                        <td align="right">9037479L16710006</td>
+                        <td>BR0395</td>
+                        <td align="center">27MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">5</td>
+                        <td align="right">GIFTS PERSONAL</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506955620</td>
+                        <td align="right">YTW01849422</td>
+                        <td>BR0395</td>
+                        <td align="center">27MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">20</td>
+                        <td align="right">DYE SUBLIMATION</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506955620</td>
+                        <td align="right">YTW01850262</td>
+                        <td>BR0395</td>
+                        <td align="center">27MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">11</td>
+                        <td align="right">MAGNETIC FLOAT</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507016494</td>
+                        <td align="right">ATL0064153</td>
+                        <td>BR0391</td>
+                        <td align="center">27MAY2017</td>
+                        <td>ATL/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">48</td>
+                        <td align="right">GENERATOR SPARE</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507653343</td>
+                        <td align="right">PS395842</td>
+                        <td>BR0391</td>
+                        <td align="center">27MAY2017</td>
+                        <td>KHH/SGN</td>
+                        <td align="right">12</td>
+                        <td align="right">147</td>
+                        <td align="right">COWHIDE UPPER L</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507838972</td>
+                        <td align="right">4330028657</td>
+                        <td>BR0391</td>
+                        <td align="center">27MAY2017</td>
+                        <td>ATL/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">6.40</td>
+                        <td align="right">NON HAZ MACHINE</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507915950</td>
+                        <td align="right">GPS60067</td>
+                        <td>BR0391</td>
+                        <td align="center">27MAY2017</td>
+                        <td>KHH/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">3</td>
+                        <td align="right">TRANSISTOR SET</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507915950</td>
+                        <td align="right">GPS60069</td>
+                        <td>BR0391</td>
+                        <td align="center">27MAY2017</td>
+                        <td>KHH/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">236</td>
+                        <td align="right">ELECTRICAL MATE</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507915950</td>
+                        <td align="right">GPS60070</td>
+                        <td>BR0391</td>
+                        <td align="center">27MAY2017</td>
+                        <td>KHH/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">22</td>
+                        <td align="right">TEXTILE MACHINE</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507940030</td>
+                        <td align="right">1200794652</td>
+                        <td>BR0391</td>
+                        <td align="center">27MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">12</td>
+                        <td align="right">LOGO</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508103815</td>
+                        <td align="right">371972301</td>
+                        <td>BR0395</td>
+                        <td align="center">27MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">137</td>
+                        <td align="right">BIKES BIKE ACCE</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508637031</td>
+                        <td align="right">KR101045167</td>
+                        <td>BR0395</td>
+                        <td align="center">27MAY2017</td>
+                        <td>ICN/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">68</td>
+                        <td align="right">ARC LAMP</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509035924</td>
+                        <td align="right">TW101S31904</td>
+                        <td>BR0391</td>
+                        <td align="center">27MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">3</td>
+                        <td align="right">LENS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509176915</td>
+                        <td align="right">69152</td>
+                        <td>BR0395</td>
+                        <td align="center">27MAY2017</td>
+                        <td>KHH/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">11</td>
+                        <td align="right">BEL</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509463753</td>
+                        <td align="right">UL170519LASG</td>
+                        <td>BR0395</td>
+                        <td align="center">27MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">60</td>
+                        <td align="right">SEIMEI HIMITSU</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69539988804</td>
+                        <td align="right">42L0069966</td>
+                        <td>BR0395</td>
+                        <td align="center">27MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">132</td>
+                        <td align="right">MEDICAL ACC</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506955712</td>
+                        <td align="right">YTW01851592</td>
+                        <td>BR0395</td>
+                        <td align="center">28MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">24</td>
+                        <td align="right">CORDURA FABRIC</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507059124</td>
+                        <td align="right">KSF1708181</td>
+                        <td>BR0391</td>
+                        <td align="center">28MAY2017</td>
+                        <td>PVG/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">10</td>
+                        <td align="right">CUP</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507059124</td>
+                        <td align="right">KSF1708183</td>
+                        <td>BR0391</td>
+                        <td align="center">28MAY2017</td>
+                        <td>PVG/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">16</td>
+                        <td align="right">MAGNET</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507059146</td>
+                        <td align="right">BOSH17051205</td>
+                        <td>BR0391</td>
+                        <td align="center">28MAY2017</td>
+                        <td>PVG/SGN</td>
+                        <td align="right">91</td>
+                        <td align="right">1956</td>
+                        <td align="right">FABRIC</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507584124</td>
+                        <td align="right">7IMZ503</td>
+                        <td>BR0395</td>
+                        <td align="center">28MAY2017</td>
+                        <td>SIN/SGN</td>
+                        <td align="right">65</td>
+                        <td align="right">541</td>
+                        <td align="right">INTEGRATED CIRCUITS</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507584124</td>
+                        <td align="right">7IMZ865</td>
+                        <td>BR0395</td>
+                        <td align="center">28MAY2017</td>
+                        <td>SIN/SGN</td>
+                        <td align="right">15</td>
+                        <td align="right">50</td>
+                        <td align="right">OTHER MEMORIES</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508017984</td>
+                        <td align="right">4041702260</td>
+                        <td>BR0391</td>
+                        <td align="center">28MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">12</td>
+                        <td align="right">INDUSTRIAL SUPP</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508567403</td>
+                        <td align="right">SW196114</td>
+                        <td>BR0395</td>
+                        <td align="center">28MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">10</td>
+                        <td align="right">270</td>
+                        <td align="right">FABRICQTY562</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508748342</td>
+                        <td align="right">YUS02454421</td>
+                        <td>BR0391</td>
+                        <td align="center">28MAY2017</td>
+                        <td>SEA/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">401</td>
+                        <td align="right">MACHINERY</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69543445721</td>
+                        <td align="right">003757</td>
+                        <td>BR0395</td>
+                        <td align="center">28MAY2017</td>
+                        <td>ATL/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">20</td>
+                        <td align="right">EMPTY PLASTIC B</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69543445721</td>
+                        <td align="right">003758</td>
+                        <td>BR0391</td>
+                        <td align="center">28MAY2017</td>
+                        <td>ATL/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">118</td>
+                        <td align="right">EMPTY PLASTIC B</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506748055</td>
+                        <td align="right">418241265</td>
+                        <td>BR0391</td>
+                        <td align="center">29MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">208.50</td>
+                        <td align="right">MEDICAL TREADMILL</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506789134</td>
+                        <td align="right">WTS170528C</td>
+                        <td>BR0395</td>
+                        <td align="center">29MAY2017</td>
+                        <td>PVG/SGN</td>
+                        <td align="right">55</td>
+                        <td align="right">1271</td>
+                        <td align="right">LADIES WEARING MATER</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506789145</td>
+                        <td align="right">HYIS1705342</td>
+                        <td>BR0395</td>
+                        <td align="center">29MAY2017</td>
+                        <td>PVG/SGN</td>
+                        <td align="right">12</td>
+                        <td align="right">207</td>
+                        <td align="right">MELANGE YARN</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506910606</td>
+                        <td align="right">PDX700116501</td>
+                        <td>BR0391</td>
+                        <td align="center">29MAY2017</td>
+                        <td>PDX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">17</td>
+                        <td align="right">PLUMBING SUPPLIES</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506966853</td>
+                        <td align="right">12804573</td>
+                        <td>BR0395</td>
+                        <td align="center">29MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">539</td>
+                        <td align="right">PLASTIC ARTICLES</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507017360</td>
+                        <td align="right">ATL0064231</td>
+                        <td>BR0391</td>
+                        <td align="center">29MAY2017</td>
+                        <td>ATL/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">12</td>
+                        <td align="right">TURBINE SPART PARTS</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507072144</td>
+                        <td align="right">SA00083952</td>
+                        <td>BR0395</td>
+                        <td align="center">29MAY2017</td>
+                        <td>JFK/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">115</td>
+                        <td align="right">WEBBING</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507462884</td>
+                        <td align="right">NEU19425980</td>
+                        <td>BR0391</td>
+                        <td align="center">29MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">181.90</td>
+                        <td align="right">POWER PANEL MICROPRO</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508060043</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">29MAY2017</td>
+                        <td>HGH/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">47</td>
+                        <td align="right">D A TOCOPHEROL</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508215071</td>
+                        <td align="right">550113552371</td>
+                        <td>BR0395</td>
+                        <td align="center">29MAY2017</td>
+                        <td>ICN/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">214</td>
+                        <td align="right">SUBSTRATE</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508338912</td>
+                        <td align="right">TPE1003414</td>
+                        <td>BR0391</td>
+                        <td align="center">29MAY2017</td>
+                        <td>TPE/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">115</td>
+                        <td align="right">SOLAR LED</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509070950</td>
+                        <td align="right">EWR00358234</td>
+                        <td>BR0391</td>
+                        <td align="center">29MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">218</td>
+                        <td align="right">LA 14 200B CARBON DI</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69539988815</td>
+                        <td align="right">4052219860</td>
+                        <td>BR0395</td>
+                        <td align="center">29MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">97.50</td>
+                        <td align="right">NETWORK EQUIPMENT</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69539988815</td>
+                        <td align="right">4052219913</td>
+                        <td>BR0395</td>
+                        <td align="center">29MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">20</td>
+                        <td align="right">NETWORK SECURITY DEV</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69539988815</td>
+                        <td align="right">4071596708</td>
+                        <td>BR0395</td>
+                        <td align="center">29MAY2017</td>
+                        <td>LAX/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">7</td>
+                        <td align="right">SURGICAL PRODUCTS</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69557920295</td>
+                        <td align="right">MST27504505</td>
+                        <td>BR0395</td>
+                        <td align="center">29MAY2017</td>
+                        <td>AMS/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">100</td>
+                        <td align="right">ELECTRONIC COMPONENT</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506748081</td>
+                        <td align="right">411681484</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">36</td>
+                        <td align="right">SHEET</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506748081</td>
+                        <td align="right">4170208429</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">184.50</td>
+                        <td align="right">VALVES AND FITT</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506748081</td>
+                        <td align="right">417471359</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">2</td>
+                        <td align="right">MEDICAL SUPPLIE</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506748081</td>
+                        <td align="right">4190213274</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">513.50</td>
+                        <td align="right">LID SEALANT</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506748081</td>
+                        <td align="right">422351594</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">227.50</td>
+                        <td align="right">MARINE ENGINE P</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506781600</td>
+                        <td align="right">7EB3844</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">192</td>
+                        <td align="right">LAB DIAGNOSTIC</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69506789134</td>
+                        <td align="right">WTS170528C</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>PVG/SGN</td>
+                        <td align="right">126</td>
+                        <td align="right">2775</td>
+                        <td align="right">LADIES WEARING MATER</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507059290</td>
+                        <td align="right">BOSH17051248</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>PVG/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">238</td>
+                        <td align="right">FABRIC 95 RAYON</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507134595</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>YYZ/SGN</td>
+                        <td align="right">41</td>
+                        <td align="right">1037</td>
+                        <td align="right">MINK SKINS</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507562321</td>
+                        <td align="right">4395901973</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>PVG/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">253</td>
+                        <td align="right">FIRE ALARM PANE</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507812523</td>
+                        <td align="right">NOOEC0217000323</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>YUL/SGN</td>
+                        <td align="right">2</td>
+                        <td align="right">578</td>
+                        <td align="right">FABRIC</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507822216</td>
+                        <td align="right">BTA1705064</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>YVR/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">75</td>
+                        <td align="right">CANDIES CLOTHES</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507822216</td>
+                        <td align="right">BTA1705065</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>YVR/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">75</td>
+                        <td align="right">CANDIES CLOTHES</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507822216</td>
+                        <td align="right">BTA1705066</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>YVR/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">80</td>
+                        <td align="right">CANDIES CLOTHES</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507874495</td>
+                        <td align="right">YUL20063906</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>YYZ/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">80</td>
+                        <td align="right">PLASTIC STRIP</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69507959243</td>
+                        <td align="right">TOR0626151</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>YYZ/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">394</td>
+                        <td align="right">DEFECTIVE HARD</td>
+                        <td>L2</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508543850</td>
+                        <td align="right">12803295</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>ORD/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">1</td>
+                        <td align="right">LABORATORY WARE</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895224</td>
+                        <td align="right">AUSSGN170073</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>AUS/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">83</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895224</td>
+                        <td align="right">AUSSGN170074</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>AUS/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">95</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895224</td>
+                        <td align="right">AUSSGN170075</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>AUS/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">96</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895224</td>
+                        <td align="right">AUSSGN170076</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>AUS/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">97</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895224</td>
+                        <td align="right">AUSSGN170077</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>AUS/SGN</td>
+                        <td align="right">3</td>
+                        <td align="right">93</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170844</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">92</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170845</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">95</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170846</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">99</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170847</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">98</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170848</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">96</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170849</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">97</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170850</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">94</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170851</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">99</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170852</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">97</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170853</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">8</td>
+                        <td align="right">91</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170854</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">10</td>
+                        <td align="right">93</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170855</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">98</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170856</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">97</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170857</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">95</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170858</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">93</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170859</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">97</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170860</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">98</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170861</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">99</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170862</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">78</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170863</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">4</td>
+                        <td align="right">20</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170864</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">85</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170865</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">96</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170866</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">98</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170867</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">5</td>
+                        <td align="right">40</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170868</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">97</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895235</td>
+                        <td align="right">DFWSGN170869</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">97</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170870</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">92</td>
+                        <td align="right">GIFTS CANDIES TOYS S</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170871</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">95</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170872</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">99</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170873</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">98</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170874</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">96</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170875</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">97</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170876</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">94</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170877</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">6</td>
+                        <td align="right">99</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170878</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">97</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69508895250</td>
+                        <td align="right">DFWSGN170879</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>DFW/SGN</td>
+                        <td align="right">7</td>
+                        <td align="right">91</td>
+                        <td align="right">GIFTS CANDIES T</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509089883</td>
+                        <td align="right">12391469</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>YUL/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">342</td>
+                        <td align="right">AQUAFEED AUQAMEDICA</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69509089883</td>
+                        <td align="right">12391499</td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>YUL/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">340</td>
+                        <td align="right">MICROBIAL MATERIAL F</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69535813105</td>
+                        <td align="right">17Q103723</td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>IAH/SGN</td>
+                        <td align="right">1</td>
+                        <td align="right">117</td>
+                        <td align="right">VERSENE NA CHEL</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69537756073</td>
+                        <td align="right"></td>
+                        <td>BR0391</td>
+                        <td align="center">30MAY2017</td>
+                        <td>HGH/SGN</td>
+                        <td align="right">98</td>
+                        <td align="right">2564</td>
+                        <td align="right">KINTTED FABRIC</td>
+                        <td>L1</td>
+                    </tr>
+
+                    <tr>
+                        <td>69537756073</td>
+                        <td align="right"></td>
+                        <td>BR0395</td>
+                        <td align="center">30MAY2017</td>
+                        <td>HGH/SGN</td>
+                        <td align="right">90</td>
+                        <td align="right">2354</td>
+                        <td align="right">KINTTED FABRIC</td>
+                        <td>L1</td>
+                    </tr>
+                    <tr><td colspan="9">
+                        @HCSVNewWebsite.Commons.TitleConst.getTitleConst("TONG_CONG")
+                        : 186</td></tr>
+                    <tr>
+                        <td colspan="9">
+                         @HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY_GIO_IN_BAO_CAO") 
+                            :  31 May 2017 9:55
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+        <!-- END DANH SACH -->
+        <!-- iware add javascript handle form -->
+
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $(".btn").click(function () {
+                    value = $(this).attr('value');
+                    form_id = $(this).attr('form');
+                    action_input_id = form_id + '_action';
+                    $('#' + action_input_id).attr({ 'value': value });
+                    $('#' + form_id).submit();
+                });
+                $('#airlines_nondlv_report').keypress(function (event) {
+                    if (event.keyCode == '13') {
+                        $(this).find('.btn').click();
+                    }
+                });
+            });
+        </script>
+        <!-- iware end -->
+
+    </div>
+</div>

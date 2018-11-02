@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="layout">
+
+    <title>TCS - A Joint Venture between VIETNAM AIRLINES, SASCO and SATS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script language="javascript">
+        function visitSite(the_site) {
+            window.location = the_site;
+        }
+    </script>
+
+
+    <form name="frmAwb" id="input_awb">
+
+        <input name="section" id="input_awb_action" type="hidden">
+        <input name="layout" value="03_cs" type="hidden">
+
+        <table class="bdr" width="1000">
+            <tbody>
+                <tr>
+                    <td class="awb_title" width="132">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VAN_DON"):</td>
+                    <td width="856">
+                        <input name="awbFirst" onkeyup="onKeyUpField();" maxlength="3" size="2" value="695" type="text">
+                        <input maxlength="8" name="awbLast" size="8" value="5967802" type="text">
+                        <a href="#" class="btn" value="customer" form="input_awb"><span>Go</span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+        <tbody>
+            <tr valign="top">
+                <td>
+
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                                <td>
+                                    <div align="center">
+                                        <span class="awb_title">
+                                           @HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG_HANG_NHAP")
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table class="form awb_tbl02" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="5" valign="top">
+                                                    <table class="form awb_tbl02" width="100%">
+                                                        <tbody>
+                                                            <tr class="form">
+                                                                <td>
+                                                                    <strong>
+                                                                        @HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KHONG_VAN_DON")
+                                                                        695-08842794
+                                                                    </strong>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                <td class="awb_title" align="center" width="200">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NOI_XUAT_PHAT")</td>
+                                                <td class="awb_title" align="center" width="200">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NOI_DEN")</td>
+                                                <td class="awb_title" align="center" width="200">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KIEN_HANG")</td>
+                                                <td colspan="2" class="awb_title" align="center" width="200">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TRONG_LUONG")</td>
+                                            </tr>
+                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                <td valign="top">
+                                                    <div align="center">
+                                                        TPE                    &nbsp;
+                                                    </div>
+                                                </td>
+                                                <td valign="top">
+                                                    <div align="center">
+                                                        SGN                    &nbsp;
+                                                    </div>
+                                                </td>
+                                                <td valign="top">
+                                                    <div align="center">
+                                                        10                    &nbsp;
+                                                    </div>
+                                                </td>
+                                                <td valign="top">
+                                                    <div align="center">
+                                                        76                    (kg)&nbsp;
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                <td valign="top"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGUOI_GOI")</strong></td>
+                                                <td colspan="4" valign="top">
+                                                    UNITED CHINA CO LTD                  &nbsp;
+                                                </td>
+                                            </tr>
+                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                <td valign="top"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DIA_CHI")</strong></td>
+                                                <td colspan="4" valign="top">
+                                                    TAIWAN                  &nbsp;
+                                                </td>
+                                            </tr>
+                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                <td valign="top"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGUOI_NHAN")</strong></td>
+                                                <td colspan="4" valign="top">
+                                                    CHI NHÁNH TẠI THÀNH PHỐ HỒ CHÍ MINH- CÔNG TY CỔ PHẦN CHUYỂN PHÁT NHANH QUỐC TẾ                  &nbsp;
+                                                </td>
+                                            </tr>
+                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                <td valign="top"><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DIA_CHI")</strong></td>
+                                                <td colspan="4" valign="top">
+                                                    TẦNG 8, TÒA NHÀ ATHENA, 146-148 CỘNG HÒA, PHƯỜNG 12,
+                                                    QUẬN TÂN BÌNH, THÀNH PHỐ HỒ CHÍ MINH, VIỆT NAM                  &nbsp;
+                                                </td>
+                                            </tr>
+                                            <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                                                <td colspan="5" class="awb_title" valign="top">
+                                                    @HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_VAN_CHUYEN")
+                                                </td>
+                                            </tr>
+                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                <td colspan="5" valign="top">
+                                                    <table class="form awb_tbl02" width="100%">
+                                                        <tbody>
+                                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                                <td class="awb_title" align="center" width="12%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_HIEU_CHUYEN_BAY")</td>
+                                                                <td class="awb_title" align="center" width="20%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIO_DEN")</td>
+                                                                <td class="awb_title" align="center" width="10%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_KIEN")</td>
+                                                                <td class="awb_title" align="center" width="12%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TRONG_LUONG")</td>
+                                                                <td class="awb_title" align="center" width="13%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TRONG_LUONG_CAN_LAI")</td>
+                                                                <td class="awb_title" align="center" width="33%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG")</td>
+                                                            </tr>
+                                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                                <td align="center">
+                                                                    BR0395
+                                                                </td>
+                                                                <td align="center">
+                                                                    03-Mar-2017 10:18
+                                                                </td>
+                                                                <td align="center">
+                                                                    10
+                                                                </td>
+                                                                <td align="right">
+                                                                    76                        (kg)
+                                                                </td>
+                                                                <td align="center">
+                                                                    &nbsp;
+                                                                </td>
+                                                                <td align="center">
+                                                                    Hàng đã được thông báo lần 2
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="marginT10" align="center">
+                                        <a href="/Prices/Index" target="_blank" class="btn">
+                                            <span>
+                                               @HCSVNewWebsite.Commons.TitleConst.getTitleConst("BANG_GIA")
+                                            </span>
+                                        </a> 
+                                        <a href="/AWBTracking_DirectConsignee/StorageCharge" target="_parent" class="btn">
+                                            <span>
+                                               @HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LUU_KHO_TAI_THOI_DIEM")
+                                            </span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+</div>
+    <script language="JavaScript">
+        function checkForm() {
+            var awbFirst = document.frmAwb.awbFirst.value;
+            var awbLast = document.frmAwb.awbLast.value;
+            var serie = awbLast.substring(awbLast.length - 1);
+
+            if (awbFirst.length != 3) {
+                alert("So Khong Van Don Khong Hop Le");
+                return false;
+            }
+            if (awbLast.length != 8) {
+                alert("So Khong Van Don Khong Hop Le");
+                return false;
+            }
+            for (i = 0; i < awbFirst.length; i++) {
+                if ((awbFirst.charAt(i) != 0) && (awbFirst.charAt(i) != 1) && (awbFirst.charAt(i) != 2) && (awbFirst.charAt(i) != 3) && (awbFirst.charAt(i) != 4) && (awbFirst.charAt(i) != 5) && (awbFirst.charAt(i) != 6) && (awbFirst.charAt(i) != 7) && (awbFirst.charAt(i) != 8) && (awbFirst.charAt(i) != 9)) {
+                    alert("So Khong Van Don Khong Hop Le");
+                    return false;
+                }
+            }
+            for (i = 0; i < awbLast.length; i++) {
+                if ((awbLast.charAt(i) != 0) && (awbLast.charAt(i) != 1) && (awbLast.charAt(i) != 2) && (awbLast.charAt(i) != 3) && (awbLast.charAt(i) != 4) && (awbLast.charAt(i) != 5) && (awbLast.charAt(i) != 6) && (awbLast.charAt(i) != 7) && (awbLast.charAt(i) != 8) && (awbLast.charAt(i) != 9)) {
+                    alert("So Khong Van Don Khong Hop Le");
+                    return false;
+                }
+            }
+
+            if ((serie % 7) != awbLast.charAt(awbLast.length - 1)) {
+                alert("So Khong Van Don Khong Hop Le");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+    <script language="JavaScript">
+        function onKeyUpField() {
+            var iLen = document.frmAwb.awbFirst.value.length;
+
+            if (iLen == 3) {
+                eval("document.frmAwb.awbLast.focus()");
+                eval("document.frmAwb.awbLast.select()");
+            }
+        }
+    </script>
+
+

@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "InwardFlightServiceReport_default";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+    <div>
+
+        <div>
+            <ul class="awb_tabs">
+                <li><a href="@Url.Action("ImportCargoTracking_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THONG_TIN_HANG_HOA_NHAP_KHAU")</span></a></li>
+                <li class="current"><a href="@Url.Action("InwardFlightServiceReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO")</span></a></li>
+                <li><a href="@Url.Action("NoneDeliveryReport_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoStatus_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TINH_TRANG_HANG_HOA_XUAT_KHAU")</span></a></li>
+                <li><a href="@Url.Action("ExportCargoInWareHouse_default", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("HANG_XUAT_KHAU_TRONG_KHO")</span></a></li>
+                <li><a href="@Url.Action("ChangePassword", "Airline", "Views")"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</span></a></li>
+
+            </ul>
+        </div>                <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=airline&amp;locale=vi_VN">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+        <!-- IN BAO CAO -->
+        <h5>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_BAO_CAO_CHUYEN_BAY_DEN")</h5>
+        <form id="al_flight_report" action="https://www.tcs.com.vn/awb/index.php?section=airline&amp;layout=09_cs" method="post">
+            <input type="hidden" name="action" id="al_flight_report_action">
+
+            <table width="1000" class="bdr">
+                <tbody>
+                    <tr>
+                        <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("SO_HIEU_CHUYEN_BAY") :</td>
+                        <td><input type="text" name="txt_flight_no" value="BR" maxlength="8"></td>
+                        <td>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NGAY") :</td>
+                        <td><input type="txt_date" name="txt_flight_date" value="31/5/2017" maxlength="10"></td>
+                        <td>
+                            <a href="@Url.Action("InwardFlightServiceReport_loaded", "Airline", "Views")" class="btn" value="choose" form="al_flight_report"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHON")</span></a>&nbsp;
+                            <a href="javascript:window.print();" class="btn"><span>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("IN_MAN_HINH")</span></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        <!-- END IN BAO CAO -->
+        <!-- BAO CAO -->
+        <div class="ui_awb">
+            <h5>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("BAO_CAO_CHUYEN_BAY_DEN")</h5>
+            <table width="1000" class="tbl02"></table>
+            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("NHAP_SO_NGAY_CHUYEN_BAY")
+
+        </div>
+
+        <div align="right" class="marginT10"><a href="https://www.tcs.com.vn/awb/index.php?section=airline&amp;layout=09_cs#" class="btn marginT0"><span>Back to top</span></a></div>
+        <!-- END BAO CAO -->
+
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $(".btn").click(function () {
+                    value = $(this).attr('value');
+                    form_id = $(this).attr('form');
+                    action_input_id = form_id + '_action';
+                    $('#' + action_input_id).attr({ 'value': value });
+                    $('#' + form_id).submit();
+                });
+            });
+        </script>
+        <!-- iware end -->
+
+    </div>
+</div>

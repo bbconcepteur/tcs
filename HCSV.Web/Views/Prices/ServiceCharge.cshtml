@@ -1,0 +1,627 @@
+﻿@{
+    ViewBag.Title = "ServiceCharge";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="inner_container">
+
+    <div>
+
+        <div id="user_profile" style="float:right;">
+            <a href="sign_out.php?section=customer&amp;locale=vi_VN">
+               @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+        <title>TCS - A Joint Venture between VIETNAM AIRLINES, SASCO and SATS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><link rel="stylesheet" href="tcs.css" type="text/css">
+
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="awb_title">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("BANG_GIA_AP_DUNG")</td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="price" align="right" cellspacing="0" cellpadding="2" border="0" width="36%">
+                            <tbody>
+                                <tr>
+                                    <td width="9%">
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+                                    <td width="91%">
+                                        <a href="/Prices/Index">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_LUU_KHO")</a>
+</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+
+                                    <td><strong>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_PHUC_VU")</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+
+                                    <td><a href="/Prices/GiaLaoVuNgoaiGio">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("PHU_THU_GIA_LAO_VU_NGOAI_GIO")</a> </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="../images/arroww.gif" height="11" width="11">
+                                    </td>
+
+                                    <td>
+                                        <a href="/Prices/GiaDichVuKhac">
+                                            @HCSVNewWebsite.Commons.TitleConst.getTitleConst("GIA_CAC_LOAI_DICH_VU_KHAC")
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tbl02" width="100%">
+                            <tbody>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td class="title" align="center" width="3%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("STT")</td>
+                                    <td class="title" align="center" width="75%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("NOI_DUNG_CAC_KHOAN_THU")</td>
+                                    <td class="title" align="center" width="10%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DON_VI_TINH")</td>
+                                    <td class="title" align="center" width="12%">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("MUC_THU")</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 2. </td>
+                                    <td><strong>GIÁ LAO VỤ</strong> </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 2.1 </td>
+                                    <td><strong>Giá lao vụ hàng hoá thông thường</strong></td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>2.1.1 </td>
+                                    <td> Hàng xuất khẩu</td>
+                                    <td> <div align="center"> Kg </div></td>
+                                    <td>
+                                        <div align="right">
+                                            760
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá tối thiểu - Hàng xuất khẩu</td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            99,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>2.1.2</td>
+                                    <td><strong>Hàng quá cảnh phải đổi không vận đơn (MAWB)</strong></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>Áp dụng theo giá các loại hàng hóa xuất khẩu như sau:</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>1. Hàng hóa thông thường xuất khẩu</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Đơn giá </blockquote></td>
+                                    <td align="center">VND/kg</td>
+                                    <td align="right">760</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Giá tối thiểu</blockquote></td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">99.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>2. Hàng quý hiếm xuất khẩu ( VAL)</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Đơn giá </blockquote></td>
+                                    <td align="center">VND/kg</td>
+                                    <td align="right">5.250</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Giá tối thiểu</blockquote></td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">1.000.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>3. Hàng động vật sống xuất khẩu</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Đơn giá </blockquote></td>
+                                    <td align="center">VND/kg</td>
+                                    <td align="right">950</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Giá tối thiểu</blockquote></td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">250.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>4. Hàng có giá trị cao ( VUN ) xuất khẩu</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Đơn giá </blockquote></td>
+                                    <td align="center">VND/kg</td>
+                                    <td align="right">850</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Giá tối thiểu</blockquote></td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">200.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>5. Hàng nguy hiểm xuất khẩu</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Đơn giá </blockquote></td>
+                                    <td align="center">VND/kg</td>
+                                    <td align="right">1.440</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td><blockquote>- Giá tối thiểu</blockquote></td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">150.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>6. Quan tài hàng xuất</td>
+                                    <td align="center">VND/lần</td>
+                                    <td align="right">700.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 2.1.3</td>
+                                    <td><strong>Hàng nhập khẩu </strong></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 1,5 - 3 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">5.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 3 - 6 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">3.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300,000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 6 - 9 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">2.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 9 - 12 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">1.800</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng sau 12 giờ sau khi máy bay đáp.</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">1.120</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">150.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        * Quý khách hàng có nhu cầu, có thể đăng ký trước để được giao hàng trong những khoảng thời gian nêu trên
+
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>2.2</td>
+                                    <td><strong>Giá lao vụ hàng hóa đặc biệt</strong></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 2.2.1</td>
+                                    <td><strong>Phát chuyển nhanh</strong></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 1,5 - 3 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">5.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 3 - 6 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">3.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu.</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng sau 6 giờ sau khi máy bay đáp.</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">2.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">150.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 2.2.2</td>
+                                    <td><strong>Hàng dễ hư hỏng</strong></td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 1,5 - 3 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">5.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 3 - 6 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">3.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 6 - 9 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">2.500</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng từ 9 - 12 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">1.800</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">300.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giao hàng  sau 12 giờ sau khi máy bay đáp</td>
+                                    <td align="center">Kg</td>
+                                    <td align="right">1.250</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" class="tbl01" bgcolor="#FFFFFF">
+                                    <td>&nbsp;</td>
+                                    <td>- Giá giao hàng tối thiểu</td>
+                                    <td align="center">Lần</td>
+                                    <td align="right">150.000</td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 2.2.3</td>
+                                    <td><strong>Hàng quý hiếm</strong> </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Hàng xuất </td>
+                                    <td> <div align="center"> Kg </div></td>
+                                    <td>
+                                        <div align="right">
+                                            5,250
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá tối thiểu </td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,000,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Hàng nhập </td>
+                                    <td> <div align="center"> Kg </div></td>
+                                    <td>
+                                        <div align="right">
+                                            5,2500
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá tối thiểu </td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,000,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 2.2.4</td>
+                                    <td><strong>Hàng động vật sống</strong> </td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Hàng xuất </td>
+                                    <td> <div align="center"> Kg </div></td>
+                                    <td>
+                                        <div align="right">
+                                            950
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá tối thiểu </td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            250,0000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Hàng nhập </td>
+                                    <td> <div align="center"> Kg </div></td>
+                                    <td>
+                                        <div align="right">
+                                            2,500
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá tối thiểu </td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            250,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 2.2.5</td>
+                                    <td><strong>Hàng có giá trị cao (VUN)</strong></td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Hàng xuất </td>
+                                    <td> <div align="center"> Kg </div></td>
+                                    <td>
+                                        <div align="right">
+                                            850
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá tối thiểu </td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            200,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td> 2.2.6</td>
+                                    <td><strong>Hàng nguy hiểm (DGR)</strong></td>
+                                    <td>&nbsp; </td>
+                                    <td>&nbsp; </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Hàng xuất </td>
+                                    <td> <div align="center"> Kg </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,440
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Giá tối thiểu </td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            150,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>
+                                        2.2.7
+                                    </td>
+                                    <td>
+                                        <strong>Quan tài</strong>
+                                    </td>
+                                    <td>
+                                        <div align="center">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div align="right">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Hàng xuất </td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            700,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td> Hàng nhập </td>
+                                    <td> <div align="center"> Lần </div></td>
+                                    <td>
+                                        <div align="right">
+                                            1,250,000
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>&nbsp; </td>
+                                    <td colspan="3">- Nếu phục vụ ngoài giờ theo thời gian quy định tại mục "<strong>Chính sách phụ thu giá lao vụ ngoài giờ</strong>" thì sẽ được tính phụ thu theo quy định "<strong>Chính sách phụ thu giá lao vụ ngoài gi</strong>ờ" tham khảo tại mục "<strong> Phụ thu giá lao vụ ngoài giờ</strong>".</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
