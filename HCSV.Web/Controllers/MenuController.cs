@@ -12,14 +12,14 @@ namespace HCSV.Web.Controllers
     {
         // GET: Menu
         
-        public async Task<ActionResult> TopMenu()
+        public ActionResult TopMenu()
         {
             var menus = UnitOfWork.DashbroadBussiness.GetTopMenu(LanguageId);
 
             return PartialView("~/Views/Shared/_Menu.cshtml", menus);
         }
 
-        public async Task<ActionResult> BottomMenu()
+        public ActionResult BottomMenu()
         {
             var menus = UnitOfWork.DashbroadBussiness.GetBottomMenu(LanguageId);
 

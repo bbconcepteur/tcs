@@ -16,9 +16,9 @@ namespace HCSV.Web.Controllers
             return View(contents);
         }
 
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(int? contentID)
         {
-            var contents = await UnitOfWork.NewsBusiness.GetDetails(LanguageId, id ?? 0);
+            var contents = await UnitOfWork.NewsBusiness.GetDetails(LanguageId, contentID ?? 0);
             return View(contents);
         }
     }
