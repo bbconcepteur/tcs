@@ -86,13 +86,26 @@ namespace HCSV.Business
 
 
         #region Initization
-        public ILanguageBusiness LanguageBusiness => new LanguageBusiness(_context);
 
-        public INewsBusiness NewsBusiness => new NewsBusiness(_context);
+        public ILanguageBusiness LanguageBusiness
+        {
+            get { return new LanguageBusiness(_context); }
+        }
 
-        public IAccountBusiness AccountBusiness => new AccountBusiness(_context);
+        public INewsBusiness NewsBusiness
+        {
+            get { return new NewsBusiness(_context); }
+        }
 
-        public IDashbroadBussiness DashbroadBussiness  => new DashbroadBussiness(_context);
+        public IAccountBusiness AccountBusiness
+        {
+            get { return new AccountBusiness(_context); }
+        }
+
+        public IDashbroadBussiness DashbroadBussiness
+        {
+            get { return new DashbroadBussiness(_context); }
+        }
         #endregion
     }
 }
