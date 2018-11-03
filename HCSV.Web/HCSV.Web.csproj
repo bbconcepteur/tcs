@@ -302,11 +302,6 @@
     <Content Include="fonts\font-awesome-4.5.0\HELP-US-OUT.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\ai.0.22.9-build00167.js" />
-    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\animations.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -463,42 +458,9 @@
     <Content Include="Content\BoostrapTemplate\fonts\Linearicons-Free.woff2" />
     <Content Include="Content\BoostrapTemplate\css\.DS_Store" />
     <Content Include="Content\BoostrapTemplate\css\main.css.map" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\color.min.js" />
-    <Content Include="Scripts\components.min.js" />
-    <Content Include="Scripts\core.min.js" />
-    <Content Include="Scripts\dc.js" />
-    <Content Include="Scripts\DrawSVGPlugin.min.js" />
-    <Content Include="Scripts\experiment.js" />
-    <Content Include="Scripts\fonts.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.easing.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\jssor.min.js" />
-    <Content Include="Scripts\jssor.slider.min.js" />
-    <Content Include="Scripts\jssor.slider.mini.js" />
-    <Content Include="Scripts\layout.min.js" />
-    <Content Include="Scripts\lodash.min.js" />
-    <Content Include="Scripts\main-r.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\mousetrap.min.js" />
-    <Content Include="Scripts\react-dom.min.js" />
-    <Content Include="Scripts\react-with-addons.min.js" />
-    <Content Include="Scripts\require.min.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\scrollspy.js" />
-    <Content Include="Scripts\ScrollToPlugin.min.js" />
-    <Content Include="Scripts\skins.min.js" />
     <Content Include="Scripts\Slider\functions.js" />
     <Content Include="Scripts\Slider\jquery.js" />
     <Content Include="Scripts\Slider\plugins.js" />
-    <Content Include="Scripts\swfobject.min.js" />
     <Content Include="Scripts\tinymce\jquery.tinymce.js" />
     <Content Include="Scripts\tinymce\langs\en.js" />
     <Content Include="Scripts\tinymce\license.txt" />
@@ -753,15 +715,6 @@
     <Content Include="Scripts\tinymce\utils\form_utils.js" />
     <Content Include="Scripts\tinymce\utils\mctabs.js" />
     <Content Include="Scripts\tinymce\utils\validate.js" />
-    <Content Include="Scripts\tpa.min.js" />
-    <Content Include="Scripts\tweenEngine.min.js" />
-    <Content Include="Scripts\TweenMax.min.js" />
-    <Content Include="Scripts\utils.min.js" />
-    <Content Include="Scripts\wixappsBuilder.min.js" />
-    <Content Include="Scripts\wixappsClassics.min.js" />
-    <Content Include="Scripts\wixappsCore.min.js" />
-    <Content Include="Scripts\wixCode.min.js" />
-    <Content Include="Scripts\zepto.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -802,7 +755,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
