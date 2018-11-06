@@ -25,7 +25,7 @@ namespace HCSV.Business
         /// <typeparam name="T">the entity type to load</typeparam>
         /// <param name="where">where condition</param>
         /// <returns>the loaded entity</returns>
-        IList<T> GetMany(Expression<Func<T, bool>> whereCondition);
+        IList<T> GetMany(Expression<Func<T, bool>> whereCondition, bool isTracking = false);
 
         /// <summary>
         /// Get a selected extiry by the object primary key ID
@@ -38,7 +38,7 @@ namespace HCSV.Business
         /// </summary>
         /// <typeparam name="T">the entity type to get</typeparam>
         /// <param name="where">where condition</param>
-        T GetSingle(Expression<Func<T, bool>> whereCondition);
+        T GetSingle(Expression<Func<T, bool>> whereCondition, bool isTracking = false);
 
         /// <summary>
         /// Add entity to the repository
@@ -115,9 +115,12 @@ namespace HCSV.Business
             return table.ToList();
         }
 
-        public virtual IList<T> GetMany(Expression<Func<T, bool>> whereCondition)
+        public virtual IList<T> GetMany(Expression<Func<T, bool>> whereCondition, bool isTracking = false)
         {
-            return table.Where(whereCondition).ToList();
+            if (isTracking)
+                return table.Where(whereCondition).ToList();
+            else
+                return table.AsNoTracking().Where(whereCondition).ToList();
         }
 
         public virtual T GetByID(object id)
@@ -125,9 +128,13 @@ namespace HCSV.Business
             return table.Find(id);
         }
 
-        public virtual T GetSingle(Expression<Func<T, bool>> whereCondition)
+        public virtual T GetSingle(Expression<Func<T, bool>> whereCondition, bool isTracking = false)
         {
-            return table.FirstOrDefault(whereCondition);
+            if (isTracking)
+                return table.FirstOrDefault(whereCondition);
+            else
+                return table.AsNoTracking().FirstOrDefault(whereCondition);
+
         }
 
         public virtual void Save()

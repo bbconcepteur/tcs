@@ -1,20 +1,19 @@
-﻿@model HCSV.Models.jos_content
+﻿@model HCSV.Business.Models.ContentModel<HCSV.Models.jos_content>
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = HttpContext.Current.Application[HCSV.Core.Constants.PAGE_TITLE];
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div class="bg_content_css">
     <div class="container detail_news_css">
-        <h2>@Html.Raw(Model.title)</h2>
+        <h2>@Html.Raw(Model.Value.title)</h2>
         <div class="bg_100percent_css fb_css">
             <span class="like_fb_css"></span>
             <span class="share_fb_css"></span>
         </div>
         <span class="content_col_css">
-            @Html.Raw(Model.introtext)
-            @Html.Raw(Model.fulltext)
+            @Html.Raw(Model.Value.introtext)
+            @Html.Raw(Model.Value.fulltext)
         </span>
     </div>
 </div>

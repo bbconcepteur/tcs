@@ -8,6 +8,13 @@ namespace HCSV.Core
 {
     public class Constants
     {
+        public const string HOME_PAGE_TITLE = "HOME_PAGE_TITLE";
+        public const string PAGE_BANNER = "PAGE_BANNER";
+        public const string PAGE_TITLE = "PAGE_TITLE";
+        public const string PAGE_BREADCRUMBS = "PAGE_BREADCRUMBS";
+        public const string PARENT_MENU_TITLE = "PARENT_MENU_TITLE";
+        public const string MENU_TITLE = "MENU_TITLE";
+
         public const string WEB_HOME_PAGE = "Home";
         public const string WEB_SUPPORT_PAGE = "Support";
         public const string WEB_ABOUT_PAGE = "About";
@@ -44,6 +51,8 @@ namespace HCSV.Core
         public const string CSS_ACTIVE_TOP_MENU = " current section";
 
         public const string SESSION_LANGUAGE_ID = "LANGUAGE_ID";
+        public const string SESSION_MENU_ID = "MENU_ID";
+        public const string SESSION_BANNER_MENU_PATH = "SESSION_BANNER_MENU_PATH";
         public const string SESSION_ERROR_CAPCHA = "error_captcha";
         public const string SESSION_LOGIN_STATUS = "LOGIN_STATUS";
 

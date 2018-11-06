@@ -14,14 +14,14 @@ namespace HCSV.Web.Controllers
         
         public ActionResult TopMenu()
         {
-            var menus = UnitOfWork.DashbroadBussiness.GetTopMenu(LanguageId);
+            var menus = UnitOfWork.MenuBusiness.GetTopMenu(LanguageId);
 
             return PartialView("~/Views/Shared/_Menu.cshtml", menus);
         }
 
         public ActionResult BottomMenu()
         {
-            var menus = UnitOfWork.DashbroadBussiness.GetBottomMenu(LanguageId);
+            var menus = UnitOfWork.MenuBusiness.GetBottomMenu(LanguageId);
 
             return PartialView("~/Views/Shared/_Footer.cshtml", menus);
         }

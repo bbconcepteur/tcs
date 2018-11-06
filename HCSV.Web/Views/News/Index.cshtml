@@ -1,71 +1,47 @@
-﻿@model HCSV.Models.jos_content
+﻿@model HCSV.Business.Models.ContentModel<HCSV.Models.jos_content>
+@using PagedList.Mvc
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @HttpContext.Current.Application[HCSV.Core.Constants.PAGE_TITLE];
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="bg_content_css">
-    <div class="news_part">
-        <div class="news_item">
-            @{
-                if ((Model.NEWS != null) && (Model.NEWS.Count() > 0))
-                {
-                    int intContentsTotal = Model.NEWS.Count();
-                    int intMenuID = 1;// HCSVNewWebsite.Commons.Commons.getActiveMenu(Request);
 
+@if ((Model.ListValues != null) && Model.ListValues.Any())
+{
+    int intMenuID = 1;
+    foreach (var item in Model.ListValues)
+    {
+        <div class="section-top-border">
+            <div>
+                <h3 class="mb-30">
+                    <a href="@String.Format("/News/Details?contentID={0}&menu={1}", item.id, intMenuID)" class="link">@Html.Raw(item.title)</a>
+                </h3>
+                <h5><a href="#">@Html.Raw(((DateTime)item.publish_up).ToString(HCSV.Core.Constants.DATE_FORMAT_DD_MM_YYYY))<i class="lnr lnr-calendar-full"></i></a></h5>
 
-                    foreach (var item in Model.NEWS)
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    @if (String.IsNullOrEmpty(item.images) && File.Exists(item.images))
                     {
-                        <div class="item_news_css">
-
-                            <div class="row_item_new_css">
-                                <div class="item_img_css item_img_1_css">
-                                    @{
-                                        if (String.IsNullOrEmpty(item.images))
-                                        {
-                                            <img src="~/Content/TcsNewTemplate/images/tcs_news_1.jpg" />
-                                        }
-                                        else
-                                        {
-                                           // @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.images))
-                                        }
-                                    }
-                                </div>
-                                <div class="item_info_css item_info_8_css">
-                                    <div class="item_info_1 item_info_9">
-                                        <a href="@String.Format("/News/Details?contentID={0}&menu={1}", item.id, intMenuID)" class="link">@Html.Raw(item.title)</a>
-                                    </div>
-                                    <div class="item_info_2">
-                                        <span class="news_time">@{@Html.Raw(((DateTime)item.publish_up).ToString(HCSV.Core.Constants.DATE_FORMAT_DD_MM_YYYY));}</span>
-                                    </div>
-                                    <div class="item_intro_css">
-                                        @Html.Raw(item.introtext)
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
+                        <img src="~/Content/BoostrapTemplate/img/tcs_news_1.jpg" alt="" class="img-fluid"/>
+                    }
+                    else
+                    {
+                        <img src="@item.images" alt="" class="img-fluid"/>
+                    }
+                </div>
+                <div class="col-md-9 mt-sm-20">
+                    @Html.Raw(item.introtext)
+                </div>
+            </div>
+        </div>
     }
 
     <div class="paging">
-        <ul>
-            @{
-                for (int j = 0; j < Model.PAGING_LINK.Count(); j++)
-                {
-                    @Html.Raw(Model.PAGING_LINK[j]);
-                }
-            }
-        </ul>
+        Page @(Model.ListValues.PageCount < Model.ListValues.PageNumber ? 0 : Model.ListValues.PageNumber) of @Model.ListValues.PageCount
+        @Html.PagedListPager(Model.ListValues, page => Url.Action("Index", new { page }))
     </div>
-                }
-
-            }
-        </div>
-        <div class="clear"></div>
-    </div>
-</div>
-<div class="clear"></div>
+}
 
 

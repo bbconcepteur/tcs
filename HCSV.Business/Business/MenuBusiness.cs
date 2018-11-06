@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using HCSV.Core;
@@ -10,24 +9,42 @@ using HCSV.Models.ViewModels;
 
 namespace HCSV.Business.Business
 {
-    public interface IDashbroadBussiness
+    public interface IMenuBusiness : IRepository<jos_menu>
     {
+        jos_menu GetMenuById(long langId, long menuId);
+
         List<Menu> GetTopMenu(long langId);
 
         List<Menu> GetBottomMenu(long langId);
     }
-    public class DashbroadBussiness : IDashbroadBussiness
+    public class MenuBusiness : Repository<jos_menu>, IMenuBusiness
     {
-        private readonly TCSEntities db;
-        public DashbroadBussiness(TCSEntities db)
+        public MenuBusiness(TCSEntities db) : base(db)
         {
-            this.db = db;
+            
+        }
+
+        public MenuBusiness()
+        {
+            db = new TCSEntities();
+        }
+
+        public jos_menu GetMenuById(long langId, long menuId)
+        {
+            var menu = GetSingle(s => s.lang_id == langId && s.id == menuId && s.published == 1);
+            if (menu == null)
+            {
+                var defaultLang = db.jos_languages.AsNoTracking().FirstOrDefault(s => s.default_status == 1) ??
+                                  new jos_languages();
+                menu = GetSingle(s => s.lang_id == defaultLang.lang_id && s.id == menuId && s.published == 1);
+            }
+            return menu;
         }
 
         public List<Menu> GetBottomMenu(long langId)
         {
             var menuTypes = db.jos_menu_types.AsNoTracking().Where(s => Constants.MENU_BOTTOM.Equals(s.menutype)).Select(s => s.id).ToList();
-            var menus = db.jos_menu.AsNoTracking().Where(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
+            var menus = GetMany(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
             {
                 Id = s.id,
                 ParentId = s.parent,
@@ -42,7 +59,7 @@ namespace HCSV.Business.Business
         public List<Menu> GetTopMenu(long langId)
         {
             var menuTypes = db.jos_menu_types.AsNoTracking().Where(s => Constants.MENU_TOP.Equals(s.menutype)).Select(s => s.id).ToList();
-            var menus = db.jos_menu.AsNoTracking().Where(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
+            var menus =GetMany(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
             {
                 Id = s.id,
                 ParentId = s.parent,

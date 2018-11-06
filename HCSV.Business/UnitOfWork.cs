@@ -15,7 +15,8 @@ namespace HCSV.Business
         INewsBusiness NewsBusiness { get; }
         IAccountBusiness AccountBusiness { get; }
 
-        IDashbroadBussiness DashbroadBussiness { get; }
+        IDashbroadBusiness DashbroadBussiness { get; }
+        IMenuBusiness MenuBusiness { get; }
     }
 
     public class UnitOfWork : IUnitOfWork
@@ -102,9 +103,14 @@ namespace HCSV.Business
             get { return new AccountBusiness(_context); }
         }
 
-        public IDashbroadBussiness DashbroadBussiness
+        public IDashbroadBusiness DashbroadBussiness
         {
-            get { return new DashbroadBussiness(_context); }
+            get { return new DashbroadBusiness(_context); }
+        }
+
+        public IMenuBusiness MenuBusiness
+        {
+            get { return new MenuBusiness(_context); }
         }
         #endregion
     }

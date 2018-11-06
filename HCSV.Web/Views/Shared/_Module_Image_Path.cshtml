@@ -1,81 +1,20 @@
-﻿@{
-    
-    
-    
-    HCSVNewWebsite.Models.cpanelEntities entities = new HCSVNewWebsite.Models.cpanelEntities();    
-    int intMenu = HCSVNewWebsite.Commons.Commons.NUMBER_INVALID_INTEGER;
-    int intContentID = HCSVNewWebsite.Commons.Commons.NUMBER_INVALID_INTEGER;
-    int intLangID = HCSVNewWebsite.Commons.Commons.getLanguageID(this.Request, entities);
-    
-    string strImages = "";
-    string strMenuTitle = "", strBreadcrumbs = "", strParentMenuTitle = "";
-    intMenu = HCSVNewWebsite.Commons.Commons.getActiveMenu(Request);
-    if (intMenu > 0)
-    {        
-        var objMenu = entities.jos_menu.Find(intMenu);
-        int intParentMenuID = 0;
-    
-        if ((objMenu != null) && (objMenu.parent == 0))
-        {
-            intParentMenuID = objMenu.id;
-        }
-        else if ((objMenu != null) && (objMenu.parent != 0))
-        {
-            intParentMenuID = (int)objMenu.parent;
-            //objMenu = entities.jos_menu.Find(intParentMenuID);            
-        }
-        strImages = HCSVNewWebsite.Commons.Commons.convertContent(entities.jos_menu.Find(intParentMenuID).@params);
+﻿@using HCSV.Core
+@if (Request.Url.PathAndQuery == "/")
+{
 
-        //get Title of parent menu
-        strParentMenuTitle = HCSVNewWebsite.Commons.Commons.getMenuTitle(intParentMenuID, intLangID, entities);
-        
-        //get Title Menu
-        strMenuTitle = HCSVNewWebsite.Commons.Commons.getMenuTitle(objMenu.id, intLangID, entities);
-        
-    }
-    
-    if (!String.IsNullOrEmpty(this.Request.QueryString[HCSVNewWebsite.Commons.URL_PARAMETERS.CONTENT_ID])) 
-    {
-        intContentID = Convert.ToInt32(this.Request.QueryString[HCSVNewWebsite.Commons.URL_PARAMETERS.CONTENT_ID]);        
-    }
-    
-    //get Breadcrumbs
-    strBreadcrumbs = HCSVNewWebsite.Commons.Commons.getBreadcrumbs(intMenu, intContentID, intLangID, entities);
-    
-    
 }
-
-@{
-    if (!HCSVNewWebsite.Commons.Commons.checkHomePage(this.Request))
-    { 
+else
+{
+    <div class="hundred_percent_css banner_1_css">
         <div class="inner_banner">
-            @{
-                if (String.IsNullOrEmpty(strImages))
-                {
-                    strImages = HCSVNewWebsite.Commons.Commons.convertContent("<img src=\"/themes/orange/images/banner.jpg\"/>");
-                }
-                @Html.Raw(strImages);
-            
-            }
+            @Html.Raw(@HttpContext.Current.Application[HCSV.Core.Constants.PAGE_BANNER])
         </div>
-
-
-        if (!String.IsNullOrEmpty(strBreadcrumbs))
-        {
-            <div class="bg_content_css title_banner_css">
-                <div class="main_title_banner_css">@Html.Raw(strParentMenuTitle)</div>
-                <div class="breadcrumbs_css">
-                    <p>@Html.Raw(strBreadcrumbs)</p>
-                </div>
+        <div class="bg_content_css title_banner_css">
+            <div class="main_title_banner_css">@HttpContext.Current.Application[Constants.PARENT_MENU_TITLE]</div>
+            <div class="breadcrumbs_css">
+                <p><a href="#">@HttpContext.Current.Application[Constants.PARENT_MENU_TITLE]</a> » <a href="#">@HttpContext.Current.Application[Constants.MENU_TITLE]</a></p>
             </div>
-        }
-
-
-        if (intContentID == HCSVNewWebsite.Commons.Commons.NUMBER_INVALID_INTEGER)
-        {
-            <div class="bg_content_css"><h2><span>@Html.Raw(strMenuTitle)</span></h2></div>
-        }
-
-
-    }
+        </div>
+        <div class="bg_content_css"><h2><span>@HttpContext.Current.Application[Constants.MENU_TITLE]</span></h2></div>
+    </div>
 }

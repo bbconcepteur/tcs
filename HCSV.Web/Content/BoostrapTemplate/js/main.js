@@ -11,7 +11,6 @@ $(document).ready(function () {
 
     //-------- Active Sticky Js ----------//
     $(".default-header").sticky({ topSpacing: 0 });
-    $(".page-footer").sticky({ bottomSpacing: 0 });
     
     $(".navbar-nav li a[href^='#']").on('click', function (event) {
         var target = this.hash;

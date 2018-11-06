@@ -15,9 +15,12 @@ namespace HCSV.Web
         {
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            log4net.Config.XmlConfigurator.Configure();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters, log4net.LogManager.GetLogger("LogFileAppender"));
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfig.Initialization(Application);
         }
     }
 }
