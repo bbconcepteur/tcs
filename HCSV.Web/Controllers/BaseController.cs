@@ -82,6 +82,13 @@ namespace HCSV.Web.Controllers
                 // for test
                 HttpContext.Application[Constants.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
             }
+            else
+            {
+                // index
+                HttpContext.Application[Constants.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
+                HttpContext.Application[Constants.PARENT_MENU_TITLE] = "Home page";
+                HttpContext.Application[Constants.MENU_TITLE] = "Index";
+            }
         }
 
         protected override IAsyncResult BeginExecuteCore(AsyncCallback callback, object state)
