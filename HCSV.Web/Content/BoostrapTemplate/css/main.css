@@ -1933,9 +1933,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center; 
   background: #cccccc;
   opacity: 0.35;
-  z-index: 112;
   position: relative;
   border: 1px solid #808080;
+    border-radius: 20px 20px 0px 0px;
 }
   .banner-content h1 {
     color: #fff;
