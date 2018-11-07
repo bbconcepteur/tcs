@@ -1,49 +1,21 @@
 ﻿@using HCSV.Core
 @if (Request.Url.PathAndQuery == "/")
 {
-    <style>
-        .awb_bg_1_css {
-            background: #cccccc;
-            opacity: 0.35;
-            filter: alpha(opacity=35);
-            width: 996px;
-            height: 177px;
-            margin: -74px 0 20px 0;
-            z-index: 99;
-            position: relative;
-            border: 1px solid #808080;
-        }
-
-        .awb_tab_0 {
-            /* -webkit-border-radius: 12px; */
-            /* -moz-border-radius: 12px; */
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            float:left;
-        }
-
-        .awb_tab_1 {
-            width: 226px;
-            height: 57px;
-            background: #ffffff;
-            position: relative;
-            z-index: 999;
-        }
-        .awb_tab_0 span {
-    font-size: 18px;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding-top: 22px;
-    display: block;
-    text-align: center;
-}
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <section class="home-banner-area relative">
         <div class="overlay overlay-bg"></div>
         <div class="container">
             <div class="row fullscreen align-items-end justify-content-center" style="height: 913px;">
-                <div class="banner-content col-lg-12 col-md-12">
-                    
+                <div class="banner-content col-lg-12 col-md-12" style="padding:10px;">
+                    <<ul class="nav nav-tabs" style="background:#fff; ">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Menu 1</a></li>
+                        <li><a href="#">Menu 2</a></li>
+                        <li><a href="#">Menu 3</a></li>
+                    </ul>
+                    <br>
+                    <p style="background:#fff;"><strong>Note:</strong> This example shows how to create a basic navigation tab. It is not toggleable/dynamic yet (you can't click on the links to display different content)- see the last example in the Bootstrap Tabs and Pills Tutorial to find out how this can be done.</p>
+
                 </div>
             </div>
         </div>
