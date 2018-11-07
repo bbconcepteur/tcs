@@ -1,348 +1,255 @@
 ﻿@model HCSV.Models.jos_content
 
 @{
-    ViewBag.Title = "Home";
-    ViewBag.Page = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-  @*  <!-----------------------------------BEGIN: Images of Banner-------------------------------------->
-    <div class="hundred_percent_css">
-        <div class="banner_css">
-            @{
-                if ((Model != null) && (Model.LEFT != null))
-                {//IMAGES for SLIDESHOW
-                    <div class="home_banner">
-                        
-                            @{
-                    string strCSS_NONE = " style='display: none;' />";
-                    string strCSS_BLOCK = " style='display: block;' />";
-
-                    string strImages = Model.LEFT.images.Replace("/>", strCSS_NONE);
-                    int intFirst = strImages.IndexOf("/>");
-                    string strFirstImage = strImages.Substring(0, intFirst + 2);
-                    strImages = strImages.Replace(strFirstImage, "");
-                    strFirstImage = strFirstImage.Replace(strCSS_NONE, strCSS_BLOCK);
-                    @Html.Raw(strFirstImage + strImages);
-                            }
+<section class="blog-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="thumb">
+                    <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                </div>
+                <a href="single-blog.html"><h4>Portable Fashion for women</h4></a>
+                <div class="text-wrap">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud.
+                    </p>
+                </div>
+                <div class="meta-bottom d-flex float-right">
+                    <a href="single-blog.html" class="white_bg_btn">View More</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="thumb">
+                    <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">
+                </div>
+                <a href="single-blog.html"><h4>Summer ware are coming</h4></a>
+                <div class="text-wrap">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud.
+                    </p>
+                </div>
+                <div class="meta-bottom d-flex float-right">
+                    <a href="single-blog.html" class="white_bg_btn">View More</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="thumb">
+                    <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s3.jpg" alt="">
+                </div>
+                <a href="single-blog.html"><h4>Summer ware are coming</h4></a>
+                <div class="text-wrap">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud.
+                    </p>
+                </div>
+                <div class="meta-bottom d-flex float-right">
+                    <a href="single-blog.html" class="white_bg_btn">View More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr/>
+<section class="blog-area mt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <h3 class="mt-30">TIN DÀNH CHO KHÁCH HÀNG</h3>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">TCS tái ký hợp đồng thành công với Malaysia Airlines và Jetstar Asia Airways</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
                         
                     </div>
-                }
-            }
-        </div>
-    </div>
-    <!-----------------------------------END: Images of Banner-------------------------------------->
-
-    <!-----------------------------------BEGIN: Searching AWB--------------------------------------->
-    <div class="hundred_percent_css">
-        <div class="awb_bg_css">
-            <div class="awb_bg_1_css">                
-            </div>
-
-            <div class="awb_row_1">
-                <div class="awb_tab_0 awb_tab_1"><span> @Html.Raw(HCSV.Resources.GlobalResource.TIM_KIEM_VAN_DON)</span></div>
-                <div class="awb_tab_0 awb_tab_2">
-                    <a href="/Clients/Index?menu=68">
-                        <span>@Html.Raw(HCSV.Resources.GlobalResource.CAC_HANG_HANG_KHONG)</span>
-                    </a>
                 </div>
-                <div class="awb_tab_0 awb_tab_3">
-                    <a href="/Airline/Statistics_default?menu=197">
-                        <span>@Html.Raw(HCSV.Resources.GlobalResource.THONG_KE)</ span >
-                    </ a >
-                </ div >
-            </ div >
-            < div class="awb_row_2">
-                <div class="select_css">
-                    <table>
-                        <tr>
-                            <td>@Html.Raw(HCSV.Resources.GlobalResource.NGUOI_NHAN_TT)</td>
-                            <td style = "text-align:left; width: 50px;" >< input type="radio" id="awbSelector_Customer" class="radio_css" name="awbSelector" /></td>
-                            <td>@Html.Raw(HCSV.Resources.GlobalResource.DAI_LY)</td>
-                            <td style = "text-align:left; width: 50px;" >< input type="radio" id="awbSelector_Agent" name="awbSelector" /></td>
-                            <td>@Html.Raw(HCSV.Resources.GlobalResource.HANG_HANG_KHONG)</td>
-                            <td><input type = "radio" id="awbSelector_Airlines" name="awbSelector" /></td>
-                        </tr>
-                    </table>
-                </div>
-
-                <!-----------------------------------BEGIN: Searching AWB - NGUOI_NHAN_TT----------------------------------------->
-                <form id = "customer_form" action="/AWBTracking_DirectConsignee/SearchKVD" method="post">
-                    <input type = "hidden" name="section" value="customer" />
-                    <input type = "hidden" name="layout" value="03_cs" />
-                    <input type = "hidden" size="15" name="locale" value="vi_VN" />
-                    <input type = "submit" style="display:none" id="customer_form_submit" />
-                    <input type = "hidden" name="return_url" value="/" />
-
-                    <table>
-                        <tr>
-                            <td colspan = "4" >
-                                < div id="customer_errorBox" class="">
-                                    <ul></ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan = "3" > @Html.Raw(HCSV.Resources.GlobalResource.SO_KHONG_VD) </ td >
-                            < td >< input type="text" size="3" name="awbFirst" id="awbFirst" /></td>
-                            <td>
-                                <input type = "text" size="15" name="awbLast" id="awbLast" style="width: 300px" />
-                            </td>
-                            <td style = "padding-left: 20px" >< a href="#" class="btn btnLoginCustomer"><span>@Html.Raw(HCSV.Resources.GlobalResource.GO_CAPCHA)</span></a></td>
-                        </tr>
-                    </table>
-                </form>
-                <!-----------------------------------END: Searching AWB - NGUOI_NHAN_TT----------------------------------------->
-
-                <!-----------------------------------BEGIN: Searching AWB - DAI LY------------------------------------------------>
-                <form id = "agent_form" action="/AWBTracking_Agent/Index" method="post">
-                    <table>
-                        <tr>
-                            <td align = "left" valign="top">@Html.Raw(HCSV.Resources.GlobalResource.TEN_DANG_NHAP)</td>
-                            <td align = "left" valign="top"><input type = "text" size="25" name="user" class="user_pass_css" /></td>
-                            <td align = "left" valign="top" class="td_css">@Html.Raw(HCSV.Resources.GlobalResource.MAT_KHAU)</td>
-                            <td align = "left" valign="top"><input type = "password" size="25" name="passwd" class="user_pass_css" /></td>
-
-                            $1$Begin Captcha#1#
-                            <td colspan="5" valign="top" class="td_css">
-                                @#1# Html.Captcha("Try another", "Enter the text you see above:", 5, "Is required field", true)#1#
-                                <div>
-                                    <img src="/AWBTracking_Agent/GetCaptchaImage" class="capcha_img_css" title="Captcha" />
-                                    <input type="text" name="clientCaptcha" placeholder="@Html.Raw(HCSV.Resources.GlobalResource.GO_CAPCHA)" class="capcha_css" required />
-
-                                    <p style="font-weight:bold;color:red;">@ViewBag.ErrorLogin_Agent</p>
-                                    <input type="hidden" id="ErrorLogin_Agent_ID" value="@ViewBag.ErrorLogin_Agent" />
-                                    <input type="hidden" name="return_url" value="/" />
-                                </div>
-                            </td>
-                            $1$End Captcha#1#
-
-                            <td align="right" valign="top" class="td_css"><a href="#" class="btn btnLoginAgent"><span>@Html.Raw(HCSV.Resources.GlobalResource.DANG_NHAP)</span></a></td>
-                        </tr>                           
-                    </table>
-                </form>
-                <!-----------------------------------END: Searching AWB - DAI LY------------------------------------------------>
-
-                <!-----------------------------------BEGIN: Searching AWB - HANG HANG KHONG------------------------------------------------>
-                <form id="airline_form" action="/Airline/ImportCargoTracking_default" method="post">
-                    <input type="hidden" name="return_url" value="/" />
-                    <table>                        
-                        <tr>
-                            <td align="left" valign="top">@Html.Raw(HCSV.Resources.GlobalResource.TEN_DANG_NHAP)</td>
-                            <td align="left" valign="top"><input type="text" size="25" name="user" class="user_pass_css" /></td>
-                            <td align="left" valign="top" class="td_css">@Html.Raw(HCSV.Resources.GlobalResource.MAT_KHAU)</td>
-                            <td align="left" valign="top"><input type="password" size="25" name="passwd" class="user_pass_css" /></td>
-
-                            $1$Begin Captcha#1#
-                        
-                            <td valign="top" class="td_css">
-                                <div>
-                                    <img src="/Airline/GetCaptchaImage" class="capcha_img_css" title="Captcha" />
-                                    <input type="text" name="clientCaptcha_Airlines" placeholder="@Html.Raw(HCSV.Resources.GlobalResource.GO_CAPCHA)" class="capcha_css" required />
-                                    <p style="font-weight:bold;color:red;">@ViewBag.ErrorLogin_Airline</p>
-                                    <input type="hidden" id="ErrorLogin_Airline_ID" value="@ViewBag.ErrorLogin_Airline" />
-                                </div>
-
-                            </td>
-                        
-                            $1$End Captcha#1#
-
-                            <td valign="top" align="right" class="td_css"><a href="#" class="btn btnLoginAirlines"><span>@Html.Raw(HCSV.Resources.GlobalResource.DANG_NHAP)</span></a></td>
-                        </tr>
-                    </table>
-                </form>
-                <!-----------------------------------END: Searching AWB - HANG HANG KHONG------------------------------------------------>
-            </div>
-        </div>        
-    </div>
-    <!-----------------------------------END: Searching AWB----------------------------------------->
-
-    <div class="bg_content_css">
-        <!-----------------------------------BEGIN: Mission, Vission, Core value-------------------------------------->
-        <div class="col_intro">
-            <div class="intro_css intro_1_css"></div>
-            <div class="cont_css">
-                @{
-                    if ((Model != null) && (Model.MIDDLE != null))//MISSION
-                    {
-                        <div class="intro_img">@Html.Raw(Model.MIDDLE.images)</div>
-                        <div class="intro_title">@Html.Raw(@Model.MIDDLE.title)</div>
-                        <div class="intro_content">@Html.Raw(Model.MIDDLE.introtext)</div>
-                        <div class="intro_readmore"><a href="/News/Details?contentID=3234&menu=131">@Html.Raw(HCSV.Resources.GlobalResource.XEM_TIEP)</a></div>
-                    }
-                }
-
-            </div>
-        </div>
-
-        <div class="col_intro">
-            <div class="intro_css intro_2_css"></div>
-            <div class="cont_css">
-                @{
-                    if ((Model != null) && (Model.RIGHT != null))//VISION
-                    {
-                        <div class="intro_img">@Html.Raw(Model.RIGHT.images)</div>
-                        <div class="intro_title">@Html.Raw(@Model.RIGHT.title)</div>
-                        <div class="intro_content">@Html.Raw(Model.RIGHT.introtext)</div>
-                        <div class="intro_readmore"><a href="/News/Details?contentID=3234&menu=131">@Html.Raw(HCSV.Resources.GlobalResource.XEM_TIEP)</a></div>
-                    }
-                }
-
-            </div>
-        </div>
-
-        <div class="col_intro col_intro_last">
-            <div class="intro_css intro_3_css"></div>
-            <div class="cont_css">
-                @{
-                    if ((Model != null) && (Model.TOP != null))//CORE VALUE
-                    {
-                        <div class="intro_img">@Html.Raw(Model.TOP.images)</div>
-                        <div class="intro_title">@Html.Raw(@Model.TOP.title)</div>
-                        <div class="intro_content">@Html.Raw(Model.TOP.introtext)</div>
-                        <div class="intro_readmore"><a href="/News/Details?contentID=3234&menu=131">@Html.Raw(HCSV.Resources.GlobalResource.XEM_TIEP)</a></div>
-                    }
-                }
-
-            </div>
-        </div>
-        <!-----------------------------------END: Mission, Vission, Core value-------------------------------------->
-        <!-----------------------------------BEGIN: News------------------------------------------------------------>
-        @{
-            int i = 0;
-            string strCSS = "";
-            if ((Model.NEWS != null) && (Model.NEWS.Count() > 0))
-            {
-                foreach (var itemNews in Model.NEWS)
-                {
-                    i++;
-                    if (i == 3) { strCSS = "home_last_news_css"; }
-
-                    if ((itemNews.NEWS != null) && (itemNews.NEWS.Count() > 0))
-                    {
-                        <div class="home_news_css @strCSS">
-                            <div class="title_news_css">
-                                <a href="#/News/Index?catID=108&menu=20#" class="btnNext_1">@Html.Raw(itemNews.name_page)</a>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
                             </div>
-                            @{
-                        foreach (var item in itemNews.NEWS)
-                        {
-
-
-                            <div class="item_news_css">
-
-
-                                <div class="row_item_new_css">
-                                    <div class="item_img_css">
-                                        @{
-                            if (String.IsNullOrEmpty(item.images))
-                            {
-                                <img src="~/Content/TcsNewTemplate/images/tcs_news.jpg" />
-                            }
-                            else
-                            {
-                                @Html.Raw(item.images)
-                            }
-                                        }
-                                    </div>
-                                    <div class="item_info_css">
-                                        <div class="item_info_1">
-                                            <a href="/News/Details?contentID=@item.id" class="link">@Html.Raw(item.title)</a>
-                                        </div>
-                                        <div class="item_info_2">
-                                            <span class="news_time">@{@Html.Raw(((DateTime)item.publish_up).ToString(HCSV.Core.Constants.DATE_FORMAT_DD_MM_YYYY));}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                            }
                         </div>
-                    }
-                }
-            }
-        }
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">Thông báo: không thu phụ phí ngoài giờ các loại hàng nhập vào ngày chủ nhật</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">Thông báo: không thu phụ phí ngoài giờ ngày chủ nhật từ 11/12/2016 đến 28/02/2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <!-----------------------------------END: News-------------------------------------------------------------->
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <h3 class="mt-30">TIN TCS</h3>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <h3 class="mt-30">TIN CHUYÊN NGÀNH</h3>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-top-border">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="thumb">
+                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7 mt-sm-20">
+                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
+                            <div class="meta-bottom d-flex">
+                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-<script type="text/javascript">
-    funcSetup();
-
-    if ($("#ErrorLogin_Agent_ID").val() != "")
-    {
-        $("#awbSelector_Agent").attr('checked', 'checked');
-    }
-    else if ($("#ErrorLogin_Airline_ID").val() != "") {
-        $("#awbSelector_Airlines").attr('checked', 'checked');
-    }
-
-    
-
-    if ($("#awbSelector_Agent").is(":checked")) {
-        funcAgent();
-    }
-    else if ($("#awbSelector_Airlines").is(":checked")) {
-        funcAirlines();
-    }
-    else if ($("#awbSelector_Customer").is(":checked")) {
-        funcCustomer();
-    }
-
-        
-
-
-    $('.btnLoginAgent').click(function () {
-        document.getElementById('agent_form').submit();
-    });
-    $('.btnLoginAirlines').click(function () {
-        document.getElementById('airline_form').submit();
-    });
-    $('.btnLoginCustomer').click(function () {
-        document.getElementById('customer_form').submit();
-    });
-
-    $('#awbSelector_Agent').click(function () {
-        funcAgent();        
-    });
-
-    $('#awbSelector_Customer').click(function () {
-        funcCustomer();
-    });
-
-    $('#awbSelector_Airlines').click(function () {
-        funcAirlines();
-    });
-
-    function funcAgent() {
-        $('#customer_form').hide();
-        $('#agent_form').show();
-        $('#airline_form').hide();
-        
-    }
-
-    function funcCustomer() {
-        $('#customer_form').show();
-        $('#agent_form').hide();
-        $('#airline_form').hide();
-
-    }
-
-    function funcAirlines() {
-        $('#customer_form').hide();
-        $('#agent_form').hide();
-        $('#airline_form').show();
-    }
-
-    function funcSetup() {
-        $("#awbSelector_Agent").attr('checked', 'checked');
-        $('#customer_form').hide();
-        $('#agent_form').show();
-        $('#airline_form').hide();
-    }
-
-    
-    
-</script>*@
-
+</section>

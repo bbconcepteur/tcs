@@ -48,12 +48,14 @@ namespace HCSV.Web.Controllers
                     if (menuId == sessionMenuId)
                     {
                         HttpContext.Application[Constants.PAGE_BANNER] = Session[Constants.SESSION_BANNER_MENU_PATH].ToString();
+                        HttpContext.Application[Constants.PARENT_MENU_TITLE] = Session[Constants.PARENT_MENU_TITLE].ToString();
                         return;
                     }
                 }
 
                 if (menuId > 0)
                 {
+                    Session[Constants.SESSION_MENU_ID] = menuId;
                     var menu = UnitOfWork.MenuBusiness.GetMenuById(LanguageId, menuId);
                     if (menu != null)
                     {
@@ -62,6 +64,8 @@ namespace HCSV.Web.Controllers
                         {
                             HttpContext.Application[Constants.PAGE_BANNER] = parentMenu.@params;
                             HttpContext.Application[Constants.PARENT_MENU_TITLE] = parentMenu.name;
+                            Session[Constants.SESSION_BANNER_MENU_PATH] = parentMenu.@params;
+                            Session[Constants.PARENT_MENU_TITLE] = parentMenu.name;
                         }
                         HttpContext.Application[Constants.MENU_TITLE] = menu.name;
                     }

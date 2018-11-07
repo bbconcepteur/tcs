@@ -3,10 +3,10 @@ $(document).ready(function () {
     "use strict";
 
     var window_height = window.innerHeight,
-        header_height = 450,
+        header_height = 650,
         fitscreen = window_height - header_height;
 
-    $(".fullscreen").css("height", 450);
+    $(".fullscreen").css("height", 650);
     $(".fitscreen").css("height", fitscreen);
 
     //-------- Active Sticky Js ----------//
@@ -65,5 +65,4 @@ $(document).ready(function () {
     } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
         $("#mobile-nav, #mobile-nav-toggle").hide();
     }
-
 });
