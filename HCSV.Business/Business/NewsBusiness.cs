@@ -14,9 +14,11 @@ namespace HCSV.Business.Business
     {
         Task<ContentModel<jos_content>> GetContents(long langId, int categoryId, int pageNumber);
 
+        Task<ContentModel<jos_content>> GetContents(long langId, string contentType, int pageNumber);
+
         Task<ContentModel<jos_content>> GetDetails(long langId, int id);
 
-        Task<jos_content> GetAbout(long langId);
+        List<jos_content> GetTopNews(long langId, string contentType, int takeNumberOfRow);
     }
     public class NewsBusiness : Repository<jos_content>, INewsBusiness
     {
@@ -38,8 +40,25 @@ namespace HCSV.Business.Business
                 content.ListValues = lstContents.ToPagedList(pageNumber, 10);
                 return content;
             });
+        }
 
+        public Task<ContentModel<jos_content>> GetContents(long langId, string contentType, int pageNumber)
+        {
+            return Task.Run(() =>
+            {
+                var content = new ContentModel<jos_content>();
+                
+                var lstContents = GetMany(x => (x.lang_id == langId) && (x.content_type == contentType) && (x.state == 1)).OrderByDescending(y => y.publish_up).ToList();
+                content.ListValues = lstContents.ToPagedList(pageNumber, 10);
 
+                //TODO: kha nang phai thay doi cho nay nua
+                if (lstContents.Count > 0)
+                {
+                    var objCategory = db.jos_categories.AsNoTracking().FirstOrDefault(x => x.id == lstContents[0].catid) ?? new jos_categories();
+                    content.PageName = objCategory.name;
+                }
+                return content;
+            });
         }
 
         public Task<ContentModel<jos_content>> GetDetails(long langId, int id)
@@ -52,10 +71,14 @@ namespace HCSV.Business.Business
                 return contentDetail;
             });
         }
-
-        public Task<jos_content> GetAbout(long langId)
+        
+        public List<jos_content> GetTopNews(long langId, string contentType, int takeNumberOfRow)
         {
-            return null;
+            return GetMany(x => x.lang_id == langId && (x.content_type == contentType) && (x.state == 1))
+                        .OrderByDescending(y => y.publish_up)
+                        .Take(takeNumberOfRow)
+                        .ToList();
         }
+
     }
 }

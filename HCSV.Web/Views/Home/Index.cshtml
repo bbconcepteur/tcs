@@ -1,5 +1,5 @@
-﻿@model HCSV.Models.jos_content
-
+﻿@model HCSV.Business.Models.DashbroadModel
+@using System.IO
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -7,248 +7,208 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="thumb">
-                    <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                </div>
-                <a href="single-blog.html"><h4>Portable Fashion for women</h4></a>
-                <div class="text-wrap">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud.
-                    </p>
-                </div>
-                <div class="meta-bottom d-flex float-right">
-                    <a href="single-blog.html" class="white_bg_btn">View More</a>
-                </div>
+                @if (Model != null && Model.MissionArea != null)
+                {
+                    <div class="single-property">
+                        <div class="images">
+                            @if (Model.MissionArea.images != null)
+                            {
+                                @*<img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">*@
+                                @Html.Raw(Model.MissionArea.images)
+                            }
+                            else
+                            {
+                                <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                            }
+                            <span>@Html.Raw(Model.MissionArea.title)</span>
+                        </div>
+
+                        <div class="desc">
+                            <div class="text-wrap">
+                                <p>
+                                    @Html.Raw(Model.MissionArea.introtext)
+                                </p>
+                            </div>
+                            <hr />
+                            <div class="float-right">
+                                <a href="/News/Details?contentID=@Model.MissionArea.id&menu=@Model.MissionArea.catid" class="white_bg_btn">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                }
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="thumb">
-                    <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">
-                </div>
-                <a href="single-blog.html"><h4>Summer ware are coming</h4></a>
-                <div class="text-wrap">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud.
-                    </p>
-                </div>
-                <div class="meta-bottom d-flex float-right">
-                    <a href="single-blog.html" class="white_bg_btn">View More</a>
-                </div>
+                @if (Model != null && Model.VisionArea != null)
+                {
+                    <div class="single-property">
+                        <div class="images">
+                            @if (Model.VisionArea.images != null)
+                            {
+                                @*<img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">*@
+                                @Html.Raw(Model.VisionArea.images)
+                            }
+                            else
+                            {
+                                <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                            }
+                            <span>@Html.Raw(Model.VisionArea.title)</span>
+                        </div>
+
+                        <div class="desc">
+                            <div class="text-wrap">
+                                <p>
+                                    @Html.Raw(Model.VisionArea.introtext)
+                                </p>
+                            </div>
+                            <hr />
+                            <div class="float-right">
+                                <a href="/News/Details?contentID=@Model.VisionArea.id&menu=@Model.VisionArea.catid" class="white_bg_btn">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                }
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="thumb">
-                    <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s3.jpg" alt="">
-                </div>
-                <a href="single-blog.html"><h4>Summer ware are coming</h4></a>
-                <div class="text-wrap">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud.
-                    </p>
-                </div>
-                <div class="meta-bottom d-flex float-right">
-                    <a href="single-blog.html" class="white_bg_btn">View More</a>
-                </div>
+                @if (Model != null && Model.ValueArea != null)
+                {
+                    <div class="single-property">
+                        <div class="images">
+                            @if (Model.ValueArea.images != null)
+                            {
+                                @*<img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">*@
+                                @Html.Raw(Model.ValueArea.images)
+                            }
+                            else
+                            {
+                                <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                            }
+                            <span>@Html.Raw(Model.ValueArea.title)</span>
+                        </div>
+
+                        <div class="desc">
+                            <div class="text-wrap">
+                                <p>
+                                    @Html.Raw(Model.ValueArea.introtext)
+                                </p>
+                            </div>
+                            <hr />
+                            <div class="float-right">
+                                <a href="/News/Details?contentID=@Model.ValueArea.id&menu=@Model.ValueArea.catid" class="white_bg_btn">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
 </section>
-<hr/>
+<hr />
 <section class="blog-area mt-30">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <h3 class="mt-30">TIN DÀNH CHO KHÁCH HÀNG</h3>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                <h3 class="mt-30">@Html.Raw(HCSV.Resources.GlobalResource.TIN_DANH_CHO_KH)</h3>
+                @if (Model != null && Model.CustomerNews.Any())
+                {
+                    foreach (var item in Model.CustomerNews)
+                    {
+                        <div class="section-top-border">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="thumb">
+                                        @if (item.images != null)
+                                        {
+                                            <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                                            @*@Html.Raw(item.images)*@
+                                        }
+                                        else
+                                        {
+                                            <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-7 mt-sm-20">
+                                    <a href="/News/Details?contentID=@item.id&menu=@item.catid"> @Html.Raw(item.title)</a>
+                                    <div class="meta-bottom d-flex">
+                                        <p><span class="lnr lnr-calendar-full"></span> @item.publish_up</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">TCS tái ký hợp đồng thành công với Malaysia Airlines và Jetstar Asia Airways</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">Thông báo: không thu phụ phí ngoài giờ các loại hàng nhập vào ngày chủ nhật</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">Thông báo: không thu phụ phí ngoài giờ ngày chủ nhật từ 11/12/2016 đến 28/02/2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    }
+
+                }
             </div>
 
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <h3 class="mt-30">TIN TCS</h3>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                <h3 class="mt-30">@Html.Raw(HCSV.Resources.GlobalResource.TIN_TCS)</h3>
+                @if (Model != null && Model.TcsNews.Any())
+                {
+                    foreach (var item in Model.TcsNews)
+                    {
+                        <div class="section-top-border">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="thumb">
+                                        @if (item.images != null)
+                                        {
+                                            <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                                            @*@Html.Raw(item.images)*@
+                                        }
+                                        else
+                                        {
+                                            <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-7 mt-sm-20">
+                                    <a href="/News/Details?contentID=@item.id&menu=@item.catid"> @Html.Raw(item.title)</a>
+                                    <div class="meta-bottom d-flex">
+                                        <p><span class="lnr lnr-calendar-full"></span> @item.publish_up</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    }
+
+                }
             </div>
 
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <h3 class="mt-30">TIN CHUYÊN NGÀNH</h3>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
+                <h3 class="mt-30">@Html.Raw(HCSV.Resources.GlobalResource.TIN_CHUYEN_NGANH)</h3>
+                @if (Model != null && Model.IndustrialNews.Any())
+                {
+                    foreach (var item in Model.IndustrialNews)
+                    {
+                        <div class="section-top-border">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="thumb">
+                                        @if (item.images != null)
+                                        {
+                                            <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                                            @*@Html.Raw(item.images)*@
+                                        }
+                                        else
+                                        {
+                                            <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-7 mt-sm-20">
+                                    <a href="/News/Details?contentID=@item.id&menu=@item.catid"> @Html.Raw(item.title)</a>
+                                    <div class="meta-bottom d-flex">
+                                        <p><span class="lnr lnr-calendar-full"></span> @item.publish_up</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-top-border">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="thumb">
-                                <img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-7 mt-sm-20">
-                            <a href="#">THÔNG BÁO LỊCH NGHỈ TẾT DƯƠNG 2017</a>
-                            <div class="meta-bottom d-flex">
-                                <p><span class="lnr lnr-calendar-full"></span> 13th Dec</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    }
+
+                }
             </div>
         </div>
     </div>

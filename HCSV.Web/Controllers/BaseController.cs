@@ -41,17 +41,17 @@ namespace HCSV.Web.Controllers
             {
                 long menuId = -1;
                 long.TryParse(Request["menu"], out menuId);
-                if (Session[Constants.SESSION_MENU_ID] != null)
+                /*if (Session[Constants.SESSION_MENU_ID] != null)
                 {
                     //Muc dich de tranh query qua nhieu vao db
                     var sessionMenuId = long.Parse(Session[Constants.SESSION_MENU_ID].ToString());
                     if (menuId == sessionMenuId)
                     {
-                        HttpContext.Application[Constants.PAGE_BANNER] = Session[Constants.SESSION_BANNER_MENU_PATH].ToString();
-                        HttpContext.Application[Constants.PARENT_MENU_TITLE] = Session[Constants.PARENT_MENU_TITLE].ToString();
+                        HttpContext.Application[Constants.Page.PAGE_BANNER] = Session[Constants.SESSION_BANNER_MENU_PATH].ToString();
+                        HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = Session[Constants.Page.PARENT_MENU_TITLE].ToString();
                         return;
                     }
-                }
+                }*/
 
                 if (menuId > 0)
                 {
@@ -62,32 +62,32 @@ namespace HCSV.Web.Controllers
                         var parentMenu = UnitOfWork.MenuBusiness.GetMenuById(LanguageId, menu.parent);
                         if (parentMenu != null)
                         {
-                            HttpContext.Application[Constants.PAGE_BANNER] = parentMenu.@params;
-                            HttpContext.Application[Constants.PARENT_MENU_TITLE] = parentMenu.name;
+                            HttpContext.Application[Constants.Page.PAGE_BANNER] = parentMenu.@params;
+                            HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = parentMenu.name;
                             Session[Constants.SESSION_BANNER_MENU_PATH] = parentMenu.@params;
-                            Session[Constants.PARENT_MENU_TITLE] = parentMenu.name;
+                            Session[Constants.Page.PARENT_MENU_TITLE] = parentMenu.name;
                         }
-                        HttpContext.Application[Constants.MENU_TITLE] = menu.name;
+                        HttpContext.Application[Constants.Page.MENU_TITLE] = menu.name;
                     }
                 }
                 else
                 {
                     // index
-                    HttpContext.Application[Constants.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
-                    HttpContext.Application[Constants.PARENT_MENU_TITLE] = "Home page";
-                    HttpContext.Application[Constants.MENU_TITLE] = "Index";
+                    HttpContext.Application[Constants.Page.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
+                    HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = "Home page";
+                    HttpContext.Application[Constants.Page.MENU_TITLE] = "Index";
                 }
 
 
                 // for test
-                HttpContext.Application[Constants.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
+                HttpContext.Application[Constants.Page.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
             }
             else
             {
                 // index
-                HttpContext.Application[Constants.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
-                HttpContext.Application[Constants.PARENT_MENU_TITLE] = "Home page";
-                HttpContext.Application[Constants.MENU_TITLE] = "Index";
+                HttpContext.Application[Constants.Page.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
+                HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = "Home page";
+                HttpContext.Application[Constants.Page.MENU_TITLE] = "Index";
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿@model HCSV.Business.Models.ContentModel<HCSV.Models.jos_content>
 @{
-    ViewBag.Title = HttpContext.Current.Application[HCSV.Core.Constants.PAGE_TITLE];
+    ViewBag.Title = HttpContext.Current.Application[HCSV.Core.Constants.Page.PAGE_TITLE];
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -20,15 +20,15 @@
 <div class="bg_100percent_css news_css">
     <div class="container">
         @{
-            if ((Model.BANNER != null) && Model.BANNER.Any())
+            if ((Model.ListValues != null) && Model.ListValues.Any())
             {
                 <span class="other_news_css">@HCSV.Resources.GlobalResource.OTHER_NEWS</span>
 
-                int intCount = Model.BANNER.Count();
+                int intCount = Model.ListValues.Count();
                 int i = 0;
                 string strLastItemCss = "";
 
-                foreach (var item in Model.BANNER)
+                foreach (var item in Model.ListValues)
                 {
                     i++;
                     if (i == intCount)

@@ -8,12 +8,31 @@ namespace HCSV.Core
 {
     public class Constants
     {
-        public const string HOME_PAGE_TITLE = "HOME_PAGE_TITLE";
-        public const string PAGE_BANNER = "PAGE_BANNER";
-        public const string PAGE_TITLE = "PAGE_TITLE";
-        public const string PAGE_BREADCRUMBS = "PAGE_BREADCRUMBS";
-        public const string PARENT_MENU_TITLE = "PARENT_MENU_TITLE";
-        public const string MENU_TITLE = "MENU_TITLE";
+        public static class Page
+        {
+            public const string HOME_PAGE_TITLE = "HOME_PAGE_TITLE";
+            public const string PAGE_BANNER = "PAGE_BANNER";
+            public const string PAGE_TITLE = "PAGE_TITLE";
+            public const string PAGE_BREADCRUMBS = "PAGE_BREADCRUMBS";
+            public const string PARENT_MENU_TITLE = "PARENT_MENU_TITLE";
+            public const string MENU_TITLE = "MENU_TITLE";
+        }
+
+        public  static class  TcsContentType
+        {
+            public const string MISSION_AREA = "MISSION_AREA";
+
+            public const string VISION_AREA = "VISION_AREA";
+
+            public const string VALUE_AREA = "VALUE_AREA";
+
+            public const string CUSTOMER_NEWS = "CUSTOMER_NEWS";
+
+            public const string TCS_NEWS = "TCS_NEWS";
+
+            public const string INDUSTRIAL_NEWS = "INDUSTRIAL_NEWS";
+        }
+        
 
         public const string WEB_HOME_PAGE = "Home";
         public const string WEB_SUPPORT_PAGE = "Support";

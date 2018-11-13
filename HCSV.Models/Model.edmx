@@ -232,6 +232,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_bannertrack' does not
           <Property Name="metadata" Type="nvarchar(max)" />
           <Property Name="position" Type="nvarchar(max)" />
           <Property Name="lang_id" Type="int" Nullable="false" />
+          <Property Name="content_type" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="jos_content_frontpage">
           <Key>
@@ -1555,6 +1556,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="metadata" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="lang_id" Type="Int32" Nullable="false" />
+          <Property Name="content_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="jos_content_frontpage">
           <Key>
@@ -2814,6 +2816,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
                 <ScalarProperty Name="metadata" ColumnName="metadata" />
                 <ScalarProperty Name="position" ColumnName="position" />
                 <ScalarProperty Name="lang_id" ColumnName="lang_id" />
+                <ScalarProperty Name="content_type" ColumnName="content_type" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

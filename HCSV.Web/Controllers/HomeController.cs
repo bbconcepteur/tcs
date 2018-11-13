@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using HCSV.Core;
@@ -9,10 +10,10 @@ namespace HCSV.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            
-            return View();
+            var model = await UnitOfWork.DashbroadBussiness.GetDashbroad(LanguageId);
+            return View(model);
         }
 
         public ActionResult About()

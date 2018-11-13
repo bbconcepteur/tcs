@@ -217,6 +217,7 @@
     <Content Include="Content\BoostrapTemplate\img\b2.jpg" />
     <Content Include="Content\BoostrapTemplate\img\b3.jpg" />
     <Content Include="Content\BoostrapTemplate\img\banner-bg.jpg" />
+    <Content Include="Content\BoostrapTemplate\img\bg.jpg" />
     <Content Include="Content\BoostrapTemplate\img\blog\add.jpg" />
     <Content Include="Content\BoostrapTemplate\img\blog\author.png" />
     <Content Include="Content\BoostrapTemplate\img\blog\banner.jpg" />
@@ -289,6 +290,7 @@
     <Content Include="Content\BoostrapTemplate\img\intro_2.jpg" />
     <Content Include="Content\BoostrapTemplate\img\intro_3.jpg" />
     <Content Include="Content\BoostrapTemplate\img\logo.png" />
+    <Content Include="Content\BoostrapTemplate\img\n0_image_available.png" />
     <Content Include="Content\BoostrapTemplate\img\news_icon.jpg" />
     <Content Include="Content\BoostrapTemplate\img\p1.jpg" />
     <Content Include="Content\BoostrapTemplate\img\p2.jpg" />
@@ -773,7 +775,9 @@
     <Content Include="themes\orange\images\pattern01.gif" />
     <Content Include="themes\orange\images\pattern02.gif" />
     <Content Include="themes\orange\images\search.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

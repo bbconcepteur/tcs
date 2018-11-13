@@ -48,5 +48,6 @@ namespace HCSV.Models
         public string metadata { get; set; }
         public string position { get; set; }
         public int lang_id { get; set; }
+        public string content_type { get; set; }
     }
 }
