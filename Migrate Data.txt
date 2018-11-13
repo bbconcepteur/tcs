@@ -1,0 +1,51 @@
+1. Add columns jos_content:
+		ALTER TABLE jos_content
+		ADD content_type varchar(255);
+2. migrate Data from jos_language_translation to jos_content:
+/*Trang chu*/
+
+-- Vision data:
+update jos_content set content_type = 'MISSION_AREA'
+where id in (
+select reference_id from jos_language_translation t
+where t.reference_table  ='jos_content' and origin_id = '3378');
+
+update jos_content set content_type = 'MISSION_AREA'
+where id = 3378;
+
+-- vision data
+
+update jos_content set content_type = 'VISION_AREA'
+where id = 3379;
+
+update jos_content set content_type = 'VISION_AREA'
+where id in (
+select reference_id from jos_language_translation t
+where t.reference_table  ='jos_content' and origin_id = '3379');
+
+-- value data
+
+update jos_content set content_type = 'VALUE_AREA'
+where id = 3380
+
+update jos_content set content_type = 'VALUE_AREA'
+where id in (
+select reference_id from jos_language_translation t
+where t.reference_table  ='jos_content' and origin_id = '3380');
+
+
+/*Cap nhat customer new:*/
+update jos_content set  Content_Type = 'CUSTOMER_NEWS'
+where catid =  107
+
+
+/*Cap nhat TCS new:*/
+
+update jos_content set  Content_Type = 'TCS_NEWS'
+where catid =  108
+
+
+/*Cap nhat INDUSTRIAL_NEWS new:*/
+
+update jos_content set  Content_Type = 'INDUSTRIAL_NEWS'
+where catid =  110
