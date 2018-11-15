@@ -22,7 +22,16 @@ namespace HCSV.Web.Controllers
         public async Task<ActionResult> Details(int? contentID)
         {
             var contents = await UnitOfWork.NewsBusiness.GetDetails(LanguageId, contentID ?? 0);
-            HttpContext.Application[HCSV.Core.Constants.Page.PAGE_TITLE] = contents.Value.title;
+            string pageTitle = "";
+            if (contents.Value != null)
+            {
+                pageTitle = contents.Value.title;
+            }
+            else
+            {
+                pageTitle = Resources.GlobalResource.KHONG_TIM_THAY_DU_LIEU;
+            }
+            HttpContext.Application[HCSV.Core.Constants.Page.PAGE_TITLE] = pageTitle;
             return View(contents);
         }
     }

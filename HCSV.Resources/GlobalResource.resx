@@ -328,6 +328,9 @@
   <data name="IN_MAN_HINH" xml:space="preserve">
     <value>In</value>
   </data>
+  <data name="KHONG_TIM_THAY_DU_LIEU" xml:space="preserve">
+    <value>Không tìm thấy dữ liệu</value>
+  </data>
   <data name="KHONG_VAN_DON" xml:space="preserve">
     <value>Không vận đơn</value>
   </data>

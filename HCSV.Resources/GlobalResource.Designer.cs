@@ -692,6 +692,15 @@ namespace HCSV.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Không tìm thấy dữ liệu.
+        /// </summary>
+        public static string KHONG_TIM_THAY_DU_LIEU {
+            get {
+                return ResourceManager.GetString("KHONG_TIM_THAY_DU_LIEU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Không vận đơn.
         /// </summary>
         public static string KHONG_VAN_DON {

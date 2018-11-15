@@ -6,21 +6,32 @@
 
 <div class="bg_content_css">
     <div class="container detail_news_css">
-        <h2>@Html.Raw(Model.Value.title)</h2>
-        <div class="bg_100percent_css fb_css">
-            <span class="like_fb_css"></span>
-            <span class="share_fb_css"></span>
-        </div>
-        <span class="content_col_css">
-            @Html.Raw(Model.Value.introtext)
-            @Html.Raw(Model.Value.fulltext)
-        </span>
+        @if (Model != null && Model.Value != null)
+        {
+            <h2>@Html.Raw(Model.Value.title)</h2>
+            <div class="bg_100percent_css fb_css">
+                <span class="like_fb_css"></span>
+                <span class="share_fb_css"></span>
+            </div>
+            <span class="content_col_css">
+                @Html.Raw(Model.Value.introtext)
+                @Html.Raw(Model.Value.fulltext)
+            </span>
+        }
+        else
+        {
+            <h2>@HCSV.Resources.GlobalResource.KHONG_TIM_THAY_DU_LIEU</h2>
+        }
+        
     </div>
 </div>
+
+
+
 <div class="bg_100percent_css news_css">
     <div class="container">
         @{
-            if ((Model.ListValues != null) && Model.ListValues.Any())
+            if (Model!= null && Model.ListValues != null && Model.ListValues.Any())
             {
                 <span class="other_news_css">@HCSV.Resources.GlobalResource.OTHER_NEWS</span>
 
