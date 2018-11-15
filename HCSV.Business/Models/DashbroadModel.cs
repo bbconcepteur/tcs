@@ -15,11 +15,11 @@ namespace HCSV.Business.Models
 
         public jos_content ValueArea { get; set; }
 
-        public List<jos_content> CustomerNews { get; set; } = new List<jos_content>();
+        public List<jos_content> CustomerNews { get; set; }  
 
-        public List<jos_content> TcsNews { get; set; } = new List<jos_content>();
+        public List<jos_content> TcsNews { get; set; }  
 
-        public List<jos_content> IndustrialNews { get; set; } = new List<jos_content>();
+        public List<jos_content> IndustrialNews { get; set; }  
 
     }
 }

@@ -1,11 +1,9 @@
-﻿@model HCSVNewWebsite.Models.jos_content
+﻿@model HCSV.Models.jos_content
 
 @{
-    ViewBag.Title = "Services";
-    ViewBag.Page = "Services";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <!--Begin: Page Container-->
 <div class="bg_content_css">
     <div id="service_accordion" class="ui-accordion ui-widget ui-helper-reset ui-accordion-icons" role="tablist">
@@ -20,7 +18,7 @@
                     </h3>
                     <div class="pane ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" role="tabpanel" style="display: none; overflow: auto; padding-top: 5px; padding-bottom: 10px;">
                         <div>
-                            @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.introtext))
+                            @Html.Raw(item.introtext)
                         </div>
                     </div>
                 }
