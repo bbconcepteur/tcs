@@ -31,8 +31,30 @@ namespace HCSV.Core
             public const string TCS_NEWS = "TCS_NEWS";
 
             public const string INDUSTRIAL_NEWS = "INDUSTRIAL_NEWS";
+
+            public const string MENU_TOP = "TOP_MENU";
+
+            public const string MENU_BOTTOM = "BOTTOM_MENU";
+
+            public const string MENU_LEFT = "LEFT_MENU";
         }
-        
+
+        public static class TranslateTable
+        {
+            public const string TBL_JOS_MENU = "jos_menu";
+            public const string TBL_JOS_CONTENT = "jos_content";
+            public const string TBL_JOS_CONTACT = "jos_contact";
+        }
+
+        public static class Session
+        {
+            public const string SESSION_LANGUAGE_ID = "LANGUAGE_ID";
+            public const string SESSION_DEFAULT_LANGUAGE_ID = "LANGUAGE_ID";
+            public const string SESSION_MENU_ID = "MENU_ID";
+            public const string SESSION_BANNER_MENU_PATH = "SESSION_BANNER_MENU_PATH";
+            public const string SESSION_ERROR_CAPCHA = "ERROR_CAPTCHA";
+            public const string SESSION_LOGIN_STATUS = "LOGIN_STATUS";
+        }
 
         public const string WEB_HOME_PAGE = "Home";
         public const string WEB_SUPPORT_PAGE = "Support";
@@ -59,25 +81,11 @@ namespace HCSV.Core
 
         public const int NUMBER_INVALID_INTEGER = -99999;
 
-        public const string TBL_JOS_MENU = "jos_menu";
-        public const string TBL_JOS_CONTENT = "jos_content";
-        public const string TBL_JOS_CONTACT = "jos_contact";
-
         public const int NUMBER_OF_CONTENTS_ON_A_PAGE = 10;
 
         public const string DATE_FORMAT_DD_MM_YYYY = "dd.MM.yyyy";
 
         public const string CSS_ACTIVE_TOP_MENU = " current section";
-
-        public const string SESSION_LANGUAGE_ID = "LANGUAGE_ID";
-        public const string SESSION_MENU_ID = "MENU_ID";
-        public const string SESSION_BANNER_MENU_PATH = "SESSION_BANNER_MENU_PATH";
-        public const string SESSION_ERROR_CAPCHA = "error_captcha";
-        public const string SESSION_LOGIN_STATUS = "LOGIN_STATUS";
-
-        public const string MENU_TOP = "TOP_MENU";
-        public const string MENU_BOTTOM = "BOTTOM_MENU";
-        public const string MENU_LEFT = "LEFT_MENU";
 
         //for web service
         public const string user_code = "user_code";

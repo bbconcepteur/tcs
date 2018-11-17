@@ -21,7 +21,7 @@ namespace HCSV.Business.Business
     {
         public MenuBusiness(TCSEntities db) : base(db)
         {
-            
+
         }
 
         public MenuBusiness()
@@ -43,30 +43,43 @@ namespace HCSV.Business.Business
 
         public List<Menu> GetBottomMenu(long langId)
         {
-            var menuTypes = db.jos_menu_types.AsNoTracking().Where(s => Constants.MENU_BOTTOM.Equals(s.menutype)).Select(s => s.id).ToList();
-            var menus = GetMany(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
-            {
-                Id = s.id,
-                ParentId = s.parent,
-                LangId = s.lang_id,
-                Name = s.name,
-                Url = s.link
-            }).ToList();
+
+            var menuTypes =
+                db.jos_menu_types.AsNoTracking()
+                    .Where(s => Constants.TcsContentType.MENU_BOTTOM.Equals(s.menutype))
+                    .Select(s => s.id)
+                    .ToList();
+            var menus =
+                GetMany(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0))
+                    .Select(s => new Menu()
+                    {
+                        Id = s.id,
+                        ParentId = s.parent,
+                        LangId = s.lang_id,
+                        Name = s.name,
+                        Url = s.link
+                    }).ToList();
 
             return menus;
         }
 
         public List<Menu> GetTopMenu(long langId)
         {
-            var menuTypes = db.jos_menu_types.AsNoTracking().Where(s => Constants.MENU_TOP.Equals(s.menutype)).Select(s => s.id).ToList();
-            var menus =GetMany(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
-            {
-                Id = s.id,
-                ParentId = s.parent,
-                LangId = s.lang_id,
-                Name = s.name,
-                Url = s.link
-            }).ToList();
+            var menuTypes =
+                             db.jos_menu_types.AsNoTracking()
+                                 .Where(s => Constants.TcsContentType.MENU_TOP.Equals(s.menutype))
+                                 .Select(s => s.id)
+                                 .ToList();
+            var menus =
+                GetMany(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0))
+                    .Select(s => new Menu()
+                    {
+                        Id = s.id,
+                        ParentId = s.parent,
+                        LangId = s.lang_id,
+                        Name = s.name,
+                        Url = s.link
+                    }).ToList();
             List<Menu> menuModel = new List<Menu>();
             var parentMenu = menus.Where(s => s.ParentId == 0).ToList();
             if (parentMenu.Any())
@@ -107,6 +120,7 @@ namespace HCSV.Business.Business
             }
 
             return menuModel;
+
         }
     }
 }

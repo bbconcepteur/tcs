@@ -1,7 +1,7 @@
 ﻿@model HCSV.Models.jos_content
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = HttpContext.Current.Application[HCSV.Core.Constants.Page.PAGE_TITLE];
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!--Begin: Page Container-->

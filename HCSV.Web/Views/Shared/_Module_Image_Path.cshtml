@@ -1,7 +1,7 @@
 ﻿@using HCSV.Core
 @if (Request.Url != null && Request.Url.PathAndQuery == "/")
 {
-    <section class="home-banner-area relative">
+    <section class="relative" style="background: url('@HttpContext.Current.Application[Constants.Page.PAGE_BANNER]') no-repeat center center/cover">
         <div class="overlay overlay-bg"></div>
         <div class="container">
             <div class="row fullscreen align-items-end justify-content-center" style="height: 913px;">

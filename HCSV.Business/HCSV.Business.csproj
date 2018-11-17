@@ -67,6 +67,7 @@
     <Compile Include="Business\LanguageBusiness.cs" />
     <Compile Include="Business\MenuBusiness.cs" />
     <Compile Include="Business\NewsBusiness.cs" />
+    <Compile Include="Business\TranslateBusiness.cs" />
     <Compile Include="Models\ContentModel.cs" />
     <Compile Include="Models\DashbroadModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

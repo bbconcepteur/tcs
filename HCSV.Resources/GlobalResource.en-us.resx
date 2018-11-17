@@ -619,6 +619,9 @@
   <data name="TU_NGAY" xml:space="preserve">
     <value>Từ ngày:</value>
   </data>
+  <data name="URL_TIN_TUC" xml:space="preserve">
+    <value>news</value>
+  </data>
   <data name="VUI_LONG_DIEN_THONG_TIN_DANG_NHAP" xml:space="preserve">
     <value>Vui lòng điền thông tin đăng nhập</value>
   </data>

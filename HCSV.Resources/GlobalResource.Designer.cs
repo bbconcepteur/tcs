@@ -1559,6 +1559,15 @@ namespace HCSV.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to tin-tuc.
+        /// </summary>
+        public static string URL_TIN_TUC {
+            get {
+                return ResourceManager.GetString("URL_TIN_TUC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vui lòng điền thông tin đăng nhập.
         /// </summary>
         public static string VUI_LONG_DIEN_THONG_TIN_DANG_NHAP {

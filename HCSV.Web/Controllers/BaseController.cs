@@ -15,28 +15,47 @@ namespace HCSV.Web.Controllers
     {
         protected IUnitOfWork UnitOfWork = new UnitOfWork();
         private long _languageId;
+        private long _defaultLangId;
         protected long LanguageId
         {
             get
             {
-                if (Session[Constants.SESSION_LANGUAGE_ID] != null)
+                if (Session[Constants.Session.SESSION_LANGUAGE_ID] != null)
                 {
-                    _languageId = int.Parse(Session[Constants.SESSION_LANGUAGE_ID].ToString());
+                    _languageId = int.Parse(Session[Constants.Session.SESSION_LANGUAGE_ID].ToString());
                 }
                 else
                 {
                     const string cultureName = "vi"; //default vietnamese
                     _languageId = UnitOfWork.LanguageBusiness.GetLanguageId(cultureName);
-                    Session[Constants.SESSION_LANGUAGE_ID] = _languageId;
+                    Session[Constants.Session.SESSION_LANGUAGE_ID] = _languageId;
                 }
 
                 return _languageId;
             }
         }
 
+        protected long DefaultLanguageId
+        {
+            get
+            {
+                if (Session[Constants.Session.SESSION_DEFAULT_LANGUAGE_ID] != null)
+                {
+                    _defaultLangId = int.Parse(Session[Constants.Session.SESSION_DEFAULT_LANGUAGE_ID].ToString());
+                }
+                else
+                {
+                    _defaultLangId = UnitOfWork.LanguageBusiness.GetDefaultLanguage();
+                    Session[Constants.Session.SESSION_DEFAULT_LANGUAGE_ID] = _defaultLangId;
+                }
+                return _defaultLangId;
+            }
+        }
+
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
+            HttpContext.Application[Constants.Page.PAGE_TITLE] = HttpContext.Application[Constants.Page.HOME_PAGE_TITLE];
             if (Request.QueryString["menu"] != null)
             {
                 long menuId = -1;
@@ -55,7 +74,7 @@ namespace HCSV.Web.Controllers
 
                 if (menuId > 0)
                 {
-                    Session[Constants.SESSION_MENU_ID] = menuId;
+                    Session[Constants.Session.SESSION_MENU_ID] = menuId;
                     var menu = UnitOfWork.MenuBusiness.GetMenuById(LanguageId, menuId);
                     if (menu != null)
                     {
@@ -64,7 +83,7 @@ namespace HCSV.Web.Controllers
                         {
                             HttpContext.Application[Constants.Page.PAGE_BANNER] = parentMenu.@params;
                             HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = parentMenu.name;
-                            Session[Constants.SESSION_BANNER_MENU_PATH] = parentMenu.@params;
+                            Session[Constants.Session.SESSION_BANNER_MENU_PATH] = parentMenu.@params;
                             Session[Constants.Page.PARENT_MENU_TITLE] = parentMenu.name;
                         }
                         HttpContext.Application[Constants.Page.MENU_TITLE] = menu.name;
@@ -73,19 +92,19 @@ namespace HCSV.Web.Controllers
                 else
                 {
                     // index
-                    HttpContext.Application[Constants.Page.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
+                    HttpContext.Application[Constants.Page.PAGE_BANNER] = "/Content/BoostrapTemplate/img/header-bg.jpg";
                     HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = "Home page";
                     HttpContext.Application[Constants.Page.MENU_TITLE] = "Index";
                 }
 
 
                 // for test
-                HttpContext.Application[Constants.Page.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
+                HttpContext.Application[Constants.Page.PAGE_BANNER] = "/Content/BoostrapTemplate/img/header-bg.jpg";
             }
             else
             {
                 // index
-                HttpContext.Application[Constants.Page.PAGE_BANNER] = "<img src='/Content/BoostrapTemplate/img/header-bg.jpg' />";
+                HttpContext.Application[Constants.Page.PAGE_BANNER] = "/Content/BoostrapTemplate/img/header-bg.jpg";
                 HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = "Home page";
                 HttpContext.Application[Constants.Page.MENU_TITLE] = "Index";
             }

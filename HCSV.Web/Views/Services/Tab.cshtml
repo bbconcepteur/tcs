@@ -1,7 +1,7 @@
-﻿@model HCSVNewWebsite.Models.jos_content
+﻿@model HCSV.Models.jos_content
 
 @{
-    ViewBag.Title = "Services";
+    ViewBag.Title = HttpContext.Current.Application[HCSV.Core.Constants.Page.PAGE_TITLE];
     ViewBag.Page = "Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -10,7 +10,7 @@
     <div class="matginT10">
         <h4>@{ if (Model.LEFT != null)
                {
-                    @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.LEFT.introtext))       
+                    @Html.Raw(HCSV.Commons.Commons.convertContent(Model.LEFT.introtext))       
                }                   
             }
         </h4>

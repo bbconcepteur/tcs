@@ -21,7 +21,7 @@ namespace HCSV.Web.Controllers
 
         public async Task<ActionResult> Details(int? contentID)
         {
-            var contents = await UnitOfWork.NewsBusiness.GetDetails(LanguageId, contentID ?? 0);
+            var contents = await UnitOfWork.NewsBusiness.GetDetails(LanguageId, contentID ?? 0, DefaultLanguageId);
             string pageTitle = "";
             if (contents.Value != null)
             {

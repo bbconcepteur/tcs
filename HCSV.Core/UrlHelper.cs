@@ -11,17 +11,16 @@ namespace HCSV.Core
     {
         public static string GenerateSlug(object title, object id)
         {
-            string phrase = string.Format("{0}-{1}", title, id);
-
-            string str = ConvertToUnsign(phrase).ToLower();
+            if (title == null || string.IsNullOrEmpty(title.ToString())) title = "";
+            string str = ConvertToUnsign(title.ToString()).ToLower();
             // invalid chars           
             str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
             // convert multiple spaces into one space   
             str = Regex.Replace(str, @"\s+", " ").Trim();
             // cut and trim 
-            str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
+            //str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
             str = Regex.Replace(str, @"\s", "-"); // hyphens   
-            return str;
+            return string.Format("{0}-{1}", str, id);
         }
 
         static Regex _convertToUnsignRg = null;
@@ -35,9 +34,9 @@ namespace HCSV.Core
             return _convertToUnsignRg.Replace(temp, string.Empty).Replace("đ", "d").Replace("Đ", "D").ToLower();
         }
 
-        public static string Action(string actionName, string controllerName, object title, object id)
+        public static string Action(string actionName, object menu, object title, object id)
         {
-            return string.Format("/{0}/{1}/{2}", controllerName, actionName, GenerateSlug(title, id));
+            return string.Format("/{0}/{1}/{2}", actionName, menu, GenerateSlug(title, id));
         }
     }
 }
