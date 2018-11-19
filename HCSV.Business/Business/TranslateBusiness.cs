@@ -55,7 +55,7 @@ namespace HCSV.Business.Business
             var translateContent = GetTranslatetion(langId, sourceId, Constants.TranslateTable.TBL_JOS_MENU);
             var menu =
                 db.jos_menu.AsNoTracking()
-                    .FirstOrDefault(s => s.lang_id == langId && s.published == 1 && s.id == translateContent.reference_id);
+                    .FirstOrDefault(s => s.lang_id == langId && s.published && s.id == translateContent.reference_id);
             return menu;
         }
 

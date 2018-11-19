@@ -31,12 +31,12 @@ namespace HCSV.Business.Business
 
         public jos_menu GetMenuById(long langId, long menuId)
         {
-            var menu = GetSingle(s => s.lang_id == langId && s.id == menuId && s.published == 1);
+            var menu = GetSingle(s => s.lang_id == langId && s.id == menuId && s.published );
             if (menu == null)
             {
                 var defaultLang = db.jos_languages.AsNoTracking().FirstOrDefault(s => s.default_status == 1) ??
                                   new jos_languages();
-                menu = GetSingle(s => s.lang_id == defaultLang.lang_id && s.id == menuId && s.published == 1);
+                menu = GetSingle(s => s.lang_id == defaultLang.lang_id && s.id == menuId && s.published);
             }
             return menu;
         }
@@ -50,7 +50,7 @@ namespace HCSV.Business.Business
                     .Select(s => s.id)
                     .ToList();
             var menus =
-                GetMany(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0))
+                GetMany(s => s.lang_id == langId && s.published && menuTypes.Contains(s.id_menutype ?? 0))
                     .Select(s => new Menu()
                     {
                         Id = s.id,
@@ -71,7 +71,7 @@ namespace HCSV.Business.Business
                                  .Select(s => s.id)
                                  .ToList();
             var menus =
-                GetMany(s => s.lang_id == langId && s.published == 1 && menuTypes.Contains(s.id_menutype ?? 0))
+                GetMany(s => s.lang_id == langId && s.published && menuTypes.Contains(s.id_menutype ?? 0))
                     .Select(s => new Menu()
                     {
                         Id = s.id,
