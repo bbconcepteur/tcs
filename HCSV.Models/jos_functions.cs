@@ -18,7 +18,7 @@ namespace HCSV.Models
         public long id_parent { get; set; }
         public string name { get; set; }
         public string link { get; set; }
-        public short published { get; set; }
+        public bool published { get; set; }
         public Nullable<int> ordering { get; set; }
         public byte access { get; set; }
     }

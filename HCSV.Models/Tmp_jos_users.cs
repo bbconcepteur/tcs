@@ -12,20 +12,20 @@ namespace HCSV.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class jos_newsfeeds
+    public partial class Tmp_jos_users
     {
-        public int catid { get; set; }
         public int id { get; set; }
         public string name { get; set; }
-        public string alias { get; set; }
-        public string link { get; set; }
-        public string filename { get; set; }
-        public bool published { get; set; }
-        public long numarticles { get; set; }
-        public long cache_time { get; set; }
-        public byte checked_out { get; set; }
-        public System.DateTime checked_out_time { get; set; }
-        public int ordering { get; set; }
-        public short rtl { get; set; }
+        public string username { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public string usertype { get; set; }
+        public Nullable<bool> block { get; set; }
+        public Nullable<short> sendEmail { get; set; }
+        public Nullable<byte> gid { get; set; }
+        public Nullable<System.DateTime> registerDate { get; set; }
+        public Nullable<System.DateTime> lastvisitDate { get; set; }
+        public string activation { get; set; }
+        public string @params { get; set; }
     }
 }

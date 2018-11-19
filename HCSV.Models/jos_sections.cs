@@ -23,7 +23,7 @@ namespace HCSV.Models
         public string scope { get; set; }
         public string image_position { get; set; }
         public string description { get; set; }
-        public short published { get; set; }
+        public bool published { get; set; }
         public long checked_out { get; set; }
         public System.DateTime checked_out_time { get; set; }
         public int ordering { get; set; }

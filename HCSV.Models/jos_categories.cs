@@ -24,7 +24,7 @@ namespace HCSV.Models
         public Nullable<int> section { get; set; }
         public string image_position { get; set; }
         public string description { get; set; }
-        public Nullable<short> published { get; set; }
+        public Nullable<bool> published { get; set; }
         public Nullable<long> checked_out { get; set; }
         public Nullable<System.DateTime> checked_out_time { get; set; }
         public string editor { get; set; }

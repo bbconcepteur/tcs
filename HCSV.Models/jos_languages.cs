@@ -23,7 +23,7 @@ namespace HCSV.Models
         public string description { get; set; }
         public string metakey { get; set; }
         public string metadesc { get; set; }
-        public int published { get; set; }
+        public bool published { get; set; }
         public Nullable<byte> default_status { get; set; }
     }
 }

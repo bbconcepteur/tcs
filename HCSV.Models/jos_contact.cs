@@ -29,6 +29,6 @@ namespace HCSV.Models
         public string phone { get; set; }
         public string hotline { get; set; }
         public string title_of_manager { get; set; }
-        public short published { get; set; }
+        public bool published { get; set; }
     }
 }

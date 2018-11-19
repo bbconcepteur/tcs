@@ -30,7 +30,7 @@ namespace HCSV.Models
         public string imagepos { get; set; }
         public string email_to { get; set; }
         public byte default_con { get; set; }
-        public byte published { get; set; }
+        public bool published { get; set; }
         public long checked_out { get; set; }
         public System.DateTime checked_out_time { get; set; }
         public int ordering { get; set; }

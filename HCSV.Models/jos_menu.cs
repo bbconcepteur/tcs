@@ -21,7 +21,7 @@ namespace HCSV.Models
         public string alias { get; set; }
         public string link { get; set; }
         public string type { get; set; }
-        public short published { get; set; }
+        public bool published { get; set; }
         public long parent { get; set; }
         public long componentid { get; set; }
         public Nullable<int> sublevel { get; set; }

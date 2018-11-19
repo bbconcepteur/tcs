@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TCSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="chuy7808_tcsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="jos_ function_rights">
           <Key>
             <PropertyRef Name="id" />
@@ -113,7 +113,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_bannertrack' does not
           <Property Name="section" Type="int" />
           <Property Name="image_position" Type="nvarchar" MaxLength="30" />
           <Property Name="description" Type="nvarchar(max)" />
-          <Property Name="published" Type="smallint" />
+          <Property Name="published" Type="bit" />
           <Property Name="checked_out" Type="bigint" />
           <Property Name="checked_out_time" Type="datetime2" Precision="0" />
           <Property Name="editor" Type="nvarchar" MaxLength="50" />
@@ -160,7 +160,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_bannertrack' does not
           <Property Name="phone" Type="nvarchar" MaxLength="50" />
           <Property Name="hotline" Type="nvarchar" MaxLength="50" />
           <Property Name="title_of_manager" Type="nvarchar" MaxLength="50" />
-          <Property Name="published" Type="smallint" Nullable="false" />
+          <Property Name="published" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="jos_contact_details">
           <Key>
@@ -182,7 +182,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_bannertrack' does not
           <Property Name="imagepos" Type="nvarchar" MaxLength="20" />
           <Property Name="email_to" Type="nvarchar" MaxLength="255" />
           <Property Name="default_con" Type="tinyint" Nullable="false" />
-          <Property Name="published" Type="tinyint" Nullable="false" />
+          <Property Name="published" Type="bit" Nullable="false" />
           <Property Name="checked_out" Type="bigint" Nullable="false" />
           <Property Name="checked_out_time" Type="datetime2" Precision="0" Nullable="false" />
           <Property Name="ordering" Type="int" Nullable="false" />
@@ -359,7 +359,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_core_log_searches' do
           <Property Name="id_parent" Type="bigint" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="255" />
           <Property Name="link" Type="nvarchar(max)" />
-          <Property Name="published" Type="smallint" Nullable="false" />
+          <Property Name="published" Type="bit" Nullable="false" />
           <Property Name="ordering" Type="int" />
           <Property Name="access" Type="tinyint" Nullable="false" />
         </EntityType>
@@ -429,7 +429,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_core_log_searches' do
           <Property Name="description" Type="nvarchar" MaxLength="512" />
           <Property Name="metakey" Type="nvarchar(max)" />
           <Property Name="metadesc" Type="nvarchar(max)" />
-          <Property Name="published" Type="int" Nullable="false" />
+          <Property Name="published" Type="bit" Nullable="false" />
           <Property Name="default_status" Type="tinyint" />
         </EntityType>
         <EntityType Name="jos_links">
@@ -451,7 +451,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_core_log_searches' do
           <Property Name="fax" Type="nvarchar" MaxLength="50" />
           <Property Name="representative" Type="nvarchar" MaxLength="50" />
           <Property Name="lang_id" Type="int" Nullable="false" />
-          <Property Name="published" Type="tinyint" Nullable="false" />
+          <Property Name="published" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="jos_menu">
           <Key>
@@ -464,7 +464,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_core_log_searches' do
           <Property Name="alias" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="link" Type="nvarchar(max)" />
           <Property Name="type" Type="nvarchar" MaxLength="50" />
-          <Property Name="published" Type="smallint" Nullable="false" />
+          <Property Name="published" Type="bit" Nullable="false" />
           <Property Name="parent" Type="bigint" Nullable="false" />
           <Property Name="componentid" Type="bigint" Nullable="false" />
           <Property Name="sublevel" Type="int" />
@@ -555,7 +555,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_messages_cfg' does no
           <Property Name="position" Type="nvarchar" MaxLength="50" />
           <Property Name="checked_out" Type="bigint" Nullable="false" />
           <Property Name="checked_out_time" Type="datetime2" Precision="0" Nullable="false" />
-          <Property Name="published" Type="smallint" Nullable="false" />
+          <Property Name="published" Type="bit" Nullable="false" />
           <Property Name="module" Type="nvarchar" MaxLength="50" />
           <Property Name="numnews" Type="int" Nullable="false" />
           <Property Name="access" Type="tinyint" Nullable="false" />
@@ -583,7 +583,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_messages_cfg' does no
           <Property Name="alias" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="link" Type="nvarchar(max)" Nullable="false" />
           <Property Name="filename" Type="nvarchar" MaxLength="200" />
-          <Property Name="published" Type="smallint" Nullable="false" />
+          <Property Name="published" Type="bit" Nullable="false" />
           <Property Name="numarticles" Type="bigint" Nullable="false" />
           <Property Name="cache_time" Type="bigint" Nullable="false" />
           <Property Name="checked_out" Type="tinyint" Nullable="false" />
@@ -850,7 +850,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_messages_cfg' does no
           <Property Name="scope" Type="nvarchar" MaxLength="50" />
           <Property Name="image_position" Type="nvarchar" MaxLength="30" />
           <Property Name="description" Type="nvarchar(max)" />
-          <Property Name="published" Type="smallint" Nullable="false" />
+          <Property Name="published" Type="bit" Nullable="false" />
           <Property Name="checked_out" Type="bigint" Nullable="false" />
           <Property Name="checked_out_time" Type="datetime2" Precision="0" Nullable="false" />
           <Property Name="ordering" Type="int" Nullable="false" />
@@ -1184,7 +1184,27 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="excluded_items" Type="varchar" MaxLength="255" />
           <Property Name="compress_xml" Type="int" />
         </EntityType>
-        <EntityContainer Name="TCSModelStoreContainer">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.Tmp_jos_users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tmp_jos_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="username" Type="nvarchar" MaxLength="150" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="usertype" Type="nvarchar" MaxLength="25" />
+          <Property Name="block" Type="bit" />
+          <Property Name="sendEmail" Type="smallint" />
+          <Property Name="gid" Type="tinyint" />
+          <Property Name="registerDate" Type="datetime2" Precision="0" />
+          <Property Name="lastvisitDate" Type="datetime2" Precision="0" />
+          <Property Name="activation" Type="nvarchar" MaxLength="100" />
+          <Property Name="params" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="chuy7808_tcsModelStoreContainer">
           <EntitySet Name="jos_ function_rights" EntityType="Self.jos_ function_rights" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_awb_number" EntityType="Self.jos_awb_number" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_awb_user_type" EntityType="Self.jos_awb_user_type" Schema="chuy7808_sa" store:Type="Tables" />
@@ -1335,12 +1355,29 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
     [jos_stats_agents].[hits] AS [hits]
     FROM [chuy7808_sa].[jos_stats_agents] AS [jos_stats_agents]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Tmp_jos_users" EntityType="Self.Tmp_jos_users" store:Type="Tables" store:Schema="chuy7808_sa">
+            <DefiningQuery>SELECT 
+    [Tmp_jos_users].[id] AS [id], 
+    [Tmp_jos_users].[name] AS [name], 
+    [Tmp_jos_users].[username] AS [username], 
+    [Tmp_jos_users].[email] AS [email], 
+    [Tmp_jos_users].[password] AS [password], 
+    [Tmp_jos_users].[usertype] AS [usertype], 
+    [Tmp_jos_users].[block] AS [block], 
+    [Tmp_jos_users].[sendEmail] AS [sendEmail], 
+    [Tmp_jos_users].[gid] AS [gid], 
+    [Tmp_jos_users].[registerDate] AS [registerDate], 
+    [Tmp_jos_users].[lastvisitDate] AS [lastvisitDate], 
+    [Tmp_jos_users].[activation] AS [activation], 
+    [Tmp_jos_users].[params] AS [params]
+    FROM [chuy7808_sa].[Tmp_jos_users] AS [Tmp_jos_users]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TCSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="chuy7808_tcsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="jos__function_rights">
           <Key>
             <PropertyRef Name="id" />
@@ -1437,7 +1474,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="section" Type="Int32" />
           <Property Name="image_position" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="published" Type="Int16" />
+          <Property Name="published" Type="Boolean" />
           <Property Name="checked_out" Type="Int64" />
           <Property Name="checked_out_time" Type="DateTime" Precision="0" />
           <Property Name="editor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1484,7 +1521,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="hotline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="title_of_manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="published" Type="Int16" Nullable="false" />
+          <Property Name="published" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="jos_contact_details">
           <Key>
@@ -1506,7 +1543,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="imagepos" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="email_to" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="default_con" Type="Byte" Nullable="false" />
-          <Property Name="published" Type="Byte" Nullable="false" />
+          <Property Name="published" Type="Boolean" Nullable="false" />
           <Property Name="checked_out" Type="Int64" Nullable="false" />
           <Property Name="checked_out_time" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ordering" Type="Int32" Nullable="false" />
@@ -1647,7 +1684,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="id_parent" Type="Int64" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="published" Type="Int16" Nullable="false" />
+          <Property Name="published" Type="Boolean" Nullable="false" />
           <Property Name="ordering" Type="Int32" />
           <Property Name="access" Type="Byte" Nullable="false" />
         </EntityType>
@@ -1717,7 +1754,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="description" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="metakey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="metadesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="published" Type="Int32" Nullable="false" />
+          <Property Name="published" Type="Boolean" Nullable="false" />
           <Property Name="default_status" Type="Byte" />
         </EntityType>
         <EntityType Name="jos_links">
@@ -1739,7 +1776,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="representative" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="lang_id" Type="Int32" Nullable="false" />
-          <Property Name="published" Type="Byte" Nullable="false" />
+          <Property Name="published" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="jos_menu">
           <Key>
@@ -1752,7 +1789,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="alias" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="published" Type="Int16" Nullable="false" />
+          <Property Name="published" Type="Boolean" Nullable="false" />
           <Property Name="parent" Type="Int64" Nullable="false" />
           <Property Name="componentid" Type="Int64" Nullable="false" />
           <Property Name="sublevel" Type="Int32" />
@@ -1831,7 +1868,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="checked_out" Type="Int64" Nullable="false" />
           <Property Name="checked_out_time" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="published" Type="Int16" Nullable="false" />
+          <Property Name="published" Type="Boolean" Nullable="false" />
           <Property Name="module" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="numnews" Type="Int32" Nullable="false" />
           <Property Name="access" Type="Byte" Nullable="false" />
@@ -1859,7 +1896,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="alias" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="filename" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="published" Type="Int16" Nullable="false" />
+          <Property Name="published" Type="Boolean" Nullable="false" />
           <Property Name="numarticles" Type="Int64" Nullable="false" />
           <Property Name="cache_time" Type="Int64" Nullable="false" />
           <Property Name="checked_out" Type="Byte" Nullable="false" />
@@ -2126,7 +2163,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="scope" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="image_position" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="published" Type="Int16" Nullable="false" />
+          <Property Name="published" Type="Boolean" Nullable="false" />
           <Property Name="checked_out" Type="Int64" Nullable="false" />
           <Property Name="checked_out_time" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ordering" Type="Int32" Nullable="false" />
@@ -2502,6 +2539,24 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <Property Name="type" Type="Byte" Nullable="false" />
           <Property Name="hits" Type="Int64" Nullable="false" />
         </EntityType>
+        <EntityType Name="Tmp_jos_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="usertype" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="block" Type="Boolean" />
+          <Property Name="sendEmail" Type="Int16" />
+          <Property Name="gid" Type="Byte" />
+          <Property Name="registerDate" Type="DateTime" Precision="0" />
+          <Property Name="lastvisitDate" Type="DateTime" Precision="0" />
+          <Property Name="activation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="params" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityContainer Name="TCSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="jos__function_rights" EntityType="Self.jos__function_rights" />
           <EntitySet Name="jos_awb_number" EntityType="Self.jos_awb_number" />
@@ -2587,15 +2642,16 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
           <EntitySet Name="jos_sef_sm_menu" EntityType="Self.jos_sef_sm_menu" />
           <EntitySet Name="jos_sef_sm_pingback_menu" EntityType="Self.jos_sef_sm_pingback_menu" />
           <EntitySet Name="jos_stats_agents" EntityType="Self.jos_stats_agents" />
+          <EntitySet Name="Tmp_jos_users" EntityType="Self.Tmp_jos_users" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TCSModelStoreContainer" CdmEntityContainer="TCSEntities">
+        <EntityContainerMapping StorageEntityContainer="chuy7808_tcsModelStoreContainer" CdmEntityContainer="TCSEntities">
           <EntitySetMapping Name="jos__function_rights">
-            <EntityTypeMapping TypeName="TCSModel.jos__function_rights">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos__function_rights">
               <MappingFragment StoreEntitySet="jos_ function_rights">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_right" ColumnName="id_right" />
@@ -2604,7 +2660,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_awb_number">
-            <EntityTypeMapping TypeName="TCSModel.jos_awb_number">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_awb_number">
               <MappingFragment StoreEntitySet="jos_awb_number">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="number_one" ColumnName="number_one" />
@@ -2613,7 +2669,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_awb_user_type">
-            <EntityTypeMapping TypeName="TCSModel.jos_awb_user_type">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_awb_user_type">
               <MappingFragment StoreEntitySet="jos_awb_user_type">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="code" ColumnName="code" />
@@ -2622,7 +2678,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_awb_users">
-            <EntityTypeMapping TypeName="TCSModel.jos_awb_users">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_awb_users">
               <MappingFragment StoreEntitySet="jos_awb_users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_user_type" ColumnName="id_user_type" />
@@ -2638,7 +2694,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_banner">
-            <EntityTypeMapping TypeName="TCSModel.jos_banner">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_banner">
               <MappingFragment StoreEntitySet="jos_banner">
                 <ScalarProperty Name="bid" ColumnName="bid" />
                 <ScalarProperty Name="cid" ColumnName="cid" />
@@ -2668,7 +2724,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_bannerclient">
-            <EntityTypeMapping TypeName="TCSModel.jos_bannerclient">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_bannerclient">
               <MappingFragment StoreEntitySet="jos_bannerclient">
                 <ScalarProperty Name="cid" ColumnName="cid" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -2682,7 +2738,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_categories">
-            <EntityTypeMapping TypeName="TCSModel.jos_categories">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_categories">
               <MappingFragment StoreEntitySet="jos_categories">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="old_id" ColumnName="old_id" />
@@ -2707,7 +2763,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_components">
-            <EntityTypeMapping TypeName="TCSModel.jos_components">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_components">
               <MappingFragment StoreEntitySet="jos_components">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -2726,7 +2782,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_contact">
-            <EntityTypeMapping TypeName="TCSModel.jos_contact">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_contact">
               <MappingFragment StoreEntitySet="jos_contact">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_parent" ColumnName="id_parent" />
@@ -2748,7 +2804,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_contact_details">
-            <EntityTypeMapping TypeName="TCSModel.jos_contact_details">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_contact_details">
               <MappingFragment StoreEntitySet="jos_contact_details">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -2780,7 +2836,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_content">
-            <EntityTypeMapping TypeName="TCSModel.jos_content">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_content">
               <MappingFragment StoreEntitySet="jos_content">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="old_cat_id" ColumnName="old_cat_id" />
@@ -2821,7 +2877,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_content_frontpage">
-            <EntityTypeMapping TypeName="TCSModel.jos_content_frontpage">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_content_frontpage">
               <MappingFragment StoreEntitySet="jos_content_frontpage">
                 <ScalarProperty Name="content_id" ColumnName="content_id" />
                 <ScalarProperty Name="ordering" ColumnName="ordering" />
@@ -2829,7 +2885,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_content_rating">
-            <EntityTypeMapping TypeName="TCSModel.jos_content_rating">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_content_rating">
               <MappingFragment StoreEntitySet="jos_content_rating">
                 <ScalarProperty Name="content_id" ColumnName="content_id" />
                 <ScalarProperty Name="rating_sum" ColumnName="rating_sum" />
@@ -2839,7 +2895,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_core_acl_aro">
-            <EntityTypeMapping TypeName="TCSModel.jos_core_acl_aro">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_core_acl_aro">
               <MappingFragment StoreEntitySet="jos_core_acl_aro">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="section_value" ColumnName="section_value" />
@@ -2851,7 +2907,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_core_acl_aro_groups">
-            <EntityTypeMapping TypeName="TCSModel.jos_core_acl_aro_groups">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_core_acl_aro_groups">
               <MappingFragment StoreEntitySet="jos_core_acl_aro_groups">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="parent_id" ColumnName="parent_id" />
@@ -2863,7 +2919,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_core_acl_aro_map">
-            <EntityTypeMapping TypeName="TCSModel.jos_core_acl_aro_map">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_core_acl_aro_map">
               <MappingFragment StoreEntitySet="jos_core_acl_aro_map">
                 <ScalarProperty Name="acl_id" ColumnName="acl_id" />
                 <ScalarProperty Name="section_value" ColumnName="section_value" />
@@ -2872,7 +2928,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_core_acl_aro_sections">
-            <EntityTypeMapping TypeName="TCSModel.jos_core_acl_aro_sections">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_core_acl_aro_sections">
               <MappingFragment StoreEntitySet="jos_core_acl_aro_sections">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="value" ColumnName="value" />
@@ -2883,7 +2939,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_dbcache">
-            <EntityTypeMapping TypeName="TCSModel.jos_dbcache">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_dbcache">
               <MappingFragment StoreEntitySet="jos_dbcache">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="groupname" ColumnName="groupname" />
@@ -2893,7 +2949,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_feedback">
-            <EntityTypeMapping TypeName="TCSModel.jos_feedback">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_feedback">
               <MappingFragment StoreEntitySet="jos_feedback">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ClassName" ColumnName="ClassName" />
@@ -2907,7 +2963,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_functions">
-            <EntityTypeMapping TypeName="TCSModel.jos_functions">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_functions">
               <MappingFragment StoreEntitySet="jos_functions">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_parent" ColumnName="id_parent" />
@@ -2920,7 +2976,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_groups">
-            <EntityTypeMapping TypeName="TCSModel.jos_groups">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_groups">
               <MappingFragment StoreEntitySet="jos_groups">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -2928,7 +2984,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_jf_content">
-            <EntityTypeMapping TypeName="TCSModel.jos_jf_content">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_jf_content">
               <MappingFragment StoreEntitySet="jos_jf_content">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="language_id" ColumnName="language_id" />
@@ -2945,7 +3001,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_jf_languages_ext">
-            <EntityTypeMapping TypeName="TCSModel.jos_jf_languages_ext">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_jf_languages_ext">
               <MappingFragment StoreEntitySet="jos_jf_languages_ext">
                 <ScalarProperty Name="lang_id" ColumnName="lang_id" />
                 <ScalarProperty Name="image_ext" ColumnName="image_ext" />
@@ -2956,7 +3012,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_jf_tableinfo">
-            <EntityTypeMapping TypeName="TCSModel.jos_jf_tableinfo">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_jf_tableinfo">
               <MappingFragment StoreEntitySet="jos_jf_tableinfo">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="joomlatablename" ColumnName="joomlatablename" />
@@ -2965,7 +3021,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_language_translation">
-            <EntityTypeMapping TypeName="TCSModel.jos_language_translation">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_language_translation">
               <MappingFragment StoreEntitySet="jos_language_translation">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="language_id" ColumnName="language_id" />
@@ -2978,7 +3034,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_languages">
-            <EntityTypeMapping TypeName="TCSModel.jos_languages">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_languages">
               <MappingFragment StoreEntitySet="jos_languages">
                 <ScalarProperty Name="lang_id" ColumnName="lang_id" />
                 <ScalarProperty Name="lang_code" ColumnName="lang_code" />
@@ -2995,7 +3051,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_links">
-            <EntityTypeMapping TypeName="TCSModel.jos_links">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_links">
               <MappingFragment StoreEntitySet="jos_links">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="created" ColumnName="created" />
@@ -3017,7 +3073,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_menu">
-            <EntityTypeMapping TypeName="TCSModel.jos_menu">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_menu">
               <MappingFragment StoreEntitySet="jos_menu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_menutype" ColumnName="id_menutype" />
@@ -3046,7 +3102,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_menu_link_types">
-            <EntityTypeMapping TypeName="TCSModel.jos_menu_link_types">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_menu_link_types">
               <MappingFragment StoreEntitySet="jos_menu_link_types">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_menu" ColumnName="id_menu" />
@@ -3057,7 +3113,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_menu_rights">
-            <EntityTypeMapping TypeName="TCSModel.jos_menu_rights">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_menu_rights">
               <MappingFragment StoreEntitySet="jos_menu_rights">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_right" ColumnName="id_right" />
@@ -3066,7 +3122,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_menu_types">
-            <EntityTypeMapping TypeName="TCSModel.jos_menu_types">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_menu_types">
               <MappingFragment StoreEntitySet="jos_menu_types">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="menutype" ColumnName="menutype" />
@@ -3076,7 +3132,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_messages">
-            <EntityTypeMapping TypeName="TCSModel.jos_messages">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_messages">
               <MappingFragment StoreEntitySet="jos_messages">
                 <ScalarProperty Name="message_id" ColumnName="message_id" />
                 <ScalarProperty Name="user_id_from" ColumnName="user_id_from" />
@@ -3091,7 +3147,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_migration_backlinks">
-            <EntityTypeMapping TypeName="TCSModel.jos_migration_backlinks">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_migration_backlinks">
               <MappingFragment StoreEntitySet="jos_migration_backlinks">
                 <ScalarProperty Name="itemid" ColumnName="itemid" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3102,7 +3158,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_modules">
-            <EntityTypeMapping TypeName="TCSModel.jos_modules">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_modules">
               <MappingFragment StoreEntitySet="jos_modules">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -3124,7 +3180,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_modules_menu">
-            <EntityTypeMapping TypeName="TCSModel.jos_modules_menu">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_modules_menu">
               <MappingFragment StoreEntitySet="jos_modules_menu">
                 <ScalarProperty Name="moduleid" ColumnName="moduleid" />
                 <ScalarProperty Name="menuid" ColumnName="menuid" />
@@ -3132,7 +3188,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_newsfeeds">
-            <EntityTypeMapping TypeName="TCSModel.jos_newsfeeds">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_newsfeeds">
               <MappingFragment StoreEntitySet="jos_newsfeeds">
                 <ScalarProperty Name="catid" ColumnName="catid" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -3151,7 +3207,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_p_address">
-            <EntityTypeMapping TypeName="TCSModel.jos_p_address">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_p_address">
               <MappingFragment StoreEntitySet="jos_p_address">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -3163,7 +3219,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_p_buy">
-            <EntityTypeMapping TypeName="TCSModel.jos_p_buy">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_p_buy">
               <MappingFragment StoreEntitySet="jos_p_buy">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3176,7 +3232,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_p_category">
-            <EntityTypeMapping TypeName="TCSModel.jos_p_category">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_p_category">
               <MappingFragment StoreEntitySet="jos_p_category">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -3192,7 +3248,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_p_discount">
-            <EntityTypeMapping TypeName="TCSModel.jos_p_discount">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_p_discount">
               <MappingFragment StoreEntitySet="jos_p_discount">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -3203,7 +3259,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_p_image">
-            <EntityTypeMapping TypeName="TCSModel.jos_p_image">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_p_image">
               <MappingFragment StoreEntitySet="jos_p_image">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -3214,7 +3270,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_p_order">
-            <EntityTypeMapping TypeName="TCSModel.jos_p_order">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_p_order">
               <MappingFragment StoreEntitySet="jos_p_order">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3233,7 +3289,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_p_product">
-            <EntityTypeMapping TypeName="TCSModel.jos_p_product">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_p_product">
               <MappingFragment StoreEntitySet="jos_p_product">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -3266,7 +3322,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_p_related">
-            <EntityTypeMapping TypeName="TCSModel.jos_p_related">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_p_related">
               <MappingFragment StoreEntitySet="jos_p_related">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -3281,7 +3337,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_plugins">
-            <EntityTypeMapping TypeName="TCSModel.jos_plugins">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_plugins">
               <MappingFragment StoreEntitySet="jos_plugins">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3299,7 +3355,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_poll_data">
-            <EntityTypeMapping TypeName="TCSModel.jos_poll_data">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_poll_data">
               <MappingFragment StoreEntitySet="jos_poll_data">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="pollid" ColumnName="pollid" />
@@ -3309,7 +3365,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_poll_date">
-            <EntityTypeMapping TypeName="TCSModel.jos_poll_date">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_poll_date">
               <MappingFragment StoreEntitySet="jos_poll_date">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -3319,7 +3375,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_poll_menu">
-            <EntityTypeMapping TypeName="TCSModel.jos_poll_menu">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_poll_menu">
               <MappingFragment StoreEntitySet="jos_poll_menu">
                 <ScalarProperty Name="pollid" ColumnName="pollid" />
                 <ScalarProperty Name="menuid" ColumnName="menuid" />
@@ -3327,7 +3383,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_polls">
-            <EntityTypeMapping TypeName="TCSModel.jos_polls">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_polls">
               <MappingFragment StoreEntitySet="jos_polls">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -3342,7 +3398,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_qcontacts_config">
-            <EntityTypeMapping TypeName="TCSModel.jos_qcontacts_config">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_qcontacts_config">
               <MappingFragment StoreEntitySet="jos_qcontacts_config">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="params" ColumnName="params" />
@@ -3350,7 +3406,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_qcontacts_details">
-            <EntityTypeMapping TypeName="TCSModel.jos_qcontacts_details">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_qcontacts_details">
               <MappingFragment StoreEntitySet="jos_qcontacts_details">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3384,7 +3440,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_redirection">
-            <EntityTypeMapping TypeName="TCSModel.jos_redirection">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_redirection">
               <MappingFragment StoreEntitySet="jos_redirection">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="cpt" ColumnName="cpt" />
@@ -3396,7 +3452,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_rights">
-            <EntityTypeMapping TypeName="TCSModel.jos_rights">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_rights">
               <MappingFragment StoreEntitySet="jos_rights">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3405,7 +3461,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_rights_users">
-            <EntityTypeMapping TypeName="TCSModel.jos_rights_users">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_rights_users">
               <MappingFragment StoreEntitySet="jos_rights_users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_user" ColumnName="id_user" />
@@ -3414,7 +3470,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sections">
-            <EntityTypeMapping TypeName="TCSModel.jos_sections">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sections">
               <MappingFragment StoreEntitySet="jos_sections">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="lang_id" ColumnName="lang_id" />
@@ -3436,7 +3492,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_cache">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_cache">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_cache">
               <MappingFragment StoreEntitySet="jos_sef_sm_cache">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="menu_id" ColumnName="menu_id" />
@@ -3449,7 +3505,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_menus">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_menus">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_menus">
               <MappingFragment StoreEntitySet="jos_sef_sm_menus">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3460,7 +3516,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_pingback">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_pingback">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_pingback">
               <MappingFragment StoreEntitySet="jos_sef_sm_pingback">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ping_host" ColumnName="ping_host" />
@@ -3470,7 +3526,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_pingback_log">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_pingback_log">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_pingback_log">
               <MappingFragment StoreEntitySet="jos_sef_sm_pingback_log">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="pingback_id" ColumnName="pingback_id" />
@@ -3484,7 +3540,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_pingback_stack">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_pingback_stack">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_pingback_stack">
               <MappingFragment StoreEntitySet="jos_sef_sm_pingback_stack">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="menu_id" ColumnName="menu_id" />
@@ -3497,7 +3553,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_plugins">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_plugins">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_plugins">
               <MappingFragment StoreEntitySet="jos_sef_sm_plugins">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3511,7 +3567,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_settings">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_settings">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_settings">
               <MappingFragment StoreEntitySet="jos_sef_sm_settings">
                 <ScalarProperty Name="variable" ColumnName="variable" />
                 <ScalarProperty Name="value" ColumnName="value" />
@@ -3520,7 +3576,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_session">
-            <EntityTypeMapping TypeName="TCSModel.jos_session">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_session">
               <MappingFragment StoreEntitySet="jos_session">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="time" ColumnName="time" />
@@ -3535,7 +3591,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sh404sef_aliases">
-            <EntityTypeMapping TypeName="TCSModel.jos_sh404sef_aliases">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sh404sef_aliases">
               <MappingFragment StoreEntitySet="jos_sh404sef_aliases">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="newurl" ColumnName="newurl" />
@@ -3544,7 +3600,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sh404sef_meta">
-            <EntityTypeMapping TypeName="TCSModel.jos_sh404sef_meta">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sh404sef_meta">
               <MappingFragment StoreEntitySet="jos_sh404sef_meta">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="newurl" ColumnName="newurl" />
@@ -3557,7 +3613,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_templates_menu">
-            <EntityTypeMapping TypeName="TCSModel.jos_templates_menu">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_templates_menu">
               <MappingFragment StoreEntitySet="jos_templates_menu">
                 <ScalarProperty Name="template" ColumnName="template" />
                 <ScalarProperty Name="menuid" ColumnName="menuid" />
@@ -3566,7 +3622,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_type_of_page">
-            <EntityTypeMapping TypeName="TCSModel.jos_type_of_page">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_type_of_page">
               <MappingFragment StoreEntitySet="jos_type_of_page">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -3576,7 +3632,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_u_user">
-            <EntityTypeMapping TypeName="TCSModel.jos_u_user">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_u_user">
               <MappingFragment StoreEntitySet="jos_u_user">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="username" ColumnName="username" />
@@ -3596,7 +3652,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_users">
-            <EntityTypeMapping TypeName="TCSModel.jos_users">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_users">
               <MappingFragment StoreEntitySet="jos_users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3615,7 +3671,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_vvisitcounter">
-            <EntityTypeMapping TypeName="TCSModel.jos_vvisitcounter">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_vvisitcounter">
               <MappingFragment StoreEntitySet="jos_vvisitcounter">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tm" ColumnName="tm" />
@@ -3624,7 +3680,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_weblinks">
-            <EntityTypeMapping TypeName="TCSModel.jos_weblinks">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_weblinks">
               <MappingFragment StoreEntitySet="jos_weblinks">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="catid" ColumnName="catid" />
@@ -3646,7 +3702,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_xmap">
-            <EntityTypeMapping TypeName="TCSModel.jos_xmap">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_xmap">
               <MappingFragment StoreEntitySet="jos_xmap">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="value" ColumnName="value" />
@@ -3654,7 +3710,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_xmap_ext">
-            <EntityTypeMapping TypeName="TCSModel.jos_xmap_ext">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_xmap_ext">
               <MappingFragment StoreEntitySet="jos_xmap_ext">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="extension" ColumnName="extension" />
@@ -3664,7 +3720,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_xmap_items">
-            <EntityTypeMapping TypeName="TCSModel.jos_xmap_items">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_xmap_items">
               <MappingFragment StoreEntitySet="jos_xmap_items">
                 <ScalarProperty Name="uid" ColumnName="uid" />
                 <ScalarProperty Name="itemid" ColumnName="itemid" />
@@ -3675,7 +3731,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_xmap_sitemap">
-            <EntityTypeMapping TypeName="TCSModel.jos_xmap_sitemap">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_xmap_sitemap">
               <MappingFragment StoreEntitySet="jos_xmap_sitemap">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -3703,7 +3759,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_bannertrack">
-            <EntityTypeMapping TypeName="TCSModel.jos_bannertrack">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_bannertrack">
               <MappingFragment StoreEntitySet="jos_bannertrack">
                 <ScalarProperty Name="track_date" ColumnName="track_date" />
                 <ScalarProperty Name="track_type" ColumnName="track_type" />
@@ -3712,7 +3768,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_core_acl_groups_aro_map">
-            <EntityTypeMapping TypeName="TCSModel.jos_core_acl_groups_aro_map">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_core_acl_groups_aro_map">
               <MappingFragment StoreEntitySet="jos_core_acl_groups_aro_map">
                 <ScalarProperty Name="group_id" ColumnName="group_id" />
                 <ScalarProperty Name="section_value" ColumnName="section_value" />
@@ -3721,7 +3777,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_core_log_items">
-            <EntityTypeMapping TypeName="TCSModel.jos_core_log_items">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_core_log_items">
               <MappingFragment StoreEntitySet="jos_core_log_items">
                 <ScalarProperty Name="time_stamp" ColumnName="time_stamp" />
                 <ScalarProperty Name="item_table" ColumnName="item_table" />
@@ -3731,7 +3787,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_core_log_searches">
-            <EntityTypeMapping TypeName="TCSModel.jos_core_log_searches">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_core_log_searches">
               <MappingFragment StoreEntitySet="jos_core_log_searches">
                 <ScalarProperty Name="search_term" ColumnName="search_term" />
                 <ScalarProperty Name="hits" ColumnName="hits" />
@@ -3739,7 +3795,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_messages_cfg">
-            <EntityTypeMapping TypeName="TCSModel.jos_messages_cfg">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_messages_cfg">
               <MappingFragment StoreEntitySet="jos_messages_cfg">
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="cfg_name" ColumnName="cfg_name" />
@@ -3748,7 +3804,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_cache_items">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_cache_items">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_cache_items">
               <MappingFragment StoreEntitySet="jos_sef_sm_cache_items">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ordering" ColumnName="ordering" />
@@ -3765,7 +3821,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_menu">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_menu">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_menu">
               <MappingFragment StoreEntitySet="jos_sef_sm_menu">
                 <ScalarProperty Name="menu_id" ColumnName="menu_id" />
                 <ScalarProperty Name="published" ColumnName="published" />
@@ -3778,7 +3834,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_sef_sm_pingback_menu">
-            <EntityTypeMapping TypeName="TCSModel.jos_sef_sm_pingback_menu">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_sef_sm_pingback_menu">
               <MappingFragment StoreEntitySet="jos_sef_sm_pingback_menu">
                 <ScalarProperty Name="menu_id" ColumnName="menu_id" />
                 <ScalarProperty Name="pingback_id" ColumnName="pingback_id" />
@@ -3787,11 +3843,30 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_stats_agents' does no
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="jos_stats_agents">
-            <EntityTypeMapping TypeName="TCSModel.jos_stats_agents">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_stats_agents">
               <MappingFragment StoreEntitySet="jos_stats_agents">
                 <ScalarProperty Name="agent" ColumnName="agent" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="hits" ColumnName="hits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tmp_jos_users">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.Tmp_jos_users">
+              <MappingFragment StoreEntitySet="Tmp_jos_users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="usertype" ColumnName="usertype" />
+                <ScalarProperty Name="block" ColumnName="block" />
+                <ScalarProperty Name="sendEmail" ColumnName="sendEmail" />
+                <ScalarProperty Name="gid" ColumnName="gid" />
+                <ScalarProperty Name="registerDate" ColumnName="registerDate" />
+                <ScalarProperty Name="lastvisitDate" ColumnName="lastvisitDate" />
+                <ScalarProperty Name="activation" ColumnName="activation" />
+                <ScalarProperty Name="params" ColumnName="params" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

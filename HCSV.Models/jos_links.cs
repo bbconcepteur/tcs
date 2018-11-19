@@ -29,6 +29,6 @@ namespace HCSV.Models
         public string fax { get; set; }
         public string representative { get; set; }
         public int lang_id { get; set; }
-        public byte published { get; set; }
+        public bool published { get; set; }
     }
 }

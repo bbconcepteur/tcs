@@ -21,7 +21,7 @@ namespace HCSV.Models
         public string position { get; set; }
         public long checked_out { get; set; }
         public System.DateTime checked_out_time { get; set; }
-        public short published { get; set; }
+        public bool published { get; set; }
         public string module { get; set; }
         public int numnews { get; set; }
         public byte access { get; set; }
