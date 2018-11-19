@@ -1,0 +1,14 @@
+﻿@using HCSV.Core.reCAPTCHA
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.Recaptcha()
+    @Html.ValidationMessage("ReCaptcha")
+    <input type="submit" value="Test" />
+}
+

@@ -188,6 +188,7 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -820,6 +821,7 @@
     <Content Include="Views\Services\Index - Copy.cshtml" />
     <Content Include="Views\Services\Index.cshtml" />
     <Content Include="Views\Services\Tab.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
