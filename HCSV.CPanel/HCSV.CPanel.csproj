@@ -148,6 +148,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,6 +195,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -206,6 +208,24 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HCSV.Business\HCSV.Business.csproj">
+      <Project>{d5307f38-2e32-4cb8-921b-83273cb6ce23}</Project>
+      <Name>HCSV.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HCSV.Core\HCSV.Core.csproj">
+      <Project>{c644c33d-2c6c-4ba3-a8d2-c87a6f47ef3f}</Project>
+      <Name>HCSV.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HCSV.Models\HCSV.Models.csproj">
+      <Project>{9fc26a76-3b64-4094-80e0-7c2584ca6dad}</Project>
+      <Name>HCSV.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HCSV.Resources\HCSV.Resources.csproj">
+      <Project>{9344b672-4d30-4886-a9b3-726aafecd455}</Project>
+      <Name>HCSV.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

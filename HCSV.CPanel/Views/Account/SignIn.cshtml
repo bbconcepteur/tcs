@@ -1,0 +1,15 @@
+﻿@using HCSV.Core.reCAPTCHA
+
+@{
+    ViewBag.Title = "SignIn";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.Recaptcha()
+    @Html.ValidationMessage("ReCaptcha")
+
+
+
+    <input type="submit" value="Test" />
+}
