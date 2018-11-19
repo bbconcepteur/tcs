@@ -1,0 +1,114 @@
+/**
+ * CSS Document for offline page
+ * @version $Id: offline.css 14401 2010-01-26 14:10:00Z louis $
+ * @package Joomla
+ * @copyright Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
+ * @license GNU/GPL, see LICENSE.php
+ * Joomla! is free software and parts of it may contain or be derived from the
+ * GNU General Public License or other free or open source software licenses.
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+
+body {
+	margin: 0; 
+	padding: 0;
+	font-family: Arial, Helvetica, Sans Serif; font-size: 78%;
+	color: #333333;
+	text-align: center;
+}
+
+img  { border: 0 none; }
+
+/* -- id styles ------------------------------------- */
+
+#frame {
+	margin: 20px auto;
+	width: 400px;
+	padding: 20px;
+	float: left;
+}
+
+#frame form {
+	text-align: left;
+}
+
+/* -- class styles ---------------------------------- */
+
+.outline {
+ /* border: 1px solid #cccccc;*/
+  background: #ffffff;
+  padding: 2px;
+}
+
+/* -- form styles ----------------------------------- */
+
+form    { margin: auto; }
+form p  { margin: 0; padding: 0; }
+form fieldset { border: 0 none; margin: 0em; padding: 0.2em;}
+label         { display: block; float: left; }
+input 		  { padding: 1px; }
+input.button  { width: auto; height: 1.8em; cursor: pointer; }
+
+label   { margin: 5px 0px 2px 0px; width: 10em;}
+form p  { padding: 0.2em 0 0.2em 0; }
+form br  { display: none; }
+input    { border: 1px solid #0E67A1; }
+input.button 		 { background-color: white; }
+input.button:hover { border-color:  #FC902E; }
+
+
+
+#frmlogin	      { margin: 0 10px 0 10px;  }
+#frmlogin fieldset.button { text-align: right; }
+
+
+
+#wrapper_header {
+	width: 100%;
+	background: url(../images/bg_page.jpg) no-repeat center top;
+	float: left;
+	height: 105px;
+	margin: 0;
+	display: inline;
+	margin-bottom: 100px;
+}
+
+.main_contain_css {
+	width: 800px;
+	margin: 0 auto;
+}
+
+#left_css {
+	float: left;
+	width: 300px;
+	height: 266px;
+	background: url(../images/bg_software.jpg) no-repeat center top;
+}
+
+.button_css {
+	padding: 3px 4px;
+	color: #838383;
+	border: solid 1px #BFCBD4;
+	line-height: 13px;
+	width: 225px;
+}
+
+.txt_login {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 70px;
+	padding: 0 0 0 20px;
+}
+
+.software_name {
+	margin-left: 123px;
+}
+
+.login_button {
+	background: url(../images/login_button.jpg) no-repeat center top;
+	width: 100px;
+	border: none;
+	height: 34px;
+	color: #ffffff;
+}

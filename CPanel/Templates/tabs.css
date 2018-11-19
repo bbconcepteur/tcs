@@ -1,0 +1,95 @@
+div.content {
+    border-top: #a5acb4 solid 1px;
+    clear: left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+
+.active div.content {
+    border-top: #a5acb4 solid 1px;
+    clear: left;
+    margin: 0;     
+}
+
+div.content.inactive {
+	display: none;
+}
+
+ol#toc {
+    height: 2em;
+    list-style: none;
+    margin: 0 2% 0 2%;    
+    padding: 0;
+}
+
+.active ol#toc {
+    height: 2em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #ede6e6;
+    margin-top: -9px;
+}
+
+ol#toc a {
+    background: #dbdbdb url(tabs.gif);
+    color: #008;
+    display: block;
+    float: left;
+    height: 2em;
+    padding-left: 10px;
+    text-decoration: none;
+}
+
+ol#toc a:hover {
+    background-color: #bebebe;
+    background-position: 0 -120px;
+}
+
+ol#toc a:hover span {
+    background-position: 100% -120px;
+}
+
+ol#toc li {
+    float: left;
+    margin: 0 1px 0 0;
+}
+
+ol#toc li a.active {
+    background-color: #1282c3;
+    background-position: 0 -60px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.active ol#toc li a.active {
+    background: #ffe1a1;    
+    color: #1282c3;
+    border-left: solid 1px #f1cc7d;
+    border-right: solid 1px #f1cc7d;
+}
+
+.active ol#toc a {
+    background: #ede6e6;
+}
+
+ol#toc li a.active span {
+    background-position: 100% -60px;
+}
+
+ol#toc span {
+    background: url(tabs.gif) 100% 0;
+    display: block;
+    line-height: 2em;
+    padding-right: 10px;
+    font-size: 12px;
+}
+
+.active ol#toc span:hover {
+    font-weight: bold;
+}
+
+.content {
+    padding: 10px 0 0 0 !important;
+}

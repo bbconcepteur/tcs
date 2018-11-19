@@ -1,0 +1,15 @@
+body {
+	margin: 0 10px 0 10px;
+}
+
+.buttons_css {
+	width: 100%;
+  	text-align: right;
+	margin-top: 20px;
+}
+
+input.text_css {
+  width: 100% !important;
+}
+
+
