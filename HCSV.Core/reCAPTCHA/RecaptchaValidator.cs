@@ -70,7 +70,7 @@ namespace HCSV.Core.reCAPTCHA
             httpWebRequest.ProtocolVersion = HttpVersion.Version11;
             httpWebRequest.Timeout = 30000;
             httpWebRequest.Method = "POST";
-            httpWebRequest.UserAgent = "reCAPTCHA/ASP.NET";
+            httpWebRequest.UserAgent = "reCAPTCHA/TCS";
             httpWebRequest.ContentType = "application/x-www-form-urlencoded";
             byte[] bytes = Encoding.ASCII.GetBytes(string.Format("secret={0}&response={1}&remoteip={2}", (object)HttpUtility.UrlEncode(this.PrivateKey), (object)HttpUtility.UrlEncode(this.Response), (object)HttpUtility.UrlEncode(this.RemoteIP)));
             using (Stream requestStream = httpWebRequest.GetRequestStream())
