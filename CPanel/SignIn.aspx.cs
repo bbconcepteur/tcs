@@ -4,7 +4,7 @@ using System.Linq;
 using CPanel.Commons;
 using System.Security.Cryptography;
 using HCSV.Models;
-using HCSV.Core.reCAPTCHA;
+using CPanel.CAPTCHA;
 
 namespace CPanel
 {
@@ -36,23 +36,6 @@ namespace CPanel
         {
             try
             {
-                //kiem tra xem co phai truy cap tu dong khong - check  
-                //if (Captcha.Code != Request.Params["tbCode"])
-                //{
-                //    string alert = "Mã Captcha chưa đúng, yêu cầu nhập lại!";
-                //    string alert2 = "Captcha code wrong, please try again!";
-                //    lbNotice.Text = string.Format(@"<div class='alert alert-danger alert-dismissible fade in' role='alert'>
-                //                                         <button type='button' class='close' data-dismiss='alert'>
-                //                                              <span aria-hidden='true'>&times;</span>
-                //                                              <span class='sr-only'>Close</span>
-                //                                         </button>
-                //                                         <strong>{0}</strong>
-                //                                         </br>
-                //                                         <strong class='english'>{1}</strong>
-                //                                       </div>", alert, alert2);
-                //    return;
-                //}
-
                 RecaptchaResponse recaptchaResponse = new RecaptchaValidator()
                 {
                     PrivateKey = ConfigurationManager.AppSettings["reCaptchaPrivateKey"],
@@ -74,8 +57,6 @@ namespace CPanel
                                                        </div>", alert, alert2);
                     return;
                 }
-                    
-                
 
                 lbNotice.Text = String.Empty;
                 jos_users obj = null;

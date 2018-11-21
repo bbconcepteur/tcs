@@ -428,6 +428,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="CAPTCHA\CaptchaResponse.cs" />
+    <Compile Include="CAPTCHA\RecaptchaResponse.cs" />
+    <Compile Include="CAPTCHA\RecaptchaValidator.cs" />
     <Compile Include="Commons\CheckUserInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -768,10 +771,6 @@
     <None Include="Properties\PublishProfiles\CPanel.pubxml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HCSV.Core\HCSV.Core.csproj">
-      <Project>{c644c33d-2c6c-4ba3-a8d2-c87a6f47ef3f}</Project>
-      <Name>HCSV.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HCSV.Models\HCSV.Models.csproj">
       <Project>{9fc26a76-3b64-4094-80e0-7c2584ca6dad}</Project>
       <Name>HCSV.Models</Name>
