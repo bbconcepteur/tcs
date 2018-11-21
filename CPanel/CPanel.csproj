@@ -272,6 +272,11 @@
     <Content Include="Modules\EmailConfig.aspx" />
     <Content Include="Modules\SectionTranslationLang.aspx" />
     <Content Include="Modules\UserDetails.aspx" />
+    <Content Include="Plugins\ckeditor\build-config.js" />
+    <Content Include="Plugins\ckeditor\ckeditor.js" />
+    <Content Include="Plugins\ckeditor\config.js" />
+    <Content Include="Plugins\ckeditor\contents.css" />
+    <Content Include="Plugins\ckeditor\styles.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="SignIn.aspx" />
@@ -763,6 +768,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HCS\" />
+    <Folder Include="Plugins\ckeditor\adapters\" />
+    <Folder Include="Plugins\ckeditor\lang\" />
+    <Folder Include="Plugins\ckeditor\plugins\" />
+    <Folder Include="Plugins\ckeditor\skins\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.eot" />

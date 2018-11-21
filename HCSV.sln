@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCSV.Web", "HCSV.Web\HCSV.Web.csproj", "{EF78F950-8E8B-415E-A452-F40172BC88E9}"
 EndProject
@@ -14,8 +14,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCSV.Core", "HCSV.Core\HCSV.Core.csproj", "{C644C33D-2C6C-4BA3-A8D2-C87A6F47EF3F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPanel", "CPanel\CPanel.csproj", "{6763B280-A169-4FF9-9085-C53F20C0E4BC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCSV.CPanel", "HCSV.CPanel\HCSV.CPanel.csproj", "{8C8DDB32-0694-4FE8-BE01-ABDF6A8EB359}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +45,6 @@ Global
 		{6763B280-A169-4FF9-9085-C53F20C0E4BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6763B280-A169-4FF9-9085-C53F20C0E4BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6763B280-A169-4FF9-9085-C53F20C0E4BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C8DDB32-0694-4FE8-BE01-ABDF6A8EB359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C8DDB32-0694-4FE8-BE01-ABDF6A8EB359}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C8DDB32-0694-4FE8-BE01-ABDF6A8EB359}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C8DDB32-0694-4FE8-BE01-ABDF6A8EB359}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

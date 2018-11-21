@@ -91,7 +91,7 @@ namespace CPanel.Modules {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxHtmlEditor.ASPxHtmlEditor edtRepresentativeImage;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea edtRepresentativeImage;
         
         /// <summary>
         /// edtIntroContent control.
@@ -100,7 +100,7 @@ namespace CPanel.Modules {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxHtmlEditor.ASPxHtmlEditor edtIntroContent;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea edtIntroContent;
         
         /// <summary>
         /// edtFullContent control.
@@ -109,7 +109,7 @@ namespace CPanel.Modules {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxHtmlEditor.ASPxHtmlEditor edtFullContent;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea edtFullContent;
         
         /// <summary>
         /// txtContentID control.

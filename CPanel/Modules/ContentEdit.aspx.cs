@@ -1,9 +1,6 @@
 ﻿using CPanel.Commons;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using HCSV.Models;
 
@@ -43,8 +40,8 @@ namespace CPanel.Modules
                     jos_content objContent = entities.jos_content.Where(x => x.id == intContentID).FirstOrDefault();
                     if (objContent != null)
                     {
-                        edtIntroContent.Html = CommonFuncs.convertContent(objContent.introtext);
-                        edtFullContent.Html = CommonFuncs.convertContent(objContent.fulltext);
+                        edtIntroContent.Value = CommonFuncs.convertContent(objContent.introtext);
+                        edtFullContent.Value = CommonFuncs.convertContent(objContent.fulltext);
                         txtTitle.Text = objContent.title;
                         txtOrder.Text = objContent.ordering != null ? objContent.ordering.ToString() : "";
                         cbSpecialContentType.Checked = (objContent.mask == 1 ? true : false);
@@ -60,7 +57,7 @@ namespace CPanel.Modules
                         //set begin value for Content ID Textbox
                         txtContentID.Text = objContent.id.ToString();
                         //set begin value for Representative Image
-                        edtRepresentativeImage.Html = CommonFuncs.convertContent(objContent.images);
+                        edtRepresentativeImage.Value = CommonFuncs.convertContent(objContent.images);
                     }
                 }
                 else //Create new content
@@ -94,7 +91,7 @@ namespace CPanel.Modules
                 return false;
             }
 
-            if (String.IsNullOrEmpty(edtRepresentativeImage.Html) && String.IsNullOrEmpty(edtIntroContent.Html) && String.IsNullOrEmpty(edtFullContent.Html))
+            if (String.IsNullOrEmpty(edtRepresentativeImage.Value) && String.IsNullOrEmpty(edtIntroContent.Value) && String.IsNullOrEmpty(edtFullContent.Value))
             {
                 Commons.ValidationFuncs.errorMessage_TimeDelay("You must enter Content", Page);
                 return false;
@@ -135,9 +132,9 @@ namespace CPanel.Modules
             }
             objContent.mask = (cbSpecialContentType.Checked ? 1 : 0);
             objContent.title = txtTitle.Text;
-            objContent.introtext = edtIntroContent.Html;
-            objContent.fulltext = edtFullContent.Html;
-            objContent.images = edtRepresentativeImage.Html;
+            objContent.introtext = edtIntroContent.Value;
+            objContent.fulltext = edtFullContent.Value;
+            objContent.images = edtRepresentativeImage.Value;
             objContent.catid = Convert.ToInt32(drpCategories.SelectedValue);
             objContent.lang_id = Convert.ToInt32(drpLanguages.SelectedValue);
             objContent.position = drpPosition.SelectedValue;
