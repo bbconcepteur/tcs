@@ -4,6 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="../Plugins/ckeditor/ckeditor.js"></script>
+    <script src="../Plugins/ckfinder/ckfinder.js"></script>
     <div class="main_contain_css main_contain_css_1 main_2">
 
         <div class="bg_100pecents_css bg_button_css">
@@ -51,7 +52,9 @@
                 <asp:CheckBox runat="server" ID="cbSpecialContentType"></asp:CheckBox>
             </div>
         </div>
-
+        <strong>Selected File URL</strong><br/>
+	<input id="xFilePath" name="FilePath" type="text" size="60" />
+	<input type="button" value="Browse Server" onclick="BrowseServer( 'xFilePath' );" />
         <div class="bg_100pecents_css">
             <div class="col-md-6 editor_css">
                 <div class="bg_100pecents_css">
@@ -110,6 +113,17 @@
         CKEDITOR.replace('<%= edtRepresentativeImage.ClientID %>');
         CKEDITOR.replace('<%= edtIntroContent.ClientID %>');
         CKEDITOR.replace('<%= edtFullContent.ClientID %>');
+
+        function BrowseServer(inputId) {
+            CKFinder.BasePath = '/Content/';
+            CKFinder.SelectFunction = SetFileField;
+            CKFinder.SelectFunctionData = inputId;
+            CKFinder.popup();
+        }
+
+        function SetFileField(fileUrl, data) {
+            document.getElementById(data["selectFunctionData"]).value = fileUrl;
+        }
     </script>
 </asp:Content>
 
