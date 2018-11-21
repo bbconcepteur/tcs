@@ -57,7 +57,7 @@ namespace CPanel.Modules
                         //set begin value for Content ID Textbox
                         txtContentID.Text = objContent.id.ToString();
                         //set begin value for Representative Image
-                        edtRepresentativeImage.Value = CommonFuncs.convertContent(objContent.images);
+                        edtRepresentativeImage.Text = CommonFuncs.convertContent(objContent.images);
                     }
                 }
                 else //Create new content
@@ -91,7 +91,7 @@ namespace CPanel.Modules
                 return false;
             }
 
-            if (String.IsNullOrEmpty(edtRepresentativeImage.Value) && String.IsNullOrEmpty(edtIntroContent.Value) && String.IsNullOrEmpty(edtFullContent.Value))
+            if (String.IsNullOrEmpty(edtRepresentativeImage.Text) && String.IsNullOrEmpty(edtIntroContent.Value) && String.IsNullOrEmpty(edtFullContent.Value))
             {
                 Commons.ValidationFuncs.errorMessage_TimeDelay("You must enter Content", Page);
                 return false;
@@ -134,7 +134,7 @@ namespace CPanel.Modules
             objContent.title = txtTitle.Text;
             objContent.introtext = edtIntroContent.Value;
             objContent.fulltext = edtFullContent.Value;
-            objContent.images = edtRepresentativeImage.Value;
+            objContent.images = edtRepresentativeImage.Text;
             objContent.catid = Convert.ToInt32(drpCategories.SelectedValue);
             objContent.lang_id = Convert.ToInt32(drpLanguages.SelectedValue);
             objContent.position = drpPosition.SelectedValue;

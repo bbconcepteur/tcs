@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="../Plugins/ckeditor/ckeditor.js"></script>
-    <script src="../Plugins/ckfinder/ckfinder.js"></script>
+    <script src="../Plugins/CKFinderScripts/ckfinder.js"></script>
     <div class="main_contain_css main_contain_css_1 main_2">
 
         <div class="bg_100pecents_css bg_button_css">
@@ -52,33 +52,24 @@
                 <asp:CheckBox runat="server" ID="cbSpecialContentType"></asp:CheckBox>
             </div>
         </div>
-        <strong>Selected File URL</strong><br/>
-	<input id="xFilePath" name="FilePath" type="text" size="60" />
-	<input type="button" value="Browse Server" onclick="BrowseServer( 'xFilePath' );" />
         <div class="bg_100pecents_css">
-            <div class="col-md-6 editor_css">
-                <div class="bg_100pecents_css">
-                    <label class="control-label line_lb_css">Representative Images</label>
-                </div>
-                <div class="bg_100pecents_css">
-                    <textarea name="edtRepresentativeImage" id="edtRepresentativeImage" rows="10" cols="80" runat="server">
-                    
-                    </textarea>
-                </div>
+            <div class="col-md-6">
+                <label class="control-label line_lb_css">Representative Images</label>
+                <asp:TextBox runat="server" ID="edtRepresentativeImage" CssClass="form-control"></asp:TextBox>
+                
             </div>
-
-            <div class="col-md-6 editor_css">
-                <div class="bg_100pecents_css">
-                    <label class="control-label line_lb_css">Intro Content</label>
-                </div>
-                <div class="bg_100pecents_css">
-                   <textarea name="edtIntroContent" id="edtIntroContent" rows="10" cols="80" runat="server">
+            <div class="col-md-2"><button id="ckfinder-popup-1" type="button" class="control-label line_lb_css btn btn-warning">Chọn ảnh</button></div>
+        </div>
+        <div class="bg_100pecents_css">
+            <div class="bg_100pecents_css">
+                <label class="control-label line_lb_css">Intro Content</label>
+            </div>
+            <div class="bg_100pecents_css">
+                <textarea name="edtIntroContent" id="edtIntroContent" rows="10" cols="80" runat="server">
                     
                    </textarea>
-                </div>
-                
-                
             </div>
+
         </div>
 
         <div class="bg_100pecents_css bg_css_1">
@@ -110,19 +101,71 @@
                 $(this).val(strTemp);
             }
         });
-        CKEDITOR.replace('<%= edtRepresentativeImage.ClientID %>');
         CKEDITOR.replace('<%= edtIntroContent.ClientID %>');
         CKEDITOR.replace('<%= edtFullContent.ClientID %>');
 
-        function BrowseServer(inputId) {
-            CKFinder.BasePath = '/Content/';
-            CKFinder.SelectFunction = SetFileField;
-            CKFinder.SelectFunctionData = inputId;
-            CKFinder.popup();
-        }
+        var button1 = document.getElementById('ckfinder-popup-1');
+        button1.onclick = function () {
+            selectFileWithCKFinder('<%= edtRepresentativeImage.ClientID %>');
+           
+       
+        };
 
-        function SetFileField(fileUrl, data) {
-            document.getElementById(data["selectFunctionData"]).value = fileUrl;
+        function ShowFileInfo(fileUrl, data) {
+            alert('The selected file URL is "' + fileUrl + '"');
+
+            var formatDate = function (date) {
+                return date.substr(0, 4) + "-" + date.substr(4, 2) + "-" + date.substr(6, 2) + " " + date.substr(8, 2) + ":" + date.substr(10, 2);
+            }
+
+            alert('The selected file URL is: "' + data['fileUrl'] + '"');
+            alert('The size of selected file is: "' + data['fileSize'] + 'KB"');
+            alert('The selected file was last modifed on: "' + formatDate(data['fileDate']) + '"');
+            alert('The data passed to the function is: "' + data['selectFunctionData'] + '"');
+        }
+        var xxxx = null;
+        function selectFileWithCKFinder(elementId) {
+           
+            CKFinder.popup({
+                chooseFiles: true,
+                width: 800,
+                height: 600,
+                
+                onInit: function (finder) {
+                    finder.on('files:choose', function (evt) {
+                        evt.data.files.forEach(function (file) {
+                            // Send command to the server.
+                            finder.request('command:send', {
+                                name: 'ImageInfo',
+                                folder: file.get('folder'),
+                                params: { fileName: file.get('name') }
+                            }).done(function (response) {
+                                // Process server response.
+                                if (response.error) {
+                                    // Some error handling.
+                                    return;
+                                }
+
+                                // Log image data:
+                                console.log('-------------------');
+                                console.log('Name:', file.get('name'));
+                                console.log('URL:', file.getUrl());
+                                console.log('Dimensions:', response.width + 'x' + response.height);
+                                console.log('Size:', response.size + 'B');
+                            });
+                        });
+                        var file = evt.data.files.first();
+                        var output = document.getElementById(elementId);
+                        output.value = file.getUrl();
+                    });
+
+                    finder.on('file:choose:resizedImage', function (evt) {
+                        var output = document.getElementById(elementId);
+                        output.value = evt.data.resizedUrl;
+                    });
+
+                }
+            });
         }
     </script>
 </asp:Content>

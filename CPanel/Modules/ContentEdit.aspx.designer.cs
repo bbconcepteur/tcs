@@ -91,7 +91,7 @@ namespace CPanel.Modules {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea edtRepresentativeImage;
+        protected global::System.Web.UI.WebControls.TextBox edtRepresentativeImage;
         
         /// <summary>
         /// edtIntroContent control.

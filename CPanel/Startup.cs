@@ -5,17 +5,24 @@ using CKSource.CKFinder.Connector.Core.Builders;
 using CKSource.CKFinder.Connector.Host.Owin;
 using CKSource.CKFinder.Connector.KeyValue.FileSystem;
 using CKSource.FileSystem.Local;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(CPanel.Startup))]
+[assembly: OwinStartupAttribute("CKFinderConfig", typeof(CPanel.Startup))]
 namespace CPanel
 {
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/Account/Login")
+            });
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             /*
             * If you installed CKSource.CKFinder.Connector.Logs.NLog you can start the logger:
@@ -69,7 +76,6 @@ namespace CPanel
                          * configuration from XML as a base configuration to modify:
                          */
                         config.LoadConfig();
-
                         /*
                          * Configure settings per request.
                          *
@@ -78,14 +84,14 @@ namespace CPanel
                          *
                          * For example:
                          */
-                        config.AddBackend("default", new LocalStorage(@"C:\files"));
+                        /*config.AddBackend("default", new LocalStorage(@"C:\files"));
                         config.AddResourceType("images", builder => builder.SetBackend("default", "images"));
                         config.AddAclRule(new AclRule(
                             new StringMatcher("*"),
                             new StringMatcher("*"),
                             new StringMatcher("*"),
                             new Dictionary<Permission, PermissionType> { { Permission.All, PermissionType.Allow } }));
-
+*/
 
                         /*
                          * If you installed CKSource.CKFinder.Connector.KeyValue.FileSystem, you may enable caching:
