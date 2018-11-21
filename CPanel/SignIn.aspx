@@ -33,9 +33,9 @@
     <style type="text/css">
         .mainTable {
             background: url(Templates/images/bg.jpg) no-repeat;
-            width:224px;
-            margin-left:auto;
-            margin-right:auto;
+            width: 224px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .refreshButton {
@@ -48,7 +48,7 @@
             z-index: 2;
         }
 
-        
+
         .captchaDiv {
             margin-top: -17px;
             margin-left: 9px;
@@ -64,7 +64,7 @@
             color: #27a3b0;
         }
 
-         .labelCell {
+        .labelCell {
             padding-top: 20px;
             padding-left: initial;
             font-family: Tahoma;
@@ -90,6 +90,7 @@
 <body class="wrapper-login">
 
     <form id="form1" runat="server">
+
         <div class="panel panel-primary text-center login-form">
             <div class="panel-heading">
                 <h3 class="panel-title">Sign in to your account</h3>
@@ -113,10 +114,14 @@
                         <span class="input-group-addon" style="width: 150px">Password</span>
                         <asp:TextBox ID="txtPassword" ClientIDMode="Static" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
                     </div>
-                    
+
                     <%--capcha--%>
                     <div class="input-group col-md-10 col-md-offset-1">
-                        <label class="headerB"></label>
+                        <script type="text/javascript" src="//www.google.com/recaptcha/api.js" async></script>
+                        <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" data-theme="light" data-type="image">
+                        </div>
+                        <span class="field-validation-valid" data-valmsg-for="ReCaptcha" data-valmsg-replace="true"></span>
+                        <%--<label class="headerB"></label>
                         <table class="mainTable">
                             <tr>
                                 <td style="font-size: 0;">
@@ -147,14 +152,14 @@
                                     <input type="text" id="tbCode" name="tbCode" autocomplete="off" />
                                 </td>
                             </tr>
-                        </table>
+                        </table>--%>
                     </div>
 
                     <%--endcapcha--%>
-                    
+
                     <div class="input-group col-md-10 col-md-offset-1">
                         <span style="width: 150px; float: left">&nbsp;</span>
-                        <div style="float: left;padding-top:20px">
+                        <div style="float: left; padding-top: 20px">
                             <asp:Button ID="btnSignIn" ClientIDMode="Static" CssClass="btn btn-success" Text="Log on" OnClick="btnSignIn_Click" runat="server" />
                         </div>
                     </div>
