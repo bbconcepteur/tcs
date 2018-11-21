@@ -10,11 +10,12 @@
 <section class="blog-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="col-lg-4 col_intro">
+                <div class="intro_css intro_1_css"></div>
                 @if (Model != null && Model.MissionArea != null)
                 {
-                    <div class="single-property">
-                        <div class="images">
+                    <div class="single-property cont_css">
+                        <div class="images img_css">
                             @if (Model.MissionArea.images != null)
                             {
                                 @*<img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">*@
@@ -24,8 +25,9 @@
                             {
                                 <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
                             }
-                            <span>@Html.Raw(Model.MissionArea.title)</span>
                         </div>
+
+                        <div class="intro_title">@Html.Raw(Model.MissionArea.title)</div>
 
                         <div class="desc">
                             <div class="text-wrap">
@@ -33,20 +35,21 @@
                                     @Html.Raw(Model.MissionArea.introtext)
                                 </p>
                             </div>
-                            <hr />
-                            <div class="float-right">
-                                <a href="/News/Details?contentID=@Model.MissionArea.id&menu=@Model.MissionArea.catid" class="white_bg_btn">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
-                            </div>
                             <div class="clearfix"></div>
+                        </div>
+
+                        <div class="intro_readmore">
+                            <a href="/News/Details?contentID=@Model.MissionArea.id&menu=@Model.MissionArea.catid">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
                         </div>
                     </div>
                 }
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="col-lg-4 col_intro">
+                <div class="intro_css intro_2_css"></div>
                 @if (Model != null && Model.VisionArea != null)
                 {
-                    <div class="single-property">
-                        <div class="images">
+                    <div class="single-property cont_css">
+                        <div class="images img_css">
                             @if (Model.VisionArea.images != null)
                             {
                                 @*<img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">*@
@@ -56,8 +59,9 @@
                             {
                                 <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
                             }
-                            <span>@Html.Raw(Model.VisionArea.title)</span>
                         </div>
+
+                        <div class="intro_title">@Html.Raw(Model.VisionArea.title)</div>
 
                         <div class="desc">
                             <div class="text-wrap">
@@ -65,20 +69,21 @@
                                     @Html.Raw(Model.VisionArea.introtext)
                                 </p>
                             </div>
-                            <hr />
-                            <div class="float-right">
-                                <a href="/News/Details?contentID=@Model.VisionArea.id&menu=@Model.VisionArea.catid" class="white_bg_btn">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
-                            </div>
                             <div class="clearfix"></div>
+                        </div>
+
+                        <div class="intro_readmore">
+                            <a href="/News/Details?contentID=@Model.VisionArea.id&menu=@Model.VisionArea.catid">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
                         </div>
                     </div>
                 }
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="col-lg-4 col_intro">
+                <div class="intro_css intro_3_css"></div>
                 @if (Model != null && Model.ValueArea != null)
                 {
-                    <div class="single-property">
-                        <div class="images">
+                    <div class="single-property cont_css">
+                        <div class="images img_css">
                             @if (Model.ValueArea.images != null)
                             {
                                 @*<img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">*@
@@ -88,8 +93,9 @@
                             {
                                 <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
                             }
-                            <span>@Html.Raw(Model.ValueArea.title)</span>
                         </div>
+
+                        <div class="intro_title">@Html.Raw(Model.ValueArea.title)</div>
 
                         <div class="desc">
                             <div class="text-wrap">
@@ -97,11 +103,10 @@
                                     @Html.Raw(Model.ValueArea.introtext)
                                 </p>
                             </div>
-                            <hr />
-                            <div class="float-right">
-                                <a href="/News/Details?contentID=@Model.ValueArea.id&menu=@Model.ValueArea.catid" class="white_bg_btn">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
-                            </div>
                             <div class="clearfix"></div>
+                        </div>
+                        <div class="intro_readmore">
+                            <a href="/News/Details?contentID=@Model.ValueArea.id&menu=@Model.ValueArea.catid">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
                         </div>
                     </div>
                 }

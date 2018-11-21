@@ -323,6 +323,16 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Slider\animate.css" />
     <Content Include="Content\Slider\style.css" />
+    <Content Include="Content\TcsNewTemplate\css\default.css" />
+    <Content Include="Content\TcsNewTemplate\css\responsive.css" />
+    <Content Include="Content\TcsNewTemplate\images\clock-icon.jpg" />
+    <Content Include="Content\TcsNewTemplate\images\icon_arrow.jpg" />
+    <Content Include="Content\TcsNewTemplate\images\intro_1.jpg" />
+    <Content Include="Content\TcsNewTemplate\images\intro_2.jpg" />
+    <Content Include="Content\TcsNewTemplate\images\intro_3.jpg" />
+    <Content Include="Content\TcsNewTemplate\images\news_icon.jpg" />
+    <Content Include="Content\TcsNewTemplate\images\tcs_news.jpg" />
+    <Content Include="Content\TcsNewTemplate\images\tcs_news_1.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome-4.5.0\css\font-awesome.css" />
     <Content Include="fonts\font-awesome-4.5.0\css\font-awesome.min.css" />
