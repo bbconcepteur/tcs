@@ -48,4 +48,8 @@ where catid =  108
 /*Cap nhat INDUSTRIAL_NEWS new:*/
 
 update jos_content set  Content_Type = 'INDUSTRIAL_NEWS'
-where catid =  110
+where catid =  110;
+
+
+/*Cap nhat jos_links*/
+

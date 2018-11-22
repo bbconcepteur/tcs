@@ -1,4 +1,6 @@
 ﻿@model HCSV.Business.Models.ContentModel<HCSV.Models.jos_content>
+@using HCSV.Core
+@using HCSV.Resources
 @using PagedList.Mvc
 
 @{
@@ -9,13 +11,12 @@
 
 @if ((Model.ListValues != null) && Model.ListValues.Any())
 {
-    int intMenuID = 1;
     foreach (var item in Model.ListValues)
     {
         <div class="section-top-border">
             <div>
                 <h3 class="mb-30">
-                    <a href="@String.Format("/News/Details?contentID={0}&menu={1}", item.id, intMenuID)" class="link">@Html.Raw(item.title)</a>
+                    <a href="@UrlExtentions.Action(GlobalResource.URL_TIN_TUC, item.catid, item.title, item.id)" class="link">@Html.Raw(item.title)</a>
                 </h3>
                 <h5><a href="#">@Html.Raw(((DateTime)item.publish_up).ToString(HCSV.Core.Constants.DATE_FORMAT_DD_MM_YYYY))<i class="lnr lnr-calendar-full"></i></a></h5>
 

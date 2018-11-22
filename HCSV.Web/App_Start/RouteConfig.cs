@@ -23,6 +23,21 @@ namespace HCSV.Web
                 url: "tin-tuc/{menu}/{metatitle}-{contentID}",
                 defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Su menh",
+                url: "su-menh/{menu}/{metatitle}-{contentID}",
+                defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Tam nhin",
+                url: "tam-nhin/{menu}/{metatitle}-{contentID}",
+                defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Gia tri cot loi",
+                url: "gia-tri-cot-loi/{menu}/{metatitle}-{contentID}",
+                defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
+            );
             #endregion
 
 
@@ -35,6 +50,21 @@ namespace HCSV.Web
             routes.MapRoute(
                 name: "News detail",
                 url: "news/{menu}/{metatitle}-{contentID}",
+                defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "mission area",
+                url: "mission/{menu}/{metatitle}-{contentID}",
+                defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "vision area",
+                url: "vision/{menu}/{metatitle}-{contentID}",
+                defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "value area",
+                url: "value/{menu}/{metatitle}-{contentID}",
                 defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
             );
             #endregion

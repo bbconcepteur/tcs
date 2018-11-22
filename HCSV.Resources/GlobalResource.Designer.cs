@@ -1577,6 +1577,33 @@ namespace HCSV.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to gia-tri-cot-loi.
+        /// </summary>
+        public static string URL_GIA_TRI_COT_LOI {
+            get {
+                return ResourceManager.GetString("URL_GIA_TRI_COT_LOI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to su-menh.
+        /// </summary>
+        public static string URL_SU_MENH {
+            get {
+                return ResourceManager.GetString("URL_SU_MENH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tam-nhin.
+        /// </summary>
+        public static string URL_TAM_NHIN {
+            get {
+                return ResourceManager.GetString("URL_TAM_NHIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to tin-tuc.
         /// </summary>
         public static string URL_TIN_TUC {

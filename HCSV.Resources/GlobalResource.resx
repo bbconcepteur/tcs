@@ -625,6 +625,15 @@
   <data name="TU_NGAY" xml:space="preserve">
     <value>Từ ngày:</value>
   </data>
+  <data name="URL_GIA_TRI_COT_LOI" xml:space="preserve">
+    <value>gia-tri-cot-loi</value>
+  </data>
+  <data name="URL_SU_MENH" xml:space="preserve">
+    <value>su-menh</value>
+  </data>
+  <data name="URL_TAM_NHIN" xml:space="preserve">
+    <value>tam-nhin</value>
+  </data>
   <data name="URL_TIN_TUC" xml:space="preserve">
     <value>tin-tuc</value>
   </data>

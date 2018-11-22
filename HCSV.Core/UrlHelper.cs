@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HCSV.Core
 {
-    public class UrlHelper
+    public class UrlExtentions
     {
         public static string GenerateSlug(object title, object id)
         {
