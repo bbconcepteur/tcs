@@ -332,6 +332,15 @@ namespace HCSV.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to d.
+        /// </summary>
+        public static string DEFAULT_CONTENT {
+            get {
+                return ResourceManager.GetString("DEFAULT_CONTENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đến.
         /// </summary>
         public static string DEN {
@@ -1474,6 +1483,15 @@ namespace HCSV.Resources {
         public static string TONG_SO_KIEN {
             get {
                 return ResourceManager.GetString("TONG_SO_KIEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tra cứu vận đơn.
+        /// </summary>
+        public static string TRA_CUU_VAN_DON {
+            get {
+                return ResourceManager.GetString("TRA_CUU_VAN_DON", resourceCulture);
             }
         }
         

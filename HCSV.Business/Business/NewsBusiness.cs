@@ -16,7 +16,7 @@ namespace HCSV.Business.Business
 
         Task<ContentModel<jos_content>> GetContents(long langId, string contentType, int pageNumber);
 
-        Task<ContentModel<jos_content>> GetDetails(long langId, int id, long? defaultLang = null);
+        Task<ContentModel<jos_content>> GetDetails(long langId, int id, long defaultLang);
 
         List<jos_content> GetTopNews(long langId, string contentType, int takeNumberOfRow);
     }
@@ -61,23 +61,32 @@ namespace HCSV.Business.Business
             });
         }
 
-        public Task<ContentModel<jos_content>> GetDetails(long langId, int id, long? defaultLang = null)
+        /// <summary>
+        /// Get new details
+        /// </summary>
+        /// <param name="langId">Current language</param>
+        /// <param name="id">News id</param>
+        /// <param name="defaultLang">Default language</param>
+        /// <returns></returns>
+        public Task<ContentModel<jos_content>> GetDetails(long langId, int id, long defaultLang)
         {
             return Task.Run(() =>
             {
                 var contentDetail = new ContentModel<jos_content>();
-                var objContent = GetSingle(x => (x.id == id) && (x.state == 1) && x.lang_id == langId);
-
-                // Trường hợp không tìm thấy tin => đổi language
-                if (objContent == null)
+                var objContent = GetSingle(x => (x.id == id) && (x.state == 1));
+                if (objContent != null)
                 {
-                    var translateContent =
-                        db.jos_language_translation.AsNoTracking().FirstOrDefault(s => s.language_id == langId
-                        && (s.origin_id == id || s.reference_id == id) && s.origin_id != s.reference_id
-                        && Constants.TranslateTable.TBL_JOS_CONTENT.Equals(s.reference_table));
-                    if (translateContent != null)
+                    // Trường hợp language
+                    if (defaultLang != langId)
                     {
-                        objContent = GetSingle(x => (x.id == translateContent.reference_id) && (x.state == 1) && x.lang_id == langId);
+                        var translate = new TranslateBusiness(db);
+                        var translateContent = translate.GetTranslatetion(objContent.id,
+                            Constants.TranslateTable.TBL_JOS_CONTENT);
+
+                        if (translateContent!= null)
+                        {
+                            objContent = GetSingle(x => (x.id == translateContent.reference_id) && (x.state == 1) && x.lang_id == langId);
+                        }
                     }
                 }
 

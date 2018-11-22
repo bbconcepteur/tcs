@@ -49,11 +49,12 @@ namespace HCSV.Core
         public static class Session
         {
             public const string SESSION_LANGUAGE_ID = "LANGUAGE_ID";
-            public const string SESSION_DEFAULT_LANGUAGE_ID = "LANGUAGE_ID";
+            public const string SESSION_DEFAULT_LANGUAGE_ID = "DEFAULT_LANGUAGE_ID";
             public const string SESSION_MENU_ID = "MENU_ID";
             public const string SESSION_BANNER_MENU_PATH = "SESSION_BANNER_MENU_PATH";
             public const string SESSION_ERROR_CAPCHA = "ERROR_CAPTCHA";
             public const string SESSION_LOGIN_STATUS = "LOGIN_STATUS";
+            public const string PARENT_MENU_TITLE = "PARENT_MENU_TITLE";
         }
 
         public const string WEB_HOME_PAGE = "Home";

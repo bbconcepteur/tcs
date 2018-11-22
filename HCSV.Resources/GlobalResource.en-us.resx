@@ -208,6 +208,9 @@
   <data name="DA_XEP_CHAT_TRUOC_MAY_SOI" xml:space="preserve">
     <value>Đã chất xếp trước máy soi</value>
   </data>
+  <data name="DEFAULT_CONTENT" xml:space="preserve">
+    <value>d</value>
+  </data>
   <data name="DEN" xml:space="preserve">
     <value>Đến</value>
   </data>
@@ -594,6 +597,9 @@
   </data>
   <data name="TRANG_THAI" xml:space="preserve">
     <value>Trạng thái</value>
+  </data>
+  <data name="TRA_CUU_VAN_DON" xml:space="preserve">
+    <value>Tra cứu vận đơn</value>
   </data>
   <data name="TRONG_LUONG" xml:space="preserve">
     <value>Trọng lượng</value>

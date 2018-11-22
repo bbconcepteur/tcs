@@ -13,9 +13,11 @@ namespace HCSV.Business.Business
     {
         jos_menu GetMenuById(long langId, long menuId);
 
-        List<Menu> GetTopMenu(long langId);
+        List<Menu> GetTopMenu(long langId, long defaultLangId);
 
-        List<Menu> GetBottomMenu(long langId);
+        List<Menu> GetBottomMenu(long langId, long defaultLangId);
+
+        List<jos_links> GetLinkMenu(long intLangId);
     }
     public class MenuBusiness : Repository<jos_menu>, IMenuBusiness
     {
@@ -31,7 +33,7 @@ namespace HCSV.Business.Business
 
         public jos_menu GetMenuById(long langId, long menuId)
         {
-            var menu = GetSingle(s => s.lang_id == langId && s.id == menuId && s.published );
+            var menu = GetSingle(s => s.lang_id == langId && s.id == menuId && s.published);
             if (menu == null)
             {
                 var defaultLang = db.jos_languages.AsNoTracking().FirstOrDefault(s => s.default_status == 1) ??
@@ -41,45 +43,88 @@ namespace HCSV.Business.Business
             return menu;
         }
 
-        public List<Menu> GetBottomMenu(long langId)
+        public List<Menu> GetBottomMenu(long langId, long defaultLangId)
         {
 
             var menuTypes =
-                db.jos_menu_types.AsNoTracking()
-                    .Where(s => Constants.TcsContentType.MENU_BOTTOM.Equals(s.menutype))
-                    .Select(s => s.id)
-                    .ToList();
-            var menus =
-                GetMany(s => s.lang_id == langId && s.published && menuTypes.Contains(s.id_menutype ?? 0))
-                    .Select(s => new Menu()
-                    {
-                        Id = s.id,
-                        ParentId = s.parent,
-                        LangId = s.lang_id,
-                        Name = s.name,
-                        Url = s.link
-                    }).ToList();
+                             db.jos_menu_types.AsNoTracking()
+                                 .Where(s => Constants.TcsContentType.MENU_BOTTOM.Equals(s.menutype))
+                                 .Select(s => s.id)
+                                 .ToList();
 
+            var defauleMenus =
+                GetMany(s => s.lang_id == defaultLangId && s.published && menuTypes.Contains(s.id_menutype ?? 0));
+            var menus = new List<Menu>();
+            if (langId != defaultLangId)
+            {
+                var translate = new TranslateBusiness(db);
+                //todo: tra bang translate
+                var defaultId = defauleMenus.Select(s => (long)s.id).ToList();
+                var translateMenu = translate.GetTranslatetions(defaultId, Constants.TranslateTable.TBL_JOS_MENU).Select(s => s.reference_id);
+                //todo: lay menu cua ngon ngu hien tai
+                menus = GetMany(s => s.lang_id == langId && s.published && translateMenu.Contains(s.id) && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
+                {
+                    Id = s.id,
+                    ParentId = s.parent,
+                    LangId = s.lang_id,
+                    Name = s.name,
+                    Url = s.link
+                }).ToList();
+            }
+            else
+            {
+                menus = defauleMenus.Select(s => new Menu()
+                {
+                    Id = s.id,
+                    ParentId = s.parent,
+                    LangId = s.lang_id,
+                    Name = s.name,
+                    Url = s.link
+                }).ToList();
+            }
             return menus;
         }
 
-        public List<Menu> GetTopMenu(long langId)
+        public List<Menu> GetTopMenu(long langId, long defaultLangId)
         {
             var menuTypes =
                              db.jos_menu_types.AsNoTracking()
                                  .Where(s => Constants.TcsContentType.MENU_TOP.Equals(s.menutype))
                                  .Select(s => s.id)
                                  .ToList();
-            var menus =
-                GetMany(s => s.lang_id == langId && s.published && menuTypes.Contains(s.id_menutype ?? 0))
-                    .Select(s => new Menu()
-                    {
-                        Id = s.id,
-                        ParentId = s.parent,
-                        LangId = s.lang_id,
-                        Name = s.name,
-                        Url = s.link
-                    }).ToList();
+
+            var defauleMenus =
+                GetMany(s => s.lang_id == defaultLangId && s.published && menuTypes.Contains(s.id_menutype ?? 0));
+            var menus = new List<Menu>();
+
+            if (langId != defaultLangId)
+            {
+                var translate = new TranslateBusiness(db);
+                //todo: tra bang translate
+                var defaultId = defauleMenus.Select(s => (long)s.id).ToList();
+                var translateMenu = translate.GetTranslatetions(defaultId, Constants.TranslateTable.TBL_JOS_MENU).Select(s => s.reference_id);
+                //todo: lay menu cua ngon ngu hien tai
+                menus = GetMany(s => s.lang_id == langId && s.published && translateMenu.Contains(s.id) && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
+                {
+                    Id = s.id,
+                    ParentId = s.parent,
+                    LangId = s.lang_id,
+                    Name = s.name,
+                    Url = s.link
+                }).ToList();
+            }
+            else
+            {
+                menus = defauleMenus.Select(s => new Menu()
+                {
+                    Id = s.id,
+                    ParentId = s.parent,
+                    LangId = s.lang_id,
+                    Name = s.name,
+                    Url = s.link
+                }).ToList();
+            }
+
             List<Menu> menuModel = new List<Menu>();
             var parentMenu = menus.Where(s => s.ParentId == 0).ToList();
             if (parentMenu.Any())
@@ -121,6 +166,15 @@ namespace HCSV.Business.Business
 
             return menuModel;
 
+        }
+
+        public List<jos_links> GetLinkMenu(long intLangId)
+        {
+            return
+                db.jos_links.AsNoTracking()
+                    .Where(x => x.lang_id == intLangId && x.published)
+                    .OrderBy(s => s.order)
+                    .ToList();
         }
     }
 }

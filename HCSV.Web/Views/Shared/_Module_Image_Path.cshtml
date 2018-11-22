@@ -1,31 +1,40 @@
 ﻿@using HCSV.Core
+@using HCSV.Resources
 @if (Request.Url != null && Request.Url.PathAndQuery == "/")
 {
     <section class="relative" style="background: url('@HttpContext.Current.Application[Constants.Page.PAGE_BANNER]') no-repeat center center/cover">
         <div class="overlay overlay-bg"></div>
         <div class="container">
-            <div class="row fullscreen align-items-end justify-content-center" style="height: 913px;">
-                <div class="col-lg-12 col-md-12" style="padding: 10px;">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#home">Tra cứu vận đơn</a></li>
-                        <li><a data-toggle="tab" href="#menu1">Các hãng hàng không</a></li>
-                        <li><a data-toggle="tab" href="#menu2">Thống kê</a></li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div id="home" class="tab-pane fade in active">
-                            <h3>HOME</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="row fullscreen align-items-end justify-content-center">
+                <div class="col-md-12">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">@GlobalResource.TRA_CUU_VAN_DON</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" href="Clients/Index?menu=68" role="tab" aria-controls="nav-profile" aria-selected="false">@GlobalResource.CAC_HANG_HANG_KHONG</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" href="Airline/Statistics_default?menu=197" role="tab" aria-controls="nav-contact" aria-selected="false">@GlobalResource.THONG_KE</a>
                         </div>
-                        <div id="menu1" class="tab-pane fade">
-                            <h3>Menu 1</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent" style="background: white">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="search-form" style="background: #fff; padding: 40px">
+                                <form class="search-form" action="#">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-2 col-xs-2">
+                                            <label>@GlobalResource.SO_KHONG_VAN_DON</label>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-xs-2">
+                                            <input type="text" class="form-control"/>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-xs-6">
+                                            <input type="text" class="form-control" />
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-xs-2">
+                                            <button class="primary-btn">Go<span class="lnr lnr-arrow-right"></span></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div id="menu2" class="tab-pane fade">
-                            <h3>Menu 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                        </div>
-                        
                     </div>
                 </div>
             </div>
@@ -36,7 +45,7 @@ else
 {
     <div class="hundred_percent_css banner_1_css">
         <div class="inner_banner">
-            @Html.Raw(@HttpContext.Current.Application[HCSV.Core.Constants.Page.PAGE_BANNER])
+            <img class="img-fluid" src="@HttpContext.Current.Application[HCSV.Core.Constants.Page.PAGE_BANNER]"/> 
         </div>
         <div class="bg_content_css title_banner_css">
             <div class="main_title_banner_css">@HttpContext.Current.Application[Constants.Page.PARENT_MENU_TITLE]</div>

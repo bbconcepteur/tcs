@@ -14,16 +14,22 @@ namespace HCSV.Web.Controllers
         
         public ActionResult TopMenu()
         {
-            var menus = UnitOfWork.MenuBusiness.GetTopMenu(LanguageId);
+            var menus = UnitOfWork.MenuBusiness.GetTopMenu(LanguageId, DefaultLanguageId);
 
             return PartialView("~/Views/Shared/_Menu.cshtml", menus);
         }
 
         public ActionResult BottomMenu()
         {
-            var menus = UnitOfWork.MenuBusiness.GetBottomMenu(LanguageId);
+            var menus = UnitOfWork.MenuBusiness.GetBottomMenu(LanguageId, DefaultLanguageId);
 
             return PartialView("~/Views/Shared/_Footer.cshtml", menus);
+        }
+
+        public ActionResult BottomLink()
+        {
+            var menus = UnitOfWork.MenuBusiness.GetLinkMenu(LanguageId);
+            return PartialView("~/Views/Shared/_Module_Logo_Footer.cshtml", menus);
         }
 
     }

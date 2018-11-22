@@ -10,13 +10,9 @@ namespace HCSV.Business.Business
 {
     public interface ITranslateBusiness : IRepository<jos_language_translation>
     {
-        jos_language_translation GetTranslatetion(long langId, int sourceId, string referentTable);
+        jos_language_translation GetTranslatetion(long sourceId, string referentTable);
 
-        jos_content GetNewsTranslatetion(long langId, int sourceId);
-
-        jos_menu GetMenuTranslatetion(long langId, int sourceId);
-
-        /*jos_links GetLinkTranslatetion(long langId, int sourceId, string referentTable);*/
+        List<jos_language_translation> GetTranslatetions(List<long> sourceId, string referentTable);
     }
 
     public class TranslateBusiness : Repository<jos_language_translation>, ITranslateBusiness
@@ -31,37 +27,26 @@ namespace HCSV.Business.Business
             db = new TCSEntities();
         }
 
-        public jos_language_translation GetTranslatetion(long langId, int sourceId, string referentTable)
+        public jos_language_translation GetTranslatetion(long sourceId, string referentTable)
         {
-            var translateContent = GetSingle(s => s.language_id == langId
-                                                  && s.origin_id == sourceId &&
+            var translateContent = GetSingle(s => s.origin_id == sourceId &&
                                                   s.origin_id != s.reference_id
                                                   && referentTable.Equals(s.reference_table));
             
             return translateContent;
         }
 
-        public jos_content GetNewsTranslatetion(long langId, int sourceId)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sourceId"></param>
+        /// <param name="referentTable"></param>
+        /// <returns></returns>
+        public List<jos_language_translation> GetTranslatetions(List<long> sourceId, string referentTable)
         {
-            var translateContent = GetTranslatetion(langId, sourceId, Constants.TranslateTable.TBL_JOS_CONTENT);
-            var news =
-                db.jos_content.AsNoTracking()
-                    .FirstOrDefault(s => s.lang_id == langId && s.state == 1 && s.id == translateContent.reference_id);
-            return news;
-        }
+            var translateContent = GetMany(s => s.origin_id != s.reference_id && sourceId.Contains(s.origin_id) && referentTable.Equals(s.reference_table)).ToList();
 
-        public jos_menu GetMenuTranslatetion(long langId, int sourceId)
-        {
-            var translateContent = GetTranslatetion(langId, sourceId, Constants.TranslateTable.TBL_JOS_MENU);
-            var menu =
-                db.jos_menu.AsNoTracking()
-                    .FirstOrDefault(s => s.lang_id == langId && s.published && s.id == translateContent.reference_id);
-            return menu;
+            return translateContent;
         }
-
-        /*public jos_links GetLinkTranslatetion(long langId, int sourceId, string referentTable)
-        {
-            var translateContent = GetTranslatetion(langId, sourceId, Constants.TranslateTable.TBL_JOS_CONTACT);
-        }*/
     }
 }

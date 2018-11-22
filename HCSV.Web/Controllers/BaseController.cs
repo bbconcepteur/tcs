@@ -56,21 +56,36 @@ namespace HCSV.Web.Controllers
         {
             base.OnActionExecuting(filterContext);
             HttpContext.Application[Constants.Page.PAGE_TITLE] = HttpContext.Application[Constants.Page.HOME_PAGE_TITLE];
-            if (Request.QueryString["menu"] != null)
+
+            if (Request.RawUrl.Equals("/") || Request.RawUrl.ToLower().Contains("/home/"))
             {
-                long menuId = -1;
-                long.TryParse(Request["menu"], out menuId);
-                /*if (Session[Constants.SESSION_MENU_ID] != null)
+                // index
+                HttpContext.Application[Constants.Page.PAGE_BANNER] = "/Content/BoostrapTemplate/img/header-bg.jpg";
+                HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = "Home page";
+                HttpContext.Application[Constants.Page.MENU_TITLE] = "Index";
+            }
+            else
+            {
+                long menuId = Constants.NUMBER_INVALID_INTEGER;
+                long sessionMenuId = Constants.NUMBER_INVALID_INTEGER;
+                if (Session[Constants.Session.SESSION_MENU_ID] != null)
                 {
                     //Muc dich de tranh query qua nhieu vao db
-                    var sessionMenuId = long.Parse(Session[Constants.SESSION_MENU_ID].ToString());
-                    if (menuId == sessionMenuId)
-                    {
-                        HttpContext.Application[Constants.Page.PAGE_BANNER] = Session[Constants.SESSION_BANNER_MENU_PATH].ToString();
-                        HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = Session[Constants.Page.PARENT_MENU_TITLE].ToString();
-                        return;
-                    }
-                }*/
+                    sessionMenuId = long.Parse(Session[Constants.Session.SESSION_MENU_ID].ToString());
+                }
+                if (Request.QueryString["menu"] != null)
+                {
+                    long.TryParse(Request["menu"], out menuId);
+                }
+
+                if (menuId == sessionMenuId && sessionMenuId != Constants.NUMBER_INVALID_INTEGER)
+                {
+                    if (Session[Constants.Session.SESSION_BANNER_MENU_PATH] != null)
+                        HttpContext.Application[Constants.Page.PAGE_BANNER] = Session[Constants.Session.SESSION_BANNER_MENU_PATH].ToString();
+                    if (Session[Constants.Session.PARENT_MENU_TITLE] != null)
+                        HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = Session[Constants.Session.PARENT_MENU_TITLE].ToString();
+                    return;
+                }
 
                 if (menuId > 0)
                 {
@@ -91,22 +106,9 @@ namespace HCSV.Web.Controllers
                 }
                 else
                 {
-                    // index
-                    HttpContext.Application[Constants.Page.PAGE_BANNER] = "/Content/BoostrapTemplate/img/header-bg.jpg";
-                    HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = "Home page";
-                    HttpContext.Application[Constants.Page.MENU_TITLE] = "Index";
+                    HttpContext.Application[Constants.Page.PAGE_BANNER] = "/Media/Images/themes/orange/images/banner.jpg";
+                    Session[Constants.Session.SESSION_BANNER_MENU_PATH] = "/Media/Images/themes/orange/images/banner.jpg";
                 }
-
-
-                // for test
-                HttpContext.Application[Constants.Page.PAGE_BANNER] = "/Content/BoostrapTemplate/img/header-bg.jpg";
-            }
-            else
-            {
-                // index
-                HttpContext.Application[Constants.Page.PAGE_BANNER] = "/Content/BoostrapTemplate/img/header-bg.jpg";
-                HttpContext.Application[Constants.Page.PARENT_MENU_TITLE] = "Home page";
-                HttpContext.Application[Constants.Page.MENU_TITLE] = "Index";
             }
         }
 
