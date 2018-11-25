@@ -3,11 +3,11 @@
 @if (Model != null && Model.Any())
 {
     <div id="scroller_container">
-        <div class="jscroller2_left jscroller2_speed-50" style="">
+        <div class="jscroller2_left jscroller2_speed-50 marquee" style="">
             @foreach (var item in Model)
             {
                 <a href="@Html.Raw(item.link)" target="_blank" class="logo_link_css_1">
-                    @Html.Raw(item.image)
+                    <img src="@item.image"/>"
                 </a>
             }
         </div>

@@ -60,16 +60,28 @@ namespace HCSV.Business.Business
                 var translate = new TranslateBusiness(db);
                 //todo: tra bang translate
                 var defaultId = defauleMenus.Select(s => (long)s.id).ToList();
-                var translateMenu = translate.GetTranslatetions(defaultId, Constants.TranslateTable.TBL_JOS_MENU).Select(s => s.reference_id);
+                var translateMenu = translate.GetTranslatetions(defaultId, Constants.TranslateTable.TBL_JOS_MENU).ToList();
+                var translateIds = translateMenu.Select(s => s.reference_id);
                 //todo: lay menu cua ngon ngu hien tai
-                menus = GetMany(s => s.lang_id == langId && s.published && translateMenu.Contains(s.id) && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
+
+                var currentMenus = GetMany(s => s.lang_id == langId && translateIds.Contains(s.id));
+                translateMenu.ForEach(t =>
                 {
-                    Id = s.id,
-                    ParentId = s.parent,
-                    LangId = s.lang_id,
-                    Name = s.name,
-                    Url = s.link
-                }).ToList();
+                    var defaultMenu = defauleMenus.FirstOrDefault(s => s.id == t.origin_id);
+                    var currMenu = currentMenus.FirstOrDefault(s => s.id == t.reference_id);
+                    if (defaultMenu != null && currMenu != null)
+                    {
+                        menus.Add(new Menu
+                        {
+                            Id = currMenu.id,
+                            ParentId = currMenu.parent,
+                            LangId = currMenu.lang_id,
+                            Name = currMenu.name,
+                            Url = defaultMenu.link,
+                            MenuType = MenuType.Bottom
+                        });
+                    }
+                });
             }
             else
             {
@@ -79,7 +91,8 @@ namespace HCSV.Business.Business
                     ParentId = s.parent,
                     LangId = s.lang_id,
                     Name = s.name,
-                    Url = s.link
+                    Url = s.link,
+                    MenuType = MenuType.Bottom
                 }).ToList();
             }
             return menus;
@@ -102,16 +115,30 @@ namespace HCSV.Business.Business
                 var translate = new TranslateBusiness(db);
                 //todo: tra bang translate
                 var defaultId = defauleMenus.Select(s => (long)s.id).ToList();
-                var translateMenu = translate.GetTranslatetions(defaultId, Constants.TranslateTable.TBL_JOS_MENU).Select(s => s.reference_id);
+                var translateMenu = translate.GetTranslatetions(defaultId, Constants.TranslateTable.TBL_JOS_MENU).ToList();
+                var translateIds = translateMenu.Select(s => s.reference_id);
                 //todo: lay menu cua ngon ngu hien tai
-                menus = GetMany(s => s.lang_id == langId && s.published && translateMenu.Contains(s.id) && menuTypes.Contains(s.id_menutype ?? 0)).Select(s => new Menu()
+
+                var currentMenus = GetMany(s => s.lang_id == langId && s.published && translateIds.Contains(s.id) && menuTypes.Contains(s.id_menutype ?? 0));
+                translateMenu.ForEach(t =>
                 {
-                    Id = s.id,
-                    ParentId = s.parent,
-                    LangId = s.lang_id,
-                    Name = s.name,
-                    Url = s.link
-                }).ToList();
+                    var defaultMenu = defauleMenus.FirstOrDefault(s => s.id == t.origin_id);
+                    var currMenu = currentMenus.FirstOrDefault(s => s.id == t.reference_id);
+                    if (defaultMenu != null && currMenu != null)
+                    {
+                        menus.Add(new Menu
+                        {
+                            Id = currMenu.id,
+                            ParentId = currMenu.parent,
+                            LangId = currMenu.lang_id,
+                            Name = currMenu.name,
+                            Url = defaultMenu.link,
+                            MenuType = MenuType.Top
+                        });
+                    }
+
+                });
+
             }
             else
             {
@@ -121,7 +148,8 @@ namespace HCSV.Business.Business
                     ParentId = s.parent,
                     LangId = s.lang_id,
                     Name = s.name,
-                    Url = s.link
+                    Url = s.link,
+                    MenuType = MenuType.Top
                 }).ToList();
             }
 
@@ -170,8 +198,7 @@ namespace HCSV.Business.Business
 
         public List<jos_links> GetLinkMenu(long intLangId)
         {
-            return
-                db.jos_links.AsNoTracking()
+            return db.jos_links.AsNoTracking()
                     .Where(x => x.lang_id == intLangId && x.published)
                     .OrderBy(s => s.order)
                     .ToList();

@@ -1,0 +1,51 @@
+﻿@model HCSV.Business.Models.ContactModel
+@using HCSV.Resources
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start contact-page Area -->
+<section class="contact-page-area section-gap">
+    <div class="container">
+        @if (Model != null)
+        {
+            <div class="col-md-12">
+                @Html.Raw(Model.Contact.introtext)
+            </div>
+            <div class="col-md-12">
+                <div class="map-wrap">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15676.164381864064!2d106.6626791!3d10.8081645!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc24d76162d853951!2sTan+Son+Nhat+Cargo+Services+Co.+Ltd!5e0!3m2!1sen!2s!4v1543137584874" width="100%" height="445" frameborder="0" style="border: 0" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+            <div class="row">
+                @if (Model.ListContacts != null && Model.ListContacts.Any())
+                {
+                    foreach (var item in Model.ListContacts)
+                    {
+                        <div class="col-md-3">
+                            <div class="contact_detail">
+                                <div class="contact_title">@Html.Raw(item.name)</div>
+                                <div class="contact_content">
+                                    @Html.Raw(String.Format("{0}:{1}", item.title_of_manager, item.department_manager))<br>
+
+                                    @GlobalResource.DIEN_THOAI :@item.phone<br>
+
+                                    @GlobalResource.SO_NOI_BO :@item.ext_tel<br>
+
+                                    @GlobalResource.DUONG_DAY_NONG :@item.hotline<br>
+
+
+                                    Email:&nbsp;<a href="mailto:@Html.Raw(item.email)">@Html.Raw(item.email)</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+
+    </div>
+</section>
+

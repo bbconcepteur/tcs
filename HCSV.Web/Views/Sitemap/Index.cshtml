@@ -1,36 +1,34 @@
-﻿
+﻿@using HCSV.Core
+@model List<HCSV.Models.ViewModels.Menu>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="bg_content_css">
-    <div class="site_map_css">
-        <style>
-            .site_map_css a:link {
-                font-weight: normal !important;
-            }
-
-            .site_map_css .title a {
-                font-weight: bold !important;
-            }
-        </style>
-        @{
-            HCSVNewWebsite.Models.cpanelEntities entities = new HCSVNewWebsite.Models.cpanelEntities();
-            int intLangId = HCSVNewWebsite.Commons.Commons.getLanguageID(this.Request, entities);
-            int intDefaultLangID = HCSVNewWebsite.Commons.Commons.getDefaultLanguageID(entities);
-
-            string strSiteMaps = "";
-            //get site map of Top Menu
-            HCSVNewWebsite.Commons.Commons.drawSiteMaps(null, 0, ref strSiteMaps, intLangId, intDefaultLangID,
-                HCSVNewWebsite.Commons.Commons.getActiveMenu(Request), HCSVNewWebsite.Commons.Commons.MENU_TOP, entities);
-
-            //get site map of Bottom Menu
-            strSiteMaps = strSiteMaps + "<div class='clear'></div>";
-            HCSVNewWebsite.Commons.Commons.drawSiteMaps(null, 0, ref strSiteMaps, intLangId, intDefaultLangID,
-                HCSVNewWebsite.Commons.Commons.getActiveMenu(Request), HCSVNewWebsite.Commons.Commons.MENU_BOTTOM, entities);
-                @Html.Raw(strSiteMaps);
+<div class="row">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <div class="col-lg-3 mt-10">
+                <div class="single-property">
+                    <div class="desc">
+                        <div class="sitemap">
+                            <ul>
+                                <li class="title"><a href="@item.Url">@item.Name</a></li>
+                                @if (item.HasChildren)
+                                {
+                                    foreach (var childItem in item.Childrens)
+                                    {
+                                        <li><a href="@childItem.Url">@childItem.Name</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
-        <div class="clear"></div>
-    </div>
+    }
+
 </div>
 

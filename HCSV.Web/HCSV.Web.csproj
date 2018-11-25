@@ -183,12 +183,14 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CareersController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -313,6 +315,7 @@
     <Content Include="Content\BoostrapTemplate\js\jquery-ui.js" />
     <Content Include="Content\BoostrapTemplate\js\jquery.ajaxchimp.min.js" />
     <Content Include="Content\BoostrapTemplate\js\jquery.magnific-popup.min.js" />
+    <Content Include="Content\BoostrapTemplate\js\jquery.marquee.min.js" />
     <Content Include="Content\BoostrapTemplate\js\jquery.nice-select.min.js" />
     <Content Include="Content\BoostrapTemplate\js\jquery.sticky.js" />
     <Content Include="Content\BoostrapTemplate\js\main.js" />
@@ -798,6 +801,8 @@
     <Content Include="Views\Services\Index.cshtml" />
     <Content Include="Views\Services\Tab.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Sitemap\Index.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

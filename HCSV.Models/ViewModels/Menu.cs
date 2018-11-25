@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HCSV.Core;
 
 namespace HCSV.Models.ViewModels
 {
@@ -23,5 +21,7 @@ namespace HCSV.Models.ViewModels
         public List<Menu> Childrens { get; set; } 
 
         public bool HasChildren { get { return Childrens != null && Childrens.Count > 0; } }
+
+        public MenuType MenuType { get; set; }
     }
 }

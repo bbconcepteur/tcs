@@ -17,6 +17,7 @@ namespace HCSV.Business
 
         IDashbroadBusiness DashbroadBussiness { get; }
         IMenuBusiness MenuBusiness { get; }
+        IContactBusiness ContactBusiness { get; }
     }
 
     public class UnitOfWork : IUnitOfWork
@@ -111,6 +112,10 @@ namespace HCSV.Business
         public IMenuBusiness MenuBusiness
         {
             get { return new MenuBusiness(_context); }
+        }
+        public IContactBusiness ContactBusiness
+        {
+            get { return new ContactBusiness(_context); }
         }
         #endregion
     }

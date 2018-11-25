@@ -2,6 +2,8 @@
 $(document).ready(function () {
     "use strict";
 
+
+
     var window_height = window.innerHeight,
         header_height = 650,
         fitscreen = window_height - header_height;
@@ -61,6 +63,19 @@ $(document).ready(function () {
                     $('#mobile-body-overly').fadeOut();
                 }
             }
+        });
+
+        $('.marquee').marquee({
+            //speed in milliseconds of the marquee
+            duration: 15000,
+            //gap in pixels between the tickers
+            gap: 10,
+            //time in milliseconds before the marquee will start animating
+            delayBeforeStart: 0,
+            //'left' or 'right'
+            direction: 'left',
+            //true or false - should the marquee be duplicated to show an effect of continues flow
+            duplicated: true
         });
     } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
         $("#mobile-nav, #mobile-nav-toggle").hide();

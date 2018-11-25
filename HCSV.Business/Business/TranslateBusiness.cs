@@ -13,7 +13,10 @@ namespace HCSV.Business.Business
         jos_language_translation GetTranslatetion(long sourceId, string referentTable);
 
         List<jos_language_translation> GetTranslatetions(List<long> sourceId, string referentTable);
+        List<jos_language_translation> GetTranslatetions(string referentTable);
     }
+
+
 
     public class TranslateBusiness : Repository<jos_language_translation>, ITranslateBusiness
     {
@@ -32,7 +35,7 @@ namespace HCSV.Business.Business
             var translateContent = GetSingle(s => s.origin_id == sourceId &&
                                                   s.origin_id != s.reference_id
                                                   && referentTable.Equals(s.reference_table));
-            
+
             return translateContent;
         }
 
@@ -45,6 +48,13 @@ namespace HCSV.Business.Business
         public List<jos_language_translation> GetTranslatetions(List<long> sourceId, string referentTable)
         {
             var translateContent = GetMany(s => s.origin_id != s.reference_id && sourceId.Contains(s.origin_id) && referentTable.Equals(s.reference_table)).ToList();
+
+            return translateContent;
+        }
+
+        public List<jos_language_translation> GetTranslatetions(string referentTable)
+        {
+            var translateContent = GetMany(s => s.origin_id != s.reference_id && referentTable.Equals(s.reference_table)).ToList();
 
             return translateContent;
         }

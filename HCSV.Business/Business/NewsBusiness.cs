@@ -18,6 +18,8 @@ namespace HCSV.Business.Business
 
         Task<ContentModel<jos_content>> GetDetails(long langId, int id, long defaultLang);
 
+        jos_content GetDetail(long langId, int id, long defaultLang);
+
         List<jos_content> GetTopNews(long langId, string contentType, int takeNumberOfRow);
     }
     public class NewsBusiness : Repository<jos_content>, INewsBusiness
@@ -85,7 +87,7 @@ namespace HCSV.Business.Business
 
                         if (translateContent!= null)
                         {
-                            objContent = GetSingle(x => (x.id == translateContent.reference_id) && (x.state == 1) && x.lang_id == langId);
+                            objContent = GetSingle(x => (x.id == translateContent.reference_id) && x.lang_id == langId);
                         }
                     }
                 }
@@ -93,6 +95,27 @@ namespace HCSV.Business.Business
                 contentDetail.Value = objContent;
                 return contentDetail;
             });
+        }
+
+        public jos_content GetDetail(long langId, int id, long defaultLang)
+        {
+            var objContent = GetSingle(x => (x.id == id) && (x.state == 1));
+            if (objContent != null)
+            {
+                // Trường hợp language
+                if (defaultLang != langId)
+                {
+                    var translate = new TranslateBusiness(db);
+                    var translateContent = translate.GetTranslatetion(objContent.id,
+                        Constants.TranslateTable.TBL_JOS_CONTENT);
+
+                    if (translateContent != null)
+                    {
+                        objContent = GetSingle(x => (x.id == translateContent.reference_id) && x.lang_id == langId);
+                    }
+                }
+            }
+            return objContent;
         }
 
         public List<jos_content> GetTopNews(long langId, string contentType, int takeNumberOfRow)

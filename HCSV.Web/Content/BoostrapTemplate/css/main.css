@@ -3263,5 +3263,10 @@ h6 {
   .footer-text a,
   .footer-text i {
     color: #ea6c5d; }
-
+  .marquee {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background: #ccc;
+ }
 /*# sourceMappingURL=main.css.map */

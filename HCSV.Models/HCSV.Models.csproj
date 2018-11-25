@@ -350,6 +350,12 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HCSV.Core\HCSV.Core.csproj">
+      <Project>{c644c33d-2c6c-4ba3-a8d2-c87a6f47ef3f}</Project>
+      <Name>HCSV.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
