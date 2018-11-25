@@ -1,0 +1,24 @@
+﻿@model IEnumerable<HCSV.Models.jos_links>
+
+@if (Model != null && Model.Any())
+{
+    <!-- Divider: Clients -->
+    <section class="clients bg-theme-colored">
+        <div class="container pt-0 pb-0">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Section: Clients -->
+                    <div class="owl-carousel-6col clients-logo transparent text-center">
+                        @foreach (var item in Model)
+                        {
+                            <div class="item">
+                                <a href="@Html.Raw(item.link)"><img src="@item.image" alt="" width="127" height="27"></a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}

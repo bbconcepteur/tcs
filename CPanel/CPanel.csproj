@@ -362,6 +362,8 @@
     <Content Include="Plugins\CKFinderScripts\ckfinder.html" />
     <Content Include="Plugins\CKFinderScripts\ckfinder.js" />
     <Content Include="Plugins\CKFinderScripts\config.js" />
+    <Content Include="Plugins\CKFinderScripts\lang\en.js" />
+    <Content Include="Plugins\CKFinderScripts\lang\vi.js" />
     <Content Include="Plugins\CKFinderScripts\libs\caman.js" />
     <Content Include="Plugins\CKFinderScripts\libs\images\ajax-loader.gif" />
     <Content Include="Plugins\CKFinderScripts\libs\images\icons-png\action-black.png" />
@@ -1257,8 +1259,6 @@
     <Folder Include="Plugins\ckeditor\skins\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Plugins\CKFinderScripts\lang\en.js" />
-    <Content Include="Plugins\CKFinderScripts\lang\vi.js" />
     <Content Include="Plugins\CKFinderScripts\plugins\README.md" />
     <None Include="Properties\PublishProfiles\CPanel.pubxml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />

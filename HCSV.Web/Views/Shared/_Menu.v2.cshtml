@@ -1,0 +1,22 @@
+﻿@model IEnumerable<HCSV.Models.ViewModels.Menu>
+<ul class="menuzord-menu">
+    @if (Model.Any())
+    {
+        foreach (var level1 in Model)
+        {
+            <li>
+                <a href="@level1.Url">@level1.Name</a>
+                @if (level1.HasChildren)
+                {
+                    <ul class="dropdown">
+                        @foreach (var level2 in level1.Childrens)
+                        {
+                            <li class="list-unstyled list-dashed"><a href="@level2.Url">@level2.Name</a></li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+
+    }
+</ul>
