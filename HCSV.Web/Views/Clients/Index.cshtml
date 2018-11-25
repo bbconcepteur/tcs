@@ -1,0 +1,43 @@
+﻿@model List<HCSV.Models.jos_links>
+@using System.Text
+@using HCSV.Resources
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="bg_content_css">
+    <div class="container detail_news_css">
+        @if (Model != null && Model.Any())
+            {
+                int i = 0;
+                StringBuilder desc = null;
+                foreach (var item in Model)
+                {
+                    i++;
+                    desc = new StringBuilder();
+                <div class="col-md-3">
+                    <div class="myPopover" data-toggle="popover"
+                         data-placement="right" title="@GlobalResource.XEM_TIEP"
+                         data-trigger="hover"
+                         data-content="@desc.ToString()">
+                        <a href="@Html.Raw(item.link)" class="link title" target="_blank">@Html.Raw(item.name)</a>
+                        <a href="@Html.Raw(item.link)" class="tooltip_hover" id="@Html.Raw("tholder" + i)" target="_blank">
+                            <img src="@Html.Raw(item.image)" />
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('.myPopover').popover();
+        });
+    </script>
+}
+
+
+

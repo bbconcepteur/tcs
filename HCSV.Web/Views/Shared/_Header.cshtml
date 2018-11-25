@@ -1,16 +1,39 @@
-﻿<!-- Start Header Area -->
-<header class="default-header">
-    <div class="menutop-wrap">
-        <div class="menu-top container">
-            <div class="d-flex justify-content-end align-items-center">
-                <ul class="list">
-                    <li><a href="#">Hotline: (02-8) 38 486 489</a></li>
-                    <li><a href="#">Email: tracing@tcs.com.vn</a></li>
-                    <li><a href="#">login / register</a></li>
-                </ul>
+﻿@using HCSV.Core
+@using HCSV.Resources
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <div class="menutop-wrap">
+            <div class="menu-top container">
+                <div class="d-flex justify-content-end align-items-center">
+                    <ul class="list">
+                        <li><a href="#">Hotline: (02-8) 38 486 489</a></li>
+                        <li><a href="#">Email: tracing@tcs.com.vn</a></li>
+                        <li>
+                            @{
+                                string cultureName = "";
+                                if (Session[Constants.Session.SESSION_CURRENT_CULTURE] != null)
+                                {
+                                    cultureName = Session[Constants.Session.SESSION_CURRENT_CULTURE].ToString();
+                                }
+                                else
+                                {
+                                    cultureName = "vi-VN";
+                                }
+
+                            }
+                            @if (!string.IsNullOrEmpty(cultureName) && cultureName.ToLower().Equals("vi-vn"))
+                            {
+                                <a href="@Url.Action("SwitchLanguage", "Home", new { lang = "en" })">English</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("SwitchLanguage", "Home", new { lang = "vi" })">Tiếng Việt</a>
+                            }
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    @Html.Action("TopMenu", "Menu")
-</header>
+        @Html.Action("TopMenu", "Menu")
+    </header>

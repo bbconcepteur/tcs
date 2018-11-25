@@ -14,6 +14,8 @@ namespace HCSV.Business.Business
     {
         Task<ContentModel<jos_content>> GetContents(long langId, int categoryId, int pageNumber);
 
+        Task<ContentModel<jos_content>> GetServices(long langId, long defaultLang, int categoryId);
+
         Task<ContentModel<jos_content>> GetContents(long langId, string contentType, int pageNumber);
 
         Task<ContentModel<jos_content>> GetDetails(long langId, int id, long defaultLang);
@@ -40,6 +42,35 @@ namespace HCSV.Business.Business
                 content.PageName = objCategory.name;
                 var lstContents = GetMany(x => (x.lang_id == langId) && (x.catid == categoryId) && (x.state == 1)).OrderByDescending(y => y.publish_up).ToList();
                 content.ListValues = lstContents.ToPagedList(pageNumber, 10);
+                return content;
+            });
+        }
+
+        public Task<ContentModel<jos_content>> GetServices(long langId, long defaultLang, int categoryId)
+        {
+            return Task.Run(() =>
+            {
+                var content = new ContentModel<jos_content>();
+                var defaultContents = GetMany(x => (x.lang_id == defaultLang) && (x.catid == categoryId) && (x.state == 1)).OrderByDescending(y => y.publish_up).ToList();
+
+                if (langId != defaultLang)
+                {
+                    var defaultIds = defaultContents.Select(s => s.id).ToList();
+                    ITranslateBusiness translate = new TranslateBusiness(db);
+
+                    var transContents =
+                        translate.GetTranslatetions(defaultIds, Constants.TranslateTable.TBL_JOS_CONTENT)
+                            .Select(s => (long) s.reference_id)
+                            .ToList();
+
+                    var currentContents = GetMany(s => s.lang_id == langId && transContents.Contains(s.id)).ToList();
+
+                    content.ListValues = currentContents.ToPagedList(1, 99999);
+                }
+                else
+                {
+                    content.ListValues = defaultContents.ToPagedList(1, 99999);
+                }
                 return content;
             });
         }

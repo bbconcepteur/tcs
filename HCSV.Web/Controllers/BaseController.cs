@@ -26,8 +26,10 @@ namespace HCSV.Web.Controllers
                 }
                 else
                 {
-                    const string cultureName = "vi"; //default vietnamese
+                    string cultureName = "vi"; //default vietnamese
                     _languageId = UnitOfWork.LanguageBusiness.GetLanguageId(cultureName);
+                    cultureName = CultureHelper.GetImplementedCulture(cultureName); // This is safe
+                    Session[Constants.Session.SESSION_CURRENT_CULTURE] = cultureName;
                     Session[Constants.Session.SESSION_LANGUAGE_ID] = _languageId;
                 }
 
@@ -128,13 +130,15 @@ namespace HCSV.Web.Controllers
                 Response.Cookies.Add(cultureCookie);
             }
 
+            
+
             // Validate culture name
             cultureName = CultureHelper.GetImplementedCulture(cultureName); // This is safe
 
             // Modify current thread's cultures
             Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
             Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
-            DateTimeFormatInfo info = DateTimeFormatInfo.GetInstance(CultureInfo.GetCultureInfo("en-US"));
+            DateTimeFormatInfo info = DateTimeFormatInfo.GetInstance(CultureInfo.GetCultureInfo(cultureName));
             Thread.CurrentThread.CurrentCulture.DateTimeFormat = info;
             return base.BeginExecuteCore(callback, state);
         }

@@ -163,6 +163,9 @@
   <data name="CHU_DE" xml:space="preserve">
     <value>Chủ đề</value>
   </data>
+  <data name="CONTENT_REQUIRED" xml:space="preserve">
+    <value>Vui lòng nhập nội dung</value>
+  </data>
   <data name="DAI_LY" xml:space="preserve">
     <value>Đại lý</value>
   </data>
@@ -240,6 +243,9 @@
   </data>
   <data name="DUONG_DAY_NONG" xml:space="preserve">
     <value>Đường dây nóng</value>
+  </data>
+  <data name="EMAIL_REQUIRED" xml:space="preserve">
+    <value>Vui lòng nhập email</value>
   </data>
   <data name="ERROR_MSG_BLOCKED_USER" xml:space="preserve">
     <value>Tài khoản này đã bị khóa is blocked</value>
@@ -379,6 +385,9 @@
   <data name="MUC_THU" xml:space="preserve">
     <value>MỨC THU (VND)</value>
   </data>
+  <data name="NAME_REQUIRED" xml:space="preserve">
+    <value>Vui lòng nhập tên</value>
+  </data>
   <data name="NGAY" xml:space="preserve">
     <value>Ngày</value>
   </data>
@@ -486,6 +495,9 @@
   </data>
   <data name="STT" xml:space="preserve">
     <value>STT</value>
+  </data>
+  <data name="SUBJECT_REQUIRED" xml:space="preserve">
+    <value>Vui lòng nhập tiêu đề</value>
   </data>
   <data name="SU_KHAC_BIET_DANH_SACH_HANG_HOA" xml:space="preserve">
     <value>Sự khác biệt của bản danh sách hàng hóa</value>

@@ -56,9 +56,10 @@
             <div class="col-md-6">
                 <label class="control-label line_lb_css">Representative Images</label>
                 <asp:TextBox runat="server" ID="edtRepresentativeImage" CssClass="form-control"></asp:TextBox>
-                
+
             </div>
-            <div class="col-md-2"><button id="ckfinder-popup-1" type="button" class="control-label line_lb_css btn btn-warning">Chọn ảnh</button></div>
+            <div class="col-md-2">
+                <button id="ckfinder-popup-1" type="button" class="control-label line_lb_css btn btn-warning">Chọn ảnh</button></div>
         </div>
         <div class="bg_100pecents_css">
             <div class="bg_100pecents_css">
@@ -101,14 +102,15 @@
                 $(this).val(strTemp);
             }
         });
-        CKEDITOR.replace('<%= edtIntroContent.ClientID %>');
-        CKEDITOR.replace('<%= edtFullContent.ClientID %>');
+
+        CKFinder.setupCKEditor(CKEDITOR.replace('<%= edtIntroContent.ClientID %>'));
+        CKFinder.setupCKEditor(CKEDITOR.replace('<%= edtFullContent.ClientID %>'));
 
         var button1 = document.getElementById('ckfinder-popup-1');
         button1.onclick = function () {
             selectFileWithCKFinder('<%= edtRepresentativeImage.ClientID %>');
-           
-       
+
+
         };
 
         function ShowFileInfo(fileUrl, data) {
@@ -125,12 +127,12 @@
         }
         var xxxx = null;
         function selectFileWithCKFinder(elementId) {
-           
+
             CKFinder.popup({
                 chooseFiles: true,
                 width: 800,
                 height: 600,
-                
+
                 onInit: function (finder) {
                     finder.on('files:choose', function (evt) {
                         evt.data.files.forEach(function (file) {

@@ -1,0 +1,60 @@
+﻿@using HCSV.Core.reCAPTCHA
+@using HCSV.Resources
+@model HCSV.Models.jos_feedback
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    
+    <table>
+        <tbody>
+            <tr>
+                <td align="right" valign="top">@GlobalResource.HO_TEN:</td>
+                <td>
+                    @Html.TextBoxFor(f => f.Name)
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td align="right" valign="top">@GlobalResource.DIA_CHI_EMAIL:</td>
+                <td>
+                    @Html.TextBoxFor(f => f.Email)
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td align="right" valign="top">GlobalResource.CHU_DE:</td>
+                <td>
+                    @Html.TextBoxFor(f => f.Subject)
+                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td align="right" valign="top">@GlobalResource.NOI_DUNG:</td>
+                <td>
+                    @Html.TextAreaFor(f => f.Message, new { style = "width:600px;height:130px;" })
+                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            @*Begin Captcha*@
+            <tr>
+                <td></td>
+                <td>
+                    @Html.Recaptcha()
+                    @Html.ValidationMessage("ReCaptcha")
+                </td>
+            </tr>
+            @*End Captcha*@
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" name="fsfs" value="Gửi" class="btn" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+

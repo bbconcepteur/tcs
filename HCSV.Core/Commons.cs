@@ -49,6 +49,7 @@ namespace HCSV.Core
         public static class Session
         {
             public const string SESSION_LANGUAGE_ID = "LANGUAGE_ID";
+            public const string SESSION_CURRENT_CULTURE = "SESSION_CURRENT_CULTURE";
             public const string SESSION_DEFAULT_LANGUAGE_ID = "DEFAULT_LANGUAGE_ID";
             public const string SESSION_MENU_ID = "MENU_ID";
             public const string SESSION_BANNER_MENU_PATH = "SESSION_BANNER_MENU_PATH";

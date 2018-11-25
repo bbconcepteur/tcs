@@ -197,6 +197,15 @@ namespace HCSV.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập nội dung.
+        /// </summary>
+        public static string CONTENT_REQUIRED {
+            get {
+                return ResourceManager.GetString("CONTENT_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Đã chất xếp.
         /// </summary>
         public static string DA_CHAT_XEP {
@@ -427,6 +436,15 @@ namespace HCSV.Resources {
         public static string DUONG_DAY_NONG {
             get {
                 return ResourceManager.GetString("DUONG_DAY_NONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập email.
+        /// </summary>
+        public static string EMAIL_REQUIRED {
+            get {
+                return ResourceManager.GetString("EMAIL_REQUIRED", resourceCulture);
             }
         }
         
@@ -845,6 +863,15 @@ namespace HCSV.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập tên.
+        /// </summary>
+        public static string NAME_REQUIRED {
+            get {
+                return ResourceManager.GetString("NAME_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ngày.
         /// </summary>
         public static string NGAY {
@@ -1201,6 +1228,15 @@ namespace HCSV.Resources {
         public static string SU_MENH_TAM_NHIN_GTCL {
             get {
                 return ResourceManager.GetString("SU_MENH_TAM_NHIN_GTCL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vui lòng nhập tiêu đề.
+        /// </summary>
+        public static string SUBJECT_REQUIRED {
+            get {
+                return ResourceManager.GetString("SUBJECT_REQUIRED", resourceCulture);
             }
         }
         

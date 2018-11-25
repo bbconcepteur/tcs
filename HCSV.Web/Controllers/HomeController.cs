@@ -34,6 +34,9 @@ namespace HCSV.Web.Controllers
         {
             // Validate input
             string culture = CultureHelper.GetImplementedCulture(Request.QueryString["lang"]);
+            Session[Constants.Session.SESSION_LANGUAGE_ID] = UnitOfWork.LanguageBusiness.GetLanguageId(Request.QueryString["lang"]);
+            Session[Constants.Session.SESSION_CURRENT_CULTURE] = culture;
+
             // Save culture in a cookie
             HttpCookie cookie = Request.Cookies["_culture"];
             if (cookie != null)
