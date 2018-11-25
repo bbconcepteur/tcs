@@ -424,6 +424,7 @@
     <Content Include="Content\Theme\images\bullet_next.gif" />
     <Content Include="Content\Theme\images\certificate_ata.gif" />
     <Content Include="Content\Theme\images\favicon.png" />
+    <Content Include="Content\Theme\images\footer-bg.png" />
     <Content Include="Content\Theme\images\HIAQUAN_BENNER_MAU.jpg" />
     <Content Include="Content\Theme\images\hotline.gif" />
     <Content Include="Content\Theme\images\IATA_97x30.jpg" />
