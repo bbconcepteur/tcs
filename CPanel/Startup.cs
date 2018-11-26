@@ -84,15 +84,14 @@ namespace CPanel
                          *
                          * For example:
                          */
-                        /*config.AddBackend("default", new LocalStorage(@"C:\files"));
+                       /* config.AddBackend("default", new LocalStorage(@"C:\files"));
                         config.AddResourceType("images", builder => builder.SetBackend("default", "images"));
                         config.AddAclRule(new AclRule(
                             new StringMatcher("*"),
                             new StringMatcher("*"),
                             new StringMatcher("*"),
-                            new Dictionary<Permission, PermissionType> { { Permission.All, PermissionType.Allow } }));
-*/
-
+                            new Dictionary<Permission, PermissionType> { { Permission.All, PermissionType.Allow } }));*/
+                        
                         /*
                          * If you installed CKSource.CKFinder.Connector.KeyValue.FileSystem, you may enable caching:
                          */

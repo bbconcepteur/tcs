@@ -362,8 +362,8 @@
     <Content Include="Plugins\CKFinderScripts\ckfinder.html" />
     <Content Include="Plugins\CKFinderScripts\ckfinder.js" />
     <Content Include="Plugins\CKFinderScripts\config.js" />
-    <Content Include="Plugins\CKFinderScripts\lang\en.js" />
-    <Content Include="Plugins\CKFinderScripts\lang\vi.js" />
+    <None Include="Plugins\CKFinderScripts\lang\en.json" />
+    <None Include="Plugins\CKFinderScripts\lang\vi.json" />
     <Content Include="Plugins\CKFinderScripts\libs\caman.js" />
     <Content Include="Plugins\CKFinderScripts\libs\images\ajax-loader.gif" />
     <Content Include="Plugins\CKFinderScripts\libs\images\icons-png\action-black.png" />
