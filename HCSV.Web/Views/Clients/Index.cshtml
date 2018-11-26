@@ -5,39 +5,42 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section>
+    <div class="container">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Portfolio Gallery Grid -->
+                    <div id="grid" class="gallery-isotope grid-4 gutter clearfix" style="position: relative; height: 590.532px;">
 
-<div class="bg_content_css">
-    <div class="container detail_news_css">
-        @if (Model != null && Model.Any())
-            {
-                int i = 0;
-                StringBuilder desc = null;
-                foreach (var item in Model)
-                {
-                    i++;
-                    desc = new StringBuilder();
-                <div class="col-md-3">
-                    <div class="myPopover" data-toggle="popover"
-                         data-placement="right" title="@GlobalResource.XEM_TIEP"
-                         data-trigger="hover"
-                         data-content="@desc.ToString()">
-                        <a href="@Html.Raw(item.link)" class="link title" target="_blank">@Html.Raw(item.name)</a>
-                        <a href="@Html.Raw(item.link)" class="tooltip_hover" id="@Html.Raw("tholder" + i)" target="_blank">
-                            <img src="@Html.Raw(item.image)" />
-                        </a>
+                        @if (Model != null && Model.Any())
+                        {
+                            int i = 0;
+                            StringBuilder desc = null;
+                            foreach (var item in Model)
+                            {
+                                i++;
+                                desc = new StringBuilder();
+                                <div class="gallery-item photography" style="position: absolute; left: 0px; top: 0px;">
+                                    <div class="thumb">
+                                        <img class="img-fullwidth" src="@Html.Raw(item.image)" alt="project">
+                                        <div class="overlay-shade"></div>
+                                        <div class="icons-holder">
+                                            <div class="icons-holder-inner">
+                                                <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
+                                                    <a data-lightbox="image" href="@Html.Raw(item.image)"><i class="fa fa-plus"></i></a>
+                                                    <a href="@Html.Raw(item.link)"><i class="fa fa-link"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="hover-link" data-lightbox="image" href="@Html.Raw(item.image)">@GlobalResource.XEM_TIEP</a>
+                                    </div>
+                                </div>
+                            }
+                        }
                     </div>
                 </div>
-            }
-        }
+            </div>
+        </div>
     </div>
-</div>
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            $('.myPopover').popover();
-        });
-    </script>
-}
-
-
-
+</section>

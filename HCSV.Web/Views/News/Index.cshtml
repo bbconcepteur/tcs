@@ -8,43 +8,59 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@if ((Model.ListValues != null) && Model.ListValues.Any())
-{
-    foreach (var item in Model.ListValues)
-    {
-        <div class="section-top-border">
-            <div>
-                <h3 class="mb-30">
-                    <a href="@UrlExtentions.Action(GlobalResource.URL_TIN_TUC, item.catid, item.title, item.id)" class="link">@Html.Raw(item.title)</a>
-                </h3>
-                <h5><a href="#">@Html.Raw(((DateTime)item.publish_up).ToString(HCSV.Core.Constants.DATE_FORMAT_DD_MM_YYYY))<i class="lnr lnr-calendar-full"></i></a></h5>
-
-            </div>
+<section>
+    <div class="pb-0">
+        <div class="section-content">
             <div class="row">
-                <div class="col-md-3">
-                    @if (String.IsNullOrEmpty(item.images) && File.Exists(item.images))
+                @if ((Model.ListValues != null) && Model.ListValues.Any())
+                {
+                    foreach (var item in Model.ListValues)
                     {
-                        <img src="~/Content/BoostrapTemplate/img/tcs_news_1.jpg" alt="" class="img-fluid"/>
+                        <div class="col-sm-12 col-md-12 col-lg-12 border-bottom-theme-color-2px">
+                            <div class="schedule-box maxwidth500 clearfix mb-30">
+                                <div class="col-md-4">
+                                    <div class="thumb">
+                                        @if (String.IsNullOrEmpty(item.images))
+                                        {
+                                            @Html.Raw(item.images)
+                                        }
+                                        else
+                                        {
+                                            <img class="img-fullwidth" alt="" src="~/Content/BoostrapTemplate/img/n0_image_available.png">
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="schedule-details clearfix p-15 pt-30">
+                                        <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
+                                            <ul>
+                                                <li class="font-24 text-white font-weight-600 border-bottom ">@Html.Raw(((DateTime) item.publish_up).ToString(HCSV.Core.Constants.DATE_FORMAT_DD_MM_YYYY))</li>
+                                            </ul>
+                                        </div>
+                                        <h3 class="title mt-0">
+                                            <a href="@UrlExtentions.Action(GlobalResource.URL_TIN_TUC, item.catid, item.title, item.id)">@Html.Raw(item.title)</a>
+                                        </h3>
+                                        
+                                        <div class="clearfix"></div>
+                                        <p class="mt-10">@Html.Raw(item.introtext)</p>
+                                        <div class="mt-10">
+                                            <a href="@UrlExtentions.Action(GlobalResource.URL_TIN_TUC, item.catid, item.title, item.id)" class="btn btn-default btn-theme-colored mt-10 font-16 btn-sm">@GlobalResource.XEM_TIEP</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
-                    else
-                    {
-                        <img src="@item.images" alt="" class="img-fluid"/>
-                    }
-                </div>
-                <div class="col-md-9 mt-sm-20">
-                    @Html.Raw(item.introtext)
-                </div>
+                    <div class="paging">
+                        @Html.PagedListPager(Model.ListValues, page => Url.Action("Index", new { page, menu = ViewBag.Menu, catID = ViewBag.CatID }), new PagedListRenderOptions()
+                       {
+                           UlElementClasses = new List<string> { "pagination theme-colored" }
+                       })
+                    </div>
+                }
+
+
             </div>
         </div>
-    }
-    <div class="paging">
-        Page @(Model.ListValues.PageCount < Model.ListValues.PageNumber ? 0 : Model.ListValues.PageNumber) of @Model.ListValues.PageCount
-        @Html.PagedListPager(Model.ListValues, page => Url.Action("Index", new { page, menu = ViewBag.Menu, catID = ViewBag.CatID }), new PagedListRenderOptions()
-       {
-           UlElementClasses = new List<string> { "pagination theme-colored"}
-       })
     </div>
-}
-
-
+</section>
