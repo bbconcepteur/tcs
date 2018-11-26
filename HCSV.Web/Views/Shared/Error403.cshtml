@@ -1,48 +1,127 @@
-﻿
-@{
-    ViewBag.Title = "Error403";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{
+    Layout = null;
 }
-
+@model IEnumerable<HCSV.Models.ViewModels.Menu>
 <!DOCTYPE html>
-<html lang="en">
-
+<html dir="ltr" lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>@HttpContext.Current.Application[HCSV.Core.Constants.Page.HOME_PAGE_TITLE]</title>
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
 
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+    <!-- Page Title -->
+    <title>FundPro - Nonprofit, Crowdfunding & Charity HTML5 Template</title>
 
-    <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="~/Content/BoostrapTemplate/css/error.css" />
+    <!-- Favicon and Touch Icons -->
+    <link href="~/Content/Theme/images/favicon.png" rel="shortcut icon" type="image/png">
+    <link href="~/Content/Theme/images/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="~/Content/Theme/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="~/Content/Theme/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="~/Content/Theme/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+
+    <!-- Stylesheet -->
+    <link href="~/Content/Theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Theme/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Theme/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Theme/css/css-plugin-collections.css" rel="stylesheet" />
+    <!-- CSS | menuzord megamenu skins -->
+    <link id="menuzord-menu-skins" href="~/Content/Theme/css/menuzord-rounded-boxed.css" rel="stylesheet" />
+    <!-- CSS | Main style file -->
+    <link href="~/Content/Theme/css/style-main.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Preloader Styles -->
+    <link href="~/Content/Theme/css/preloader.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Custom Margin Padding Collection -->
+    <link href="~/Content/Theme/css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Responsive media queries -->
+    <link href="~/Content/Theme/css/responsive.css" rel="stylesheet" type="text/css">
+    <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
+    <!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
+    <!-- CSS | Theme Color -->
+    <link href="~/Content/Theme/css/theme-skin-orange.css" rel="stylesheet" type="text/css">
+
+    <!-- external javascripts -->
+    <script src="~/Content/Theme/js/jquery-2.2.4.min.js"></script>
+    <script src="~/Content/Theme/js/jquery-ui.min.js"></script>
+    <script src="~/Content/Theme/js/bootstrap.min.js"></script>
+    <!-- JS | jquery plugin collection for this theme -->
+    <script src="~/Content/Theme/js/jquery-plugin-collection.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
-
-<body>
-
-    <div id="notfound">
-        <div class="notfound">
-            <div class="notfound-404">
-                <h1>Oops!</h1>
+<body class="">
+    <div id="wrapper" class="clearfix">
+        <!-- preloader -->
+        <div id="preloader">
+            <div id="spinner">
+                <div class="preloader-dot-loading">
+                    <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+                </div>
             </div>
-            <h2>403 - Sorry....</h2>
-            <p>Sorry, your access is refused due to security reasons of our server and also our sensitive data.<br />Please go back to the previous page to continue browsing.</p>
-            <a href="/Home">Go To Homepage</a>
+            <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
         </div>
+
+        <!-- Start main-content -->
+        <div class="main-content">
+            <!-- Section: home -->
+            <section id="home" class="divider fullscreen bg-lightest">
+                <div class="display-table text-center">
+                    <div class="display-table-cell">
+                        <div class="container pt-0 pb-0">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h1 class="font-200 line-height-1em mt-0 mb-0 text-theme-colored">404!</h1>
+                                    <h2 class="mt-0">Oops! 403 - Sorry....</h2>
+                                    <p>Sorry, your access is refused due to security reasons of our server and also our sensitive data.<br />Please go back to the previous page to continue browsing.</p>
+                                    <a class="btn btn-border btn-gray btn-transparent btn-circled smooth-scroll-to-target" href="/">
+                                        Return Home
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <h3>Some Useful Links</h3>
+                                    <div class="widget">
+                                        <ul class="list-border">
+                                            @if (Model.Any())
+                                            {
+                                                foreach (var item in Model)
+                                                {
+                                                    <li><a href="@item.Url">@item.Name</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- end main-content -->
+        <!-- Footer -->
+        <footer id="footer" class="footer text-center bg-black-222">
+            <div class="container pt-10 pb-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-white mb-0">&reg; 2010 Copyright by Tan Son Nhat Cargo Services Company Limited</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
     </div>
+    <!-- end wrapper -->
+    <!-- Footer Scripts -->
+    <!-- JS | Custom script for all pages -->
+    <script src="~/Content/Theme/js/custom.js"></script>
 
 </body>
-
 </html>

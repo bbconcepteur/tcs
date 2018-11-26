@@ -6,20 +6,23 @@ using System.Web.Mvc;
 
 namespace HCSV.Web.Controllers
 {
-    public class ErrorController : Controller
+    public class ErrorController : BaseController
     {
         // GET: Error
         public ActionResult Error500()
         {
-            return View();
+            var menus = UnitOfWork.MenuBusiness.GetBottomMenu(LanguageId, DefaultLanguageId);
+            return View(menus);
         }
         public ActionResult Error404()
         {
-            return View();
+            var menus = UnitOfWork.MenuBusiness.GetBottomMenu(LanguageId, DefaultLanguageId);
+            return View(menus);
         }
         public ActionResult Error403()
         {
-            return View();
+            var menus = UnitOfWork.MenuBusiness.GetBottomMenu(LanguageId, DefaultLanguageId);
+            return View(menus);
         }
     }
 }
