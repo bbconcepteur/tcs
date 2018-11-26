@@ -2,14 +2,23 @@
 
 @if (Model != null && Model.Any())
 {
-    <div id="scroller_container">
-        <div class="jscroller2_left jscroller2_speed-50 marquee" style="">
-            @foreach (var item in Model)
-            {
-                <a href="@Html.Raw(item.link)" target="_blank" class="logo_link_css_1">
-                    <img src="@item.image"/>"
-                </a>
-            }
+    <!-- Divider: Clients -->
+    <section class="clients bg-theme-colored">
+        <div class="container pt-0 pb-0">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Section: Clients -->
+                    <div class="owl-carousel-6col clients-logo transparent text-center">
+                        @foreach (var item in Model)
+                        {
+                            <div class="item">
+                                <a href="@Html.Raw(item.link)"><img src="@item.image" alt="" width="127" height="27"></a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
 }

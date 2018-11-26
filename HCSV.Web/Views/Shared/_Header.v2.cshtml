@@ -1,67 +1,39 @@
 ﻿@using HCSV.Core
 @using HCSV.Resources
- <!-- Header -->
-<header class="header">
-    <div class="header-top bg-theme-colored sm-text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="widget no-border m-0">
-                        <ul class="styled-icons icon-dark icon-theme-colored icon-sm sm-text-center">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="widget no-border m-0">
-                        <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
-                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white" href="#">Hotline: (02-8) 38 486 489</a> </li>
-                            <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i>Email: tracing@tcs.com.vn </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="widget no-border m-0">
-                        <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
-                            <li class="mt-sm-10 mb-sm-10">
-                                @{
-                                    string cultureName = "";
-                                    if (Session[Constants.Session.SESSION_CURRENT_CULTURE] != null)
-                                    {
-                                        cultureName = Session[Constants.Session.SESSION_CURRENT_CULTURE].ToString();
-                                    }
-                                    else
-                                    {
-                                        cultureName = "vi-VN";
-                                    }
-
-                                }
-                                @if (!string.IsNullOrEmpty(cultureName) && cultureName.ToLower().Equals("vi-vn"))
+    <!-- Start Header Area -->
+    <header class="default-header">
+        <div class="menutop-wrap">
+            <div class="menu-top container">
+                <div class="d-flex justify-content-end align-items-center">
+                    <ul class="list">
+                        <li><a href="#">Hotline: (02-8) 38 486 489</a></li>
+                        <li><a href="#">Email: tracing@tcs.com.vn</a></li>
+                        <li>
+                            @{
+                                string cultureName = "";
+                                if (Session[Constants.Session.SESSION_CURRENT_CULTURE] != null)
                                 {
-                                    <a href="@Url.Action("SwitchLanguage", "Home", new { lang = "en" })" class="text-white">English</a>
+                                    cultureName = Session[Constants.Session.SESSION_CURRENT_CULTURE].ToString();
                                 }
                                 else
                                 {
-                                    <a href="@Url.Action("SwitchLanguage", "Home", new { lang = "vi" })" class="text-white">Tiếng Việt</a>
+                                    cultureName = "vi-VN";
                                 }
-                            </li>
-                        </ul>
-                    </div>
+
+                            }
+                            @if (!string.IsNullOrEmpty(cultureName) && cultureName.ToLower().Equals("vi-vn"))
+                            {
+                                <a href="@Url.Action("SwitchLanguage", "Home", new { lang = "en" })">English</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("SwitchLanguage", "Home", new { lang = "vi" })">Tiếng Việt</a>
+                            }
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="header-nav">
-        <div class="header-nav-wrapper navbar-scrolltofixed bg-silver-light">
-            <div class="container">
-                <nav id="menuzord-right" class="menuzord default no-bg">
-                <a class="menuzord-brand pull-left flip" href="/"><img src="~/Content/Theme/images/logotcs_new_2015.jpg" alt=""></a>
-                    @Html.Action("TopMenu", "Menu")
-                </nav>
-            </div>
-        </div>
-    </div>
-</header>
+
+        @Html.Action("TopMenu", "Menu")
+    </header>
