@@ -16,20 +16,20 @@ namespace HCSV.Web.Controllers
         {
             var menus = UnitOfWork.MenuBusiness.GetTopMenu(LanguageId, DefaultLanguageId);
 
-            return PartialView("~/Views/Shared/_Menu.cshtml", menus);
+            return PartialView("~/Views/Shared/_Menu.v2.cshtml", menus);
         }
 
         public ActionResult BottomMenu()
         {
             var menus = UnitOfWork.MenuBusiness.GetBottomMenu(LanguageId, DefaultLanguageId);
 
-            return PartialView("~/Views/Shared/_Footer.cshtml", menus);
+            return PartialView("~/Views/Shared/_Footer.v2.cshtml", menus);
         }
 
         public ActionResult BottomLink()
         {
             var menus = UnitOfWork.MenuBusiness.GetLinkMenu(LanguageId);
-            return PartialView("~/Views/Shared/_Module_Logo_Footer.cshtml", menus);
+            return PartialView("~/Views/Shared/_Module_Logo_Footer.v2.cshtml", menus);
         }
 
     }

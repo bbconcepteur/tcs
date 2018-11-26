@@ -14,6 +14,8 @@ namespace HCSV.Web.Controllers
         // GET: News
         public async Task<ActionResult> Index(int? page,int? catId)
         {
+            ViewBag.CatID = catId;
+            ViewBag.Menu = Request.QueryString["menu"];
             HttpContext.Application[HCSV.Core.Constants.Page.PAGE_TITLE] = Resources.GlobalResource.TIN_TCS;
             var contents = await UnitOfWork.NewsBusiness.GetContents(LanguageId, catId ?? 0, page ?? 1);
             return View(contents);

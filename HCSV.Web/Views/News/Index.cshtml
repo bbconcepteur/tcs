@@ -5,7 +5,7 @@
 
 @{
     ViewBag.Title = @HttpContext.Current.Application[HCSV.Core.Constants.Page.PAGE_TITLE];
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.v2.cshtml";
 }
 
 
@@ -38,10 +38,12 @@
             </div>
         </div>
     }
-
     <div class="paging">
         Page @(Model.ListValues.PageCount < Model.ListValues.PageNumber ? 0 : Model.ListValues.PageNumber) of @Model.ListValues.PageCount
-        @Html.PagedListPager(Model.ListValues, page => Url.Action("Index", new { page }))
+        @Html.PagedListPager(Model.ListValues, page => Url.Action("Index", new { page, menu = ViewBag.Menu, catID = ViewBag.CatID }), new PagedListRenderOptions()
+       {
+           UlElementClasses = new List<string> { "pagination theme-colored"}
+       })
     </div>
 }
 

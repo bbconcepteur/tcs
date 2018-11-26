@@ -429,17 +429,15 @@
             <div class="section-content">
                 <div class="row mt-sm-0" data-margin-top="-150px" style="margin-top: -150px;">
                     <div class="col-sm-12 col-md-12 maxwidth500 mb-sm-40">
-                        <div class="border-1px p-20 pt-0">
-                            <nav>
-                                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">@GlobalResource.TRA_CUU_VAN_DON</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" href="Clients/Index?menu=68" role="tab" aria-controls="nav-profile" aria-selected="false">@GlobalResource.CAC_HANG_HANG_KHONG</a>
-                                    <a class="nav-item nav-link" id="nav-contact-tab" href="Airline/Statistics_default?menu=197" role="tab" aria-controls="nav-contact" aria-selected="false">@GlobalResource.THONG_KE</a>
-                                </div>
-                            </nav>
-                            <div class="tab-content" style="background: white">
-                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <div class="search-form" style="background: #fff; padding: 40px">
+                        <div class="border-1px p-20 pt-0" style="background:#F8F8F8">
+                            <div class="horizontal-tab product-tab">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab1" data-toggle="tab">@GlobalResource.TRA_CUU_VAN_DON</a></li>
+                                    <li><a href="Clients/Index?menu=68" data-toggle="tab">@GlobalResource.CAC_HANG_HANG_KHONG</a></li>
+                                    <li><a href="Airline/Statistics_default?menu=19" data-toggle="tab">@GlobalResource.THONG_KE</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="tab1">
                                         <form class="search-form" action="#">
                                             <div class="row">
                                                 <div class="col-lg-2 col-md-2 col-xs-2">
@@ -468,16 +466,19 @@
 }
 else
 {
-    <div class="hundred_percent_css banner_1_css">
-        <div class="inner_banner">
-            <img class="img-fluid" src="@HttpContext.Current.Application[HCSV.Core.Constants.Page.PAGE_BANNER]"/> 
-        </div>
-        <div class="bg_content_css title_banner_css">
-            <div class="main_title_banner_css">@HttpContext.Current.Application[Constants.Page.PARENT_MENU_TITLE]</div>
-            <div class="breadcrumbs_css">
-                <p><a href="#">@HttpContext.Current.Application[Constants.Page.PARENT_MENU_TITLE]</a> » <a href="#">@HttpContext.Current.Application[Constants.Page.MENU_TITLE]</a></p>
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="@HttpContext.Current.Application[HCSV.Core.Constants.Page.PAGE_BANNER]">
+        <div class="container pt-100 pb-50">
+            <!-- Section Content -->
+            <div class="section-content pt-100">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-white">@HttpContext.Current.Application[Constants.Page.PARENT_MENU_TITLE]</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <p><a href="#">@HttpContext.Current.Application[Constants.Page.PARENT_MENU_TITLE]</a> » <a href="#">@HttpContext.Current.Application[Constants.Page.MENU_TITLE]</a></p>
+                    </div>
+                </div>
             </div>
         </div>
-        @*<div class="bg_content_css"><h2><span>@HttpContext.Current.Application[Constants.Page.MENU_TITLE]</span></h2></div>*@
-    </div>
+    </section>
 }

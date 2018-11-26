@@ -4,113 +4,103 @@
 @using System.IO
 @using System.Runtime.Versioning
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.v2.cshtml";
     ViewBag.Title = HttpContext.Current.Application[Constants.Page.PAGE_TITLE];
 }
-<section class="blog-area">
+<section id="blog">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col_intro">
-                <div class="intro_css intro_1_css"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <article class="post clearfix mb-sm-30 bg-silver-light">
                 @if (Model != null && Model.MissionArea != null)
                 {
-                    <div class="single-property cont_css">
-                        <div class="images img_css">
+                    <div class="entry-header">
+                        <div class="post-thumb thumb">
                             @if (Model.MissionArea.images != null)
                             {
-                                @*<img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">*@
                                 @Html.Raw(Model.MissionArea.images)
                             }
                             else
                             {
-                                <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                                <img src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="" class="img-responsive img-fullwidth">
                             }
-                        </div>
-
-                        <div class="intro_title">@Html.Raw(Model.MissionArea.title)</div>
-
-                        <div class="desc">
-                            <div class="text-wrap">
-                                <p>
-                                    @Html.Raw(Model.MissionArea.introtext)
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <div class="intro_readmore">
-                            <a href="@UrlExtentions.Action(GlobalResource.URL_SU_MENH, Model.MissionArea.catid, Model.MissionArea.title, Model.MissionArea.id)">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                           
                         </div>
                     </div>
+                    <div class="entry-content p-20 pr-10">
+                        <div class="entry-meta media mt-0 no-bg no-border">
+                            <div class="media-body pl-15">
+                                <div class="event-content pull-left flip">
+                                    <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">@Html.Raw(Model.MissionArea.title)</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-10">@Html.Raw(Model.MissionArea.introtext)</p>
+                        <a href="@UrlExtentions.Action(GlobalResource.URL_SU_MENH, Model.MissionArea.catid, Model.MissionArea.title, Model.MissionArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                    </div>
                 }
-            </div>
-            <div class="col-lg-4 col_intro">
-                <div class="intro_css intro_2_css"></div>
+            </article>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <article class="post clearfix mb-sm-30 bg-silver-light">
                 @if (Model != null && Model.VisionArea != null)
                 {
-                    <div class="single-property cont_css">
-                        <div class="images img_css">
+                    <div class="entry-header">
+                        <div class="post-thumb thumb">
                             @if (Model.VisionArea.images != null)
                             {
-                                @*<img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">*@
                                 @Html.Raw(Model.VisionArea.images)
                             }
                             else
                             {
-                                <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                                <img src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="" class="img-responsive img-fullwidth">
                             }
-                        </div>
 
-                        <div class="intro_title">@Html.Raw(Model.VisionArea.title)</div>
-
-                        <div class="desc">
-                            <div class="text-wrap">
-                                <p>
-                                    @Html.Raw(Model.VisionArea.introtext)
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <div class="intro_readmore">
-                            <a href="@UrlExtentions.Action(GlobalResource.URL_TAM_NHIN, Model.VisionArea.catid, Model.VisionArea.title, Model.VisionArea.id)">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
                         </div>
                     </div>
+                    <div class="entry-content p-20 pr-10">
+                        <div class="entry-meta media mt-0 no-bg no-border">
+                            <div class="media-body pl-15">
+                                <div class="event-content pull-left flip">
+                                    <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">@Html.Raw(Model.VisionArea.title)</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-10">@Html.Raw(Model.VisionArea.introtext)</p>
+                        <a href="@UrlExtentions.Action(GlobalResource.URL_SU_MENH, Model.VisionArea.catid, Model.VisionArea.title, Model.VisionArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                    </div>
                 }
-            </div>
-            <div class="col-lg-4 col_intro">
-                <div class="intro_css intro_3_css"></div>
+            </article>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <article class="post clearfix mb-sm-30 bg-silver-light">
                 @if (Model != null && Model.ValueArea != null)
                 {
-                    <div class="single-property cont_css">
-                        <div class="images img_css">
+                    <div class="entry-header">
+                        <div class="post-thumb thumb">
                             @if (Model.ValueArea.images != null)
                             {
-                                @*<img class="img-fluid" src="https://colorlib.com/preview/theme/holmes/img/s2.jpg" alt="">*@
                                 @Html.Raw(Model.ValueArea.images)
                             }
                             else
                             {
-                                <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
+                                <img src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="" class="img-responsive img-fullwidth">
                             }
-                        </div>
 
-                        <div class="intro_title">@Html.Raw(Model.ValueArea.title)</div>
-
-                        <div class="desc">
-                            <div class="text-wrap">
-                                <p>
-                                    @Html.Raw(Model.ValueArea.introtext)
-                                </p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="intro_readmore">
-                            <a href="@UrlExtentions.Action(GlobalResource.URL_GIA_TRI_COT_LOI, Model.ValueArea.catid, Model.ValueArea.title, Model.ValueArea.id)">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
                         </div>
                     </div>
+                    <div class="entry-content p-20 pr-10">
+                        <div class="entry-meta media mt-0 no-bg no-border">
+                            <div class="media-body pl-15">
+                                <div class="event-content pull-left flip">
+                                    <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">@Html.Raw(Model.ValueArea.title)</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-10">@Html.Raw(Model.ValueArea.introtext)</p>
+                        <a href="@UrlExtentions.Action(GlobalResource.URL_SU_MENH, Model.ValueArea.catid, Model.ValueArea.title, Model.ValueArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                    </div>
                 }
-            </div>
+            </article>
         </div>
     </div>
 </section>
