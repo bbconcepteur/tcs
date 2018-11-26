@@ -4,30 +4,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="bg_content_css">
-    <div class="container detail_news_css">
-        @if (Model != null && Model.Value != null)
-        {
-            <h2>@Html.Raw(Model.Value.title)</h2>
-            <div class="bg_100percent_css fb_css">
-                <span class="like_fb_css"></span>
-                <span class="share_fb_css"></span>
+<section>
+    <div class="">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="blog-posts single-post">
+                    <article class="post clearfix mb-0">
+                        @if (Model != null && Model.Value != null)
+                        {
+                            <div class="entry-header">
+                                <div class="post-thumb thumb">
+                                    <img src="@Html.Raw(Model.Value.images)" alt="" class="img-responsive img-fullwidth">
+                                </div>
+                            </div>
+                            <div class="entry-content">
+                                <div class="entry-meta media no-bg no-border mt-15 pb-20">
+                                    @*<div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
+                                        <ul>
+                                            <li class="font-16 text-white font-weight-600">@Model.Value.created</li>
+                                            <li class="font-12 text-white text-uppercase">Feb</li>
+                                        </ul>
+                                    </div>*@
+                                    <div class="media-body pl-15">
+                                        <div class="event-content pull-left flip">
+                                            <h4 class="entry-title text-white text-uppercase m-0"><a href="#">@Html.Raw(Model.Value.title)</a></h4>
+                                            @*<span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
+                                            <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="mb-15" style="font-weight: bold">@Html.Raw(Model.Value.introtext)</p>
+                                <p class="mb-15">@Html.Raw(Model.Value.fulltext)</p>
+                                <div class="mt-30 mb-0">
+                                    <h5 class="pull-left mt-10 mr-20 text-theme-colored">@Html.Raw(Model.Value.created_by)</h5>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <h2>@HCSV.Resources.GlobalResource.KHONG_TIM_THAY_DU_LIEU</h2>
+                        }
+                        
+                        
+                    </article>
+                </div>
             </div>
-            <span class="content_col_css">
-                @Html.Raw(Model.Value.introtext)
-                @Html.Raw(Model.Value.fulltext)
-            </span>
-        }
-        else
-        {
-            <h2>@HCSV.Resources.GlobalResource.KHONG_TIM_THAY_DU_LIEU</h2>
-        }
-        
+        </div>
     </div>
-</div>
-
-
-
+</section>
 <div class="bg_100percent_css news_css">
     <div class="container">
         @{

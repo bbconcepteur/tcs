@@ -5,56 +5,108 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!-- Divider: Contact -->
+<section class="divider">
+    <div class="">
+        <div class="row pt-30">
+            <div class="col-md-5">
+                <h3 class="line-bottom mt-0 mb-30">Interested in discussing?</h3>
 
-@using (Html.BeginForm())
-{
-    
-    <table>
-        <tbody>
-            <tr>
-                <td align="right" valign="top">@GlobalResource.HO_TEN:</td>
-                <td>
-                    @Html.TextBoxFor(f => f.Name)
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td align="right" valign="top">@GlobalResource.DIA_CHI_EMAIL:</td>
-                <td>
-                    @Html.TextBoxFor(f => f.Email)
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td align="right" valign="top">GlobalResource.CHU_DE:</td>
-                <td>
-                    @Html.TextBoxFor(f => f.Subject)
-                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            <tr>
-                <td align="right" valign="top">@GlobalResource.NOI_DUNG:</td>
-                <td>
-                    @Html.TextAreaFor(f => f.Message, new { style = "width:600px;height:130px;" })
-                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
-                </td>
-            </tr>
-            @*Begin Captcha*@
-            <tr>
-                <td></td>
-                <td>
-                    @Html.Recaptcha()
-                    @Html.ValidationMessage("ReCaptcha")
-                </td>
-            </tr>
-            @*End Captcha*@
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" name="fsfs" value="Gửi" class="btn" />
-                </td>
-            </tr>
-        </tbody>
-    </table>
-}
+                <!-- Contact Form -->
+                @using (Html.BeginForm("Index", "Offer_Advise", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>@GlobalResource.HO_TEN <small>*</small></label>
+                                @Html.TextBoxFor(f => f.Name, new { @class = "form-control", placeholder = GlobalResource.HO_TEN })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>@GlobalResource.DIA_CHI_EMAIL <small>*</small></label>
+                                @Html.TextBoxFor(f => f.Email, new { @class = "form-control email", type = "email", placeholder = GlobalResource.DIA_CHI_EMAIL })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>@GlobalResource.CHU_DE <small>*</small></label>
+                                @Html.TextBoxFor(f => f.Subject, new { @class = "form-control", placeholder = GlobalResource.CHU_DE })
+                                @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>@GlobalResource.NOI_DUNG <small>*</small></label>
+                                @Html.TextAreaFor(f => f.Message, new { @class = "form-control", rows = "5", placeholder = GlobalResource.NOI_DUNG })
+                                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                @Html.Recaptcha()
+                                @Html.ValidationMessage("ReCaptcha")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-dark btn-theme-colored btn-flat mr-5" data-loading-text="Please wait...">Send your message</button>
+                    </div>
 
+                }
+            </div>
+            <div class="col-md-7">
+                <div class="row">
+                    <h3 class="line-bottom mt-0 mb-50 ml-15">Our Location</h3>
+                    <div class="col-md-12">
+                        <p class="lead">Công ty TNHH Dịch vụ Hàng hoá Tân Sơn Nhất</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="icon-box media bg-deep p-30 mb-20">
+                            <a class="media-left pull-left flip" href="#"> <i class="pe-7s-map-2 text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Our Office Location</h5>
+                                <p>46 - 48 Hậu Giang, Phường 4,  Quận Tân Bình, Tp. Hồ Chí Minh</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="icon-box media bg-deep p-30 mb-20">
+                            <a class="media-left pull-left flip" href="#"> <i class="pe-7s-call text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Contact Number</h5>
+                                <p>Điện thoại :(02-8) 38486489; Fax : (02-8) 38427944</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="icon-box media bg-deep p-30 mb-20">
+                            <a class="media-left pull-left flip" href="#"> <i class="pe-7s-mail text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Email Address</h5>
+                                <p>tracing@tcs.com.vn ; operation@tcs.com.vn</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="icon-box media bg-deep p-30 mb-20">
+                            <a class="media-left pull-left flip" href="#"> <i class="fa fa-skype text-theme-colored"></i></a>
+                            <div class="media-body">
+                                <h5 class="mt-0">Make a Video Call</h5>
+                                <p>Skype: xxxxx</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

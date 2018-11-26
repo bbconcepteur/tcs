@@ -9,22 +9,22 @@
     {
         foreach (var item in Model)
         {
+
             <div class="col-lg-3 mt-10">
-                <div class="single-property">
-                    <div class="desc">
-                        <div class="sitemap">
-                            <ul>
-                                <li class="title"><a href="@item.Url">@item.Name</a></li>
-                                @if (item.HasChildren)
+                <div class="widget">
+                    <h4 class="widget-title line-bottom"><a href="@item.Url">@item.Name</a></h4>
+                    @if (item.HasChildren)
+                    {
+                        <div class="categories">
+                            <ul class="list list-border angle-double-right">
+                                @foreach (var childItem in item.Childrens)
                                 {
-                                    foreach (var childItem in item.Childrens)
-                                    {
-                                        <li><a href="@childItem.Url">@childItem.Name</a></li>
-                                    }
+                                    <li><a href="@childItem.Url">@childItem.Name</a></li>
                                 }
                             </ul>
                         </div>
-                    </div>
+                    }
+                    
                 </div>
             </div>
         }
