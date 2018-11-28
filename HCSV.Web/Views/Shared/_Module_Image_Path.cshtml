@@ -1,6 +1,6 @@
 ﻿@using HCSV.Core
 @using HCSV.Resources
-@if (Request.Url != null && Request.Url.PathAndQuery == "/")
+@if (Request.Url != null && (Request.Url.PathAndQuery == "/" || Request.Url.PathAndQuery.ToLower().Equals("/home/index")))
 {
     <section id="home">
     <div class="container-fluid p-0">
