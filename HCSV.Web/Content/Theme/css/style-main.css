@@ -6877,3 +6877,6 @@ blockquote p {
   border-color: #eeeeee;
   color: #333333;
 }
+.img-border{
+    border: 1px solid #cccccc;
+}
