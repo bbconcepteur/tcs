@@ -36,7 +36,9 @@ namespace HCSV.Core
 
         public static string Action(string actionName, object menu, object title, object id)
         {
-            return string.Format("/{0}/{1}/{2}", actionName, menu, GenerateSlug(title, id));
+            if (menu != null && !string.IsNullOrEmpty(menu.ToString()))
+                return string.Format("/{0}/{1}/{2}", actionName, menu, GenerateSlug(title, id));
+            return string.Format("/{0}/{1}", actionName, GenerateSlug(title, id));
         }
     }
 }

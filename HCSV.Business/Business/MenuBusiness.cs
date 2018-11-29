@@ -53,7 +53,7 @@ namespace HCSV.Business.Business
                                  .ToList();
 
             var defauleMenus =
-                GetMany(s => s.lang_id == defaultLangId && s.published && menuTypes.Contains(s.id_menutype ?? 0));
+                GetMany(s => s.lang_id == defaultLangId && s.published && menuTypes.Contains(s.id_menutype ?? 0)).OrderBy(s=>s.ordering);
             var menus = new List<Menu>();
             if (langId != defaultLangId)
             {
@@ -64,7 +64,7 @@ namespace HCSV.Business.Business
                 var translateIds = translateMenu.Select(s => s.reference_id);
                 //todo: lay menu cua ngon ngu hien tai
 
-                var currentMenus = GetMany(s => s.lang_id == langId && translateIds.Contains(s.id));
+                var currentMenus = GetMany(s => s.lang_id == langId && translateIds.Contains(s.id)).OrderBy(s => s.ordering);
                 translateMenu.ForEach(t =>
                 {
                     var defaultMenu = defauleMenus.FirstOrDefault(s => s.id == t.origin_id);
@@ -107,7 +107,7 @@ namespace HCSV.Business.Business
                                  .ToList();
 
             var defauleMenus =
-                GetMany(s => s.lang_id == defaultLangId && s.published && menuTypes.Contains(s.id_menutype ?? 0));
+                GetMany(s => s.lang_id == defaultLangId && s.published && menuTypes.Contains(s.id_menutype ?? 0)).OrderBy(s=>s.ordering);
             var menus = new List<Menu>();
 
             if (langId != defaultLangId)
@@ -119,7 +119,7 @@ namespace HCSV.Business.Business
                 var translateIds = translateMenu.Select(s => s.reference_id);
                 //todo: lay menu cua ngon ngu hien tai
 
-                var currentMenus = GetMany(s => s.lang_id == langId && s.published && translateIds.Contains(s.id) && menuTypes.Contains(s.id_menutype ?? 0));
+                var currentMenus = GetMany(s => s.lang_id == langId && s.published && translateIds.Contains(s.id) && menuTypes.Contains(s.id_menutype ?? 0)).OrderBy(s=>s.ordering);
                 translateMenu.ForEach(t =>
                 {
                     var defaultMenu = defauleMenus.FirstOrDefault(s => s.id == t.origin_id);

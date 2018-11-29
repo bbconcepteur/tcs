@@ -17,7 +17,8 @@
                         <div class="post-thumb thumb">
                             @if (Model.MissionArea.images != null)
                             {
-                                @Html.Raw(Model.MissionArea.images)
+                                
+                                <img src=" @Html.Raw(Model.MissionArea.images)" alt="" class="img-responsive img-fullwidth">
                             }
                             else
                             {
@@ -48,7 +49,8 @@
                         <div class="post-thumb thumb">
                             @if (Model.VisionArea.images != null)
                             {
-                                @Html.Raw(Model.VisionArea.images)
+                                <img src=" @Html.Raw(Model.VisionArea.images)" alt="" class="img-responsive img-fullwidth">
+                                
                             }
                             else
                             {
@@ -66,7 +68,7 @@
                             </div>
                         </div>
                         <p class="mt-10">@Html.Raw(Model.VisionArea.introtext)</p>
-                        <a href="@UrlExtentions.Action(GlobalResource.URL_SU_MENH, Model.VisionArea.catid, Model.VisionArea.title, Model.VisionArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                        <a href="@UrlExtentions.Action(GlobalResource.URL_TAM_NHIN, Model.VisionArea.catid, Model.VisionArea.title, Model.VisionArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
                     </div>
                 }
             </article>
@@ -79,7 +81,8 @@
                         <div class="post-thumb thumb">
                             @if (Model.ValueArea.images != null)
                             {
-                                @Html.Raw(Model.ValueArea.images)
+                                <img src=" @Html.Raw(Model.ValueArea.images)" alt="" class="img-responsive img-fullwidth">
+                               
                             }
                             else
                             {
@@ -97,7 +100,7 @@
                             </div>
                         </div>
                         <p class="mt-10">@Html.Raw(Model.ValueArea.introtext)</p>
-                        <a href="@UrlExtentions.Action(GlobalResource.URL_SU_MENH, Model.ValueArea.catid, Model.ValueArea.title, Model.ValueArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                        <a href="@UrlExtentions.Action(GlobalResource.URL_GIA_TRI_COT_LOI, Model.ValueArea.catid, Model.ValueArea.title, Model.ValueArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
                     </div>
                 }
             </article>
@@ -105,23 +108,23 @@
     </div>
 </section>
 <hr />
-<section class="blog-area mt-30">
+<section class="blog-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <h3 class="mt-30">@Html.Raw(GlobalResource.TIN_DANH_CHO_KH)</h3>
+                <h3>@Html.Raw(GlobalResource.TIN_DANH_CHO_KH)</h3>
                 @if (Model != null && Model.CustomerNews.Any())
                 {
                     foreach (var item in Model.CustomerNews)
                     {
-                        <div class="section-top-border">
+                        <div class="section-top-border mt-30">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="thumb">
                                         @if (item.images != null)
                                         {
-                                            <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
-                                            @*@Html.Raw(item.images)*@
+                                            <img class="img-fluid" src="@Html.Raw(item.images)" alt="">
+                                            
                                         }
                                         else
                                         {
@@ -143,19 +146,18 @@
             </div>
 
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <h3 class="mt-30">@Html.Raw(GlobalResource.TIN_TCS)</h3>
+                <h3>@Html.Raw(GlobalResource.TIN_TCS)</h3>
                 @if (Model != null && Model.TcsNews.Any())
                 {
                     foreach (var item in Model.TcsNews)
                     {
-                        <div class="section-top-border">
+                        <div class="section-top-border  mt-30">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="thumb">
                                         @if (item.images != null)
                                         {
-                                            <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
-                                            @*@Html.Raw(item.images)*@
+                                            <img class="img-fluid" src="@Html.Raw(item.images)" alt="">
                                         }
                                         else
                                         {
@@ -177,19 +179,18 @@
             </div>
 
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <h3 class="mt-30">@Html.Raw(GlobalResource.TIN_CHUYEN_NGANH)</h3>
+                <h3>@Html.Raw(GlobalResource.TIN_CHUYEN_NGANH)</h3>
                 @if (Model != null && Model.IndustrialNews.Any())
                 {
                     foreach (var item in Model.IndustrialNews)
                     {
-                        <div class="section-top-border">
+                        <div class="section-top-border  mt-30">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="thumb">
                                         @if (item.images != null)
                                         {
-                                            <img class="img-fluid" src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="">
-                                            @*@Html.Raw(item.images)*@
+                                            <img class="img-fluid" src="@Html.Raw(item.images)" alt="">
                                         }
                                         else
                                         {
