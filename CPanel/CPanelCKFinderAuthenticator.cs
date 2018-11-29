@@ -15,17 +15,22 @@ namespace CPanel
         public Task<IUser> AuthenticateAsync(ICommandRequest commandRequest, CancellationToken cancellationToken)
         {
             var claimsPrincipal = commandRequest.Principal as ClaimsPrincipal;
+            var isAuthenticated = false;
+            if (claimsPrincipal != null)
+            {
+                var roles = claimsPrincipal.Claims.Where(x => x.Type == ClaimTypes.Role).Select(x => x.Value).ToArray();
 
-            var roles = claimsPrincipal?.Claims?.Where(x => x.Type == ClaimTypes.Role).Select(x => x.Value).ToArray();
+                /*
+                 * Enable CKFinder only for authenticated users.
+                 */
+                //var isAuthenticated = claimsPrincipal.Identity.IsAuthenticated;
 
-            /*
-             * Enable CKFinder only for authenticated users.
-             */
-            //var isAuthenticated = claimsPrincipal.Identity.IsAuthenticated;
-            var isAuthenticated = true;
+                isAuthenticated = true;
 
-            var user = new User(isAuthenticated, roles);
-            return Task.FromResult((IUser)user);
+                var user = new User(isAuthenticated, roles);
+                return Task.FromResult((IUser)user);
+            }
+            return null;
         }
     }
 }
