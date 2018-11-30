@@ -64,7 +64,7 @@ namespace HCSV.Business.Business
                 var translateIds = translateMenu.Select(s => s.reference_id);
                 //todo: lay menu cua ngon ngu hien tai
 
-                var currentMenus = GetMany(s => s.lang_id == langId && translateIds.Contains(s.id)).OrderBy(s => s.ordering);
+                var currentMenus = GetMany(s => s.lang_id == langId && translateIds.Contains(s.id));
                 translateMenu.ForEach(t =>
                 {
                     var defaultMenu = defauleMenus.FirstOrDefault(s => s.id == t.origin_id);
@@ -78,7 +78,9 @@ namespace HCSV.Business.Business
                             LangId = currMenu.lang_id,
                             Name = currMenu.name,
                             Url = defaultMenu.link,
-                            MenuType = MenuType.Bottom
+                            MenuType = MenuType.Bottom,
+                            Level = 1,
+                            OrdNumber = defaultMenu.ordering ?? 0
                         });
                     }
                 });
@@ -133,7 +135,8 @@ namespace HCSV.Business.Business
                             LangId = currMenu.lang_id,
                             Name = currMenu.name,
                             Url = defaultMenu.link,
-                            MenuType = MenuType.Top
+                            MenuType = MenuType.Top,
+                            OrdNumber = defaultMenu.ordering ?? 0
                         });
                     }
 
@@ -149,7 +152,8 @@ namespace HCSV.Business.Business
                     LangId = s.lang_id,
                     Name = s.name,
                     Url = s.link,
-                    MenuType = MenuType.Top
+                    MenuType = MenuType.Top,
+                    OrdNumber = s.ordering ?? 0
                 }).ToList();
             }
 
@@ -157,35 +161,49 @@ namespace HCSV.Business.Business
             var parentMenu = menus.Where(s => s.ParentId == 0).ToList();
             if (parentMenu.Any())
             {
+                int level = 0;
                 foreach (var level1 in parentMenu)
                 {
+                    level = 1;
                     var menu = new Menu();
                     menu.Name = level1.Name;
                     menu.Url = level1.Url;
+                    menu.Level = level;
+                    menu.OrdNumber = level1.OrdNumber;
                     var subMenu = menus.Where(s => s.ParentId == level1.Id).ToList();
                     if (subMenu.Any())
                     {
-                        menu.Childrens = new List<Menu>();
+                        level++;
+                        var tmpLv2 = new List<Menu>();
                         foreach (var level2 in subMenu)
                         {
                             var menuLv2 = new Menu();
                             menuLv2.Name = level2.Name;
                             menuLv2.Url = level2.Url;
-
+                            menuLv2.Level = level;
+                            menuLv2.OrdNumber = level2.OrdNumber;
                             var subMenu2 = menus.Where(s => s.ParentId == level2.Id).ToList();
                             if (subMenu2.Any())
                             {
-                                menuLv2.Childrens = new List<Menu>();
+                                level++;
+                                
+                                var tmpLv3 = new List<Menu>();
                                 foreach (var level3 in subMenu)
                                 {
                                     var menuLv3 = new Menu();
+                                    menuLv3.OrdNumber = level3.OrdNumber;
                                     menuLv3.Name = level3.Name;
                                     menuLv3.Url = level3.Url;
-                                    menu.Childrens.Add(menuLv3);
+                                    menuLv3.Level = level;
+                                    tmpLv3.Add(menuLv3);
                                 }
+                                menuLv2.Childrens = new List<Menu>();
+                                menuLv2.Childrens.AddRange(tmpLv3.OrderBy(s=>s.OrdNumber));
                             }
-                            menu.Childrens.Add(menuLv2);
+                            tmpLv2.Add(menuLv2);
                         }
+                        menu.Childrens = new List<Menu>();
+                        menu.Childrens.AddRange(tmpLv2.OrderBy(s=>s.OrdNumber));
                     }
 
                     menuModel.Add(menu);

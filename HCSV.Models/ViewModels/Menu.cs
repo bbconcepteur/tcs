@@ -18,6 +18,8 @@ namespace HCSV.Models.ViewModels
 
         public int Level { get; set; }
 
+        public int OrdNumber { get; set; }
+
         public List<Menu> Childrens { get; set; } 
 
         public bool HasChildren { get { return Childrens != null && Childrens.Count > 0; } }
