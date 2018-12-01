@@ -46,6 +46,13 @@ namespace HCSV.Core
             public const string TBL_JOS_CONTACT = "jos_contact";
         }
 
+        public static class LoginType
+        {
+            public const string USER_TYPE_AGENT = "AGENT";
+            public const string USER_TYPE_AIRLINE = "AIRLINE";
+            public const string USER_TYPE_STATISTIC = "STATISTIC";
+        }
+
         public static class Session
         {
             public const string SESSION_LANGUAGE_ID = "LANGUAGE_ID";

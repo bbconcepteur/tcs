@@ -10,7 +10,7 @@ namespace HCSV.Web.Controllers
     public class CareersController : BaseController
     {
         // GET: Careers
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             return View();
         }

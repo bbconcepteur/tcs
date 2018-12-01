@@ -19,7 +19,7 @@ namespace HCSV.Web.Controllers
 
         public async Task<ActionResult> Tab(int? catId)
         {
-            var contents = await UnitOfWork.NewsBusiness.GetDetails(LanguageId, catId ?? 0, DefaultLanguageId);
+            var contents = await UnitOfWork.NewsBusiness.GetServices(LanguageId, DefaultLanguageId, catId ?? 0);
             string pageTitle = "";
             if (contents.Value != null)
             {

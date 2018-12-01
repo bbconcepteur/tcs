@@ -1,19 +1,17 @@
-﻿
+﻿@using HCSV.Resources
 @{
     ViewBag.Title = "Statistics";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-    
 <!--  Start Content -->
 <form id="form_statistic" action="/Airline/downloadFile" method="post">
     <div id="rp_wrapper">
         <table width="452" border="0" align="center">
             <tbody>
                 <tr>
-                    <td width="180" align="right"> @HCSVNewWebsite.Commons.TitleConst.getTitleConst("YEAR"): </td>
+                    <td width="180" align="right"> Resource: </td>
                     <td width="78">&nbsp;</td>
-                    <td colspan="2" align="left">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_TEP") :</td>
+                    <td colspan="2" align="left">@GlobalResource.DANG_TEP :</td>
                 </tr>
                 <tr>
                     <td height="52" align="right">2015 &nbsp;</td>
@@ -35,24 +33,22 @@
                 <tr>
                     <td height="32" colspan="4" align="center">
                         @*<label class="btnLeaf piecss3" style="margin-right: 5px;">
-                            @Html.ActionLink("Download", "downloadFile", "Airline")
-                        </label>*@
-                        
-                        
-                        
-                        <input type="submit" name="btn_thoat" id="btn_thoat" value="@HCSVNewWebsite.Commons.TitleConst.getTitleConst("TAI_VE")" class="btnLeaf piecss3 btn" style="line-height: 16px;">
-                        &nbsp;&nbsp;
-                        <input type="button" name="btn_thoat" id="btn_thoat" value="@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THOAT")" class="btnLeaf piecss3 btn" style="line-height: 16px;">
+                                @Html.ActionLink("Download", "downloadFile", "Airline")
+                            </label>*@
 
+
+
+                        <input type="submit" name="btn_thoat" id="btn_thoat" value="@GlobalResource.TAI_VE" class="btnLeaf piecss3 btn" style="line-height: 16px;">
+                        &nbsp;&nbsp;
+                        <input type="button" name="btn_thoat" id="btn_thoat" value="@GlobalResource.THOAT" class="btnLeaf piecss3 btn" style="line-height: 16px;">
                         <br>
                         <br>
                         <label>
-                            <a href="#">@HCSVNewWebsite.Commons.TitleConst.getTitleConst("THAY_DOI_MAT_KHAU")</a>
+                            <a href="#">@GlobalResource.THAY_DOI_MAT_KHAU</a>
                         </label>
                     </td>
                 </tr>
             </tbody>
         </table>
-
     </div>
 </form>

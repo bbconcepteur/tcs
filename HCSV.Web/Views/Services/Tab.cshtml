@@ -1,53 +1,59 @@
-﻿@model HCSV.Models.jos_content
-
+﻿@model HCSV.Business.Models.ContentModel<HCSV.Models.jos_content>
 @{
     ViewBag.Title = HttpContext.Current.Application[HCSV.Core.Constants.Page.PAGE_TITLE];
     ViewBag.Page = "Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (Model != null)
+{
 
-<form id="service_form" action="@this.Url.Action()" method="post">
-    <div class="matginT10">
-        <h4>@{ if (Model.LEFT != null)
-               {
-                    @Html.Raw(HCSV.Commons.Commons.convertContent(Model.LEFT.introtext))       
-               }                   
-            }
-        </h4>
-        <ul class="tabs">
-            @{
-                if ((Model.NEWS != null) && (Model.NEWS.Count() > 0))
-                {
-                    string strCSS = "";
-                    foreach (var item in Model.NEWS)
-                    {
-                        if (item.id == Model.RIGHT.id)
-                        {
-                            strCSS = "current";
-                        }
-                        else
-                        {
-                            strCSS = "";
-                        }
-                        <li><a href="#" class="@strCSS content_tab_css" id="@item.id"><span>@Html.Raw(item.title)</span></a></li>
-                    }
-                }
-            }
+    <section>
+        <div class="section-content">
+            <div class="row">
+                <div class="product">
+                    <div class="col-md-12">
+                        <div class="horizontal-tab">
+                            <ul class="nav nav-tabs">
+                                @{ int i = 0;}
+                                @foreach (var item in Model.ListValues)
+                                {
+                                    if (i == 0)
+                                    {
+                                        <li class="active"><a href="#tab-@item.id" data-toggle="tab">@item.title</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="#tab-@item.id" data-toggle="tab">@item.title</a></li>
+                                    }
+                                    i++;
+                                }
+                            </ul>
+                            <div class="tab-content">
+                                @{ i = 0;}
+                                @foreach (var item in Model.ListValues)
+                                {
+                                    if (i == 0)
+                                    {
+                                        <div class="tab-pane fade in active" id="tab-@item.id">
+                                            <h3>@item.title</h3>
+                                            @Html.Raw(item.introtext)
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="tab-pane fade in" id="tab-@item.id">
+                                            <h3>@item.title</h3>
+                                            @Html.Raw(item.introtext)
+                                        </div>
+                                    }
+                                    i++;
 
-        </ul>
-        <div class="panes" id="quotation_panes" style="width:710px;">
-            <div style="display:block">
-                @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.RIGHT.introtext))
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-
-    <input type="text" size="15" name="contentID" style="visibility:hidden" id="contentID" />
-    <script>
-        $(".content_tab_css").click(function () {
-            $("#contentID").val($(this).attr("id"));
-            document.getElementById('service_form').submit();
-        });
-    </script>
-</form>
+    </section>
+}

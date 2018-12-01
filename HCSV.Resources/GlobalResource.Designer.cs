@@ -1034,6 +1034,15 @@ namespace HCSV.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mật khẩu không được để trống.
+        /// </summary>
+        public static string PASSWORD_REQUIRED {
+            get {
+                return ResourceManager.GetString("PASSWORD_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Phần A.
         /// </summary>
         public static string PHAN_A {
@@ -1645,6 +1654,15 @@ namespace HCSV.Resources {
         public static string URL_TIN_TUC {
             get {
                 return ResourceManager.GetString("URL_TIN_TUC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên đăng nhập không được để trống.
+        /// </summary>
+        public static string USERNAME_REQUIRED {
+            get {
+                return ResourceManager.GetString("USERNAME_REQUIRED", resourceCulture);
             }
         }
         

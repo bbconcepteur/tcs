@@ -181,6 +181,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AirlineController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CareersController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
@@ -192,7 +193,6 @@
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\Offer_AdviseController.cs" />
-    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -2400,6 +2400,8 @@
     <Content Include="Views\Shared\_Footer.v2.cshtml" />
     <Content Include="Views\Shared\_Module_Logo_Footer.v2.cshtml" />
     <Content Include="Views\Shared\_Module_Image_Path.v2.cshtml" />
+    <Content Include="Views\Airline\Statistics_default.cshtml" />
+    <Content Include="Views\Airline\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

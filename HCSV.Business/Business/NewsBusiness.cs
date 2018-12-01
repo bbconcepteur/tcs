@@ -64,7 +64,6 @@ namespace HCSV.Business.Business
                             .ToList();
 
                     var currentContents = GetMany(s => s.lang_id == langId && transContents.Contains(s.id)).ToList();
-
                     content.ListValues = currentContents.ToPagedList(1, 99999);
                 }
                 else

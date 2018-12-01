@@ -442,6 +442,9 @@
   <data name="OTHER_NEWS" xml:space="preserve">
     <value>Tin khác</value>
   </data>
+  <data name="PASSWORD_REQUIRED" xml:space="preserve">
+    <value>Mật khẩu không được để trống</value>
+  </data>
   <data name="PHAN_A" xml:space="preserve">
     <value>Phần A</value>
   </data>
@@ -648,6 +651,9 @@
   </data>
   <data name="URL_TIN_TUC" xml:space="preserve">
     <value>tin-tuc</value>
+  </data>
+  <data name="USERNAME_REQUIRED" xml:space="preserve">
+    <value>Tên đăng nhập không được để trống</value>
   </data>
   <data name="VUI_LONG_DIEN_THONG_TIN_DANG_NHAP" xml:space="preserve">
     <value>Vui lòng điền thông tin đăng nhập</value>

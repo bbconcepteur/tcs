@@ -1,4 +1,5 @@
 ﻿@model List<HCSV.Models.jos_links>
+@using System.Runtime.Versioning
 @using System.Text
 @using HCSV.Resources
 @{
@@ -21,21 +22,38 @@
                             {
                                 i++;
                                 desc = new StringBuilder();
-                                <div class="gallery-item photography" style="position: absolute; left: 0px; top: 0px;">
+                                <div class="photography gallery-item" id="@Html.Raw("tholder" + i)" style="position: absolute; left: 0px; top: 0px;">
                                     <div class="thumb">
-                                        <img class="img-fullwidth" src="@Html.Raw(item.image)" alt="project">
-                                        <div class="overlay-shade"></div>
-                                        <div class="icons-holder">
-                                            <div class="icons-holder-inner">
-                                                <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                    <a data-lightbox="image" href="@Html.Raw(item.image)"><i class="fa fa-plus"></i></a>
-                                                    <a href="@Html.Raw(item.link)"><i class="fa fa-link"></i></a>
-                                                </div>
+                                        <img class="img-fluid" src="@Html.Raw(item.image)" alt="project">
+                                    </div>
+                                    <div class="overlay-shade"></div>
+                                    <div class="icons-holder">
+                                        <div class="icons-holder-inner">
+                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
+                                                <a href="@Html.Raw(item.link)"><i class="fa fa-link"></i></a>
                                             </div>
                                         </div>
-                                        <a class="hover-link" data-lightbox="image" href="@Html.Raw(item.image)">@GlobalResource.XEM_TIEP</a>
                                     </div>
                                 </div>
+                                <div class="tooltip" id="@Html.Raw("tt_tholder" + i)" style="display: none;">
+                                    <table width="190">
+                                        <tbody>
+                                            <tr>
+                                                <td width="60" align="left" valign="top">@GlobalResource.DIA_CHI:</td>
+                                                <td align="left">@Html.Raw(item.address)</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top">@GlobalResource.DIEN_THOAI:</td>
+                                                <td align="left">@Html.Raw(item.phone)</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top">@GlobalResource.FAX:</td>
+                                                <td align="left">@Html.Raw(item.fax)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             }
                         }
                     </div>
@@ -44,3 +62,31 @@
         </div>
     </div>
 </section>
+@section scripts{
+    <script type="text/javascript" src="/Content/Theme/js/tooltip.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".photography").tooltip({
+                position: 'top center',
+                relative: false,
+                prefix_tip_id: 'tt_',
+                offset: [0, -120]
+            });
+        });
+    </script>
+}
+@section styles{
+    <style>
+        .photography {
+            cursor: pointer;
+            border: 1px solid #cccccc;
+            padding: 9px 19px;
+            text-align: center;
+            height: 102px;
+        }
+
+            .photography img {
+                margin: 0px auto;
+            }
+    </style>
+}
