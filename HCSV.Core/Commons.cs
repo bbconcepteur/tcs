@@ -30,6 +30,8 @@ namespace HCSV.Core
 
             public const string TCS_NEWS = "TCS_NEWS";
 
+            public const string TCS_SERVICE = "TCS_SERVICE";
+
             public const string INDUSTRIAL_NEWS = "INDUSTRIAL_NEWS";
 
             public const string MENU_TOP = "TOP_MENU";

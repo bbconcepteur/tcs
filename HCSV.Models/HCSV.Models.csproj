@@ -72,6 +72,9 @@
     <Compile Include="jos_categories.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="jos_comment.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="jos_components.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -112,6 +115,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="jos_dbcache.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="jos_download.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="jos_feedback.cs">

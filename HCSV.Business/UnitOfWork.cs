@@ -13,6 +13,7 @@ namespace HCSV.Business
 
         ILanguageBusiness LanguageBusiness { get; }
         INewsBusiness NewsBusiness { get; }
+        IServiceBusiness ServiceBusiness { get; }
         IAccountBusiness AccountBusiness { get; }
 
         IDashbroadBusiness DashbroadBussiness { get; }
@@ -99,7 +100,10 @@ namespace HCSV.Business
         {
             get { return new NewsBusiness(_context); }
         }
-
+        public IServiceBusiness ServiceBusiness
+        {
+            get { return new ServiceBusiness(_context); }
+        }
         public IAccountBusiness AccountBusiness
         {
             get { return new AccountBusiness(_context); }

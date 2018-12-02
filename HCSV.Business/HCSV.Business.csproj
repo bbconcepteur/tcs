@@ -11,6 +11,7 @@
     <AssemblyName>HCSV.Business</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -69,6 +70,7 @@
     <Compile Include="Business\LanguageBusiness.cs" />
     <Compile Include="Business\MenuBusiness.cs" />
     <Compile Include="Business\NewsBusiness.cs" />
+    <Compile Include="Business\ServiceBusiness.cs" />
     <Compile Include="Business\TranslateBusiness.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\ContentModel.cs" />
@@ -81,7 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HCSV.Core\HCSV.Core.csproj">

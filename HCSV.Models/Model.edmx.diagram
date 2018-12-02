@@ -90,6 +90,8 @@
         <EntityTypeShape EntityType="chuy7808_tcsModel.jos_sef_sm_pingback_menu" Width="1.5" PointX="26.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="chuy7808_tcsModel.jos_stats_agents" Width="1.5" PointX="26.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="chuy7808_tcsModel.Tmp_jos_users" Width="1.5" PointX="26.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="chuy7808_tcsModel.jos_comment" Width="1.5" PointX="15.375" PointY="26.75" />
+        <EntityTypeShape EntityType="chuy7808_tcsModel.jos_download" Width="1.5" PointX="17.375" PointY="26.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

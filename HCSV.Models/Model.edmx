@@ -123,6 +123,19 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_bannertrack' does not
           <Property Name="params" Type="nvarchar(max)" />
           <Property Name="lang_id" Type="smallint" />
         </EntityType>
+        <EntityType Name="jos_comment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content_id" Type="int" Nullable="false" />
+          <Property Name="CommentContent" Type="nvarchar(max)" />
+          <Property Name="SenderName" Type="nvarchar" MaxLength="150" />
+          <Property Name="SenderEmail" Type="nvarchar" MaxLength="150" />
+          <Property Name="SentDate" Type="datetime2" Precision="0" />
+          <Property Name="LastEdited" Type="datetime2" Precision="0" />
+          <Property Name="Status" Type="smallint" />
+        </EntityType>
         <EntityType Name="jos_components">
           <Key>
             <PropertyRef Name="id" />
@@ -341,6 +354,20 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_core_log_searches' do
           <Property Name="groupname" Type="nvarchar" MaxLength="32" Nullable="false" />
           <Property Name="expire" Type="datetime2" Precision="0" Nullable="false" />
           <Property Name="value" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="jos_download">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="250" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="FileType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="nvarchar" MaxLength="150" />
+          <Property Name="Volumn" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="updated_by" Type="bigint" />
+          <Property Name="updated_time" Type="datetime2" Precision="0" />
+          <Property Name="Status" Type="smallint" />
         </EntityType>
         <EntityType Name="jos_feedback">
           <Key>
@@ -1216,6 +1243,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.Tmp_jos_users' does not h
           <EntitySet Name="jos_banner" EntityType="Self.jos_banner" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_bannerclient" EntityType="Self.jos_bannerclient" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_categories" EntityType="Self.jos_categories" Schema="chuy7808_sa" store:Type="Tables" />
+          <EntitySet Name="jos_comment" EntityType="Self.jos_comment" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_components" EntityType="Self.jos_components" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_contact" EntityType="Self.jos_contact" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_contact_details" EntityType="Self.jos_contact_details" Schema="chuy7808_sa" store:Type="Tables" />
@@ -1227,6 +1255,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.Tmp_jos_users' does not h
           <EntitySet Name="jos_core_acl_aro_map" EntityType="Self.jos_core_acl_aro_map" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_core_acl_aro_sections" EntityType="Self.jos_core_acl_aro_sections" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_dbcache" EntityType="Self.jos_dbcache" Schema="chuy7808_sa" store:Type="Tables" />
+          <EntitySet Name="jos_download" EntityType="Self.jos_download" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_feedback" EntityType="Self.jos_feedback" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_functions" EntityType="Self.jos_functions" Schema="chuy7808_sa" store:Type="Tables" />
           <EntitySet Name="jos_groups" EntityType="Self.jos_groups" Schema="chuy7808_sa" store:Type="Tables" />
@@ -2650,7 +2679,36 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.Tmp_jos_users' does not h
           <EntitySet Name="jos_sef_sm_pingback_menu" EntityType="Self.jos_sef_sm_pingback_menu" />
           <EntitySet Name="jos_stats_agents" EntityType="Self.jos_stats_agents" />
           <EntitySet Name="Tmp_jos_users" EntityType="Self.Tmp_jos_users" />
+          <EntitySet Name="jos_comment" EntityType="chuy7808_tcsModel.jos_comment" />
+          <EntitySet Name="jos_download" EntityType="chuy7808_tcsModel.jos_download" />
         </EntityContainer>
+        <EntityType Name="jos_comment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content_id" Type="Int32" Nullable="false" />
+          <Property Name="CommentContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SenderName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SenderEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SentDate" Type="DateTime" Precision="0" />
+          <Property Name="LastEdited" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="Int16" />
+        </EntityType>
+        <EntityType Name="jos_download">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FileType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Volumn" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="updated_by" Type="Int64" />
+          <Property Name="updated_time" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="Int16" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3878,6 +3936,35 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.Tmp_jos_users' does not h
                 <ScalarProperty Name="lastvisitDate" ColumnName="lastvisitDate" />
                 <ScalarProperty Name="activation" ColumnName="activation" />
                 <ScalarProperty Name="params" ColumnName="params" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jos_comment">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_comment">
+              <MappingFragment StoreEntitySet="jos_comment">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastEdited" ColumnName="LastEdited" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="SenderEmail" ColumnName="SenderEmail" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="CommentContent" ColumnName="CommentContent" />
+                <ScalarProperty Name="content_id" ColumnName="content_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jos_download">
+            <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_download">
+              <MappingFragment StoreEntitySet="jos_download">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="updated_time" ColumnName="updated_time" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="Volumn" ColumnName="Volumn" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

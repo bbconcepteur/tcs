@@ -320,6 +320,8 @@
     <Content Include="Modules\CategoryEdit.aspx" />
     <Content Include="Modules\CategoryList.aspx" />
     <Content Include="Modules\ChangePassword.aspx" />
+    <Content Include="Modules\CommentEdit.aspx" />
+    <Content Include="Modules\CommentList.aspx" />
     <Content Include="Modules\ContactEdit.aspx" />
     <Content Include="Modules\ContactList.aspx" />
     <Content Include="Modules\ContactTranslationLang.aspx" />
@@ -995,6 +997,20 @@
     </Compile>
     <Compile Include="Modules\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CommentEdit.aspx.cs">
+      <DependentUpon>CommentEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\CommentEdit.aspx.designer.cs">
+      <DependentUpon>CommentEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\CommentList.aspx.cs">
+      <DependentUpon>CommentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\CommentList.aspx.designer.cs">
+      <DependentUpon>CommentList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\ContactEdit.aspx.cs">
       <DependentUpon>ContactEdit.aspx</DependentUpon>

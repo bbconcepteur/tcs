@@ -110,5 +110,7 @@ namespace HCSV.Models
         public virtual DbSet<jos_sef_sm_pingback_menu> jos_sef_sm_pingback_menu { get; set; }
         public virtual DbSet<jos_stats_agents> jos_stats_agents { get; set; }
         public virtual DbSet<Tmp_jos_users> Tmp_jos_users { get; set; }
+        public virtual DbSet<jos_comment> jos_comment { get; set; }
+        public virtual DbSet<jos_download> jos_download { get; set; }
     }
 }

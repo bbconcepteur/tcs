@@ -39,12 +39,16 @@ namespace CPanel.Commons
 
         public static string URL_LANGUAGE_EDIT = "/Modules/LanguageEdit";
         public static string URL_LANGUAGE_LIST = "/Modules/LanguageList";
+
+        public static string URL_COMMENT_EDIT = "/Modules/CommentEdit";
+        public static string URL_COMMENT_VIEW = "/Modules/CommentList";
     }
 
     public class ConstTable
     {
         public static string TBL_JOS_MENU = "jos_menu";
         public static string TBL_JOS_CONTENT = "jos_content";
+        public static string TBL_JOS_COMMENT = "jos_components";
         public static string TBL_JOS_LINKS = "jos_links";
         public static string TBL_JOS_CONTACT = "jos_contact";
     }
@@ -53,6 +57,7 @@ namespace CPanel.Commons
     {
         public static string SESSION_SECTION = "SESSION_SECTION";
         public static string SESSION_CONTENT = "SESSION_CONTENT";
+        public static string SESSION_COMMENT = "SESSION_COMMENT";
         public static string SESSION_CONTACT = "SESSION_CONTACT";
         public static string SESSION_CATEGORY = "SESSION_CATEGORY";        
         public static string SESSION_MENU = "SESSION_MENU";
@@ -79,7 +84,11 @@ namespace CPanel.Commons
         public string ID_CONTACT = "";
         public string ID_LANGUAGE = "";
     }
-
+    public class SessionForFindingComment
+    {
+        public string ID_COMMENT = "";
+        public string ID_LANGUAGE = "";
+    }
     public class SessionForFindingLanguage
     {
         public string ID_LANGUAGE = "";
