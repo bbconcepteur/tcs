@@ -7,112 +7,125 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = HttpContext.Current.Application[Constants.Page.PAGE_TITLE];
 }
-<section id="blog">
-    <div class="container">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <article class="post clearfix mb-sm-30 bg-silver-light">
-                @if (Model != null && Model.MissionArea != null)
-                {
-                    <div class="entry-header">
-                        <div class="post-thumb thumb">
-                            @if (Model.MissionArea.images != null)
-                            {
-                                
-                                <img src=" @Html.Raw(Model.MissionArea.images)" alt="" class="img-responsive img-fullwidth">
-                            }
-                            else
-                            {
-                                <img src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="" class="img-responsive img-fullwidth">
-                            }
-                           
-                        </div>
+<section class="blog-area">
+    <div class="row">
+        <div class="bg_hot_news_css">
+            <!-----------------------------------BEGIN: Mission, Vission, Core value-------------------------------------->
+            <div class="col-lg-4">
+                <div class="col_intro">
+                    <div class="intro_css">
+                        <img src="~/Content/BoostrapTemplate/img/intro_1.jpg" />
                     </div>
-                    <div class="entry-content p-20 pr-10">
-                        <div class="entry-meta media mt-0 no-bg no-border">
-                            <div class="media-body pl-15">
-                                <div class="event-content pull-left flip">
-                                    <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">@Html.Raw(Model.MissionArea.title)</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="mt-10">@Html.Raw(Model.MissionArea.introtext)</p>
-                        <a href="@UrlExtentions.Action(GlobalResource.URL_SU_MENH, Model.MissionArea.catid, Model.MissionArea.title, Model.MissionArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
-                    </div>
-                }
-            </article>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <article class="post clearfix mb-sm-30 bg-silver-light">
-                @if (Model != null && Model.VisionArea != null)
-                {
-                    <div class="entry-header">
-                        <div class="post-thumb thumb">
-                            @if (Model.VisionArea.images != null)
-                            {
-                                <img src=" @Html.Raw(Model.VisionArea.images)" alt="" class="img-responsive img-fullwidth">
-                                
-                            }
-                            else
-                            {
-                                <img src="Media/n0_image_available.png" alt="" class="img-responsive img-fullwidth">
-                            }
+                    <div class="cont_css">
 
-                        </div>
-                    </div>
-                    <div class="entry-content p-20 pr-10">
-                        <div class="entry-meta media mt-0 no-bg no-border">
-                            <div class="media-body pl-15">
-                                <div class="event-content pull-left flip">
-                                    <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">@Html.Raw(Model.VisionArea.title)</a></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="mt-10">@Html.Raw(Model.VisionArea.introtext)</p>
-                        <a href="@UrlExtentions.Action(GlobalResource.URL_TAM_NHIN, Model.VisionArea.catid, Model.VisionArea.title, Model.VisionArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
-                    </div>
-                }
-            </article>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <article class="post clearfix mb-sm-30 bg-silver-light">
-                @if (Model != null && Model.ValueArea != null)
-                {
-                    <div class="entry-header">
-                        <div class="post-thumb thumb">
-                            @if (Model.ValueArea.images != null)
-                            {
-                                <img src=" @Html.Raw(Model.ValueArea.images)" alt="" class="img-responsive img-fullwidth">
-                               
-                            }
-                            else
-                            {
-                                <img src="Media/n0_image_available.png" alt="" class="img-responsive img-fullwidth">
-                            }
+                        @if (Model != null && Model.MissionArea != null)
+                        {
+                            <div class="intro_img">
+                                @if (Model.MissionArea.images != null)
+                                {
 
-                        </div>
-                    </div>
-                    <div class="entry-content p-20 pr-10">
-                        <div class="entry-meta media mt-0 no-bg no-border">
-                            <div class="media-body pl-15">
-                                <div class="event-content pull-left flip">
-                                    <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">@Html.Raw(Model.ValueArea.title)</a></h4>
-                                </div>
+                                    <img src=" @Html.Raw(Model.MissionArea.images) " alt=" " class=" img-responsive img-fullwidth">
+                                }
+                                else
+                                {
+                                    <img src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="" class="img-responsive img-fullwidth">
+                                }
                             </div>
-                        </div>
-                        <p class="mt-10">@Html.Raw(Model.ValueArea.introtext)</p>
-                        <a href="@UrlExtentions.Action(GlobalResource.URL_GIA_TRI_COT_LOI, Model.ValueArea.catid, Model.ValueArea.title, Model.ValueArea.id)" class="btn btn-default btn-sm btn-theme-colored mt-10">@HCSV.Resources.GlobalResource.XEM_TIEP</a>
+                            <div class="intro_title">
+                                @Html.Raw(Model.MissionArea.title)
+                            </div>
+                            <div class="intro_content">
+                                @Html.Raw(Model.MissionArea.introtext)
+                            </div>
+                            <div class="intro_readmore"><a href="@UrlExtentions.Action(GlobalResource.URL_SU_MENH, Model.MissionArea.catid, Model.MissionArea.title, Model.MissionArea.id)">@HCSV.Resources.GlobalResource.XEM_TIEP</a></div>
+                        }
+
+
                     </div>
-                }
-            </article>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="col_intro">
+                    <div class="intro_css">
+                        <img src="~/Content/BoostrapTemplate/img/intro_2.jpg" />
+                    </div>
+                    <div class="cont_css">
+
+                        @if (Model != null && Model.VisionArea != null)
+                        {
+                            <div class="intro_img">
+                                @if (Model.VisionArea.images != null)
+                                {
+
+                                    <img src=" @Html.Raw(Model.VisionArea.images) " alt=" " class=" img-responsive img-fullwidth">
+                                }
+                                else
+                                {
+                                    <img src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="" class="img-responsive img-fullwidth">
+                                }
+                            </div>
+                            <div class="intro_title">
+                                @Html.Raw(Model.VisionArea.title)
+                            </div>
+                            <div class="intro_content">
+                                @Html.Raw(Model.VisionArea.introtext)
+                            </div>
+                            <div class="intro_readmore"><a href="@UrlExtentions.Action(GlobalResource.URL_TAM_NHIN, Model.VisionArea.catid, Model.VisionArea.title, Model.VisionArea.id)">@HCSV.Resources.GlobalResource.XEM_TIEP</a></div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="col_intro">
+                    <div class="intro_css">
+                        <img src="~/Content/BoostrapTemplate/img/intro_2.jpg" />
+                    </div>
+                    <div class="cont_css">
+
+                        @if (Model != null && Model.ValueArea != null)
+                        {
+                            <div class="intro_img">
+                                @if (Model.ValueArea.images != null)
+                                {
+
+                                    <img src=" @Html.Raw(Model.ValueArea.images) " alt=" " class=" img-responsive img-fullwidth">
+                                }
+                                else
+                                {
+                                    <img src="~/Content/BoostrapTemplate/img/n0_image_available.png" alt="" class="img-responsive img-fullwidth">
+                                }
+                            </div>
+                            <div class="intro_title">
+                                @Html.Raw(Model.ValueArea.title)
+                            </div>
+                            <div class="intro_content">
+                                @Html.Raw(Model.ValueArea.introtext)
+                            </div>
+                            <div class="intro_readmore"><a href="@UrlExtentions.Action(GlobalResource.URL_GIA_TRI_COT_LOI, Model.ValueArea.catid, Model.ValueArea.title, Model.ValueArea.id)">@HCSV.Resources.GlobalResource.XEM_TIEP</a></div>
+                        }
+
+
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
-<hr />
-<section class="blog-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <h3>@Html.Raw(GlobalResource.TIN_DANH_CHO_KH)</h3>
+
+<section class="blog-area hot_news_css">
+    <div class="row">
+            <div class="col-lg-4 news_css">
+                <div class="title_news_css">
+                    <a href="#" class="btnNext_1">
+                        @Html.Raw(GlobalResource.TIN_DANH_CHO_KH)
+                    </a>
+                </div>
+
                 @if (Model != null && Model.CustomerNews.Any())
                 {
                     foreach (var item in Model.CustomerNews)
@@ -124,7 +137,7 @@
                                         @if (item.images != null)
                                         {
                                             <img class="img-fluid" src="@Html.Raw(item.images)" alt="">
-                                            
+
                                         }
                                         else
                                         {
@@ -135,7 +148,7 @@
                                 <div class="col-md-7 mt-sm-20">
                                     <a href="@UrlExtentions.Action(GlobalResource.URL_TIN_TUC, item.catid, item.title, item.id)"> @Html.Raw(item.title)</a>
                                     <div class="meta-bottom d-flex">
-                                        <p><span class="lnr lnr-calendar-full"></span> @item.publish_up</p>
+                                        <span class="news_time">@item.publish_up</span>
                                     </div>
                                 </div>
                             </div>
@@ -145,8 +158,13 @@
                 }
             </div>
 
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <h3>@Html.Raw(GlobalResource.TIN_TCS)</h3>
+            <div class="col-lg-4 news_css">                
+                <div class="title_news_css">
+                    <a href="#" class="btnNext_1">
+                        @Html.Raw(GlobalResource.TIN_TCS)
+                    </a>
+                </div>
+
                 @if (Model != null && Model.TcsNews.Any())
                 {
                     foreach (var item in Model.TcsNews)
@@ -168,7 +186,7 @@
                                 <div class="col-md-7 mt-sm-20">
                                     <a href="@UrlExtentions.Action(GlobalResource.URL_TIN_TUC, item.catid, item.title, item.id)"> @Html.Raw(item.title)</a>
                                     <div class="meta-bottom d-flex">
-                                        <p><span class="lnr lnr-calendar-full"></span> @item.publish_up</p>
+                                        <span class="news_time">@item.publish_up</span>
                                     </div>
                                 </div>
                             </div>
@@ -178,8 +196,12 @@
                 }
             </div>
 
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <h3>@Html.Raw(GlobalResource.TIN_CHUYEN_NGANH)</h3>
+            <div class="col-lg-4 news_css">
+                <div class="title_news_css">
+                    <a href="#" class="btnNext_1">
+                        @Html.Raw(GlobalResource.TIN_CHUYEN_NGANH)
+                    </a>
+                </div>
                 @if (Model != null && Model.IndustrialNews.Any())
                 {
                     foreach (var item in Model.IndustrialNews)
@@ -201,7 +223,7 @@
                                 <div class="col-md-7 mt-sm-20">
                                     <a href="@UrlExtentions.Action(GlobalResource.URL_TIN_TUC, item.catid, item.title, item.id)"> @Html.Raw(item.title)</a>
                                     <div class="meta-bottom d-flex">
-                                        <p><span class="lnr lnr-calendar-full"></span> @item.publish_up</p>
+                                        <span class="news_time">@item.publish_up</span>
                                     </div>
                                 </div>
                             </div>
@@ -210,5 +232,4 @@
                 }
             </div>
         </div>
-    </div>
 </section>

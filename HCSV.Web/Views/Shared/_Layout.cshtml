@@ -2,7 +2,19 @@
 <html dir="ltr" lang="vi">
 <head>
     <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    @if (true)
+    {
+        if (HCSV.Core.CommonTCS.Commons.checkAWB(Request.Url.AbsolutePath))
+        {
+            <meta name="viewport" content="width=1170">
+            <link rel="stylesheet" type="text/css" href="~/Content/TcsTemplate/themes/orange/css/mainae55.css?m=1443022774" />         
+        }
+        else
+        {
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        }
+    }
+    
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/fav.png">
     <!-- Author Meta -->
@@ -18,11 +30,11 @@
     <title>@ViewBag.Title</title>
 
     <!-- Stylesheet -->
-    <!-- Stylesheet -->
     <link href="~/Content/Theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="~/Content/Theme/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
     <link href="~/Content/Theme/css/animate.css" rel="stylesheet" type="text/css">
     <link href="~/Content/Theme/css/css-plugin-collections.css" rel="stylesheet" />
+    
     <!-- CSS | menuzord megamenu skins -->
     <link id="menuzord-menu-skins" href="~/Content/Theme/css/menuzord-rounded-boxed.css" rel="stylesheet" />
     <!-- CSS | Main style file -->
@@ -41,6 +53,7 @@
     <link href="~/Content/Theme/js/revolution-slider/css/navigation.css" rel="stylesheet" type="text/css" />
     <!-- CSS | Theme Color -->
     <link href="~/Content/Theme/css/theme-skin-orange.css" rel="stylesheet" type="text/css">
+
     <!-- external javascripts -->
     <script src="~/Content/Theme/js/jquery-2.2.4.min.js"></script>
     <script src="~/Content/Theme/js/jquery-ui.min.js"></script>
@@ -57,6 +70,10 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <link href="~/Content/TcsNewTemplate/css/tcs_theme.css" rel="stylesheet" />
+    <link href="~/Content/TcsNewTemplate/css/tcs_responsive.css" rel="stylesheet" />
 
     @RenderSection("styles", required: false)
     <meta http-equiv="Content-language" content="vi_VN" />

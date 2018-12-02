@@ -2,7 +2,8 @@
 @Html.Action("BottomLink", "Menu")
 <!-- Footer -->
 <footer id="footer" class="footer" data-bg-img="/Content/theme/images/footer-bg.png" data-bg-color="#25272e">
-    <div class="container pt-70 pb-40">
+    <!--*****************BEGIN: TUYEN close here********************************-->
+    <div style="display:none" class="container pt-70 pb-40">
         <div class="row border-bottom-black">
             <div class="col-sm-6 col-md-3">
                 <div class="widget dark">
@@ -125,13 +126,13 @@
             </div>
         </div>
     </div>
+    <!--*****************END: TUYEN close here********************************-->
+
     <div class="footer-bottom bg-black-333">
         <div class="container pt-15 pb-10">
             <div class="row">
-                <div class="col-md-6">
-                    <p class="font-11 text-black-777 m-0">&reg; 2010 Copyright by Tan Son Nhat Cargo Services Company Limited</p>
-                </div>
-                <div class="col-md-6 text-right">
+                
+                <div class="col-md-6 text-right bot_menu_css">
                     <div class="widget no-border m-0">
                         <ul class="list-inline sm-text-center mt-5 font-12">
                             @if (Model.Any())
@@ -145,6 +146,10 @@
                             }
                         </ul>
                     </div>
+                </div>
+
+                <div class="col-md-6 copyright_css">
+                    <p class="font-11 text-black-777 m-0">&reg; 2010 Copyright by Tan Son Nhat Cargo Services Company Limited</p>
                 </div>
             </div>
         </div>

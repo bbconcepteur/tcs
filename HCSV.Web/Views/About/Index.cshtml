@@ -27,7 +27,7 @@
                                         </span>
                                     </h6>
                                 </div>
-                                @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.fulltext))
+                                @Html.Raw(HCSV.Core.CommonTCS.Commons.convertContent(item.fulltext))
                             </div>
                         }
 
@@ -36,8 +36,8 @@
         </div>
         <div class="col-md-4">
             <div class="about_img_css">
-                @Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.RIGHT != null ? Model.RIGHT.images : ""))
-                <p class="title_1">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(Model.RIGHT != null ? Model.RIGHT.title : ""))</p>
+                @Html.Raw(HCSV.Core.CommonTCS.Commons.convertContent(Model.RIGHT != null ? Model.RIGHT.images : ""))
+                <p class="title_1">@Html.Raw(HCSV.Core.CommonTCS.Commons.convertContent(Model.RIGHT != null ? Model.RIGHT.title : ""))</p>
             </div>
         </div>
     </div>

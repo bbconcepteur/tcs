@@ -25,7 +25,7 @@
                     {
                          <div class="col-md-4">
                             <div class="box_title">
-                                <div class="img__css img__css_1">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.introtext))</div>
+                                <div class="img__css img__css_1">@Html.Raw(HCSV.Core.CommonTCS.Commons.convertContent(item.introtext))</div>
                                 <div class="title__css">@Html.Raw(item != null ? item.title : "")</div>
                                 <div class="intro__css">@Html.Raw(item != null ? item.fulltext : "")</div>
                             </div>
@@ -61,7 +61,7 @@
             {
                 <div class="item_css" id="item_@item.id">
                     <div class="bg_100percent_css services_title_css_2">@Html.Raw(item.title)</div>
-                    <div class="bg_100percent_css services_content_css_3">@Html.Raw(HCSVNewWebsite.Commons.Commons.convertContent(item.introtext))</div>
+                    <div class="bg_100percent_css services_content_css_3">@Html.Raw(HCSV.Core.CommonTCS.Commons.convertContent(item.introtext))</div>
                     <a href="#item_@item.id" id="link_item_@item.id" class="invisible_css"></a>
                  </div>
             }

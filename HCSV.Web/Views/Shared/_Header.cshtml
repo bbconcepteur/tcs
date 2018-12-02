@@ -2,10 +2,12 @@
 @using HCSV.Resources
  <!-- Header -->
 <header class="header">
-    <div class="header-top bg-theme-colored sm-text-center">
+    <div class="header-top bg-theme-colored bg_header_css sm-text-center">
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+
+                <!--*****************BEGIN: TUYEN close here********************************-->
+                <div class="col-md-2" style="display:none">
                     <div class="widget no-border m-0">
                         <ul class="styled-icons icon-dark icon-theme-colored icon-sm sm-text-center">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -15,18 +17,15 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <!--*****************END: TUYEN close here********************************-->
+
+                <div class="col-md-6 hot_line_css">
                     <div class="widget no-border m-0">
                         <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
                             <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-white"></i> <a class="text-white" href="#">Hotline: (02-8) 38 486 489</a> </li>
-                            <li class="text-white m-0 pl-10 pr-10"> <i class="fa fa-clock-o text-white"></i>Email: tracing@tcs.com.vn </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="widget no-border m-0">
-                        <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
-                            <li class="mt-sm-10 mb-sm-10">
+                            <li class="text-white m-0 pl-10 pr-10 email_css"> <i class="fa fa-clock-o text-white"></i>Email: tracing@tcs.com.vn </li>
+                        
+                            <li class="mt-sm-10 mb-sm-10 lang_css">
                                 @{
                                     string cultureName = "";
                                     if (Session[Constants.Session.SESSION_CURRENT_CULTURE] != null)
@@ -49,8 +48,11 @@
                                 }
                             </li>
                         </ul>
+
+                        
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
