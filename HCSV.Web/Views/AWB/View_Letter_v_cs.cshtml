@@ -1,0 +1,241 @@
+﻿@{
+    ViewBag.Title = "View_Letter_v_cs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+	//include('fun_t/connect_tion.php');
+	//$client = new SoapClient($endpoint.'?wsdl');
+    HCSV.Web.COSYS_TCS.COSYS_WEBTRACKSoapClient obj = new HCSV.Web.COSYS_TCS.COSYS_WEBTRACKSoapClient();
+    
+	//$mawb_no = $_GET["mawb_no"];
+    string mawb_no = Request.QueryString["mawb_no"];
+	
+    //$hawb_no = $_GET["hawb_no"];
+    string hawb_no = Request.QueryString["hawb_no"];
+	
+    //$result = $client->GET_LETTER_INF(array('STR_CONNECT'=>'sss','MAWB_NO'=>$mawb_no,'HAWB_NO'=>$hawb_no));
+	//$str = $result->GET_LETTER_INFResult;
+    string str = obj.GET_LETTER_INF("sss",mawb_no,hawb_no);
+	
+    //$param_arrays = explode('~|$|~', $str);
+    string[] param_arrays = HCSV.Core.CommonTCS.Commons.strSplit(str, "~|$|~");
+
+}
+<div class="container container_css">
+    <div style="margin 0 auto;width:800px;">
+        <table style="float:left;font-size:10px;">
+            <tr>
+                <td rowspan="5"><img src="~/Content/TcsTemplate/themes/orange/images/logotcs_new_2015.jpg" width="74" height="34" /></td>
+            </tr>
+            <tr>
+                <td>CÔNG TY Cổ Phần Dịch Vụ Hàng Hóa  TÂN SƠN NHẤT</td>
+            </tr>
+            <tr>
+                <td>Địa chỉ: 46-48 Hậu Giang, Phường 4, Quận Tân Bình, Tp. HCM</td>
+            </tr>
+            <tr>
+                <td>Điện thoại:(028)38486490-96/EXT: 141Fax:(028)38427943</td>
+            </tr>
+            <tr>
+                <td>website: www.tcs.com.vn</td>
+            </tr>
+
+        </table>
+        <table style="float:right;font-size:10px;">
+            <tr>
+                <td>Số thư báo:</td>
+                <td>
+                    @*<? echo $param_arrays[0] ?>*@
+                    @param_arrays[0]
+                </td>
+            </tr>
+            <tr>
+                <td>Ngày in thư:</td>
+                <td>
+                    @*<? echo $param_arrays[1] ?>*@
+                    @param_arrays[1]
+                </td>
+            </tr>
+            <tr>
+                <td>Lần phát thư:</td>
+                <td>
+                    @*<? echo $param_arrays[2] ?>*@
+                    @param_arrays[2]
+                </td>
+            </tr>
+
+        </table>
+        <div style="clear:both;"></div>
+        <table style="width:100%;margin-bottom:20px;margin-top:20px;">
+            <tr>
+                <td align="center" style="font-size:25px;font-weight:bold;">THƯ BÁO NHẬN HÀNG</td>
+            </tr>
+
+        </table>
+        <table style="width:100%;">
+            <tr>
+                <td style="font-weight:bold; width:230px;">Kính gửi: </td>
+                <td colspan="4">
+                    @*<? echo $param_arrays[3] ?>*@
+                    @param_arrays[3]
+                </td>
+
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">Địa chỉ: </td>
+                <td colspan="4">
+                    @*<? echo $param_arrays[4] ?>*@
+                    @param_arrays[4]
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="4">Trân trọng kính mời quý khách đến nhận hàng.</td>
+            </tr>
+            <tr>
+                <td>Thời gian nhận hàng</td>
+                <td>Sáng: 07:30 đến 11:30	   Chiều: 13:00 đến 17:00</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan="3">(Chủ nhật và ngày lễ không làm việc)</td>
+            </tr>
+            <tr>
+                <td>Theo không vận đơn (MAWB) số:</td>
+                <td style="font-weight:bold;">
+                    @*<? echo $param_arrays[5] ?>*@
+                    @param_arrays[5]
+                </td>
+
+                <td>
+                    @*<? if  ($param_arrays[6] != ""){echo "Số không vận đơn phụ : ";} else echo ""; ?>*@
+                    @if (param_arrays[6] != "")
+                    {
+                        @Html.Raw("Số không vận đơn phụ : ");
+                    }
+                    else
+                    {
+                        //echo "";
+                        @Html.Raw("");
+                    }
+                </td>
+                <td style="font-weight:bold;">
+                    @*<? echo $param_arrays[6] ?>*@
+                    @param_arrays[6]
+                </td>
+            </tr>
+        </table>
+        <div style="clear:both;"></div>
+        <hr />
+        <div style="width:10px;">&nbsp;</div>
+        <h3 style="font-size:20px;">Thông tin hàng hóa: </h3>
+        <table style="width:100%; margin-left:50px;">
+            <tr>
+                <td style="width:20%">Chuyến bay</td>
+                <td style="width:50%">:&nbsp;&nbsp; <? echo $param_arrays[7] ?></td>
+                <td style="width:30%">
+                    Ngày:
+                    @*<? echo $param_arrays[8] ?>*@
+                    @param_arrays[8]
+                </td>
+            </tr>
+            <tr>
+                <td>Số kiện</td>
+                <td colspan="2">:&nbsp;&nbsp; @param_arrays[9]</td>
+            </tr>
+            <tr>
+                <td>Trọng lượng</td>
+                <td colspan="2">:&nbsp;&nbsp; @param_arrays[10]</td>
+            </tr>
+            <tr>
+                <td>Loại hàng</td>
+                <td colspan="2">:&nbsp;&nbsp; @param_arrays[11]</td>
+            </tr>
+            <tr>
+                <td>Người gửi</td>
+                <td colspan="2">:&nbsp;&nbsp; @param_arrays[12]</td>
+            </tr>
+            <tr>
+                <td>Địa chỉ người gửi</td>
+                <td colspan="2">:&nbsp;&nbsp; @param_arrays[13]</td>
+            </tr>
+            <tr>
+                <td>Tình trạng lô hàng</td>
+                <td colspan="2">:&nbsp;&nbsp; @param_arrays[14]</td>
+            </tr>
+        </table>
+
+        <hr />
+        <div style="width:10px;">&nbsp;</div>
+        <h3 style="font-size:20px;">Các giấy tờ cần mang theo: </h3>
+        <table style="width:100%; margin-left:50px;">
+            <tr>
+                <td style="font-weight:bold;">A. Trường hợp khách hàng là công ty</td>
+            </tr>
+            <tr>
+                <td>
+                    <ol>
+                        <li>Thư báo nhận hàng</li>
+                        <li>Giấy giới thiệu gửi cho Cty Cổ Phần- DV-HH Tân Sơn Nhất, CMND của người đi nhận</li>
+                    </ol>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight:bold;">B.Trường hợp khách hàng là Cá nhân</td>
+            </tr>
+            <tr>
+                <td>
+                    <ol>
+                        <li>Hộ khẩu thường trú (Bản chính)</li>
+                        <li>CMND bản chính (Trường hợp CMND bản chính bị mất, phải làm giấy xác nhận có dán ảnh và được chính quyền địa phương  nơi cư trú xác nhận (đóng dấu lên ảnh))</li>
+                        <li>Trường hợp ủy quyền, hoặc mượn địa chỉ, quý khách cần mang thêm</li>
+                        <ul>
+                            <li>Giấy ủy quyền hoặc giấy xác nhận cho mượn địa chỉ phải được chính quyền địa phương nơi người ủy quyền hoặc người cho mượn địa chỉ cư trú xác nhận</li>
+                            <li>Người được ủy quyền hoặc mượn địa chỉ cần mang theo hộ khẩu và chứng minh nhân dân của mình (Bản chính)</li>
+                        </ul>
+                        <li>Trường hợp tạm trú: Phải có xác nhận của địa phương nơi tạm trú</li>
+                    </ol>
+                </td>
+            </tr>
+        </table>
+
+        <hr />
+        <div style="width:10px;">&nbsp;</div>
+        <h3 style="font-size:20px;">Dịch vụ "Đăng ký sớm - nhận hàng mau" </h3>
+        <table style="width:100%; margin-left:50px;">
+            <tr>
+                <td>
+                    Là dịch vụ miễn phí nhằm giảm thiểu thời gian chờ nhận hàng. Xin Quý Khách vui lòng đăng ký bằng cách gửi thông tin hàng hóa cho Bộ phận Hàng Nhập của TCS trước ngày nhận hàng qua điện thoại, fax, email, hoặc đăng ký trực tiếp bằng biểu mẫu tại quầy thủ tục Hàng Nhập.
+                    <ul>
+                        <li>Tel: (028) 38486490-96 / EXT: 141</li>
+                        <li>Fax: (028) 38427943</li>
+                        <li>Email: import@tcs.com.vn</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="Print" class="non-printable" style="margin: 0 auto;width:50px;">
+    <a href="javascript:window.print();" class="btn"><span>Print</span></a></td>
+</div>
+<script type="text/javascript">
+
+</script>
+<style type="text/css" media="print">
+    .non-printable {
+        display: none;
+    }
+
+    .printable {
+        display: block;
+    }
+
+    #Print {
+        display: inline-block;
+        cursor: pointer;
+    }
+</style>

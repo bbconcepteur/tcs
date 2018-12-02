@@ -1,0 +1,291 @@
+﻿
+@{
+    ViewBag.Title = "View_08_cs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- DANH SACH -->
+<div class="ui_awb">
+@{   
+    //*********BEGIN: Khai bao bien ban dau***********************
+    string user_code = null;
+    user_code = (string)Session["user_code"];
+    
+    string agent_code = null;
+    string str = null;
+    string[] param_arrays;
+    HCSV.Web.COSYS_TCS.COSYS_WEBTRACKSoapClient obj = new HCSV.Web.COSYS_TCS.COSYS_WEBTRACKSoapClient();
+    //*********END: Khai bao bien ban dau*************************
+    
+    //include('fun_t/connect_tion.php');
+    //include('con_t/_config-08.php');
+    int N01_COD_AWB_PFX= 0;
+	int N02_COD_AWB_NUM= 1;
+	int N03_COD_AWB_SFX= 2;
+	int N04_AWB_NUM= 3;
+	int N05_COD_HWB_NUM= 4;
+	int N06_FLIGHT_NO= 5;
+	int N07_FLIGHT_DATE= 6;
+	int N08_ROUTING= 7;
+	int N09_PCS= 8;
+	int N10_WGT= 9;
+	int N11_NATURE_OF_GOODS= 10;
+	int N12_NUM_NOTIFY= 11;
+
+	//TEN KHACH HANG
+	int C01_CUSTOMER_NAME= 0;
+	int C02_COD_CMP_CMS= 1;
+    
+    
+    //if(!session_is_registered("user_code"))
+    if(Session["user_code"] == null)
+    {
+        user_code="";
+        //session_register("user_code");
+        //session_unregister("user_code");
+        //$HTTP_POST_VARS['user']="";        /***********TUYEN chua biet lam gi bien nay********/
+    }
+    else
+    {
+        //$agent_code=$user_code;
+        agent_code=user_code;
+    }
+    
+    //$agent_code=$user_code;
+    agent_code=user_code;
+
+    //if(!empty($_POST['action']))
+    if(!String.IsNullOrEmpty(Request.Form["action"]))
+    {
+        //if($_POST['action']=='refresh')
+        if("refresh".Equals(Request.Form["action"]))
+        {
+            //if ($user_code=="admi")
+            if ("admi".Equals(user_code))
+            {
+                //$agent_code=$_POST['txt_agent_code'];
+                agent_code=Request.Form["txt_agent_code"];
+            }
+            else
+            {
+                //$agent_code=$user_code;
+                agent_code=user_code;
+            }        
+        }
+
+        //if($_POST['action']=='print')
+        if("print".Equals(Request.Form["action"]))
+        {
+
+        }
+    }
+
+}
+
+
+    <h5>Danh sách hàng hóa chưa được giao nhận</h5>
+
+
+    <form id="agent_nondlv_report" action="/AWB/View_08_cs" method="post">
+        <input type="hidden" name="action" id="agent_nondlv_report_action" />
+
+        <table width="1000" class="bdr">
+            <tr>
+                @*<? if ($user_code=="admi")*@
+                @if ("admi".Equals(user_code))
+                {
+
+                    <td width="494"><div align="right">Mã đại lý:</div></td>
+                    <td width="494">
+                        @*<input type="text" name="txt_agent_code" value="<? echo $agent_code ;?>" />*@
+                        <input type="text" name="txt_agent_code" value="@agent_code" />
+                    </td>
+                }
+            </tr>
+
+            <tr>
+
+                <td align="right"><a href="#" class="btn" value="refresh" form="agent_nondlv_report"><span>Refresh</span> </a></td>
+                <td align="left"><a href="javascript:window.print();" class="btn"><span>Print</span></a></td>
+
+            </tr>
+        </table>
+
+    </form>
+
+    @*<? if (!empty($agent_code) )*@
+    @if (!String.IsNullOrEmpty(agent_code))
+    {
+        //DOc ra thong tin ve Dai ly
+        //$client = new SoapClient($endpoint.'?wsdl');
+        //$result = $client->GET_CUSTOMER_NAME(array('STR_CONNECT'=>'sss','CUSTOMER_CODE'=>$agent_code));
+        //$str_cus = $result->GET_CUSTOMER_NAMEResult;
+        string str_cus = obj.GET_CUSTOMER_NAME("sss",agent_code);
+        
+        
+        //$row_cus = explode('~|$|~', $str_cus);
+        string[] row_cus = HCSV.Core.CommonTCS.Commons.strSplit(str_cus, "~|$|~");
+        
+        //$agent_name = $row_cus[C01_CUSTOMER_NAME];
+        string agent_name = row_cus[C01_CUSTOMER_NAME];
+        
+        //$agent_code = $row_cus[C02_COD_CMP_CMS];
+        agent_code = row_cus[C02_COD_CMP_CMS];
+        
+        DateTime dtNow = DateTime.Now;
+                
+        //$d1=date("m/d/Y", mktime(0,0,0,date("m")-6,date("d")-1,date("Y")));
+        string d1=HCSV.Core.CommonTCS.Commons.date_m_d_Y(dtNow.AddMonths(-6).AddDays(-1));
+               
+        //$d2=date("m/d/Y", mktime(0,0,0,date("m"),date("d")-1,date("Y")));
+        string d2=HCSV.Core.CommonTCS.Commons.date_m_d_Y(dtNow.AddDays(-1));
+        
+        //$cnt_goods=0;
+        int cnt_goods=0;
+
+    <h5>Danh sách</h5>
+    <table width="1000" class="tbl02">
+        <tr>
+            @*<td colspan="9">Đại lý: <?  echo $agent_code."-".$agent_name  ?></td>*@
+            <td colspan="9">Đại lý: @Html.Raw(agent_code + "-" + agent_name)</td>
+        </tr>
+        <tr><td colspan="9">Hàng nhập kho từ ngày: 
+                @*<? echo date("d/m/Y", mktime(0,0,0,date("m")-6,date("d")-1,date("Y"))); ?> đến ngày: <? echo date("d/m/Y", mktime(0,0,0,date("m"),date("d")-1,date("Y"))); ?>*@
+                @Html.Raw(HCSV.Core.CommonTCS.Commons.date_d_m_Y(dtNow.AddMonths(-6).AddDays(-1)) +"đến ngày: " + HCSV.Core.CommonTCS.Commons.date_d_m_Y(dtNow.AddDays(-1)))
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="title" align="center">Số không vận đơn</td>
+            <td colspan="2" class="title" align="center">Chuyến bay</td>
+            <td rowspan="2" class="title" align="center">ORG/DES</td>
+            <td rowspan="2" class="title" align="center">Số kiện</td>
+            <td rowspan="2" class="title" align="center">Trọng lượng</td>
+            <td rowspan="2" class="title" align="center">Loại hàng</td>
+            <td rowspan="2" class="title" align="center">Đã thông báo cho khách </td>
+        </tr>
+        <tr>
+            <td class="title" align="center">MAWB</td>
+            <td class="title" align="center">HAWB</td>
+            <td class="title" align="center">Số</td>
+            <td class="title" align="center">Ngày</td>
+        </tr>
+        
+        @*$result = $client->GET_AGENT_NONEDLV_LIST(array('STR_CONNECT'=>'sss','AGENT_CODE'=>$agent_code,'CARRIER_CODE'=>''));
+        $str = $result->GET_AGENT_NONEDLV_LISTResult;*@
+        
+        @if (true)//TUYEN add here
+        {
+            str = obj.GET_AGENT_NONEDLV_LIST("sss",agent_code,"");
+            param_arrays = HCSV.Core.CommonTCS.Commons.strSplit(str, "*-$-*");
+        }
+        
+
+        
+        @*foreach($param_arrays as $val)*@
+        @foreach(var val in param_arrays)
+        {
+            //$cnt_goods=$cnt_goods+1;
+            cnt_goods=cnt_goods+1;
+            
+            //$row_goods_temp = explode('~|$|~', $val);
+            string[] row_goods_temp = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+            
+            <tr>
+                <td>
+                    @*<? echo rtrim($row_goods_temp[N04_AWB_NUM]); ?>*@
+                    @Html.Raw(row_goods_temp[N04_AWB_NUM].TrimEnd())
+                </td>
+                <td align="right">
+                    @*<? echo rtrim($row_goods_temp[N05_COD_HWB_NUM]); ?>*@
+                    @Html.Raw(row_goods_temp[N05_COD_HWB_NUM].TrimEnd())
+                </td>
+                <td>
+                    @*<? echo rtrim($row_goods_temp[N06_FLIGHT_NO]);?>*@
+                    @Html.Raw(row_goods_temp[N06_FLIGHT_NO].TrimEnd())
+                </td>
+                <td align="center">
+                    @*<? echo rtrim($row_goods_temp[N07_FLIGHT_DATE]); ?>*@
+                    @Html.Raw(row_goods_temp[N07_FLIGHT_DATE].TrimEnd())
+                </td>
+                <td>
+                    @*<? echo $row_goods_temp[N08_ROUTING]; ?>*@
+                    @Html.Raw(row_goods_temp[N08_ROUTING])
+                </td>
+                <td align="right">
+                    @*<? echo $row_goods_temp[N09_PCS]; ?>*@
+                    @Html.Raw(row_goods_temp[N09_PCS])
+                </td>
+                <td align="right">
+                    @*<? echo $row_goods_temp[N10_WGT]; ?></td>*@
+                    @Html.Raw(row_goods_temp[N10_WGT])
+                </td>
+                <td align="right">
+                    @*<? echo rtrim($row_goods_temp[N11_NATURE_OF_GOODS]);		?>*@
+                    @Html.Raw(row_goods_temp[N11_NATURE_OF_GOODS].TrimEnd())
+                </td>
+                <td>
+                    @*<? echo rtrim("L".$row_goods_temp[N12_NUM_NOTIFY]);?>*@
+                    @Html.Raw("L" + row_goods_temp[N12_NUM_NOTIFY].TrimEnd())
+                </td>
+            </tr>
+        
+        }
+
+        
+
+        <tr><td colspan="9">Tổng cộng: <? echo $cnt_goods ; ?></td></tr>
+        <tr>
+            <td colspan="9">
+                @*$a=date("H")-1;
+                echo "Ngày, giờ in báo cáo : ". date("d M Y $a:i") ;*@
+
+                       
+                @Html.Raw("Ngày, giờ in báo cáo : " + HCSV.Core.CommonTCS.Commons.date_d_M_Y_H_i(dtNow.AddHours(-1)))    
+                
+
+            </td>
+        </tr>
+    </table>
+
+    <table width="1000">
+        <tr>
+            <td>Ghi chú:</td>
+            <td colspan="8">
+                <strong>L0</strong> : Chưa thông báo.
+                <strong>L1</strong> : Thông báo lần 1.
+                <strong> L2</strong> : Thông báo lần 2.
+
+            </td>
+        </tr>
+    </table>
+    
+  }
+    
+
+</div>
+
+
+
+<p>&nbsp;</p>
+<div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+<!-- iware add javascript handle form -->
+
+<script type="text/javascript">
+    $('document').ready(function () {
+        $(".btn").click(function () {
+            value = $(this).attr('value');
+            form_id = $(this).attr('form');
+            action_input_id = form_id + '_action';
+            $('#' + action_input_id).attr({ 'value': value });
+            $('#' + form_id).submit();
+        });
+        $('#agent_nondlv_report').keypress(function (event) {
+            if (event.keyCode == '13') {
+                $(this).find('.btn').click();
+            }
+        });
+    });
+</script>
+<!-- iware end -->
+
+

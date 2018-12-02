@@ -1,0 +1,697 @@
+﻿@{
+    ViewBag.Title = "View_07_cs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    //*********BEGIN: Khai bao bien ban dau***********************   
+    string user_code=(string)Session["user_code"]; 
+    string agent_code = null;
+    string mawb = null;
+    string start_date = null;
+    string end_date = null;
+    string mm, dd, yyyy;
+    string date;
+    string d1 = "", d2 = "";
+    string msg = "";
+    string flight_no = "";
+    DateTime today = DateTime.Today;
+    DateTime datediff1 = DateTime.Today;
+    DateTime datediff2 = DateTime.Today;
+    
+    int cnt_bill = 0;
+    int cnt_goods=0;
+    int cnt_hawb=0;
+    
+    
+    string[] arr_str;
+    string[] row_goods;
+    HCSV.Web.COSYS_TCS.COSYS_WEBTRACKSoapClient obj = new HCSV.Web.COSYS_TCS.COSYS_WEBTRACKSoapClient();
+    //*********END: Khai bao bien ban dau*************************
+    
+    //include('fun_t/connect_tion.php');
+    //include('con_t/_config-07.php');
+    int A01_DOC_FLIGHT_NO= 0;
+    int A02_DOC_FLIGHT_DATE= 1;
+    int A03_DOC_MAWB_NO= 2;
+    int A04_DOC_MAWB_NO_DISP= 3;
+    int A05_DOC_HAWB_TOTAL= 4;
+    int A06_DOC_HDL_INF= 5;
+    int A07_DOC_IRR_INF= 6;
+    int A08_DOC_FLG_DOC_RDY= 7;
+	int A09_DOC_DOC_ATA= 8;
+	int A01_SHP_MAWB_NO= 0;
+    int A02_SHP_HAWB_NO= 1;
+    int A03_SHP_FLIGHT_NO= 2;
+    int A04_SHP_FLIGHT_DATE= 3;
+    int A05_SHP_QTY_MAN_PCS= 4;
+    int A06_SHP_QTY_MAN_WEIGHT= 5;
+    int A07_SHP_QTY_RCV_PCS= 6;
+    int A08_SHP_QTY_RCV_WEIGHT= 7;
+    int A09_SHP_IRR_INF= 8;
+    int A10_SHP_STATUS= 9;
+	int C01_CUSTOMER_NAME= 0;
+	int C02_COD_CMP_CMS= 1;
+    
+    //if(!session_is_registered("user_code"))
+    if(Session["user_code"] == null)
+	    {
+		    user_code="";
+		    //session_register("user_code");
+		    //session_unregister("user_code");
+		    //$HTTP_POST_VARS['user']="";/*********************TUYEN khong biet su dung de lam gi cau lenh nay*******************/
+		    
+            //exit();
+            return;
+	    }
+
+	    //if(!$mawb)
+        if(String.IsNullOrEmpty(mawb))
+		{
+			mawb="*";
+		}
+
+	    //$today=getdate();
+        today = DateTime.Today;
+        
+	    //if (!$start_date)
+        if (String.IsNullOrEmpty(start_date))
+		{
+		    //$start_date=$today[mday] .'/' . $today[mon] .'/' . $today[year];
+            start_date=today.Day.ToString() + '/' + today.Month.ToString() + '/' + today.Year.ToString();
+		}
+        
+	    //if (!$end_date)
+        if (String.IsNullOrEmpty(end_date))
+		{
+		    //$end_date=$today[mday] .'/' . $today[mon] .'/' . $today[year];
+            end_date=today.Day.ToString() + '/' + today.Month.ToString() + '/' + today.Year.ToString();
+		}
+    
+    //if(!empty($_POST['action'])){
+    if(!String.IsNullOrEmpty(Request.Form["action"]))
+    {
+	    //if($_POST['action']=='choose')
+        if("choose".Equals(Request.Form["action"]))
+	    {
+		    //$msg="";
+            msg="";
+		    
+            //$cnt_bill=0;
+            cnt_bill=0;
+		    
+            //$cnt_goods=0;
+            cnt_goods=0;
+		    
+            //$cnt_hawb=0;
+            cnt_hawb=0;
+		                
+		    //if ($user_code=="admi")
+            if (user_code=="admi")
+			{
+			    //$agent_code=$_POST['txt_agent_code'];
+                agent_code=Request.Form["txt_agent_code"];
+			}
+		    else
+			{
+			   // $agent_code=$user_code;
+               agent_code=user_code;
+			}
+            
+		    //$mawb=trim($_POST['txt_mawb']);
+            mawb=Request.Form["txt_mawb"].Trim();
+            
+		    //if ($mawb=="")
+            if (mawb=="")
+		    {
+			    //$mawb='*';
+                mawb="*";
+		    }
+			
+            //$flight_no=trim($_POST['txt_flight_no']);
+            flight_no=!String.IsNullOrEmpty(Request.Form["txt_flight_no"]) ? Request.Form["txt_flight_no"].Trim() : "";
+		    
+            //if ($flight_no=="")
+            if (flight_no=="")
+		    {
+			    //$flight_no='*';
+                flight_no="*";
+		    }
+
+		    //$start_date=trim($_POST['txt_start_date']);
+            start_date=Request.Form["txt_start_date"].Trim();
+            
+		    //if(!trim($start_date) =='')
+            if( !(start_date.Trim() == ""))
+		    {
+			    //$arr_str=explode("/",$start_date);
+                arr_str= start_date.Split('/');
+			    
+                //$mm=$arr_str[1];
+                mm=arr_str[1];
+			    
+                //$dd=$arr_str[0];
+                dd=arr_str[0];
+                
+			    //$yyyy=$arr_str[2];
+                yyyy=arr_str[2];
+                
+			    //if(!checkdate ($mm, $dd, $yyyy)){
+                if(!HCSV.Core.CommonTCS.Commons.checkDate (mm, dd, yyyy)){
+				    //$msg=$msg."Không có ngày này trong năm (".$start_date.").";
+                    msg=msg + "Không có ngày này trong năm (" + start_date + ").";
+				    
+			    }
+			    
+                //$date=$mm."/".$dd."/".substr($yyyy,2,2);
+                date=mm + "/" + dd + "/" + yyyy.Substring(2,2);
+                
+			    //$d1=$mm."/".$dd."/".$yyyy;
+                d1=mm + "/" + dd + "/" + yyyy;
+                
+			    //$today = getdate();
+                today = DateTime.Today;
+                
+			    //if($date >$today){
+                if(HCSV.Core.CommonTCS.Commons.strToTime(date) > today){
+				    //$msg=$msg." Ngày không được lớn hơn ngày hiện tại";
+                    msg= msg + " Ngày không được lớn hơn ngày hiện tại";
+				    
+			    }
+			    
+                //$datediff1=mktime(0,0,0,$mm,$dd,$yyyy);
+                datediff1= HCSV.Core.CommonTCS.Commons.mktime(mm,dd,yyyy);
+			    
+		    }
+            
+		    //$end_date=trim($_POST['txt_end_date']);
+            end_date=Request.Form["txt_end_date"].Trim();
+		    
+            if(!(end_date.Trim() ==""))
+		    {
+			    //$arr_str=explode("/",$end_date);
+                arr_str= end_date.Split('/');
+                
+			    //$mm=$arr_str[1];
+                mm=arr_str[1];
+                
+			    //$dd=$arr_str[0];
+                dd=arr_str[0];
+                
+			    //$yyyy=$arr_str[2];
+                yyyy=arr_str[2];
+                
+			    //if(!checkdate ($mm, $dd, $yyyy)){
+                if(!HCSV.Core.CommonTCS.Commons.checkDate (mm, dd, yyyy)){
+				    //$msg=$msg."Không có ngày này trong năm (".$end_date.").";
+                    msg= msg + "Không có ngày này trong năm (" + end_date + ").";				    
+			    }
+			    
+                //$date=$mm."/".$dd."/".substr($yyyy,2,2);
+                date= mm + "/" + dd + "/" + yyyy.Substring(2,2);
+			    
+                //$d2=$mm."/".$dd."/".$yyyy;
+                d2=mm+"/"+dd+"/"+yyyy;
+			    
+			    //$today = getdate();
+                today = DateTime.Today;
+			    
+			    //if($date >$today){
+                if( HCSV.Core.CommonTCS.Commons.strToTime(date) >today){
+				    //$msg=$msg." Ngày không được lớn hơn ngày hiện tại";
+                    msg=msg + " Ngày không được lớn hơn ngày hiện tại";
+				    
+			    }
+			    
+                //$datediff2=mktime(0,0,0,$mm,$dd,$yyyy);
+                datediff2=HCSV.Core.CommonTCS.Commons.mktime(mm,dd,yyyy);
+			    
+		    }
+		    //if(date("Ymd",strtotime($d1)) > date("Ymd" ,strtotime($d2))){
+            if(Convert.ToInt64(HCSV.Core.CommonTCS.Commons.date_Ymd(HCSV.Core.CommonTCS.Commons.strToTime(d1))) > 
+                Convert.ToInt64(HCSV.Core.CommonTCS.Commons.date_Ymd(HCSV.Core.CommonTCS.Commons.strToTime(d2)))){
+				
+                //$msg=$msg."[Từ ngày] không được lớn hơn [Đến ngày]";
+                msg=msg + "[Từ ngày] không được lớn hơn [Đến ngày]";
+		    }
+		    
+            /*$difference = $datediff2-$datediff1; //Calcuates Difference
+		    $songay = floor($difference /60/60/24); //Calculates Days Old
+		    if ($songay>31)
+		    {
+		    $msg=$msg."Khoảng thời gian không được vượt quá 31 ngày";
+		    }*/
+            
+            TimeSpan tspan = datediff2-datediff1; //Calcuates Difference
+            int songay = tspan.Days;
+		    if (songay>31)
+		    {
+		        msg=msg + "Khoảng thời gian không được vượt quá 31 ngày";
+		    }
+
+	    }
+
+	    //if($_POST['action']=='print'){
+        if(Request.Form["action"]=="print"){
+		    //echo '';
+            @Html.Raw("");
+	    }
+    }
+
+}
+
+
+<script>
+
+    $(function () {
+        $("#datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+
+    });
+    $(function () {
+        $("#datepicker_2").datepicker({ dateFormat: 'dd/mm/yy' });
+
+    });
+</script>
+
+<div class="text" id="spiffycalendar"></div>
+<div class="ui_awb">
+    <h5>In báo cáo tình trạng tài liệu và hàng hoá</h5>
+    <form id="agent_hdl_report" action="/AWB/View_07_cs" method="post">
+        <input type="hidden" name="action" id="agent_hdl_report_action" />
+        <table width="1000" class="bdr">
+            <tr>
+                <td></td>
+                <td></td>
+                @*if ($user_code=="admi")*@
+                @if (user_code == "admi")
+                {
+
+                    <td>Mã đại lý:</td>
+                    <td><input type="text" name="txt_agent_code" value="@agent_code" /></td>
+                }
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>KVĐ:</td>
+                <td>
+                    @*<input name="txt_mawb" type="text" value="<? echo $mawb ;?>" />*@
+                    <input name="txt_mawb" type="text" value="@mawb" />
+                </td>
+                <td>Từ ngày:</td>
+                <td>
+                    <div class="demo">
+                        @*<p><input type="text" name="txt_start_date" id="datepicker" value="<? echo $start_date ;?>" /></p>*@
+                        <p><input type="text" name="txt_start_date" id="datepicker" value="@start_date" /></p>
+                    </div>
+                </td>
+                <td>Đến ngày:</td>
+                <td>
+                    <div class="demo">
+                        @*<p><input type="text" name="txt_end_date" id="datepicker_2" value="<? echo $end_date ;?>" /></p>*@
+                        <p><input type="text" name="txt_end_date" id="datepicker_2" value="@end_date" /></p>
+                    </div>
+                </td>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="6">
+                    Nhập số không vận đơn nếu quý khách muốn xem thông tin
+                    về tài liệu và hàng hóa theo từng không vận đơn.<br />
+                </td>
+            </tr>
+            <tr>
+
+                <td colspan="6" align="center">
+                    <a href="#" class="btn" value="choose" form="agent_hdl_report"><span>Chọn</span></a>&nbsp;
+                    <a href="javascript:window.print();" class="btn"><span>Print</span></a>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+@*if (!empty($_POST['action']) and !$msg=="")*@
+@if (!String.IsNullOrEmpty(Request.Form["action"]) && !(msg==""))
+{
+	//echo $msg;
+    Html.Raw(msg);
+}
+
+
+@*if (!empty($_POST['action']) and !empty($mawb) and !empty($agent_code) and !empty($flight_no) and !empty($start_date) and !empty($end_date) and trim($msg)=="")*@
+@if (!String.IsNullOrEmpty(Request.Form["action"]) && !String.IsNullOrEmpty(mawb) && !String.IsNullOrEmpty(agent_code) 
+    && !String.IsNullOrEmpty(flight_no) && !String.IsNullOrEmpty(start_date) && !String.IsNullOrEmpty(end_date) && (msg.Trim()==""))
+{
+	//$client = new SoapClient($endpoint.'?wsdl');
+	//$result = $client->GET_CUSTOMER_NAME(array('STR_CONNECT'=>'sss','CUSTOMER_CODE'=>$agent_code));    
+	//$str_cus = $result->GET_CUSTOMER_NAMEResult;
+    string str_cus = obj.GET_CUSTOMER_NAME("sss",agent_code);
+    
+	//$row_cus = explode('~|$|~', $str_cus);
+    string[] row_cus = HCSV.Core.CommonTCS.Commons.strSplit(str_cus, "~|$|~");
+    
+	//$agent_name = $row_cus[C01_CUSTOMER_NAME];
+    string agent_name = row_cus[C01_CUSTOMER_NAME];
+    
+	//$agent_code = $row_cus[C02_COD_CMP_CMS];
+    agent_code = row_cus[C02_COD_CMP_CMS];
+
+	//$result = $client->GET_AGENT_IMP_STATUS_DOC(array('STR_CONNECT'=>'sss','AWB_NO'=>$mawb,'AGENT_CODE'=>$agent_code,'FLIGHT_NO'=>$flight_no,'START_DATE'=>$start_date,'END_DATE'=>$end_date));
+	//$str = $result->GET_AGENT_IMP_STATUS_DOCResult;
+    string str = obj.GET_AGENT_IMP_STATUS_DOC("sss", mawb, agent_code, flight_no,start_date,end_date);
+    
+	//$param_arrays_doc = explode('*-$-*', $str);//~|$|~
+    string[] param_arrays_doc = HCSV.Core.CommonTCS.Commons.strSplit(str, "*-$-*");
+
+	//$result = $client->GET_AGENT_IMP_STATUS_SHP(array('STR_CONNECT'=>'sss','AWB_NO'=>$mawb,'AGENT_CODE'=>$agent_code,'FLIGHT_NO'=>$flight_no,'START_DATE'=>$start_date,'END_DATE'=>$end_date));
+	//$str = $result->GET_AGENT_IMP_STATUS_SHPResult;
+    str = obj.GET_AGENT_IMP_STATUS_SHP("sss",mawb,agent_code,flight_no,start_date,end_date);
+	
+    //$param_arrays_shp = explode('*-$-*', $str);//~|$|~
+    string[] param_arrays_shp = HCSV.Core.CommonTCS.Commons.strSplit(str, "*-$-*");
+
+<!-- END IN BAO CAO -->
+<div class="clear"></div>
+<!-- BANG NHAP HANG CHO KH TRUC TIEP - KHONG LOGIN -->
+<div class="ui_awb">
+    <h5>Phiếu thông báo tình trạng tài liệu</h5>
+    <table width="1000" class="tbl02">
+        <tr>
+            <td colspan="7">
+                @*Đại lý: <?php echo $agent_code."-".$agent_name  ?>*@
+                Đại lý: @agent_code - @agent_name
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="57" class="title">Chuyến bay</td>
+            <td align="center" width="92" class="title">Ngày</td>
+            <td align="center" width="131" class="title">Số không vận đơn</td>
+            <td align="center" width="64" class="title">Tổng số HAWB</td>
+            <td align="center" width="84" class="title">Tài liệu kèm theo HAWB</td>
+            <td align="center" width="286" class="title">
+                Thông tin về phục vụ hàng hóa
+            </td>
+            <td align="center" width="254" class="title">Thông tin bất thường</td>
+        </tr>
+        @*foreach($param_arrays_doc as $val)*@
+        @foreach(var val in param_arrays_doc)
+        {
+
+            //$row_bill = explode('~|$|~', $val);
+            string[] row_bill = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+            
+            //if ($row_bill[A03_DOC_MAWB_NO]==$row_bill[A04_DOC_MAWB_NO_DISP])
+            if (row_bill[A03_DOC_MAWB_NO]==row_bill[A04_DOC_MAWB_NO_DISP])
+            {
+                //$cnt_bill=$cnt_bill+1;
+                cnt_bill=cnt_bill+1;
+            }
+            else
+            {
+                //$cnt_hawb=$cnt_hawb+1;
+                cnt_hawb=cnt_hawb+1;
+            }
+
+        
+
+        <tr>
+            <td>
+                @*<? echo $row_bill[A01_DOC_FLIGHT_NO]; ?>*@
+                @row_bill[A01_DOC_FLIGHT_NO]
+            </td>
+            <td align="center">
+                @*if ($row_bill[A02_DOC_FLIGHT_DATE] ==NULL)*@
+                @if (row_bill[A02_DOC_FLIGHT_DATE] == null)
+                {
+                    //echo "&nbsp;";
+                    @Html.Raw("&nbsp;");
+                }
+                else
+                {
+                    //echo date ("d-M-Y", strtotime($row_bill[A02_DOC_FLIGHT_DATE]));
+                   @Html.Raw(String.IsNullOrEmpty(row_bill[A02_DOC_FLIGHT_DATE]) ? "" : HCSV.Core.CommonTCS.Commons.date_d_M_Y( HCSV.Core.CommonTCS.Commons.strToTime(row_bill[A02_DOC_FLIGHT_DATE])));
+                }
+
+                
+            </td>
+            <td align="left">
+                <!--So AWB-->
+                @*if (strlen($row_bill[A04_DOC_MAWB_NO_DISP])>11)*@
+                @if (row_bill[A04_DOC_MAWB_NO_DISP].Length>11)
+                {
+                    //echo  substr( $row_bill[A04_DOC_MAWB_NO_DISP],0,11)."<font color='#0000FF'>" .  substr( $row_bill[A04_DOC_MAWB_NO_DISP],11). "</font>" ;
+                    @Html.Raw(row_bill[A04_DOC_MAWB_NO_DISP].Substring(0,11) + "<font color='#0000FF'>" +  row_bill[A04_DOC_MAWB_NO_DISP].Substring(11) + "</font>");
+                }
+                else
+                {
+                    @Html.Raw( "<strong>" + row_bill[A04_DOC_MAWB_NO_DISP] + "</strong>" );
+                }
+                
+            </td>
+            <td align="right">
+                
+                @*if ($row_bill[A03_DOC_MAWB_NO]==$row_bill[A04_DOC_MAWB_NO_DISP])*@
+                @if (row_bill[A03_DOC_MAWB_NO]==row_bill[A04_DOC_MAWB_NO_DISP])
+                {
+                    //echo $row_bill[A05_DOC_HAWB_TOTAL];
+                    @Html.Raw(row_bill[A05_DOC_HAWB_TOTAL]);
+
+                }
+                else
+                {
+                    //echo "&nbsp;";
+                    @Html.Raw("&nbsp;");
+                }
+
+               
+            </td>
+
+            <td align="center">
+                @*if( $row_bill[A09_DOC_DOC_ATA]=='Y')*@
+                @if(row_bill[A09_DOC_DOC_ATA]=="Y")
+                {
+                    //echo 'Y';
+                    @Html.Raw('Y');
+                }
+                else
+                {
+                    //echo '&nbsp;';
+                    @Html.Raw("&nbsp;");
+                }
+                
+            </td>
+            <td>
+                @*if (trim($row_bill[A06_DOC_HDL_INF])<>"")*@
+                @if (row_bill[A06_DOC_HDL_INF].Trim()!="")
+                {
+                
+                    //echo trim($row_bill[A06_DOC_HDL_INF]);
+                    @Html.Raw(row_bill[A06_DOC_HDL_INF].Trim());
+                }
+                else
+                {
+                    //echo "&nbsp;";
+                    @Html.Raw( "&nbsp;");
+                }
+                
+            </td>
+            <td>
+                @if (true) //TUYEN tao them cau lenh nay
+                {
+                    //$str_irr="";
+                    string str_irr="";
+
+                    //$str_irr=trim($row_bill[A07_DOC_IRR_INF]);
+                    str_irr=row_bill[A07_DOC_IRR_INF].Trim();
+                    
+                    //echo $str_irr;    
+                    @Html.Raw(str_irr);
+                }
+                
+                
+            </td>
+        </tr>
+
+        
+
+        }@*end foreach($param_arrays_doc as $val)*@
+        
+        <tr>
+
+            <td colspan="7">
+                <strong>Tổng cộng </strong>: MAWB:
+                @*<?php echo $cnt_bill; ?>*@
+                @cnt_bill
+                HAWB:
+                @*<?php echo $cnt_hawb; ?>*@
+                @cnt_hawb
+            </td>
+
+    </table>
+    <h5>Phiếu thông báo hàng đến</h5>
+    <table width="1000" class="tbl02">
+        <tr>
+            <td colspan="10">
+                Đại lý:                
+                @*<?php echo $agent_code."-".$agent_name  ?>*@
+                @agent_code - @agent_name
+            </td>
+        </tr>
+        <tr>
+            <td width="112" rowspan="2" class="title">Chuyến bay</td>
+            <td width="102" rowspan="2" class="title">Ngày</td>
+            <td colspan="2" class="title"><div align="center">Số không vận đơn</div></td>
+            <td colspan="2" class="title"><div align="center">Tài liệu</div></td>
+            <td colspan="2" class="title"><div align="center">Thực tế</div></td>
+            <td width="114" rowspan="2" class="title">Tình trạng hàng hóa</td>
+            <td width="51" rowspan="2" class="title">Ghi chú</td>
+        </tr>
+        <tr>
+            <td width="112" class="title"> MAWB</td>
+            <td width="72" class="title">HAWB</td>
+            <td width="37" class="title">Số kiện</td>
+            <td width="61" class="title">Trọng lượng</td>
+            <td width="36" class="title">Số kiện</td>
+            <td width="59" class="title">Trọng lượng</td>
+        </tr>
+        
+        @*foreach($param_arrays_shp as $val)*@
+        @foreach(var val in param_arrays_shp)
+        {
+            //$cnt_goods=$cnt_goods+1;
+            cnt_goods=cnt_goods+1;
+            
+            //$row_goods = explode('~|$|~', $val);
+            row_goods = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+        
+        <tr>
+            <td>
+                @row_goods[A03_SHP_FLIGHT_NO]
+            </td>
+            <td>
+                @*if ($row_goods[A04_SHP_FLIGHT_DATE] ==NULL)*@
+                @if (String.IsNullOrEmpty(row_goods[A04_SHP_FLIGHT_DATE]))
+                {
+                    //echo "&nbsp;";
+                    @Html.Raw("&nbsp;");
+                }
+                else
+                {
+                    //echo date ("d-M-Y", strtotime($row_goods[A04_SHP_FLIGHT_DATE]));
+                    @Html.Raw(HCSV.Core.CommonTCS.Commons.date_d_M_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[A04_SHP_FLIGHT_DATE])));
+                }
+
+                
+
+
+            </td>
+            <td>
+                <strong>
+                    
+                    @*echo "<a href=/awb/index.php?section =agent&layout =03_cs&awbFirst =". substr ($row_goods[A01_SHP_MAWB_NO],0,3)." &awblast=". substr($row_goods[A01_SHP_MAWB_NO],3,8). " target=_blank>".$row_goods[A01_SHP_MAWB_NO]."</a>";*@
+                    <a href="@String.Format("/AWB/View_03_cs?awbFirst={0}&awblast={1}", row_goods[A01_SHP_MAWB_NO].Substring (0,3), row_goods[A01_SHP_MAWB_NO].Substring(3,8))" target=_blank>@row_goods[A01_SHP_MAWB_NO]</a>
+                    
+                </strong>
+            </td>
+            <td>
+                
+                @*echo "<a href=/awb/index.php?section =agent&layout =Letter_v_cs&mawb_no =".$row_goods[A01_SHP_MAWB_NO]." &hawb_no=". $row_goods[A02_SHP_HAWB_NO]. " target=_blank>".$row_goods[A02_SHP_HAWB_NO]."</a>";*@
+                <a href="@String.Format("/AWB/View_Letter_v_cs?mawb_no={0}&hawb_no={1}", row_goods[A01_SHP_MAWB_NO], row_goods[A02_SHP_HAWB_NO])" target=_blank>@row_goods[A02_SHP_HAWB_NO]</a>
+                
+                
+            </td>
+            <td align="right">
+                @*<? echo $row_goods[A05_SHP_QTY_MAN_PCS]; ?>*@
+                @row_goods[A05_SHP_QTY_MAN_PCS]
+            </td>
+            <td align="right">
+                @*<? echo $row_goods[A06_SHP_QTY_MAN_WEIGHT]; ?>*@
+                @row_goods[A06_SHP_QTY_MAN_WEIGHT]
+            </td>
+            <td align="right">
+                @*<? echo $row_goods[A07_SHP_QTY_RCV_PCS]; ?>*@
+                @row_goods[A07_SHP_QTY_RCV_PCS]
+            </td>
+            <td align="right">
+                @*if ($row_goods[A08_SHP_QTY_RCV_WEIGHT]>0)*@
+                @if (Convert.ToDecimal(row_goods[A08_SHP_QTY_RCV_WEIGHT])>0)
+                {
+                
+                    //echo $row_goods[A08_SHP_QTY_RCV_WEIGHT];
+                    @Html.Raw(row_goods[A08_SHP_QTY_RCV_WEIGHT]);
+                }
+                else
+                {
+                    //echo $row_goods[A08_SHP_QTY_RCV_WEIGHT];
+                    @Html.Raw(row_goods[A08_SHP_QTY_RCV_WEIGHT]);
+                }
+
+            </td>
+            <td>
+                @*if (trim($row_goods[A09_SHP_IRR_INF]) <>"")*@
+                @if (row_goods[A09_SHP_IRR_INF].Trim() != "")
+                {
+                    //echo trim($row_goods[A09_SHP_IRR_INF]);
+                    @Html.Raw(row_goods[A09_SHP_IRR_INF].Trim());
+                }
+                else
+                {
+                    //echo"&nbsp;";
+                    @Html.Raw("&nbsp;")
+                }
+                
+            </td>
+            <td>
+                
+                @*echo trim($row_goods[A10_SHP_STATUS	]);*@
+                @row_goods[A10_SHP_STATUS].Trim()
+
+            </td>
+        </tr>
+        
+      }@*// End foreach($param_arrays_shp as $val)*@
+      
+      
+        <tr>
+            <td colspan="10">
+                <strong>Tổng cộng:</strong>
+                @*<? echo $cnt_goods ;?>*@
+                @cnt_goods
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10">
+                @if(true)//TUYEN: tao them cau lenh nay
+                {
+                    //$a=date("H")-1;
+                    int a= DateTime.Today.Hour-1;
+                
+                    //echo "Ngày, giờ in báo cáo : ". date("d M Y $a:i") ;    
+                    @Html.Raw("Ngày, giờ in báo cáo : " + DateTime.Today.ToString(String.Format("dd MMM yyyy {0}:mm", a))) ;    
+                }
+                
+                
+
+            </td>
+        </tr>
+        <tr>
+            <td>Ghi chú:</td>
+            <td colspan="9"></td>
+        </tr>
+
+    </table>
+  </div>
+  
+}
+<div class="right"><a href="#" class="btn marginT0"><span>Back to top</span></a></div>
+<script type="text/javascript">
+        
+    $(".btn").click(function () {
+        value = $(this).attr('value');
+        form_id = $(this).attr('form');
+        action_input_id = form_id + '_action';
+        $('#' + action_input_id).attr({ 'value': value });
+        $('#' + form_id).submit();
+    });
+    
+</script>

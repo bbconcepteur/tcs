@@ -1,0 +1,2980 @@
+﻿@{
+    ViewBag.Title = "View_03_cs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    //*********BEGIN: Khai bao bien ban dau TUYEN lam
+    string user_code = (string)Session["user_code"];
+    string lg_codesgshdgsksasa = (string)Session["lg_codesgshdgsksasa"];
+    string awbFirst = null, awbLast = null;
+    string status = null;
+    string bill_type = null;
+    string section = null;
+    string agent_code = null;
+    string agent_fax = null;
+    string str_imp_shp_trs = null;//TUYEN: Bien nay khong biet tim thay o dau ca.
+
+    string[] row_bill = {""};
+    string[] row_bill_ctc = { "" };
+    string[] param_arrays_shp;
+    string[] row_goods;
+    string[] row_acpt = { "" };
+    string[] row_book = { "" };
+    string[] param_arrays_exp_shp = { "" };
+    string[] row_goods_exp = { "" };
+    string[] param_arrays_hawb_doc;    
+    string[] param_arrays_mawb = {""}; //TUYEN: tu tao cau lenh nay vi MR Thu (TCS) bao la doan code nay khong dung, bien 'param_arrays_mawb' khong tim thay
+    
+    string checkin_date = null;
+    string checkin_hour=null;
+    string checkin_minute=null;
+    string agent_name_vn = null;
+    string agent_adr_vn = null;
+    string agent_tel = null;
+
+    int serie;
+    int cnt_mawb = 0;
+    int cnt_goods;
+    int temp = 0;
+    int cnt_hawb;
+    int cnt_goods_exp= 0;
+    HCSV.Web.COSYS_TCS.COSYS_WEBTRACKSoapClient obj = new HCSV.Web.COSYS_TCS.COSYS_WEBTRACKSoapClient();
+    //*********END: Khai bao bien ban dau TUYEN lam
+
+    //if(!session_is_registered("user_code"))
+    if(Session["user_code"] == null)
+    {
+	    user_code="";
+	    //session_register("user_code");
+
+        //session_unregister("user_code");
+        Session["user_code"] = null;
+
+	    //$HTTP_POST_VARS['user']="";/********************************CAU LENH NAY, TUYEN CHUA BIET SU DUNG DE LAM GI******************************/
+    }
+    else
+    {
+	    //session_register("lg_codesgshdgsksasa");
+
+        //if ($lg_codesgshdgsksasa <> $user_code)
+        if (!user_code.Equals(lg_codesgshdgsksasa))
+	    {
+	        user_code="";
+	        //session_register("user_code");
+
+            //session_unregister("user_code");
+	        Session["user_code"] = null;
+
+            //$HTTP_POST_VARS['user']="";/********************************CAU LENH NAY, TUYEN CHUA BIET SU DUNG DE LAM GI******************************/
+
+	    }
+    }
+
+    /********************************************************************************************************/
+    //require_once "con_t/_config-03.php";
+    int B01_MAWB_NO = 0;
+    int B02_FLG_HDL = 1;
+    int B03_ORG = 2;
+    int B04_DES = 3;
+    int B05_FL_NO = 4;
+    int B06_FL_DATE = 5;
+    int B07_PCS = 6;
+    int B08_WEIGHT = 7;
+    int B09_FLG_IMP_EXP = 8;
+
+	int B10_NATURE_OF_GOODS = 9;
+	int B11_CARRIER_CODE = 10;
+	int B12_FLIGHT_NUM = 11;
+    int B13_PERSONAL = 12;
+    int B14_HCM_OTH = 13;
+	int B15_HDL_BY = 14;
+
+    //    int A10_SHP_STATUS = 9;
+
+	// CAC COT CUA MAWB CONTACT
+    int C01_CNE_NAME = 0;
+    int C02_CNE_ADDR = 1;
+    int C03_SHP_NAME = 2;
+    int C04_SHP_ADDR = 3;
+	int C05_CNEE_CODE = 4;
+
+    int C06_CNE_NAME_E = 5;
+    int C07_CNE_ADDR_E = 6;
+    int C08_SHP_NAME_V = 7;
+    int C09_SHP_ADDR_V = 8;
+    int C10_CNE_TEL = 9;
+    int C11_CNE_FAX = 10;
+    int C12_SHP_TEL = 11;
+    int C13_SHP_FAX = 12;
+    //    int S14_QTY_SHP_PCS = 13;
+
+	//TEN KHACH HANG
+	int C01_CUSTOMER_NAME = 0;
+	int C02_COD_CMP_CMS = 1;
+	int C03_TEL = 2;
+	int C04_FAX = 3;
+
+	int C05_ADDRESS = 4;
+	int C06_NAME_VN = 5;
+	int C07_ADDRESS_VN = 6;
+
+
+
+
+    // SHIPMENT
+    int S01_COD_AWB_PFX = 0;
+    int S02_COD_AWB_NUM = 1;
+    int S03_COD_AWB_SFX = 2;
+    int S04_FLG_SHP_RDY = 3;
+    int S05_QTY_SHP_PCS = 4;
+    int S06_QTY_SHP_WGT = 5;
+    int S07_COD_WGT_UNT = 6;
+    int S08_DES_NOG = 7;
+    int S09_COD_SHP_CAR = 8;
+    int S10_COD_SHP_FLT = 9;
+    int S11_DAT_SHP_ORI = 10;
+    int S12_DAT_SHP_ARR = 11;
+    int S13_DES_SHP_ARR = 12;
+    int S14_QTY_SHP_PCS = 13;
+    int S15_QTY_SHP_WGT = 14;
+    int S16_SPL_HDL = 15;
+    int S17_FLT_ATA = 16;
+    int S18_SHP_RE_WGT = 17;
+    int S19_IRR_INF = 18;
+    int S20_GOODS_ST = 19;
+    int S21_CHK_IN_DATE = 20;
+    int S22_DLV_DATE = 21;
+	int S23_RCV_NAME = 22;
+	int S24_DLV_TYPE = 23;
+
+	int S25_SERVICE_RQ = 24;
+    int S26_IS_EXP = 25;
+	int S27_NUM_NOTIFY = 26;
+
+
+
+	// CAC COT CUA HAWB CONTACT
+    int HC01_CNE_NAME = 0;
+    int HC02_CNE_ADDR = 1;
+    int HC03_SHP_NAME = 2;
+    int HC04_SHP_ADDR = 3;
+	int HC05_CNEE_CODE = 4;
+
+    int HC06_CNE_NAME_E = 5;
+    int HC07_CNE_ADDR_E = 6;
+    int HC08_SHP_NAME_V = 7;
+    int HC09_SHP_ADDR_V = 8;
+    int HC10_CNE_TEL = 9;
+    int HC11_CNE_FAX = 10;
+    int HC12_SHP_TEL = 11;
+    int HC13_SHP_FAX = 12;
+    //    int S14_QTY_SHP_PCS = 13;
+
+    // HAWB DOCUMENT
+    int HD01_COD_AWB_PFX = 0;
+    int HD02_COD_AWB_NUM = 1;
+    int HD03_COD_AWB_SFX = 2;
+    int HD04_FLG_HWB_RDY = 3;
+    int HD05_QTY_HWB_PCS = 4;
+    int HD06_QTY_HWB_WGT = 5;
+    int HD07_COD_WGT_UNT = 6;
+    int HD08_DES_NOG = 7;
+    int HD09_COD_HWB_CAR = 8;
+    int HD10_COD_HWB_FLT = 9;
+    int HD11_DAT_HWB_ORI = 10;
+    int HD12_DAT_HWB_ARR = 11;
+    int HD13_DES_HWB_ARR = 12;
+    int HD14_QTY_HWB_PCS = 13;
+    int HD15_QTY_HWB_WGT = 14;
+    int HD16_SPL_HDL = 15;
+    int HD17_FLT_ATA = 16;
+    int HD18_HWB_RE_WGT = 17;
+    int HD19_IRR_INF = 18;
+    int HD20_GOODS_ST = 19;
+    int HD21_CHK_IN_DATE = 20;
+    int HD22_DLV_DATE = 21;
+	int HD23_RCV_NAME = 22;
+	int HD24_DLV_TYPE = 23;
+	int HD25_HAWB_NO = 24;
+
+    int HD26_SERVICE_RQ = 25;
+    int HD27_IS_EXP = 26;
+    int HD28_PERSONAL = 27;
+    int HD29_HCM_OTH = 28;
+	int HD30_NUM_NOTIFY = 29;
+
+
+    // HAWB SHIPMENT
+    int HS01_COD_AWB_PFX = 0;
+    int HS02_COD_AWB_NUM = 1;
+    int HS03_COD_AWB_SFX = 2;
+    int HS04_FLG_HWB_RDY = 3;
+    int HS05_QTY_HWB_PCS = 4;
+    int HS06_QTY_HWB_WGT = 5;
+    int HS07_COD_WGT_UNT = 6;
+    int HS08_DES_NOG = 7;
+    int HS09_COD_HWB_CAR = 8;
+    int HS10_COD_HWB_FLT = 9;
+    int HS11_DAT_HWB_ORI = 10;
+    int HS12_DAT_HWB_ARR = 11;
+    int HS13_DES_HWB_ARR = 12;
+    int HS14_QTY_HWB_PCS = 13;
+    int HS15_QTY_HWB_WGT = 14;
+    int HS16_SPL_HDL = 15;
+    int HS17_FLT_ATA = 16;
+    int HS18_HWB_RE_WGT = 17;
+    int HS19_IRR_INF = 18;
+    int HS20_GOODS_ST = 19;
+    int HS21_CHK_IN_DATE = 20;
+    int HS22_DLV_DATE = 21;
+	int HS23_RCV_NAME = 22;
+	int HS24_DLV_TYPE = 23;
+	int HS25_HAWB_NO = 24;
+
+    int HS26_SERVICE_RQ = 25;
+    int HS27_IS_EXP = 26;
+    int HS28_PERSONAL = 27;
+    int HS29_HCM_OTH = 28;
+	int HS30_NUM_NOTIFY = 29;
+
+    //CAC COT CUA CAC CHUYEN BAY
+    int F01_COD_FLT_CAR = 0;
+    int F02_COD_FLT_NUM = 1;
+    int F03_DAT_FLT_ORI = 2;
+    int F04_ORG = 3;
+    int F05_DES = 4;
+    int F06_DATE_STD = 5;
+    int F07_TIME_STD = 6;
+    int F08_DATE_ETD = 7;
+    int F09_TIME_ETD = 8;
+    int F10_DATE_ATD = 9;
+    int F11_TIME_ATD = 10;
+    int F12_DATE_STA = 11;
+    int F13_TIME_STA = 12;
+    int F14_DATE_ETA = 13;
+    int F15_TIME_ETA = 14;
+    int F16_DATE_ATA = 15;
+    int F17_TIME_ATA = 16;
+    int F18_FLG_DOM = 17;
+
+    // THOI GIAN TINH LK, LAO VU
+    int F01_DATE_BEGIN = 0;
+    int F02_MONTH_BEGIN = 1;
+    int F03_YEAR_BEGIN = 2;
+
+    int F04_DIFFDATE = 3;
+    int F05_DIFFMINS = 4;
+    int F06_DIFFDATEFREE = 5;
+    //cac cot cua Location
+
+    int L01_STOR_RQ = 0;
+    int L02_KG_WT = 1;
+    int L03_RE_WT = 2;
+    int L04_RE_WT_YN = 3;
+    int L05_PCS = 4;
+    int L06_START_DATE = 5;
+    int L07_END_DATE = 6;
+
+
+    // EXPORT SHIPMENT
+    int ES01_COD_AWB_PFX = 0;
+    int ES02_COD_AWB_NUM = 1;
+    int ES03_COD_AWB_SFX = 2;
+    int ES04_FLG_SHP_RDY = 3;
+    int ES05_QTY_SHP_PCS = 4;
+    int ES06_QTY_SHP_WGT = 5;
+    int ES07_COD_WGT_UNT = 6;
+    int ES08_DES_NOG = 7;
+    int ES09_COD_SHP_CAR = 8;
+    int ES10_COD_SHP_FLT = 9;
+    int ES11_DAT_SHP_ORI = 10;
+    int ES12_DAT_SHP_ARR = 11;
+    int ES13_DES_SHP_ARR = 12;
+    int ES14_QTY_SHP_PCS = 13;
+    int ES15_QTY_SHP_WGT = 14;
+    int ES16_SPL_HDL = 15;
+    int ES17_FLT_ATD = 16;
+    int ES18_SHP_RE_WGT = 17;
+    int ES19_IRR_INF = 18;
+    int ES20_GOODS_ST = 19;
+    int ES21_CHK_IN_DATE = 20;
+    int ES22_DLV_DATE = 21;
+	int ES23_RCV_NAME = 22;
+	int ES24_DLV_TYPE = 23;
+
+	int ES25_SERVICE_RQ = 24;
+    int ES26_IS_EXP = 25;
+	int ES27_NUM_NOTIFY = 26;
+
+    //cac cot cua EXPORT Location
+
+    int EL01_STOR_RQ = 0;
+    int EL02_KG_WT = 1;
+    int EL03_RE_WT = 2;
+    int EL04_RE_WT_YN = 3;
+    int EL05_PCS = 4;
+    int EL06_START_DATE = 5;
+    int EL07_END_DATE = 6;
+
+	//Booking
+
+    int EBK01_COD_AWB_PFX =0;
+    int EBK02_COD_AWB_NUM =1;
+    int EBK03_COD_AWB_SFX =2;
+    int EBK04_COD_FLT_CAR =3;
+    int EBK05_COD_FLT_NUM =4;
+    int EBK06_DAT_FLT_ORI =5;
+    int EBK07_ORG =6;
+    int EBK08_DES =7;
+    int EBK09_QTY_SHP_PCS =8;
+    int EBK10_QTY_SHP_WGT =9;
+    int EBK11_QTY_SHP_VOL =10;
+    int EBK12_COD_WGT_UNT =11;
+    int EBK13_COD_VOL_UNT =12;
+    int EBK14_COD_DEN =13;
+    int EBK15_DAT_STD =14;
+    int EBK16_TIM_STD =15;
+    int EBK17_TIM_STA =16;
+    int EBK18_QTY_SHP_WGT_LBS =17;
+    int EBK19_DAT_LST_UPD =18;
+    int EBK20_COD_ITN_ODR =19;
+
+	//ACCEPTANCE
+
+    int ECA01_COD_AWB_PFX = 0;
+    int ECA02_COD_AWB_NUM = 1;
+    int ECA03_COD_AWB_SFX = 2;
+    int ECA04_FLG_DOM_ITL = 3;
+    int ECA05_FLG_HDL = 4;
+    int ECA06_ORG = 5;
+    int ECA07_DES = 6;
+    int ECA08_QTY_PCS = 7;
+    int ECA09_WGT_GRS = 8;
+    int ECA10_WGT_CHG = 9;
+    int ECA11_WGT_VOL = 10;
+    int ECA12_COD_LOC_TYP = 11;
+    int ECA13_FLG_XRAY = 12;
+    int ECA14_FLG_DOC_ACCP = 13;
+    int ECA15_DAT_DOC_ACCP = 14;
+    int ECA16_COD_SVR_TYP = 15;
+    int ECA17_COD_TYP_STG = 16;
+    int ECA18_ACCP_DATE = 17;
+
+
+	//BOOKING
+    int TS01_COD_AWB_PFX = 0;
+    int TS02_COD_AWB_NUM = 1;
+    int TS03_COD_AWB_SFX = 2;
+    int TS04_COD_ITN_ODR = 3;
+    int TS05_COD_BKG_STS = 4;
+    int TS06_COD_FLT_CAR = 5;
+
+    int TS07_COD_FLT_NUM = 6;
+    int TS08_DAT_FLT_ORI = 7;
+    int TS09_COD_APT_BRD = 8;
+    int TS10_COD_APT_OFF = 9;
+    int TS11_QTY_SHP_PCS = 10;
+    int TS12_QTY_SHP_WGT = 11;
+
+    int TS13_QTY_SHP_VOL = 12;
+    int TS14_COD_WGT_UNT = 13;
+
+    int TS15_COD_VOL_UNT = 14;
+    int TS16_COD_DEN = 15;
+    int TS17_FLG_FFR_SND = 16;
+    int TS18_FLG_FBL_REC = 17;
+    int TS19_COD_FFR_EDI = 18;
+
+    int TS20_TIME_STD = 19;
+    int TS21_TIME_STA = 20;
+    int TS22_QTY_SHP_WGT_LBS = 21;
+
+    int TS23_DAT_LST_UPD = 22;
+    /********************************************************************************************************/
+
+    //include('check_awb.php');//*********************************TUYEN khong dung file PHP nay*****************************
+
+    //include('fun_t/connect_tion.php');
+
+    //include('fun_t/function.php');//*********************************TUYEN khong dung file PHP nay*****************************
+
+    //include ('convert.php');//*********************************TUYEN khong dung file PHP nay*****************************
+
+    /*if(isset($_GET['awbFirst'])){
+	    $awbFirst=$_GET['awbFirst'];
+	    $_SESSION['awbFirst']= $_GET['awbFirst'];
+    }*/
+
+    awbFirst = Request.QueryString["awbFirst"];
+    if(!String.IsNullOrEmpty(awbFirst)){
+        Session["awbFirst"] = awbFirst;
+    }
+
+    /*if(isset($_GET['awbLast'])){
+	    $awbLast=$_GET['awbLast'];
+	    $_SESSION['awbLast']= $_GET['awbLast'];
+    }*/
+
+    awbLast=Request.QueryString["awbLast"];
+    if(!String.IsNullOrEmpty(awbLast)){
+        Session["awbLast"] = awbLast;
+    }
+
+    /*if($HTTP_GET_VARS['serie']){
+	    $serie=$HTTP_GET_VARS['serie'];
+    }else{
+	    $serie=0;
+    }*/
+    if(!String.IsNullOrEmpty(Request.QueryString["serie"])){
+	    serie= Convert.ToInt32(Request.QueryString["serie"]);
+    }else{
+	    serie=0;
+    }
+
+
+    //$_SESSION['serie'] = $serie;
+    Session["serie"] = serie;
+
+    //if(($HTTP_GET_VARS['awbFirst'])&&($HTTP_GET_VARS['awbLast'])){
+    if((!String.IsNullOrEmpty(awbFirst))&&(!String.IsNullOrEmpty(awbLast)))
+    {
+	    //$client = new SoapClient($endpoint.'?wsdl');
+	    //$result = $client->GET_MAWB_INF(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'HAWB_NO'=>'*','FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+	    //$str_mawb = $result->GET_MAWB_INFResult;
+        string str_mawb = obj.GET_MAWB_INF("sss",awbFirst,awbLast,"*","CX0767","3/31/2013");
+
+	    //$result_ctc = $client->GET_MAWB_CTC_INF(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'HAWB_NO'=>'*','FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+	    //$str_ctc = $result_ctc->GET_MAWB_CTC_INFResult;
+	    string str_ctc = obj.GET_MAWB_CTC_INF("sss",awbFirst,awbLast,"*","CX0767","3/31/2013");
+
+	    //if(trim($str_mawb)==''){//Khong co lo hang nao
+        if(str_mawb.Trim().Equals("")){//Khong co lo hang nao
+		    cnt_mawb = 0;
+	    }
+	    else {
+		    cnt_mawb = 1;
+	    }
+
+	    //$row_bill = explode('~|$|~', $str_mawb); //Chi co 1 dong, k chap nhan nhieu AWB
+        row_bill = HCSV.Core.CommonTCS.Commons.strSplit(str_mawb, "~|$|~"); //Chi co 1 dong, k chap nhan nhieu AWB
+
+
+	    //$row_bill_ctc = explode('~|$|~', $str_ctc); //Chi co 1 dong, k chap nhan nhieu AWB
+        row_bill_ctc = HCSV.Core.CommonTCS.Commons.strSplit(str_ctc, "~|$|~"); //Chi co 1 dong, k chap nhan nhieu AWB
+
+	    //$bill_st = $row_bill[B09_FLG_IMP_EXP];
+        string bill_st = row_bill[B09_FLG_IMP_EXP];
+
+	    //$bill_type = $row_bill[B02_FLG_HDL];
+        bill_type = row_bill[B02_FLG_HDL];
+
+	    //$bill_hdl_by = $row_bill[B15_HDL_BY];// phan biet hang SCSC
+        string bill_hdl_by = row_bill[B15_HDL_BY];// phan biet hang SCSC
+
+
+
+	    //if($bill_st=='T'){//xac dinh la hang qua canh.
+        if("T".Equals(bill_st)){//xac dinh la hang qua canh.
+		    //$status='imp_exp';
+            status="imp_exp";
+
+	        //$param_arrays_imp_shp_trs = explode('*-$-*', $str_imp_shp_trs);//~|$|~
+            string[] param_arrays_imp_shp_trs = HCSV.Core.CommonTCS.Commons.strSplit(str_imp_shp_trs, "*-$-*");//~|$|~ /******TUYEN: Bien 'str_imp_shp_trs' ko biet lay o dau?*****/
+
+		    //$result_trs_booking = $client->GET_TRS_BOOKING(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'AWB_SFX'=>'P','FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+		    //$str_trs_booking = $result_trs_booking->GET_TRS_BOOKINGResult;
+            string str_trs_booking = obj.GET_TRS_BOOKING("sss", awbFirst, awbLast,"P","CX0767","3/31/2013");
+
+            //$param_arrays_trs_booking = explode('*-$-*', $str_trs_booking);//~|$|~
+            string[] param_arrays_trs_booking = HCSV.Core.CommonTCS.Commons.strSplit(str_trs_booking, "*-$-*");//~|$|~
+
+	    }
+	    //if($bill_st=='I'){//xac dinh la hang nhap.
+        if("I".Equals(bill_st)){//xac dinh la hang nhap.
+		    //$status='imp';
+            status="imp";
+	    }
+
+        //if($bill_st=='E'){//xac dinh la hang xuat.
+        if("E".Equals(bill_st)){//xac dinh la hang xuat.
+		    //$status='exp';
+            status="exp";
+
+		    //$result_acpt = $client->GET_EXP_ACCEPTANCE(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'AWB_SFX'=>'P','FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+		    //$str_acpt = $result_acpt->GET_EXP_ACCEPTANCEResult;
+            string str_acpt = obj.GET_EXP_ACCEPTANCE("sss",awbFirst,awbLast,"P","CX0767","3/31/2013");
+
+		    //$row_acpt = explode('~|$|~', $str_acpt); //Chi co 1 dong, k chap nhan nhieu AWB
+            row_acpt = HCSV.Core.CommonTCS.Commons.strSplit(str_acpt, "~|$|~"); //Chi co 1 dong, k chap nhan nhieu AWB
+
+		    //$result_book = $client->GET_EXP_BOOKING_INF(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'AWB_SFX'=>'P','FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+		    //$str_book = $result_book->GET_EXP_BOOKING_INFResult;
+            string str_book = obj.GET_EXP_BOOKING_INF("sss",awbFirst,awbLast,"P","CX0767","3/31/2013");
+
+		    //$row_book = explode('~|$|~', $str_book); //Chi co 1 dong, k chap nhan nhieu AWB
+            row_book = HCSV.Core.CommonTCS.Commons.strSplit(str_book, "~|$|~"); //Chi co 1 dong, k chap nhan nhieu AWB
+
+		    //$result_exp_shp = $client->GET_EXP_SHIPMENT_INF(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'HAWB_NO'=>'*','FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+		    //$str_exp_shp = $result_exp_shp->GET_EXP_SHIPMENT_INFResult;
+            string str_exp_shp = obj.GET_EXP_SHIPMENT_INF("sss",awbFirst,awbLast,"*","CX0767","3/31/2013");
+
+		    //$param_arrays_exp_shp = explode('*-$-*', $str_exp_shp);//~|$|~
+            param_arrays_exp_shp = HCSV.Core.CommonTCS.Commons.strSplit(str_exp_shp, "*-$-*");//~|$|~
+
+		    //$cnt_goods_exp=0;
+            cnt_goods_exp=0;
+
+		    //foreach($param_arrays_exp_shp as $val_exp_shp)
+            foreach(string val_exp_shp in param_arrays_exp_shp)
+		    {
+			    //$row_goods_exp = explode('~|$|~', $val_exp_shp);
+                row_goods_exp = HCSV.Core.CommonTCS.Commons.strSplit(val_exp_shp, "~|$|~");
+
+                //$cnt_goods_exp = $cnt_goods_exp + 1 ;
+                cnt_goods_exp = cnt_goods_exp + 1;
+		    }//end foreach($param_arrays_mawb as $val)
+
+            //if ($cnt_goods_exp ==1){//chi co 1 dong
+            if (cnt_goods_exp ==1 ){//chi co 1 dong
+			    //$row_goods_exp = explode('~|$|~', $str_exp_shp);
+                row_goods_exp = HCSV.Core.CommonTCS.Commons.strSplit(str_exp_shp, "~|$|~");
+		    }
+	    }
+
+	    //if($bill_type=='M'){//Lo hang nay phuc vu= MAWB.
+        if("M".Equals(bill_type)){//Lo hang nay phuc vu= MAWB.
+		    //$bill_type='N';
+            bill_type="N";
+	    }
+
+	    //if($bill_type=='H'){//Lo hang nay phuc vu= HMAWB.
+        if("H".Equals(bill_type)){//Lo hang nay phuc vu= HMAWB.
+
+		    //$cosys_agent_code = $row_bill_ctc[C05_CNEE_CODE];
+            string cosys_agent_code = row_bill_ctc[C05_CNEE_CODE];
+
+		    //$result = $client->GET_CUSTOMER_NAME(array('STR_CONNECT'=>'sss','CUSTOMER_CODE'=>$cosys_agent_code));
+		    //$str_cus = $result->GET_CUSTOMER_NAMEResult;
+            string str_cus = obj.GET_CUSTOMER_NAME("sss",cosys_agent_code);
+
+		    //$row_cus = explode('~|$|~', $str_cus);
+            string[] row_cus = HCSV.Core.CommonTCS.Commons.strSplit(str_cus, "~|$|~");
+
+		    //$agent_name = $row_cus[C01_CUSTOMER_NAME];
+            string agent_name = row_cus[C01_CUSTOMER_NAME];
+
+		    //$agent_code = $row_cus[C02_COD_CMP_CMS];
+            agent_code = row_cus[C02_COD_CMP_CMS];
+
+		    //$agent_tel = $row_cus[C03_TEL];
+            agent_tel = row_cus[C03_TEL];
+
+		    //$agent_fax = $row_cus[C04_FAX];
+            agent_fax = row_cus[C04_FAX];
+
+		    //$agent_adr = $row_cus[C05_ADDRESS];
+            string agent_adr = row_cus[C05_ADDRESS];
+
+		    //$agent_name_vn = $row_cus[C06_NAME_VN];
+            agent_name_vn = row_cus[C06_NAME_VN];
+
+		    //$agent_adr_vn = $row_cus[C07_ADDRESS_VN];
+            agent_adr_vn = row_cus[C07_ADDRESS_VN];
+
+	    }
+
+
+    }
+
+}
+
+<script language="javascript">
+    function visitSite(the_site) {
+        window.location = the_site;
+    }
+</script>
+
+<div class="container container_css">
+
+
+    <form name="frmAwb" id="input_awb" action="/AWB/SearchAWB_Direct_Consignee" method="post" target="_self" onsubmit="return checkForm();">
+
+        <input type="hidden" name="section" id="input_awb_action" />
+        <input type="hidden" name="layout" value="03_cs" />
+
+        <table width="1000" class="bdr">
+            <tr>
+                <td width="132" class="awb_title">Không vận đơn:</td>
+                <td width="856">
+                    <input name="awbFirst" type="text" onkeyup="onKeyUpField();" maxlength=3 size="2" value="@Html.Raw(awbFirst)" />
+                    <input type="text" maxlength=8 name="awbLast" size="8" value="@Html.Raw(awbLast)" />
+                    <a href="#" class="btn" value="@Html.Raw(section)" form="input_awb"><span>Go</span></a>
+                   
+                </td>
+            </tr>
+        </table>
+    </form>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr valign="top">
+            <td>
+                <!------------BEGIN: PART 1------------------------>
+                @{
+                    //if(($status=='imp')&&($bill_type=='N')){//master//ok
+                    if(("imp".Equals(status)) && ("N".Equals(bill_type)))//master//ok
+                    {
+                        //$result_shp = $client->GET_SHIPMENT_INF(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'HAWB_NO'=>'*','FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013','AWB_SFX'=>'*'));
+                        //$str_shp = $result_shp->GET_SHIPMENT_INFResult;
+                        string str_shp = obj.GET_SHIPMENT_INF("sss", awbFirst, awbLast, "*", "CX0767", "3/31/2013", "*");
+
+                        //$param_arrays_shp = explode('*-$-*', $str_shp);//~|$|~
+                        param_arrays_shp = HCSV.Core.CommonTCS.Commons.strSplit(str_shp, "*-$-*");
+
+                        //$cnt_goods =0;
+                        cnt_goods =0;
+
+                        //foreach($param_arrays_shp as $val)
+                        foreach(var val in param_arrays_shp)
+                        {
+                            //$cnt_goods = $cnt_goods+1;
+                            cnt_goods = cnt_goods + 1;
+                        }
+
+                
+                    @Html.Raw(
+                    @"<table width='100%' border='0' cellspacing='0' cellpadding='0'>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr bordercolor='#FFFFFF' bgcolor='#eaeaea'>
+                            <td>
+                                <div align='center'>
+                                    <span class='awb_title'>
+                                        TÌNH TRẠNG HÀNG NHẬP
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table class='form awb_tbl02' width='100%'>
+                                    <tr>
+                                        <td colspan='5' valign='top'>");
+
+                                            
+                                            //if($cnt_mawb > 1 ) {//co tren 2 bill ton tai. -- Hien tai COSYS chua co
+                                            if(cnt_mawb > 1 ) //co tren 2 bill ton tai. -- Hien tai COSYS chua co
+                                            {
+                                                @Html.Raw(
+                                                @"<form name='frm-swich'>
+                                                    <table class='form awb_tbl02' width='100%'>
+                                                        <tr class='form'>
+                                                            <td>
+                                                                <strong>
+                                                                    Số không vận đơn" +
+                                                                    /*<?echo $awbFirst."-".$awbLast;?>*/
+                                                                    awbFirst + "-"+ awbLast +
+                                                                @"</strong>")
+
+    <select class='form' name='serie' onchange='visitSite(this.options[this.selectedIndex].value);'>
+        ;
+
+        @if(true)//TUYEN: Them cau lenh nay
+                                                                    {
+                                                                        //$cnt=0;
+                                                                        int cnt=0;
+
+                                                                        //foreach($param_arrays_mawb as $val)
+                                                                        foreach(var val in param_arrays_mawb)
+                                                                        {
+                                                                            //$row_bill = explode('~|$|~', $val);
+                                                                            row_bill = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+
+
+                                                                            @*<option class="form" value="<?echo basename($PHP_SELF)."?awbFirst=".$HTTP_GET_VARS['awbFirst']."&awbLast=".$HTTP_GET_VARS['awbLast']."&serie=".$cnt;?>" <?if($cnt==$serie){echo "selected";}?>>*@
+                                                                            <option class="form" value="@Html.Raw(Request.Url.AbsolutePath + " ?awbfirst=" + (string)Request.QueryString["awbFirst"] + " &awblast="+ (string)Request.QueryString["awbLast"] + " &serie="+ cnt)"
+                                                                                    @Html.Raw(cnt==serie ? "selected" : "")>
+
+                                                                                @*echo 'Flight No : '.$row_bill[B05_FL_NO].' Date: '.$row_bill[B06_FL_DATE];*@
+                                                                                @Html.Raw("Flight No : " + row_bill[B05_FL_NO] + " Date: " + row_bill[B06_FL_DATE]);
+
+                                                                            </option>
+
+                                                                         }//End foreach(var val in param_arrays_mawb)
+                                                                    }
+                                                                    </select>
+                                                        @Html.Raw(
+                                                                @"
+                                                            </td>
+
+                                                        </tr>
+                                                    </table>
+                                                </form>");
+
+                                        }//END if(cnt_mawb > 1 )
+                                        else //chi co 1 bill
+                                        {
+                                            <table class="form awb_tbl02" width="100%">
+                                                <tr class="form">
+                                                    <td>
+                                                        <strong>
+                                                            Số không vận đơn
+                                                            <!--<?echo $awbFirst."-".$awbLast;?>-->
+                                                            @Html.Raw(awbFirst + "-" + awbLast)
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        }
+
+                                            
+                                @Html.Raw(
+                                    @"
+                                        </td>
+                                    </tr>")
+                                      
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td align="center" width="200" class="awb_title">Nơi xuất phát</td>
+                                        <td align="center" width="200" class="awb_title">Nơi đến</td>
+                                        <td align="center" width="200" class="awb_title">Số kiện hàng</td>
+                                        <td align="center" colspan="2" width="200" class="awb_title">Trọng lượng</td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top">
+                                            <div align="center">                                                
+                                                @*echo $row_bill[B03_ORG];*@
+                                                @Html.Raw(row_bill[B03_ORG])                                               
+                                                &nbsp;
+                                            </div>
+                                        </td>
+                                        <td valign="top">
+                                            <div align="center">
+                                                
+                                                @*echo $row_bill[B04_DES];*@
+                                                @Html.Raw(row_bill[B04_DES])
+                                                
+                                                &nbsp;
+                                            </div>
+                                        </td>
+                                        <td valign="top">
+                                            <div align="center">
+                                                
+                                                @*echo $row_bill[B07_PCS];*@
+                                                @Html.Raw(row_bill[B07_PCS])
+                                                
+                                                &nbsp;
+                                            </div>
+                                        </td>
+                                        <td valign="top">
+                                            <div align="center">
+                                                
+                                                @*echo doubleval($row_bill[B08_WEIGHT]);*@
+                                                @Html.Raw(Convert.ToDouble(row_bill[B08_WEIGHT]))
+                                                
+                                                (kg)&nbsp;
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top"><strong>Người gởi</strong></td>
+                                        <td colspan="4" valign="top">
+                                            
+                                            @*echo $row_bill_ctc[C03_SHP_NAME];*@
+                                            @Html.Raw(row_bill_ctc[C03_SHP_NAME])
+                                            
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top"><strong>Địa chỉ</strong></td>
+                                        <td colspan="4" valign="top">
+                                            
+                                            @*echo $row_bill_ctc[C04_SHP_ADDR];*@
+                                            @Html.Raw(row_bill_ctc[C04_SHP_ADDR])
+                                            
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top"><strong>Người nhận</strong></td>
+                                        <td colspan="4" valign="top">
+                                            
+                                            @*echo $row_bill_ctc[C01_CNE_NAME];*@
+                                            @Html.Raw(row_bill_ctc[C01_CNE_NAME])
+                                            
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top"><strong>Địa chỉ</strong></td>
+                                        <td colspan="4" valign="top">
+                                            
+                                            @*echo $row_bill_ctc[C02_CNE_ADDR];*@
+                                            @Html.Raw(row_bill_ctc[C02_CNE_ADDR])
+                                            
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                                        <td colspan="5" valign="top" class="awb_title">
+                                            Thông tin vận chuyển
+                                            @*<?  if ($cnt_goods <=0) {echo ' : Chưa có hàng';} ?>*@
+                                            @if (cnt_goods <=0) { @Html.Raw(" : Chưa có hàng");}                                            
+                                        </td>
+                                    </tr>
+                    
+                                    @Html.Raw(
+                                    @"<tr bordercolor='#FFFFFF' bgcolor='#FFFFFF'>
+                                        <td colspan='5' valign='top'>");                                            
+                
+                                        //if($cnt_goods>1){
+                                        if(cnt_goods>1)
+                                        {
+                                            @Html.Raw(
+                                            @"<table class='form awb_tbl02' width='100%'>
+                                                <tr bordercolor='#FFFFFF' bgcolor='#FFFFFF'>
+                                                    <td align='center' width='6%' class='awb_title'>Lần</td>
+                                                    <td align='center' width='13%' class='awb_title'>Số hiệu chuyến bay</td>
+                                                    <td width='17%' align='center' class='awb_title'>Giờ đến</td>
+                                                    <td width='7%' align='center' class='awb_title'>Số kiện</td>
+                                                    <td width='11%' align='center' class='awb_title'>Trọng lượng</td>
+                                                    <td width='12%' align='center' class='awb_title'>Trọng lượng cân lại (nếu có)</td>
+                                                    <td width='34%' align='center' class='awb_title'>Tình trạng</td>
+                                                </tr>");
+                                            
+                                                //$temp=0;
+                                                temp=0;
+
+                                                //foreach($param_arrays_shp as $val)
+                                                foreach(var val in param_arrays_shp)
+                                                {
+                                                    //$temp++;
+                                                    temp++;
+
+                                                    //$row_goods = explode('~|$|~', $val);
+                                                    row_goods = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+
+                                                    /*
+                                                    if($row_goods[S18_SHP_RE_WGT] > 0){
+                                                        $row_goods[S18_SHP_RE_WGT]=$row_goods[S18_SHP_RE_WGT];
+                                                    }*/
+                                                    if(Convert.ToDecimal(row_goods[S18_SHP_RE_WGT]) > 0)
+                                                    {
+                                                        row_goods[S18_SHP_RE_WGT]=row_goods[S18_SHP_RE_WGT];
+                                                    }
+
+                                                    /*if($row_goods[S21_CHK_IN_DATE] != ''){
+                                                        $checkin_d=date ("d/m/Y", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        $checkin_h=date ("H", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        $checkin_mi=date ("i", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                    }*/
+                                                    if(!"".Equals(row_goods[S21_CHK_IN_DATE]))
+                                                    {
+                                                        //$checkin_d=date ("d/m/Y", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        string checkin_d = HCSV.Core.CommonTCS.Commons.date_d_m_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S21_CHK_IN_DATE]));
+                                                            
+                                                        //$checkin_h=date ("H", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        string checkin_h = HCSV.Core.CommonTCS.Commons.date_H(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S21_CHK_IN_DATE]));
+                                                        
+                                                        //$checkin_mi=date ("i", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        string checkin_mi = HCSV.Core.CommonTCS.Commons.date_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S21_CHK_IN_DATE]));
+                                                    }
+                                                    //end new update
+                                                
+                                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                    <td>
+                                                        <div align="center">
+                                                           
+                                                            @*//echo $temp;*@
+                                                            @Html.Raw(temp)                                                            
+
+                                                        </div>
+                                                    </td>
+                                                    <td align="center">
+                                                        &nbsp;
+
+                                                       
+                                                        @*echo $row_goods[S09_COD_SHP_CAR].$row_goods[S10_COD_SHP_FLT];*@
+                                                        @Html.Raw(row_goods[S09_COD_SHP_CAR] + row_goods[S10_COD_SHP_FLT])
+                                                        
+                                                    </td>
+                                                    <td align="center">
+                                                        &nbsp;
+                                                        
+                                                        @*if ($row_goods[S17_FLT_ATA]==''){
+                                                        echo '&nbsp;';
+                                                        }else{
+                                                        echo date ("d-M-Y H:i", strtotime($row_goods[S17_FLT_ATA]));
+                                                        }*@
+                                                        
+                                                        @if ("".Equals(row_goods[S17_FLT_ATA]))
+                                                        {
+                                                            @Html.Raw("&nbsp;");
+                                                        }else{
+                                                            //echo date ("d-M-Y H:i", strtotime($row_goods[S17_FLT_ATA]));
+                                                            @Html.Raw(HCSV.Core.CommonTCS.Commons.date_d_M_Y_H_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S17_FLT_ATA])));
+                                                        }
+                                                        
+                                                    </td>
+                                                    <td align="center">
+                                                        &nbsp;
+                                                        
+                                                        @*echo $row_goods[S05_QTY_SHP_PCS];*@
+                                                        @Html.Raw(row_goods[S05_QTY_SHP_PCS])
+                                                        
+                                                    </td>
+                                                    <td align="right">
+                                                        &nbsp;
+                                                        
+                                                        @*if ($row_goods[S06_QTY_SHP_WGT]==''){
+                                                        echo '&nbsp;';
+                                                        }else{
+                                                        echo doubleval($row_goods[S06_QTY_SHP_WGT]);
+                                                        }*@
+
+                                                        @if ("".Equals(row_goods[S06_QTY_SHP_WGT]))
+                                                        {
+                                                            @Html.Raw("&nbsp;");
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.Raw(Convert.ToDouble(row_goods[S06_QTY_SHP_WGT]));
+                                                        }
+                                                        
+                                                        (kg)
+                                                    </td>
+                                                    <td align="center">
+                                                        
+                                                        @*if($row_goods[S18_SHP_RE_WGT] > 0){
+                                                        echo doubleval($row_goods[S18_SHP_RE_WGT]). ' (kg)';
+                                                        }else {
+                                                        echo '&nbsp;';
+                                                        }*@
+
+                                                        @if(Convert.ToDouble(row_goods[S18_SHP_RE_WGT]) > 0)
+                                                        {
+                                                            @Html.Raw(Convert.ToDouble(row_goods[S18_SHP_RE_WGT]) + " (kg)");
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.Raw("&nbsp;");
+                                                        }
+                                                        
+
+                                                    </td>
+                                                    <td align="center">
+                                                        &nbsp;
+                                                        
+
+                                                        @*if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S04_FLG_SHP_RDY]=='Y'&&$row_goods[S20_GOODS_ST]!='DLV'&&($row_goods[S27_NUM_NOTIFY]=='0'||$row_goods[S27_NUM_NOTIFY]=='') ){echo 'Hàng đã được nhập kho TCS';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S20_GOODS_ST]=='RCF'&&($row_goods[S27_NUM_NOTIFY]=='0'||$row_goods[S27_NUM_NOTIFY]=='')){ echo 'Hàng đã được nhập kho TCS';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S04_FLG_SHP_RDY]=='Y'&&$row_goods[S20_GOODS_ST]!='DLV'&&$row_goods[S27_NUM_NOTIFY]=='1'){ echo 'Hàng đã được thông báo lần 1';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S04_FLG_SHP_RDY]=='Y'&&$row_goods[S20_GOODS_ST]!='DLV'&&$row_goods[S27_NUM_NOTIFY]=='2'){ echo 'Hàng đã được thông báo lần 2';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S04_FLG_SHP_RDY]=='Y'&&$row_goods[S20_GOODS_ST]!='DLV'&&$row_goods[S27_NUM_NOTIFY]=='3' ){ echo 'Hàng đã được thông báo lần 3';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]!=''&&$row_goods[S20_GOODS_ST]!='DLV'){ echo 'Hàng đã được làm thủ tục, chưa lĩnh hàng';
+                                                        }else if($row_goods[S20_GOODS_ST]=='AR'){ echo 'Hàng đã được làm thủ tục, chưa lĩnh hàng';
+                                                        }else if($row_goods[S20_GOODS_ST]=='DLV'){
+
+
+                                                        echo 'Hàng đã được giao cho : '. $row_goods[S23_RCV_NAME] .' ngày '.$row_goods[S22_DLV_DATE];
+
+                                                        $checkin_date=date ("d/m/Y", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        $checkin_hour=date ("H", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        $checkin_minute=date ("i", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        }else
+                                                        echo 'Liên hệ TCS để biết thêm thông tin về lô hàng này';*@
+
+                                                        @if(("".Equals(row_goods[S21_CHK_IN_DATE]))
+                                                            && ("Y".Equals(row_goods[S04_FLG_SHP_RDY])) && (!"DLV".Equals(row_goods[S20_GOODS_ST]))
+                                                                && ("0".Equals(row_goods[S27_NUM_NOTIFY]) || "".Equals(row_goods[S27_NUM_NOTIFY])))
+                                                        {
+                                                            @Html.Raw("Hàng đã được nhập kho TCS");
+                                                        }
+                                                        else if (("".Equals(row_goods[S21_CHK_IN_DATE]))
+                                                            && ("RCF".Equals(row_goods[S20_GOODS_ST]))
+                                                                && ("0".Equals(row_goods[S27_NUM_NOTIFY]) || "".Equals(row_goods[S27_NUM_NOTIFY])))
+                                                        {
+                                                            @Html.Raw("Hàng đã được nhập kho TCS");
+                                                        }
+                                                        else if(("".Equals(row_goods[S21_CHK_IN_DATE]))
+                                                            && ("Y".Equals(row_goods[S04_FLG_SHP_RDY])) && (!"DLV".Equals(row_goods[S20_GOODS_ST]))
+                                                                && ("1".Equals(row_goods[S27_NUM_NOTIFY])))
+                                                        {
+                                                            @Html.Raw("Hàng đã được thông báo lần 1");
+                                                        }
+                                                        else if(("".Equals(row_goods[S21_CHK_IN_DATE]))
+                                                            && ("Y".Equals(row_goods[S04_FLG_SHP_RDY]))
+                                                                && (!"DLV".Equals(row_goods[S20_GOODS_ST])) && ("2".Equals(row_goods[S27_NUM_NOTIFY])))
+                                                        {
+                                                            @Html.Raw("Hàng đã được thông báo lần 2");
+                                                        }
+                                                        else if(("".Equals(row_goods[S21_CHK_IN_DATE]))
+                                                            && ("Y".Equals(row_goods[S04_FLG_SHP_RDY]))
+                                                                && (!"DLV".Equals(row_goods[S20_GOODS_ST])) &&("3".Equals(row_goods[S27_NUM_NOTIFY])))
+                                                        {
+                                                            @Html.Raw("Hàng đã được thông báo lần 3");
+                                                        }
+                                                        else if ((!"".Equals(row_goods[S21_CHK_IN_DATE])) && (!"DLV".Equals(row_goods[S20_GOODS_ST])))
+                                                        {
+                                                            @Html.Raw("Hàng đã được làm thủ tục, chưa lĩnh hàng");
+                                                        }
+                                                        else if("AR".Equals(row_goods[S20_GOODS_ST]))
+                                                        {
+                                                            @Html.Raw("Hàng đã được làm thủ tục, chưa lĩnh hàng");
+                                                        }
+                                                        else if("DLV".Equals(row_goods[S20_GOODS_ST]))
+                                                        {
+                                                            @Html.Raw("Hàng đã được giao cho : " + row_goods[S23_RCV_NAME] + " ngày " + row_goods[S22_DLV_DATE]);
+
+                                                            checkin_date = HCSV.Core.CommonTCS.Commons.date_d_m_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S21_CHK_IN_DATE]));
+                                                            checkin_hour = HCSV.Core.CommonTCS.Commons.date_H(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S21_CHK_IN_DATE]));
+                                                            checkin_minute = HCSV.Core.CommonTCS.Commons.date_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S21_CHK_IN_DATE]));
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.Raw("Liên hệ TCS để biết thêm thông tin về lô hàng này");
+                                                        }
+
+                                                        
+                                                    </td>
+                                                </tr>
+                                            }//end while?>
+                                            @Html.Raw(
+                                              "</table>")
+                                          }
+                                          //else if($cnt_goods>0)
+                                          else if(cnt_goods>0)
+                                          {
+                                            @Html.Raw( 
+                                            @"<table width='100%' class='form awb_tbl02'>
+                                                <tr bordercolor='#FFFFFF' bgcolor='#FFFFFF'>
+                                                    <td width='12%' align='center' class='awb_title'>Số hiệu chuyến bay</td>
+                                                    <td width='20%' align='center' class='awb_title'>Giờ đến</td>
+                                                    <td width='10%' align='center' class='awb_title'>Số kiện</td>
+                                                    <td width='12%' align='center' class='awb_title'>Trọng lượng</td>
+                                                    <td width='13%' align='center' class='awb_title'>Trọng lượng cân lại (nếu có)</td>
+                                                    <td width='33%' align='center' class='awb_title'>Tình trạng</td>
+                                                </tr>");
+                                                
+                                                //$temp=0;
+                                                temp=0;
+                                                                                                
+                                                //foreach($param_arrays_shp as $val)
+                                                foreach(var val in param_arrays_shp)
+                                                {
+                                                    //$row_goods = explode('~|$|~', $val);
+                                                    row_goods = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+
+                                                    //$temp++
+                                                    temp++;
+                                                    
+                                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                        <td align="center">
+                                                        
+                                                            @*echo $row_goods[S09_COD_SHP_CAR].$row_goods[S10_COD_SHP_FLT];*@
+                                                            @Html.Raw(row_goods[S09_COD_SHP_CAR] + row_goods[S10_COD_SHP_FLT])
+                                                        
+                                                        </td>
+                                                    <td align="center">
+                                                        
+                                                        @*if ($row_goods[S17_FLT_ATA] ==''){
+                                                        echo '&nbsp;';
+                                                        }else{
+                                                        echo date ("d-M-Y H:i", strtotime($row_goods[S17_FLT_ATA]));
+                                                        }*@
+
+                                                        @if ("".Equals(row_goods[S17_FLT_ATA])){
+                                                            @Html.Raw("&nbsp;");
+                                                        }else{
+                                                            @Html.Raw(HCSV.Core.CommonTCS.Commons.date_d_M_Y_H_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S17_FLT_ATA])));
+                                                        }
+                                                        
+                                                    </td>
+                                                    <td align="center">
+                                                        @*echo $row_goods[S05_QTY_SHP_PCS];*@
+                                                        @Html.Raw(row_goods[S05_QTY_SHP_PCS])
+                                                    </td>
+                                                    <td align="right">
+                                                        @*if ($row_goods[S06_QTY_SHP_WGT]==''){
+                                                        echo '';
+                                                        }else {
+                                                        echo doubleval($row_goods[S06_QTY_SHP_WGT]);
+                                                        }*@
+
+                                                        @if ("".Equals(row_goods[S06_QTY_SHP_WGT])) {
+                                                            @Html.Raw("");
+                                                        }else {
+                                                            @Html.Raw(Convert.ToDouble(row_goods[S06_QTY_SHP_WGT]));
+                                                        }
+                                                        
+                                                        (kg)
+                                                    </td>
+                                                    <td align="center">
+                                                        
+                                                        @*if($row_goods[S18_SHP_RE_WGT] > 0){
+                                                        echo doubleval($row_goods[S18_SHP_RE_WGT]). '(kg)';
+                                                        }else {
+                                                        echo '&nbsp;';
+                                                        }*@
+
+                                                        @if(Convert.ToDecimal(!String.IsNullOrEmpty(row_goods[S18_SHP_RE_WGT]) ? row_goods[S18_SHP_RE_WGT] : "0") > 0){
+                                                            @Html.Raw(Convert.ToDouble(row_goods[S18_SHP_RE_WGT]) + "(kg)");
+                                                        }else {
+                                                            @Html.Raw("&nbsp;");
+                                                        }
+                                                        
+                                                    </td>
+                                                    <td align="center">
+                                                        
+                                                        @*if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S04_FLG_SHP_RDY]=='Y'&&$row_goods[S20_GOODS_ST]!='DLV'&&($row_goods[S27_NUM_NOTIFY]=='0'||$row_goods[S27_NUM_NOTIFY]=='') ){echo 'Hàng đã được nhập kho TCS';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S20_GOODS_ST]=='RCF'&&$row_goods[S27_NUM_NOTIFY]=='0'){ echo 'Hàng đã được nhập kho TCS';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S04_FLG_SHP_RDY]=='Y'&&$row_goods[S20_GOODS_ST]!='DLV'&&$row_goods[S27_NUM_NOTIFY]=='1'){ echo 'Hàng đã được thông báo lần 1';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S04_FLG_SHP_RDY]=='Y'&&$row_goods[S20_GOODS_ST]!='DLV'&&$row_goods[S27_NUM_NOTIFY]=='2'){ echo 'Hàng đã được thông báo lần 2';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]==''&&$row_goods[S04_FLG_SHP_RDY]=='Y'&&$row_goods[S20_GOODS_ST]!='DLV'&&$row_goods[S27_NUM_NOTIFY]=='3' ){ echo 'Hàng đã được thông báo lần 3';
+                                                        }else if($row_goods[S21_CHK_IN_DATE]!=''&&$row_goods[S20_GOODS_ST]!='DLV'){ echo 'Hàng đã được làm thủ tục, chưa lĩnh hàng';
+                                                        }else if($row_goods[S20_GOODS_ST]=='AR'){ echo 'Hàng đã được làm thủ tục, chưa lĩnh hàng';
+                                                        }else if($row_goods[S20_GOODS_ST]=='DLV'){
+                                                        //echo 'Hàng đã được giao cho : '. $row_goods[S23_RCV_NAME] .' ngày '.date ("d-M-Y", strtotime($row_goods[S22_DLV_DATE]));
+                                                        echo 'Hàng đã được giao cho : '. $row_goods[S23_RCV_NAME] .' ngày '.$row_goods[S22_DLV_DATE];
+                                                        $checkin_date=date ("d/m/Y", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        $checkin_hour=date ("H", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        $checkin_minute=date ("i", strtotime($row_goods[S21_CHK_IN_DATE]));
+                                                        }else
+                                                        echo 'Liên hệ TCS để biết thêm thông tin về lô hàng này';*@
+
+                                                        @if(("".Equals(row_goods[S21_CHK_IN_DATE])) && ("Y".Equals(row_goods[S04_FLG_SHP_RDY]))
+                                                            && (!"DLV".Equals(row_goods[S20_GOODS_ST])) && 
+                                                                (("0".Equals(row_goods[S27_NUM_NOTIFY]))|| ("".Equals(row_goods[S27_NUM_NOTIFY]))) )
+                                                        {
+                                                            @Html.Raw("Hàng đã được nhập kho TCS");
+                                                        }
+                                                        else if (("".Equals(row_goods[S21_CHK_IN_DATE])) && ("RCF".Equals(row_goods[S20_GOODS_ST])) 
+                                                            && ("0".Equals(row_goods[S27_NUM_NOTIFY])))
+                                                        { 
+                                                            @Html.Raw("Hàng đã được nhập kho TCS");
+                                                        }
+                                                        else if(("".Equals(row_goods[S21_CHK_IN_DATE])) && ("Y".Equals(row_goods[S04_FLG_SHP_RDY]))
+                                                            && (!"DLV".Equals(row_goods[S20_GOODS_ST])) &&("1".Equals(row_goods[S27_NUM_NOTIFY])))
+                                                        { 
+                                                            @Html.Raw("Hàng đã được thông báo lần 1");
+                                                        }
+                                                        else if(("".Equals(row_goods[S21_CHK_IN_DATE])) && ("Y".Equals(row_goods[S04_FLG_SHP_RDY]))
+                                                            && (!"DLV".Equals(row_goods[S20_GOODS_ST])) && ("2".Equals(row_goods[S27_NUM_NOTIFY])))
+                                                        { 
+                                                            @Html.Raw("Hàng đã được thông báo lần 2");
+                                                        }
+                                                        else if(("".Equals(row_goods[S21_CHK_IN_DATE])) &&("Y".Equals(row_goods[S04_FLG_SHP_RDY]))
+                                                            && (!"DLV".Equals(row_goods[S20_GOODS_ST])) && ("3".Equals(row_goods[S27_NUM_NOTIFY])))
+                                                        { 
+                                                            @Html.Raw("Hàng đã được thông báo lần 3");
+                                                        }
+                                                        else if((!"".Equals(row_goods[S21_CHK_IN_DATE])) && (!"DLV".Equals(row_goods[S20_GOODS_ST])))
+                                                        { 
+                                                            @Html.Raw("Hàng đã được làm thủ tục, chưa lĩnh hàng");
+                                                        }
+                                                        else if("AR".Equals(row_goods[S20_GOODS_ST]))
+                                                        { 
+                                                            @Html.Raw("Hàng đã được làm thủ tục, chưa lĩnh hàng");
+                                                        }
+                                                        else if("DLV".Equals(row_goods[S20_GOODS_ST])){                                                        
+                                                            @Html.Raw("Hàng đã được giao cho : " + row_goods[S23_RCV_NAME] +" ngày " + row_goods[S22_DLV_DATE]);
+                                                            checkin_date= String.IsNullOrEmpty(row_goods[S21_CHK_IN_DATE]) ? "" : HCSV.Core.CommonTCS.Commons.date_d_m_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S21_CHK_IN_DATE]));
+                                                            checkin_hour = String.IsNullOrEmpty(row_goods[S21_CHK_IN_DATE]) ? "" : HCSV.Core.CommonTCS.Commons.date_H(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S21_CHK_IN_DATE]));
+                                                            checkin_minute = String.IsNullOrEmpty(row_goods[S21_CHK_IN_DATE]) ? "" : HCSV.Core.CommonTCS.Commons.date_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[S21_CHK_IN_DATE]));
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.Raw("Liên hệ TCS để biết thêm thông tin về lô hàng này");
+                                                        }
+                                                        
+                                                    </td>
+                                                </tr>
+                                              
+                                              
+                                              }//end while
+                                              
+                                            @Html.Raw("</table>");
+                                          }
+                                       @Html.Raw(@"
+                                          </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>")
+                    
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <div align="center" class="marginT10">
+                                    @*<a href="index.php?section=<?php echo $section ?>&layout=body_banggia1" target="_blank" class="btn">*@
+                                    <a href="@String.Format("index.php?section={0}&layout=body_banggia1",section)" target="_blank" class="btn">
+                                        <span>
+                                            Bảng giá áp dụng <!--CHO NGƯỜI NHẬN TRỰC TIẾP-->
+                                        </span>
+                                    </a> 
+                                    @*<a href="index.php?section=<?php echo $section ?>&layout=lk_yc_imp_cs&checkin_date=<?echo $checkin_date;?>&checkin_hour=<?echo $checkin_hour;?>&checkin_minute=<?echo $checkin_minute;?>" target="_parent" class="btn">*@
+                                    <a href="@String.Format("index.php?section={0}&layout=lk_yc_imp_cs&checkin_date={1}&checkin_hour={2}&checkin_minute={3}",section, checkin_date, checkin_hour,checkin_minute)" target="_parent" class="btn">
+
+                                        <span>
+                                            Giá lưu kho tại thời điểm
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                @Html.Raw(
+                "</table>")
+                    
+
+             }
+             //else if($status=='exp')
+             else if("exp".Equals(status))
+             {//ok
+
+                    
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                            <td><div align="center"><span class="awb_title">TÌNH TRẠNG HÀNG XUẤT</span></div></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table class="form awb_tbl02" width="100%">
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+
+                                        <td colspan="5" valign="top">
+                                            
+
+                                            @*if($cnt_mawb > 1 ){//co tren 2 bill ton tai.*@
+                                            @if(cnt_mawb > 1 )
+                                            {//co tren 2 bill ton tai.
+                                                
+                                                                                          @**********BEGIN: TUYEN dong doan code nay***************
+          <form name="frm-swich">
+          <table class="form awb_tbl02" width="100%">
+              <tr>
+                  <td>
+                      <strong>
+                          Số không vận đơn&nbsp;:
+                          <!--echo $awbFirst."-".$awbLast;-->
+                          @Html.Raw(awbFirst + "-" + awbLast)
+                      </strong> <select class="form" name="serie" onchange="visitSite(this.options[this.selectedIndex].value);">
+                          <?
+                          while($row_comp = mssql_fetch_array($result_comp)){
+                          $query="select * from EXP_DATA_flight where fl_no='".$row_comp['fl_no']."' and fl_date='".$row_comp['fl_date']."'";
+                          $result_flight_comp = mssql_query($query, $link);
+                          $row_flight_comp = mssql_fetch_array($result_flight_comp);
+                          ?>
+
+                          <option class="form" value="<?echo basename($PHP_SELF)." ?section=customer&layout =03_cs&locale =vi_VN&awbFirst =".$HTTP_GET_VARS['awbFirst']." &awblast=".$HTTP_GET_VARS['awbLast']." &serie=".$row_comp['serie'];?>"
+                              <?if($row_comp['serie']==$serie){echo "selected";}?>>
+
+                              <?echo date ("d-M-Y H:i A", strtotime($row_flight_comp['atd']));?>
+                          </option>
+                          <?
+                          }
+                          ?>
+                      </select>
+                  </td>
+              </tr>
+          </table>
+        </form>
+        **********BEGIN: TUYEN dong doan code nay***************
+                                            *@
+                                            
+                                            }
+                                            else
+                                            {//chi co 1 bill
+                                            
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                    <tr class="form">
+                                                        <td>
+                                                            <strong>
+                                                                Số không vận đơn&nbsp;:
+                                                                @*<?echo $awbFirst."-".$awbLast;?>*@
+                                                                @Html.Raw(awbFirst + "-"  + awbLast)
+                                                            </strong>
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                            
+                                            }
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td width="32%" valign="top" align="center" class="awb_title">Nơi xuất phát</td>
+                                        <td width="25%" valign="top" align="center" class="awb_title">Nơi đến</td>
+                                        <td width="21%" valign="top" align="center" class="awb_title">Số kiện hàng</td>
+                                        <td width="22%" valign="top" align="center" class="awb_title">Trọng lượng</td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top">
+                                            <div align="center">
+                                                @*echo $row_bill[B03_ORG];*@
+                                                @Html.Raw(row_bill[B03_ORG])                                                
+                                            </div>
+                                        </td>
+                                        <td valign="top">
+                                            <div align="center">
+                                                
+                                                @*echo $row_bill[B04_DES];*@
+                                                @Html.Raw(row_bill[B04_DES])
+                                                
+                                            </div>
+                                        </td>
+                                        <td valign="top">
+                                            <div align="center">
+                                                
+                                                @*echo $row_bill[B07_PCS];*@
+                                                @Html.Raw(row_bill[B07_PCS])
+                                                
+                                            </div>
+                                        </td>
+                                        <td valign="top">
+                                            <div align="center">
+                                                
+                                                @*if ($row_bill[B08_WEIGHT] >0){
+                                                echo doubleval($row_bill[B08_WEIGHT]) .'(kg)';
+                                                }else
+                                                {
+                                                echo '&nbsp;';
+                                                }*@
+
+                                                @if (Convert.ToDouble(row_bill[B08_WEIGHT]) >0){
+                                                    @Html.Raw(Convert.ToDouble(row_bill[B08_WEIGHT]) + "(kg)");
+                                                }else
+                                                {
+                                                    @Html.Raw("&nbsp;");
+                                                }
+                                                
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+
+                                    @*if(1==1)*@
+                                    @if(1==1)
+                                    {
+
+
+                                    
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top"><strong>Người gởi</strong></td>
+                                        <td colspan="4" valign="top">
+                                            
+                                            @*echo $row_bill_ctc[C03_SHP_NAME];*@
+                                            @Html.Raw(row_bill_ctc[C03_SHP_NAME])
+
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top"><strong>Địa chỉ</strong></td>
+                                        <td colspan="4" valign="top">
+                                            
+                                            @*echo $row_bill_ctc[C04_SHP_ADDR];*@
+                                            @Html.Raw(row_bill_ctc[C04_SHP_ADDR])
+                                            
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top"><strong>Người nhận</strong></td>
+                                        <td colspan="4" valign="top">
+                                            @*<? echo $row_bill_ctc[C06_CNE_NAME_E];?>*@
+                                            @Html.Raw(row_bill_ctc[C06_CNE_NAME_E])
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td valign="top"><strong>Địa chỉ</strong></td>
+                                        <td colspan="4" valign="top">
+                                            @*<? echo $row_bill_ctc[C07_CNE_ADDR_E];?>*@
+                                            @Html.Raw(row_bill_ctc[C07_CNE_ADDR_E])
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                               } 
+                                <!--///////begin-->
+                                    <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                                        <td colspan="5" valign="top" class="awb_title">Thông tin tiếp nhận</td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td colspan="5" valign="top">
+                                            <table width="100%" class="form awb_tbl02">
+                                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                    <td width="40%" align="center">Ngày tiếp nhận</td>
+                                                    <td width="60%">
+                                                        <div align="center">
+                                                            
+
+                                                            @*echo date ("d-M-Y H:i", strtotime($row_acpt[ECA18_ACCP_DATE]));*@
+                                                            @Html.Raw(HCSV.Core.CommonTCS.Commons.date_d_M_Y_H_i(HCSV.Core.CommonTCS.Commons.strToTime(row_acpt[ECA18_ACCP_DATE])))
+
+                                                            
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                    <td width="40%" align="center">Chuyến bay đã giữ chỗ</td>
+                                                    <td width="60%">
+                                                        <div align="center">
+                                                            
+                                                            @*echo $row_book[EBK04_COD_FLT_CAR].$row_book[EBK05_COD_FLT_NUM] .' '.date ("d-M-Y", strtotime($row_book[EBK06_DAT_FLT_ORI]));*@
+                                                            @Html.Raw(row_book[EBK04_COD_FLT_CAR] + row_book[EBK05_COD_FLT_NUM] + ' ' + HCSV.Core.CommonTCS.Commons.date_d_m_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_book[EBK06_DAT_FLT_ORI])));
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                <!--end///////-->
+                                    <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                                        <td colspan="5" valign="top" class="awb_title">Thông tin vận chuyển</td>
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td colspan="5" valign="top">
+                                                                                      
+                                            @*if($cnt_goods_exp>1){//so chuyen bay lon hon 1*@
+                                            @if(cnt_goods_exp>1)//so chuyen bay lon hon 1
+                                            {
+                                            
+                                              <table width="100%" class="form awb_tbl02">
+                                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                    <td width="9%" align="center" class="awb_title">Lần</td>
+                                                    <td width="18%" align="center" class="awb_title">Số hiệu chuyến bay</td>
+                                                    <td width="23%" align="center" class="awb_title">Giờ bay</td>
+                                                    <td width="11%" align="center" class="awb_title">Số kiện</td>
+                                                    <td width="15%" align="center" class="awb_title">Trọng lượng</td>
+                                                    <td width="24%" align="center" class="awb_title">Tình trạng</td>
+                                                </tr>
+                                                
+                                                @if (true) //TUYEN add them cau lenh nay
+                                                {
+                                                    //$order=0;
+                                                    int order=0;
+                                                    
+                                                    //foreach($param_arrays_exp_shp as $val_exp_shp)
+                                                    foreach(var val_exp_shp in param_arrays_exp_shp)
+                                                    {
+                                                        //$row_goods_exp = explode('~|$|~', $val_exp_shp);
+                                                        row_goods_exp = HCSV.Core.CommonTCS.Commons.strSplit(val_exp_shp, "~|$|~");
+                                                        
+                                                        //$cnt_goods_exp = $cnt_goods_exp + 1 ;
+                                                        cnt_goods_exp = cnt_goods_exp + 1 ;
+
+
+                                                        //$temp=0;
+                                                        temp=0;
+                                                        
+                                                        //$order++;
+                                                        order++;
+
+                                                        //$temp++;
+                                                        temp++;
+
+                                                        //$temp++
+                                                        temp++;//TUYEN: Cau lenh nay ban dau khong co dau cham phay ';'
+                                                    
+                                                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                            <td>
+                                                                <div align="center">
+                                                                    @*<? echo $order ; ?>*@
+                                                                    @order
+                                                                </div>
+                                                            </td>
+                                                            <td align="center">
+                                                                &nbsp;
+                                                                
+                                                                @*if($row_goods_exp[ES24_DLV_TYPE]==''){echo "&nbsp;";}else{echo $row_goods_exp[ES24_DLV_TYPE];}*@
+                                                                @if(row_goods_exp[ES24_DLV_TYPE]=="")
+                                                                {
+                                                                    @Html.Raw("&nbsp;");
+                                                                }
+                                                                else
+                                                                {
+                                                                    @Html.Raw(row_goods_exp[ES24_DLV_TYPE]);
+                                                                }
+                                                            </td>
+                                                            <td align="center">
+                                                                &nbsp;
+                                                                @*if(($row_goods_exp[ES22_DLV_DATE])==''||($row_goods_exp[ES24_DLV_TYPE])==''||($row_goods_exp[ES17_FLT_ATD])==''){echo "";}else{echo date ("d-M-Y H:i", strtotime($row_goods_exp[ES17_FLT_ATD]));}*@
+                                                                @if(((row_goods_exp[ES22_DLV_DATE])=="") || ((row_goods_exp[ES24_DLV_TYPE])=="")
+                                                                    || ((row_goods_exp[ES17_FLT_ATD])==""))
+                                                                {
+                                                                    @Html.Raw("");
+                                                                }
+                                                                else
+                                                                {
+                                                                    @Html.Raw(HCSV.Core.CommonTCS.Commons.date_d_M_Y_H_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods_exp[ES17_FLT_ATD])));
+                                                                }
+                                                            </td>
+                                                            <td align="center">
+                                                                &nbsp;
+                                                                                                                                
+                                                                @*echo $row_goods_exp[ES05_QTY_SHP_PCS];*@
+                                                                @Html.Raw(row_goods_exp[ES05_QTY_SHP_PCS])
+                                                            </td>
+                                                            <td align="right">
+                                                                &nbsp;
+                                                                                                                                
+                                                                @*if($row_goods_exp[ES06_QTY_SHP_WGT]==''){*@
+                                                                @if(row_goods_exp[ES06_QTY_SHP_WGT]==""){
+                                                                    //echo '&nbsp;';
+                                                                    @Html.Raw("&nbsp;");
+                                                                }else
+                                                                {
+                                                                    //echo doubleval($row_goods_exp[ES06_QTY_SHP_WGT]).'(kg)';
+                                                                    @Html.Raw(Convert.ToDouble(row_goods_exp[ES06_QTY_SHP_WGT]) + "(kg)");
+                                                                }
+                                                                
+                                                            </td>
+                                                            <td align="center">
+                                                                &nbsp;
+                                                                
+
+                                                                @*if($row_goods_exp[ES20_GOODS_ST]=='RCS' or $row_goods_exp[ES20_GOODS_ST]=='BKD'){ echo 'Hàng dự định đi trên chuyến bay : '.$row_book[EBK04_COD_FLT_CAR].$row_book[EBK05_COD_FLT_NUM].', '.date ("d-M-Y", strtotime($row_book[EBK06_DAT_FLT_ORI]));
+                                                                }else if($row_goods_exp[ES20_GOODS_ST]=='AS'){ echo 'Hàng dự định đi trên chuyến bay : '.$row_book[EBK04_COD_FLT_CAR].$row_book[EBK05_COD_FLT_NUM].', '.date ("d-M-Y", strtotime($row_book[EBK06_DAT_FLT_ORI]));
+                                                                }else if($row_goods_exp[ES20_GOODS_ST]=='MAN'){ echo 'Hàng sẽ được chuyển đi';
+                                                                }else if($row_goods_exp[ES20_GOODS_ST]=='RET'){ echo 'Hàng đã được trả lại cho khách';
+                                                                }else if($row_goods_exp[ES20_GOODS_ST]=='OFD'){ echo 'Hàng đang offload';
+                                                                }else if($row_goods_exp[ES20_GOODS_ST]=='DEP'){ echo 'Hàng đã được vận chuyển đi trên chuyến bay : '.$row_goods_exp[ES24_DLV_TYPE].', '.date ("d-M-Y", strtotime($row_goods_exp[ES22_DLV_DATE]));}*@
+
+                                                                @if((row_goods_exp[ES20_GOODS_ST]=="RCS") || (row_goods_exp[ES20_GOODS_ST]=="BKD"))
+                                                                { 
+                                                                    @Html.Raw("Hàng dự định đi trên chuyến bay : " + row_book[EBK04_COD_FLT_CAR] + row_book[EBK05_COD_FLT_NUM]+ ", " +
+                                                                                    HCSV.Core.CommonTCS.Commons.date_d_M_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_book[EBK06_DAT_FLT_ORI])));
+                                                                                                                
+                                                                }
+                                                                else if(row_goods_exp[ES20_GOODS_ST]=="AS")
+                                                                { 
+                                                                    @Html.Raw("Hàng dự định đi trên chuyến bay : " + row_book[EBK04_COD_FLT_CAR] + row_book[EBK05_COD_FLT_NUM] + ", " +
+                                                                         HCSV.Core.CommonTCS.Commons.date_d_M_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_book[EBK06_DAT_FLT_ORI])));
+                                                                }
+                                                                else if(row_goods_exp[ES20_GOODS_ST]=="MAN")
+                                                                { 
+                                                                    @Html.Raw("Hàng sẽ được chuyển đi");
+                                                                }
+                                                                else if(row_goods_exp[ES20_GOODS_ST]=="RET")
+                                                                { 
+                                                                    @Html.Raw("Hàng đã được trả lại cho khách");
+                                                                }
+                                                                else if(row_goods_exp[ES20_GOODS_ST]=="OFD")
+                                                                { 
+                                                                    @Html.Raw("Hàng đang offload");
+                                                                }
+                                                                else if(row_goods_exp[ES20_GOODS_ST]=="DEP")
+                                                                { 
+                                                                    @Html.Raw("Hàng đã được vận chuyển đi trên chuyến bay : "+ row_goods_exp[ES24_DLV_TYPE] + ", "+
+                                                                                     HCSV.Core.CommonTCS.Commons.date_d_M_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_goods_exp[ES22_DLV_DATE])));
+                                                                }
+
+
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    
+                                                    //if($temp)
+                                                    if(temp>0)
+                                                    {
+                                                    //break;
+                                                    }
+
+                                                   }//end while ?>
+                                                }
+                                            </table>
+                                           }
+                                           else
+                                           { //Chi co 1 dong
+
+                                            
+                                            <table width="100%" class="form awb_tbl02">
+                                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                    <td width="25%" align="center" class="awb_title">Số hiệu chuyến bay</td>
+                                                    <td width="30%" align="center" class="awb_title">Giờ bay</td>
+                                                    <td width="45%" align="center" class="awb_title">Tình trạng</td>
+                                                </tr>
+                                                
+                                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                    <td align="center">
+                                                                                                                
+                                                        @*if($row_goods_exp[ES24_DLV_TYPE]==''){echo "&nbsp;";}else{echo $row_goods_exp[ES24_DLV_TYPE];}*@
+                                                        @if(row_goods_exp[ES24_DLV_TYPE]==""){@Html.Raw("&nbsp;");}else{@Html.Raw(row_goods_exp[ES24_DLV_TYPE]);}
+                                                    </td>
+                                                    <td align="center">
+                                                        @*if(($row_goods_exp[ES24_DLV_TYPE])==''||($row_goods_exp[ES17_FLT_ATD])==''){echo "";}else{echo date ("d-M-Y H:i", strtotime($row_goods_exp[ES17_FLT_ATD]));}*@
+                                                        @if((row_goods_exp[ES24_DLV_TYPE])==""||(row_goods_exp[ES17_FLT_ATD])=="")
+                                                        {@Html.Raw("");}
+                                                        else
+                                                        {
+                                                            @Html.Raw(HCSV.Core.CommonTCS.Commons.date_d_M_Y_H_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods_exp[ES17_FLT_ATD])));
+                                                        }
+                                                    </td>
+                                                    <td align="center">
+                                                        
+
+                                                        @*if($row_goods_exp[ES20_GOODS_ST]=='RCS' or $row_goods_exp[ES20_GOODS_ST]=='BKD'){ echo 'Hàng dự định đi trên chuyến bay : '.$row_book[EBK04_COD_FLT_CAR].$row_book[EBK05_COD_FLT_NUM].', '.date ("d-M-Y", strtotime($row_book[EBK06_DAT_FLT_ORI]));
+                                                        }else if($row_goods_exp[ES20_GOODS_ST]=='AS'){ echo 'Hàng dự định đi trên chuyến bay : '.$row_book[EBK04_COD_FLT_CAR].$row_book[EBK05_COD_FLT_NUM].', '.date ("d-M-Y", strtotime($row_book[EBK06_DAT_FLT_ORI]));
+                                                        }else if($row_goods_exp[ES20_GOODS_ST]=='MAN'){ echo 'Hàng sẽ được chuyển đi';
+                                                        }else if($row_goods_exp[ES20_GOODS_ST]=='RET'){ echo 'Hàng đã được trả lại cho khách';
+                                                        }else if($row_goods_exp[ES20_GOODS_ST]=='OFD'){ echo 'Hàng đang offload';
+                                                        }else if($row_goods_exp[ES20_GOODS_ST]=='DEP'){ echo 'Hàng đã được vận chuyển đi trên chuyến bay : '.$row_goods_exp[ES24_DLV_TYPE].', '.date ("d-M-Y", strtotime($row_goods_exp[ES22_DLV_DATE]));}*@
+
+                                                        @if((row_goods_exp[ES20_GOODS_ST]=="RCS") || (row_goods_exp[ES20_GOODS_ST]=="BKD"))
+                                                        { 
+                                                            @Html.Raw("Hàng dự định đi trên chuyến bay : " + row_book[EBK04_COD_FLT_CAR] + row_book[EBK05_COD_FLT_NUM] +", " +
+                                                                         HCSV.Core.CommonTCS.Commons.date_d_M_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_book[EBK06_DAT_FLT_ORI])));
+                                                        }
+                                                        else if(row_goods_exp[ES20_GOODS_ST]=="AS")
+                                                        { 
+                                                            @Html.Raw("Hàng dự định đi trên chuyến bay : " + row_book[EBK04_COD_FLT_CAR] + row_book[EBK05_COD_FLT_NUM] +", " +
+                                                                         HCSV.Core.CommonTCS.Commons.date_d_M_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_book[EBK06_DAT_FLT_ORI])));
+                                                        }
+                                                        else if(row_goods_exp[ES20_GOODS_ST]=="MAN")
+                                                        { 
+                                                            @Html.Raw("Hàng sẽ được chuyển đi");
+                                                        }
+                                                        else if(row_goods_exp[ES20_GOODS_ST]=="RET")
+                                                        { 
+                                                            @Html.Raw("Hàng đã được trả lại cho khách");
+                                                        }
+                                                        else if(row_goods_exp[ES20_GOODS_ST]=="OFD")
+                                                        { 
+                                                            @Html.Raw("Hàng đang offload");
+                                                        }
+                                                        else if(row_goods_exp[ES20_GOODS_ST]=="DEP")
+                                                        { 
+                                                            @Html.Raw("Hàng đã được vận chuyển đi trên chuyến bay : " + row_goods_exp[ES24_DLV_TYPE] + ", " +
+                                                                             HCSV.Core.CommonTCS.Commons.date_d_M_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_goods_exp[ES22_DLV_DATE])));
+                                                        }
+
+                                                        
+                                                    </td>
+                                                </tr>
+                                                @*if($temp){*@
+                                                @if(temp>0){
+                                                    //break; //TUYEN dong cau lenh nay, vi kiem tra khong thay vong lap nao ca.
+                                                }
+
+                                                
+                                            </table>
+                                            
+                                          }
+                                             
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div align="center" class="marginT10">
+                                    <a href="@String.Format("index.php?section={0}&layout=body_banggia1", section)" target="_blank" class="btn">
+                                        <span>
+                                            Bảng
+                                            giá áp dụng
+                                        </span>
+                                    </a> <a href="@String.Format("index.php?section={0}&layout=lk_yc_exp_cs", section)" target="_parent" class="btn">
+                                        <span>
+                                            Giá
+                                            lưu kho tại thời điểm
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                        
+                 }
+                 //else if(($user_code)&&($status=='imp')&&($bill_type=='H')&&(($user_code==$row['SHIPPER_CODE'])||($user_code==$agent_code)||($user_code=='admi') ||(substr(strtoupper($user_code),2,2)==substr(strtoupper($row_bill[B05_FL_NO]),0,2) ) ))
+                 else if((!String.IsNullOrEmpty(user_code))&&(status=="imp")&&(bill_type=="H")
+                 &&((user_code=="SHIPPER_CODE")
+                 ||(user_code==agent_code)||(user_code=="admi") ||(user_code.ToUpper().Substring(2,2)==row_bill[B05_FL_NO].ToUpper().Substring(0,2))))
+                 //TUYEN: Khong tim thay bien 'row["SHIPPER_CODE"]', nen thay bang hang so "SHIPPER_CODE"
+                 {
+                 
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>&nbsp;</td>
+                        <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                            <td height="22" colspan="2"> <div align="center"><span class="awb_title">TÌNH TRẠNG HÀNG NHẬP - HAWB</span></div></td>
+                        </tr>
+                        <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="form awb_tbl02" width="100%">
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td colspan="5" valign="top">
+                                
+                              @*if($cnt_mawb >1){//co tren 2 bill ton tai.*@
+                              @if(cnt_mawb >1) {//co tren 2 bill ton tai.
+                                <form name="frm-swich">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr class="form">
+                                            <td>
+                                                <strong>
+                                                    Số không vận đơn&nbsp;:
+                                                    @*<?echo $awbFirst."-".$awbLast;?>*@
+                                                    @Html.Raw(awbFirst + "-" + awbLast)
+                                                </strong>
+                                                <select class="form" name="serie" onchange="visitSite(this.options[this.selectedIndex].value);">
+                                                    
+
+                                                @if(true)
+                                                {
+                                                    //$cnt=0;
+                                                    int cnt=0;
+
+                                                    //foreach($param_arrays_mawb as $val)                                                    
+                                                    foreach(var val in param_arrays_mawb)
+                                                    {
+                                                        row_bill = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+
+
+                                                        <option class="form" value="<?echo basename($PHP_SELF)." ?awbfirst=".$HTTP_GET_VARS['awbFirst']." &awblast=".$HTTP_GET_VARS['awbLast']." &serie=".$cnt;?>"
+                                                            @*<?if($cnt==$serie){echo "selected";}?>*@
+                                                            @if(cnt==serie){@Html.Raw("selected");}
+                                                            >
+                                                            
+                                                            @*echo 'Flight No : '.$row_bill[B05_FL_NO].' Date: '.$row_bill[B06_FL_DATE];*@
+                                                            @Html.Raw("Flight No : " + row_bill[B05_FL_NO] + " Date: " + row_bill[B06_FL_DATE]);
+                                                            
+                                                        </option>
+                                                    
+                                                    }
+                                                }
+                                                    
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                                
+                              }
+                              else//chi co 1 bill
+                              {
+                                
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr class="form">
+                                        <td>
+                                            <strong>
+                                                Số không vận đơn&nbsp;:
+                                                @*<?echo $awbFirst."-".$awbLast;?>*@
+                                                @Html.Raw(awbFirst + "-" + awbLast)
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                                }
+                    
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td width="28%" valign="top" align="center" class="awb_title">Nơi xuất phát</td>
+                            <td width="24%" valign="top" align="center" class="awb_title">Nơi đến</td>
+                            <td width="23%" valign="top" align="center" class="awb_title">Số kiện hàng</td>
+                            <td width="25%" valign="top" align="center" class="awb_title">Trọng lượng</td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td valign="top">
+                                <div align="center">
+                                    
+                                    @*echo $row_bill[B03_ORG];*@
+                                    @Html.Raw(row_bill[B03_ORG])
+                                    
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div align="center">
+                                                                        
+                                    @*echo $row_bill[B04_DES];*@
+                                    @Html.Raw(row_bill[B04_DES])
+
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div align="center">
+                                                                       
+                                    @*echo $row_bill[B07_PCS];*@
+                                    @Html.Raw(row_bill[B07_PCS])
+
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div align="center">
+                                    
+                                    
+                                    @*echo doubleval($row_bill[B08_WEIGHT]);*@
+                                    @Html.Raw(Convert.ToDouble(row_bill[B08_WEIGHT]))
+                                    (kg)
+                                </div>
+                            </td>
+                        </tr>
+                    
+                         
+                    @if (true)//TUYEN: Them cau lenh nay
+                    {
+                        //$result_hawb_doc = $client->GET_HAWB_DOC_INF(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'HAWB_NO'=>'*','FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+                        //$str_hawb_doc = $result_hawb_doc->GET_HAWB_DOC_INFResult;
+                        string str_hawb_doc = obj.GET_HAWB_DOC_INF("sss",awbFirst,awbLast,"*","CX0767","3/31/2013");
+
+                        //$param_arrays_hawb_doc = explode('*-$-*', $str_hawb_doc);//~|$|~
+                        param_arrays_hawb_doc = HCSV.Core.CommonTCS.Commons.strSplit(str_hawb_doc, "*-$-*");
+
+                        //$cnt_hawb =0;
+                        cnt_hawb =0;
+                    }
+                     
+                        @*//foreach($param_arrays_hawb_doc as $val) // Phai dem so luong HAWB truoc*@
+                        @foreach(var val in param_arrays_hawb_doc) // Phai dem so luong HAWB truoc
+                        {
+                            //$cnt_hawb = $cnt_hawb + 1;
+                            cnt_hawb = cnt_hawb + 1;
+                        }
+
+                        @*//foreach($param_arrays_hawb_doc as $val)*@
+                        @foreach(var val in param_arrays_hawb_doc)
+                        {
+                            //$row_hawb = explode('~|$|~', $val);
+                            string[] row_hawb = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+
+                            //$hawb_no = $row_hawb[HD25_HAWB_NO];
+                            string hawb_no = row_hawb[HD25_HAWB_NO];
+
+
+
+                            //if(rtrim($HTTP_GET_VARS['h_no'])==rtrim($row_hawb[HD25_HAWB_NO]))
+                            if((String.IsNullOrEmpty((string)Request.QueryString["h_no"]) ? "" : (string)Request.QueryString["h_no"]).TrimEnd() == row_hawb[HD25_HAWB_NO].TrimEnd())
+                            {
+                                //$result_hawb_ctc = $client->GET_HAWB_CTC_INF(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'HAWB_NO'=>$hawb_no,'FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+                                //$str_hawb_ctc = $result_hawb_ctc->GET_HAWB_CTC_INFResult;
+                                string str_hawb_ctc = obj.GET_HAWB_CTC_INF("sss", awbFirst, awbLast, hawb_no,"CX0767","3/31/2013");
+
+                                //$row_hawb_ctc = explode('~|$|~', $str_hawb_ctc);	//ctc chi co 1 dong
+                                string[] row_hawb_ctc = HCSV.Core.CommonTCS.Commons.strSplit(str_hawb_ctc, "~|$|~"); //ctc chi co 1 dong
+
+                                //LAY RA THONG TIN VE HANG HOA TREN LO HANG NAY
+                                //$result_hawb_shp = $client->GET_HAWB_SHIPMENT_INF(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'HAWB_NO'=>$hawb_no,'FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+                                //$str_hawb_shp = $result_hawb_shp->GET_HAWB_SHIPMENT_INFResult;
+                                string str_hawb_shp = obj.GET_HAWB_SHIPMENT_INF("sss", awbFirst, awbLast, hawb_no,"CX0767","3/31/2013");
+
+                                //$param_arrays_hawb_shp = explode('*-$-*', $str_hawb_shp);//~|$|~
+                                string[] param_arrays_hawb_shp = HCSV.Core.CommonTCS.Commons.strSplit(str_hawb_shp, "*-$-*");
+
+                                //$cnt_goods =0;
+                                cnt_goods =0;
+
+                                //foreach($param_arrays_hawb_shp as $val) // Phai dem so luong HAWB truoc
+                                foreach(var val_1 in param_arrays_hawb_shp) // Phai dem so luong HAWB truoc/***: TUYEN thay the bien 'val' thanh 'val_1'
+                                {
+                                    //$cnt_goods = $cnt_goods + 1;
+                                    cnt_goods = cnt_goods + 1;
+                                }
+
+
+                        <!--Xuat thong tin cua hawb-->
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+
+                            <td colspan="5" valign="top" class="left1">
+                                -@*<a href="index.php?section=<?php echo $section ?>&layout=03_cs&awbFirst=<?echo $HTTP_GET_VARS['awbFirst'];?>&awbLast=<?echo $HTTP_GET_VARS['awbLast'];?>">*@
+                                 <a href="@String.Format("/AWB/View_03_cs?awbFirst={0}&awbLast={1}", Request.QueryString["awbFirst"], Request.QueryString["awbLast"])">
+                                    Thông tin lô hàng có Số Hawb:
+
+                                    @*echo $row_hawb[HD25_HAWB_NO];*@
+                                    @Html.Raw(row_hawb[HD25_HAWB_NO])
+                                </a>
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td colspan="2" valign="top"><strong>Số kiện hàng</strong></td>
+                            <td colspan="3" valign="top">
+                                
+                                @*echo $row_hawb[HD05_QTY_HWB_PCS];*@
+                                @Html.Raw(row_hawb[HD05_QTY_HWB_PCS])
+                                
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td colspan="2" valign="top"><strong>Trọng lượng</strong></td>
+                            <td colspan="3" valign="top">
+                                
+                                @*echo $row_hawb[HD06_QTY_HWB_WGT];*@
+                                @Html.Raw(row_hawb[HD06_QTY_HWB_WGT])
+                                (Kg)
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                            <td colspan="5" valign="top" class="awb_title">Thông tin lô hàng</td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td colspan="2" valign="top"><strong>Người gởi</strong></td>
+                            <td colspan="3" valign="top">
+                                
+                                @*echo $row_hawb_ctc[HC03_SHP_NAME];*@
+                                @Html.Raw(row_hawb_ctc[HC03_SHP_NAME])
+                                
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td colspan="2" valign="top"><strong>Địa chỉ</strong></td>
+                            <td colspan="3" valign="top">
+                                
+                                @*echo $row_hawb_ctc[HC04_SHP_ADDR];*@
+                                @Html.Raw(row_hawb_ctc[HC04_SHP_ADDR])
+                                
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td colspan="2" valign="top"><strong>Người nhận</strong></td>
+                            <td colspan="3" valign="top">
+                                
+
+                                @*echo $row_hawb_ctc[HC01_CNE_NAME];*@
+                                @Html.Raw(row_hawb_ctc[HC01_CNE_NAME])
+                                
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td colspan="2" valign="top"><strong>Địa chỉ</strong></td>
+                            <td colspan="3" valign="top">
+                                
+                                @*echo $row_hawb_ctc[HC02_CNE_ADDR];*@
+                                @Html.Raw(row_hawb_ctc[HC02_CNE_ADDR])
+                                
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                            <td colspan="5" valign="top" class="awb_title">
+                                Thông tin vận chuyển
+                                @*<?  if ($cnt_goods <=0) {echo ' : Chưa có hàng';} ?>*@
+                                @if (cnt_goods <=0) {@Html.Raw(" : Chưa có hàng");} ?>
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td colspan="5" valign="top">
+                                
+
+                              @*if($cnt_goods>1)*@
+                              @if(cnt_goods>1)
+                              {
+                                <table width="100%" class="form awb_tbl02">
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td width="8%" align="center" class="awb_title">Lần</td>
+                                        <td width="16%" align="center" class="awb_title">Số hiệu chuyến bay</td>
+                                        <td width="20%" align="center" class="awb_title">Giờ đến</td>
+                                        <td width="9%" align="center" class="awb_title">Số kiện</td>
+                                        <td width="13%" align="center" class="awb_title">Trọng lượng</td>
+                                        <td width="12%" align="center" class="awb_title">Trọng lượng cân lại (nếu có)</td>
+                                        <td width="22%" align="center" class="awb_title">Tình trạng</td>
+                                    </tr>
+                                    
+                                    @if (true)//TUYEN tao cau lenh nay
+                                    {
+                                        //$tam=0;
+                                        int tam=0;
+                                        
+                                        //$cnt_goods=0;    
+                                        cnt_goods=0;
+                                    
+                                    
+
+                                        //foreach($param_arrays_hawb_shp as $val) // Phai dem so luong HAWB truoc
+                                        foreach(var val_1 in param_arrays_hawb_shp) // Phai dem so luong HAWB truoc
+                                        {
+                                            //$cnt_goods = $cnt_goods + 1;
+                                            cnt_goods = cnt_goods + 1;
+                                            
+                                            //$row_goods = explode('~|$|~', $val);
+                                            row_goods = HCSV.Core.CommonTCS.Commons.strSplit(val_1, "~|$|~"); //TUYEN: Thay the bien 'val' thanh 'val_1'
+                                            
+                                            //$tam++;
+                                            tam++;
+
+                                    
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td>
+                                            <div align="center">
+
+                                                @*<?echo $tam;?>*@
+                                                @tam
+
+                                            </div>
+                                        </td>
+                                        <td align="center">
+                                            &nbsp;
+                                            
+                                            @*echo $row_goods[HS09_COD_HWB_CAR].$row_goods[HS10_COD_HWB_FLT];*@
+                                            @Html.Raw(row_goods[HS09_COD_HWB_CAR] + row_goods[HS10_COD_HWB_FLT])
+                                        </td>
+                                        <td align="center">
+                                            &nbsp;
+                                            
+                                            @*if ($row_goods[HS17_FLT_ATA]==''){
+                                            echo '&nbsp;';
+                                            }else{
+                                            echo date ("d-M-Y H:i", strtotime($row_goods[HS17_FLT_ATA]));
+                                            }*@
+
+                                            @if (row_goods[HS17_FLT_ATA]==""){
+                                                @Html.Raw("&nbsp;");
+                                            }else{
+                                                @Html.Raw(HCSV.Core.CommonTCS.Commons.date_d_M_Y_H_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[HS17_FLT_ATA])));
+                                            }
+
+                                            
+                                        </td>
+                                        <td align="center">
+                                            &nbsp;
+                                            
+                                            
+                                            @*echo $row_goods[HS05_QTY_HWB_PCS];*@
+                                            @Html.Raw(row_goods[HS05_QTY_HWB_PCS])
+                                            
+                                        </td>
+                                        <td align="right">
+                                            &nbsp;
+                                            
+                                            @*if ($row_goods[HS06_QTY_HWB_WGT]==''){
+                                            echo '&nbsp;';
+                                            }else{
+                                            echo doubleval($row_goods[HS06_QTY_HWB_WGT]).'(kg)';
+                                            }*@
+
+                                            @if (row_goods[HS06_QTY_HWB_WGT]==""){
+                                                @Html.Raw("&nbsp;");
+                                            }else{
+                                                @Html.Raw(Convert.ToDouble(row_goods[HS06_QTY_HWB_WGT]) + "(kg)");
+                                            }
+                                        </td>
+                                        <td align="center">
+                                            
+                                            @*if($row_goods[HS18_HWB_RE_WGT] > 0){
+                                            echo doubleval($row_goods[HS18_HWB_RE_WGT]). '(kg)';
+                                            }else {
+                                            echo '&nbsp;';
+                                            }*@
+                                            
+                                            @if(Convert.ToDecimal(row_goods[HS18_HWB_RE_WGT]) > 0){
+                                                @Html.Raw(Convert.ToDouble(row_goods[HS18_HWB_RE_WGT]) + "(kg)");
+                                            }else {
+                                                @Html.Raw("&nbsp;");
+                                            }
+
+                                        </td>
+                                        <td align="center">
+                                            &nbsp;
+                                            
+
+                                            @*if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS04_FLG_HWB_RDY]=='Y'&&$row_goods[HS20_GOODS_ST]!='DLV'&&($row_goods[HS30_NUM_NOTIFY]=='0'||$row_goods[HS30_NUM_NOTIFY]=='') ){echo 'Hàng đã được nhập kho TCS';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS20_GOODS_ST]=='RCF'&&$row_goods[HS30_NUM_NOTIFY]=='0'){ echo 'Hàng đã được nhập kho TCS';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS04_FLG_HWB_RDY]=='Y'&&$row_goods[HS20_GOODS_ST]!='DLV'&&$row_goods[HS30_NUM_NOTIFY]=='1'){ echo 'Hàng đã được thông báo lần 1';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS04_FLG_HWB_RDY]=='Y'&&$row_goods[HS20_GOODS_ST]!='DLV'&&$row_goods[HS30_NUM_NOTIFY]=='2'){ echo 'Hàng đã được thông báo lần 2';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS04_FLG_HWB_RDY]=='Y'&&$row_goods[HS20_GOODS_ST]!='DLV'&&$row_goods[HS30_NUM_NOTIFY]=='3' ){ echo 'Hàng đã được thông báo lần 3';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]!=''&&$row_goods[HS20_GOODS_ST]!='DLV'){ echo 'Hàng đã được làm thủ tục, chưa lĩnh hàng';
+                                            }else if($row_goods[HS20_GOODS_ST]=='AR'){ echo 'Hàng đã được làm thủ tục, chưa lĩnh hàng';
+                                            }else if($row_goods[HS20_GOODS_ST]=='DLV'){
+
+                                            echo 'Hàng đã được giao cho : '. $row_goods[HS23_RCV_NAME] .' ngày '.$row_goods[HS22_DLV_DATE];
+                                            $checkin_date=date ("d/m/Y", strtotime($row_goods[HS21_CHK_IN_DATE]));
+                                            $checkin_hour=date ("H", strtotime($row_goods[HS21_CHK_IN_DATE]));
+                                            $checkin_minute=date ("i", strtotime($row_goods[HS21_CHK_IN_DATE]));
+                                            }else
+                                            echo 'Liên hệ TCS để biết thêm thông tin về lô hàng này'.$row_goods[HS20_GOODS_ST];*@
+
+                                            @if((row_goods[HS21_CHK_IN_DATE]=="") && (row_goods[HS04_FLG_HWB_RDY]=="Y")
+                                                && (row_goods[HS20_GOODS_ST]!="DLV")
+                                                    &&((row_goods[HS30_NUM_NOTIFY]=="0")||(row_goods[HS30_NUM_NOTIFY]=="")) )
+                                            {
+                                                @Html.Raw("Hàng đã được nhập kho TCS");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]=="") && (row_goods[HS20_GOODS_ST]=="RCF") && (row_goods[HS30_NUM_NOTIFY]=="0"))
+                                            { 
+                                                @Html.Raw("Hàng đã được nhập kho TCS");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]=="") && (row_goods[HS04_FLG_HWB_RDY]=="Y")
+                                                && (row_goods[HS20_GOODS_ST]!="DLV") && (row_goods[HS30_NUM_NOTIFY]=="1"))
+                                            { 
+                                                @Html.Raw("Hàng đã được thông báo lần 1");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]=="") && (row_goods[HS04_FLG_HWB_RDY]=="Y")
+                                                && (row_goods[HS20_GOODS_ST]!="DLV") && (row_goods[HS30_NUM_NOTIFY]=="2"))
+                                            { 
+                                                @Html.Raw("Hàng đã được thông báo lần 2");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]=="") && (row_goods[HS04_FLG_HWB_RDY]=="Y")
+                                                && (row_goods[HS20_GOODS_ST]!="DLV") && (row_goods[HS30_NUM_NOTIFY]=="3" ))
+                                            { 
+                                                @Html.Raw("Hàng đã được thông báo lần 3");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]!="") && (row_goods[HS20_GOODS_ST]!="DLV"))
+                                            { 
+                                                @Html.Raw("Hàng đã được làm thủ tục, chưa lĩnh hàng");
+                                            }
+                                            else if(row_goods[HS20_GOODS_ST]=="AR")
+                                            { 
+                                                @Html.Raw("Hàng đã được làm thủ tục, chưa lĩnh hàng");
+                                            }
+                                            else if(row_goods[HS20_GOODS_ST]=="DLV")
+                                            {
+
+                                                @Html.Raw("Hàng đã được giao cho : " + row_goods[HS23_RCV_NAME] + " ngày " + row_goods[HS22_DLV_DATE]);
+                                                                                                                                                      checkin_date = HCSV.Core.CommonTCS.Commons.date_d_m_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[HS21_CHK_IN_DATE]));
+                                                                                                                                                      checkin_hour = HCSV.Core.CommonTCS.Commons.date_H(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[HS21_CHK_IN_DATE]));
+                                                                                                                                                      checkin_minute = HCSV.Core.CommonTCS.Commons.date_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[HS21_CHK_IN_DATE]));
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw("Liên hệ TCS để biết thêm thông tin về lô hàng này" + row_goods[HS20_GOODS_ST]);
+                                            }
+                                            
+                                            
+                                        </td>
+                                    </tr>
+                                        
+                                   }//end while
+                                  }
+                                  
+                                </table>
+
+                              }
+                              //else if($cnt_goods>0)
+                              else if(cnt_goods>0)
+                              {
+
+                                <table width="100%" class="form awb_tbl02">
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td width="16%" align="center" class="awb_title">Số hiệu chuyến bay</td>
+                                        <td width="20%" align="center" class="awb_title">Giờ đến</td>
+                                        <td width="9%" align="center" class="awb_title">Số kiện</td>
+                                        <td width="13%" align="center" class="awb_title">Trọng lượng</td>
+                                        <td width="12%" align="center" class="awb_title">Trọng lượng cân lại (nếu có)</td>
+                                        <td width="30%" align="center" class="awb_title">Tình trạng</td>
+                                    </tr>
+                                   
+
+                                    @*foreach($param_arrays_hawb_shp as $val) // Phai dem so luong HAWB truoc*@
+                                    @foreach(var val_1 in param_arrays_hawb_shp) // Phai dem so luong HAWB truoc
+                                    {
+                                        //$row_goods = explode('~|$|~', $val);
+                                        row_goods = HCSV.Core.CommonTCS.Commons.strSplit(val_1, "~|$|~");//TUYEN: Thay the bien 'val' thanh bien 'val_1'
+                                    
+                                        //$cnt_goods = $cnt_goods + 1;
+                                        cnt_goods = cnt_goods + 1;
+
+                                    
+                                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                        <td align="center">
+                                            &nbsp;
+                                            
+                                            
+                                            @*echo $row_goods[HS09_COD_HWB_CAR].$row_goods[HS10_COD_HWB_FLT];*@
+                                            @Html.Raw(row_goods[HS09_COD_HWB_CAR] + row_goods[HS10_COD_HWB_FLT])
+                                            
+                                            
+                                        </td>
+                                        <td align="center">
+                                            &nbsp;
+                                            
+                                            
+                                            @*if ($row_goods[HS17_FLT_ATA]==''){
+                                            echo '&nbsp;';
+                                            }else{
+                                            echo date ("d-M-Y H:i", strtotime($row_goods[HS17_FLT_ATA]));
+                                            }*@
+
+                                            @if (row_goods[HS17_FLT_ATA]==""){
+                                                @Html.Raw("&nbsp;");
+                                            }else{
+                                                @Html.Raw(HCSV.Core.CommonTCS.Commons.date_d_M_Y_H_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[HS17_FLT_ATA])));
+                                            }
+                                            
+                                        </td>
+                                        <td align="center">
+                                            &nbsp;
+                                            
+                                            @*echo $row_goods[HS05_QTY_HWB_PCS];*@
+                                            @Html.Raw(row_goods[HS05_QTY_HWB_PCS])                                            
+                                        </td>
+                                        <td align="right">
+                                            &nbsp;
+                                            
+                                            @*if ($row_goods[HS06_QTY_HWB_WGT]==''){
+                                            echo '&nbsp;';
+                                            }else{
+                                            echo doubleval($row_goods[HS06_QTY_HWB_WGT]).'(kg)';
+                                            }*@
+
+                                            @if (row_goods[HS06_QTY_HWB_WGT]==""){
+                                                @Html.Raw("&nbsp;");
+                                            }else{
+                                                @Html.Raw(Convert.ToDouble(row_goods[HS06_QTY_HWB_WGT]) + "(kg)");
+                                            }
+                                            
+                                        </td>
+                                        <td align="center">
+                                            
+
+                                            @*if($row_goods[HS18_HWB_RE_WGT] > 0){
+                                            echo doubleval($row_goods[HS18_HWB_RE_WGT]). '(kg)';
+                                            }else {
+                                            echo '&nbsp;';
+                                            }*@
+
+                                            @if (Convert.ToDecimal(String.IsNullOrEmpty(row_goods[HS18_HWB_RE_WGT]) ? "0" : row_goods[HS18_HWB_RE_WGT]) > 0)
+                                            {
+                                                @Html.Raw(Convert.ToDouble(row_goods[HS18_HWB_RE_WGT]) + "(kg)");
+                                            }else {
+                                                @Html.Raw("&nbsp;");
+                                            }
+
+                                            
+                                        </td>
+
+                                        <td align="center">
+                                            &nbsp;
+                                            
+
+                                            @*if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS04_FLG_HWB_RDY]=='Y'&&$row_goods[HS20_GOODS_ST]!='DLV'&&($row_goods[HS30_NUM_NOTIFY]=='0'||$row_goods[HS30_NUM_NOTIFY]=='') ){echo 'Hàng đã được nhập kho TCS';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS20_GOODS_ST]=='RCF'&&$row_goods[HS30_NUM_NOTIFY]=='0'){ echo 'Hàng đã được nhập kho TCS';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS04_FLG_HWB_RDY]=='Y'&&$row_goods[HS20_GOODS_ST]!='DLV'&&$row_goods[HS30_NUM_NOTIFY]=='1'){ echo 'Hàng đã được thông báo lần 1';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS04_FLG_HWB_RDY]=='Y'&&$row_goods[HS20_GOODS_ST]!='DLV'&&$row_goods[HS30_NUM_NOTIFY]=='2'){ echo 'Hàng đã được thông báo lần 2';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]==''&&$row_goods[HS04_FLG_HWB_RDY]=='Y'&&$row_goods[HS20_GOODS_ST]!='DLV'&&$row_goods[HS30_NUM_NOTIFY]=='3' ){ echo 'Hàng đã được thông báo lần 3';
+                                            }else if($row_goods[HS21_CHK_IN_DATE]!=''&&$row_goods[HS20_GOODS_ST]!='DLV'){ echo 'Hàng đã được làm thủ tục, chưa lĩnh hàng';
+                                            }else if($row_goods[HS20_GOODS_ST]=='AR'){ echo 'Hàng đã được làm thủ tục, chưa lĩnh hàng';
+                                            }else if($row_goods[HS20_GOODS_ST]=='DLV'){
+
+                                            //echo 'Hàng đã được giao cho : '. $row_goods[HS23_RCV_NAME] .' ngày '.date ("d-M-Y", strtotime($row_goods[HS22_DLV_DATE]));
+                                            echo 'Hàng đã được giao cho : '. $row_goods[HS23_RCV_NAME] .' ngày '.$row_goods[HS22_DLV_DATE];
+
+                                            $checkin_date=date ("d/m/Y", strtotime($row_goods[HS21_CHK_IN_DATE]));
+                                            $checkin_hour=date ("H", strtotime($row_goods[HS21_CHK_IN_DATE]));
+                                            $checkin_minute=date ("i", strtotime($row_goods[HS21_CHK_IN_DATE]));
+                                            }else
+                                            echo 'Liên hệ TCS để biết thêm thông tin về lô hàng này'.$row_goods[HS20_GOODS_ST];*@
+
+                                            @if((row_goods[HS21_CHK_IN_DATE]=="") && (row_goods[HS04_FLG_HWB_RDY]=="Y")
+                                                && (row_goods[HS20_GOODS_ST]!="DLV")
+                                                    &&((row_goods[HS30_NUM_NOTIFY]=="0") || (row_goods[HS30_NUM_NOTIFY]=="")))
+                                            {
+                                                @Html.Raw("Hàng đã được nhập kho TCS");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]=="") && (row_goods[HS20_GOODS_ST]=="RCF") && (row_goods[HS30_NUM_NOTIFY]=="0"))
+                                            { 
+                                                @Html.Raw("Hàng đã được nhập kho TCS");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]=="") && (row_goods[HS04_FLG_HWB_RDY]=="Y")
+                                                && (row_goods[HS20_GOODS_ST]!="DLV") && (row_goods[HS30_NUM_NOTIFY]=="1"))
+                                            { 
+                                                @Html.Raw("Hàng đã được thông báo lần 1");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]=="")&& (row_goods[HS04_FLG_HWB_RDY]=="Y")
+                                                && (row_goods[HS20_GOODS_ST]!="DLV") && (row_goods[HS30_NUM_NOTIFY]=="2"))
+                                            { 
+                                                @Html.Raw("Hàng đã được thông báo lần 2");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]=="") && (row_goods[HS04_FLG_HWB_RDY]=="Y")
+                                                && (row_goods[HS20_GOODS_ST]!="DLV") &&(row_goods[HS30_NUM_NOTIFY]=="3" ))
+                                            { 
+                                                @Html.Raw("Hàng đã được thông báo lần 3");
+                                            }
+                                            else if((row_goods[HS21_CHK_IN_DATE]!="") && (row_goods[HS20_GOODS_ST]!="DLV"))
+                                            { 
+                                                @Html.Raw("Hàng đã được làm thủ tục, chưa lĩnh hàng");
+                                            }
+                                            else if(row_goods[HS20_GOODS_ST]=="AR")
+                                            { 
+                                                @Html.Raw("Hàng đã được làm thủ tục, chưa lĩnh hàng");
+                                            }
+                                            else if(row_goods[HS20_GOODS_ST]=="DLV"){
+
+                                                @Html.Raw("Hàng đã được giao cho : " + row_goods[HS23_RCV_NAME] + " ngày "+ row_goods[HS22_DLV_DATE]);
+
+                                                                                                                                                     checkin_date = HCSV.Core.CommonTCS.Commons.date_d_m_Y(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[HS21_CHK_IN_DATE]));
+                                                                                                                                                     checkin_hour = HCSV.Core.CommonTCS.Commons.date_H(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[HS21_CHK_IN_DATE]));
+                                                                                                                                                     checkin_minute = HCSV.Core.CommonTCS.Commons.date_i(HCSV.Core.CommonTCS.Commons.strToTime(row_goods[HS21_CHK_IN_DATE]));
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw("Liên hệ TCS để biết thêm thông tin về lô hàng này" + row_goods[HS20_GOODS_ST]);
+                                            }                                            
+                                            
+                                        </td>
+                                    </tr>
+                                   }@*//end while*@
+                                </table>
+                              }
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr bordercolor="#FDECE1" bgcolor="#FDCBAC">
+
+                            <td colspan="5" valign="top" bordercolor="#FFFFFF" bgcolor="#FFFFFF" class="left1">
+                                <strong>
+                                    +@*<a href="index.php?section=<?php echo $section ?>&layout=03_cs&awbFirst=<?echo $HTTP_GET_VARS['awbFirst'];?>&awbLast=<?echo $HTTP_GET_VARS['awbLast'];?>&h_no=<?echo $row_hawb[HD25_HAWB_NO];?>">*@
+                                     <a href="@String.Format("/AWB/View_03_cs?awbFirst={0}&awbLast={1}&h_no={2}",Request.QueryString["awbFirst"],  Request.QueryString["awbLast"], row_hawb[HD25_HAWB_NO])">
+                                        Thông tin lô hàng
+                                        @*<?echo $temp;?>//TUYEN: Khong dung cau lenh nay*@
+                                       
+                                        có Số Hawb:
+
+                                        @*echo $row_hawb[HD25_HAWB_NO];*@
+                                        @Html.Raw(row_hawb[HD25_HAWB_NO])
+
+                                    </a>
+                                    
+                                    @*if($cnt_hawb>1)*@
+                                    @if(cnt_hawb>1)
+                                    {
+                                        @Html.Raw("(Số kiện: ")
+                                        //echo doubleval($row_hawb[HD05_QTY_HWB_PCS]);
+                                        @Html.Raw(Convert.ToDouble(row_hawb[HD05_QTY_HWB_PCS]));
+                                    
+                                        @Html.Raw(", Trọng lượng: ")
+                                    
+                                    
+                                        @Html.Raw(Convert.ToDouble(row_hawb[HD06_QTY_HWB_WGT]))
+                                    
+                                        @Html.Raw(")")
+                                     }
+                                </strong>
+                            </td>
+                        </tr>
+                        
+                      }
+                    }
+                    
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="center" class="marginT10">
+                        <a href="/AWB/SearchAWB_ApplicableCharges" target="_blank" class="btn">
+                            <span>
+                                Bảng giá áp dụng
+                            </span>
+                        </a> <a href="index.php?section=<?php echo $section ?>&layout=lk_yc_hawb_cs&act=imp_hawb&h_no=<? echo $HTTP_GET_VARS['h_no'];?>&awb_sfx=<? echo $row_hawb[HD03_COD_AWB_SFX];?>&checkin_date=<?echo $checkin_date;?>&checkin_hour=<?echo $checkin_hour;?>&checkin_minute=<?echo $checkin_minute;?>" target="_self" class="btn">
+                            <span>
+                                Giá lưu kho tại thời điểm
+                            </span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+        
+
+      //}else if(($status=='imp')&&($bill_type=='H')&&($user_code!=$agent_code)){//master co hawb//ko co quyen truy cap//ok good
+      }
+      else if((status=="imp")&&(bill_type=="H")&&(user_code!=agent_code))//master co hawb//ko co quyen truy cap//ok good
+      {
+
+        
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <!--DWLayoutTable-->
+            <tr>
+                <td height="19" colspan="2"></td>
+            </tr>
+            <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                <td align="center" height="22" colspan="2" class="awb_title">TÌNH TRẠNG HÀNG NHẬP - HAWB</td>
+            </tr>
+            <tr>
+                <td height="19" colspan="2"></td>
+            </tr>
+            <tr>
+                <td height="192" colspan="2">
+                    <table class="form awb_tbl02" width="100%">
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td height="18" colspan="5" valign="top">
+                                
+
+                                @*if($cnt_mawb >1){//co tren 2 bill ton tai.*@
+                                @if(cnt_mawb >1)//co tren 2 bill ton tai.
+                                {
+                                
+                                    <form name="frm-swich">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr class="form">
+                                                <td>
+                                                    <strong>
+                                                        Số không vận đơn&nbsp;:
+                                                        @*<?echo $awbFirst."-".$awbLast;?>*@
+                                                        @Html.Raw(awbFirst + "-" + awbLast)
+                                                    </strong> <select class="form" name="serie" onchange="visitSite(this.options[this.selectedIndex].value);">
+                                                    
+                                                    @if(true)//TUYEN them cau lenh nay
+                                                    {
+                                                        //$cnt=0;
+                                                        int cnt=0;
+
+                                                        //foreach($param_arrays_mawb as $val)
+                                                        foreach(var val in param_arrays_mawb)
+                                                        {
+                                                            //$row_bill = explode('~|$|~', $val);
+                                                            row_bill = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+
+                                                              <option class="form" value="<?echo basename($PHP_SELF)." ?awbfirst=".$HTTP_GET_VARS['awbFirst']." &awblast=".$HTTP_GET_VARS['awbLast']." &serie=".$cnt;?>"
+                                                                   @*<?if($cnt==$serie){echo "selected";}?>*@
+                                                                   @if(cnt==serie){@Html.Raw("selected");}
+                                                                >
+                                                                
+                                                                
+                                                                @*echo 'Flight No : '.$row_bill[B05_FL_NO].' Date: '.$row_bill[B06_FL_DATE];*@
+                                                                @Html.Raw("Flight No : " + row_bill[B05_FL_NO] + " Date: " + row_bill[B06_FL_DATE])
+                                                                
+                                                            </option>
+
+                                                        }
+                                                    }
+</select>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                
+                                }
+                                else//chi co 1 bill
+                                {
+                                
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr class="form">
+                                            <td>
+                                                <strong>
+                                                    Số không vận đơn&nbsp;:
+                                                    @*<?echo $awbFirst."-".$awbLast;?>*@
+                                                    @Html.Raw(awbFirst + "-" + awbLast)
+                                                </strong>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                
+                                }
+                                
+                            </td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td width="28%" valign="top" class="awb_title">Nơi xuất phát</td>
+                            <td width="24%" valign="top" class="awb_title">Nơi đến</td>
+                            <td width="23%" valign="top" class="awb_title">Số kiện hàng</td>
+                            <td width="25%" valign="top" class="awb_title">Trọng lượng</td>
+                        </tr>
+                        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                            <td valign="top" bgcolor="#FFFFFF">
+                                <div align="center">
+                                    
+                                    @*echo $row_bill[B03_ORG];*@
+                                    @Html.Raw(row_bill[B03_ORG])
+                                    &nbsp;
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div align="center">
+                                                                        
+                                    @*echo $row_bill[B04_DES];*@
+                                    @Html.Raw(row_bill[B04_DES])
+                                    &nbsp;
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div align="center">
+                                    
+                                    @*echo $row_bill[B07_PCS];*@
+                                    @Html.Raw(row_bill[B07_PCS])
+                                    &nbsp;
+                                </div>
+                            </td>
+                            <td valign="top">
+                                <div align="center">
+                                    
+                                    @*echo doubleval($row_bill[B08_WEIGHT]);*@
+                                    @Html.Raw(Convert.ToDouble(row_bill[B08_WEIGHT]))
+                                    (kg)&nbsp;
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td height="18" colspan="2" align="center" class="left1">
+                    <p align="left">
+                        <a href="index.php?section=<?php echo $section ?>&layout=sign_in&layout=sign_in&awbFirst=<?php echo $awbFirst ; ?>&awbLast=<?php echo $awbLast; ?>" target="_self">
+                            Để xem chi tiết về thông tin lô hàng, vui lòng Log In.
+                        </a>
+                    </p>
+                </td>
+                <td id="iware_test"></td>
+            </tr>
+            <tr>
+                <td height="18" colspan="2" align="center" class="left">
+                    <div align="left">
+                        Hoặc liên hệ đại lý :
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td width="73" height="18" align="center" class="left">
+                    <div align="left">Tên : </div>
+                </td>
+                <td width="543" align="left" class="left">
+                    <strong>
+                        
+                        @*echo $agent_name_vn."."; // Neu tieng Anh phai dung $agent_name*@
+                        @Html.Raw(agent_name_vn + ".") @*// Neu tieng Anh phai dung $agent_name*@
+
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td height="18" align="center" class="left"> <div align="left">Địa chỉ : </div></td>
+                <td align="left" class="left">
+                    <strong>
+                        
+                        @*echo $agent_adr_vn.".";*@
+                        @Html.Raw(agent_adr_vn + ".")
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td height="18" align="center" class="left">
+                    <div align="left">
+                        Điện thoại :
+                    </div>
+                </td>
+                <td align="left" class="left">
+                    <strong>
+                        
+                        @*echo $agent_tel.".";*@
+                        @Html.Raw(agent_tel +".")
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td height="18" align="center" class="left"> <div align="left">Fax :</div></td>
+                <td align="left" class="left">
+                    <strong>
+                        
+                        @*echo $agent_fax.".";*@
+                        @Html.Raw(agent_fax + ".")
+
+                    </strong>
+                </td>
+            </tr>
+            <tr>
+                <td height="18" colspan="2" align="center" class="left1"><!--DWLayoutEmptyCell-->&nbsp; </td>
+            </tr>
+            <tr>
+                <td height="18" colspan="2" align="center" class="left1"> </td>
+            </tr>
+        </table>
+       
+     }
+     //else if($status=='imp_exp')//qua canh
+     else if(status=="imp_exp")//qua canh
+     {
+        @*BEGIN: ******************TUYEN: dong toan bo cau lenh o day*******************************
+        $serie=$row_imp['SERIE'];                 
+        
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td></td>
+        </tr>
+        <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+            <td></td>
+        </tr>
+
+        <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+            <td align="center" class="awb_title">
+                <p>&nbsp;</p>
+                <p>TÌNH TRẠNG HÀNG QUÁ CẢNH</p>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%" class="form awb_tbl02">
+                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                        <td colspan="4" valign="top">
+                            <?
+
+                            if(mssql_num_rows($result_comp)>1){//co tren 2 bill ton tai.
+                            ?>
+                            <form name="frm-swich">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr class="form">
+                                        <td>
+                                            <strong>
+                                                Số không vận đơn&nbsp;:
+                                                <?echo $awbFirst."-".$awbLast;?>
+                                            </strong> <select class="form" name="serie" onchange="visitSite(this.options[this.selectedIndex].value);">
+                                                <?
+                                                while($row_comp = mssql_fetch_array($result_comp)){
+                                                $query="select * from IMP_DATA_flight where FL_ID=".$row_comp['FL_ID'];
+                                                $result_flight_comp = mssql_query($query, $link);
+                                                $row_flight_comp = mssql_fetch_array($result_flight_comp);
+                                                ?>
+
+                                                <option class="form" value="<?echo basename($PHP_SELF)." ?awbfirst=".$HTTP_GET_VARS['awbFirst']." &awblast=".$HTTP_GET_VARS['awbLast']." &serie=".$row_comp['SERIE'];?>"
+                                                    <?if($row_comp['SERIE']==$serie){echo "selected";}?>>
+                                                    <?echo date ("d-M-Y H:i A", strtotime($row_flight_comp['ATA']));?>
+                                                </option>
+                                                <?
+                                                }
+                                                ?>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                            <?
+                            }else{//chi co 1 bill
+                            ?>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr class="form">
+                                    <td>
+                                        <strong>
+                                            Số không vận đơn&nbsp;:
+                                            <?echo $awbFirst."-".$awbLast;?>
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </table>
+                            <?
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                        <td width="25%" valign="top" class="awb_title">Nơi xuất phát</td>
+                        <td width="25%" valign="top" class="awb_title">Nơi đến</td>
+                        <td width="25%" valign="top" class="awb_title">Số kiện hàng</td>
+                        <td width="25%" valign="top" class="awb_title">Trọng lượng</td>
+                    </tr>
+                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                        <td valign="top" colspan="2">
+                            <div align="center">
+                                <? echo $row_bill[B03_ORG] ." - SGN - ". $row_bill[B04_DES];?>
+                                &nbsp;
+                            </div>
+                        </td>
+                        <td valign="top">
+                            <div align="center">
+                                <? echo $row_bill[B07_PCS];?>
+                                &nbsp;
+                            </div>
+                        </td>
+                        <td valign="top">
+                            <div align="center">
+                                <? echo doubleval($row_bill[B08_WEIGHT]);?>
+                                (kg)&nbsp;
+                            </div>
+                        </td>
+                    </tr>
+                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                        <td valign="top"><strong>Người gởi</strong></td>
+                        <td colspan="3" valign="top">
+                            <?
+                            //echo $row_imp['SHIPPER_NAME'];
+                            echo $row_bill_ctc[C03_SHP_NAME];
+
+                            ?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                        <td valign="top"><strong>Địa chỉ</strong></td>
+                        <td colspan="3" valign="top">
+                            <? echo $row_bill_ctc[C04_SHP_ADDR];?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                        <td valign="top"><strong>Người nhận</strong></td>
+                        <td colspan="3" valign="top">
+                            <? echo $row_bill_ctc[C01_CNE_NAME];?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                        <td valign="top"><strong>Địa chỉ</strong></td>
+                        <td colspan="3" valign="top">
+                            <? echo $row_bill_ctc[C02_CNE_ADDR];?>
+                            &nbsp;
+                        </td>
+                    </tr>
+                    <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                        <td colspan="4" valign="top" class="awb_title">Thông tin vận chuyển</td>
+                    </tr>
+                    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                        <td colspan="4" valign="top">
+                            <table width="100%" class="form awb_tbl02">
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td width="10%" align="center" class="awb_title">Lần</td>
+                                    <td width="14%" align="center" class="awb_title">Nhập/Xuất</td>
+                                    <td width="21%" align="center" class="awb_title">
+                                        Giờ đến/Giờ
+                                        bay
+                                    </td>
+                                    <td width="12%" align="center" class="awb_title">Số kiện</td>
+                                    <td width="22%" align="center" class="awb_title">Trọng lượng</td>
+                                    <td width="21%" align="center" class="awb_title">Tình trạng</td>
+                                </tr>
+                                <?
+
+                                $temp=0;
+
+                                foreach($param_arrays_trs_booking as $val_trs)
+                                {
+                                $row_goods_trs = explode('~|$|~', $val_trs);
+
+                                if ($row_goods_trs[TS10_COD_APT_OFF]=='SGN'){
+                                $temp++;
+                                ?>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+
+                                    <td>
+                                        <div align="center">
+                                            <? echo $temp;?>
+                                        </div>
+                                    </td>
+                                    <td align="center">Nhập&nbsp;</td>
+                                    <td align="center">
+                                        &nbsp;
+                                        <? echo $row_goods_trs[TS06_COD_FLT_CAR].$row_goods_trs[TS07_COD_FLT_NUM];?>
+                                        <br>
+                                        <? echo date ("d-M-Y", strtotime($row_goods_trs[TS08_DAT_FLT_ORI])).' '.$row_goods_trs[TS21_TIME_STA];?>
+                                    </td>
+                                    <td align="center">
+                                        &nbsp;
+                                        <? echo $row_goods_trs[TS11_QTY_SHP_PCS];?>
+                                    </td>
+                                    <td align="right">
+                                        &nbsp;
+                                        <? echo doubleval($row_goods_trs[TS12_QTY_SHP_WGT]);?>
+                                        (kg)
+                                    </td>
+                                    <td align="center">
+                                        &nbsp;
+                                        <?
+
+                                        if($row_goods_trs[TS08_DAT_FLT_ORI] ==''){ echo 'Hàng dự định đi trên chuyến bay : '.$row_goods_trs[TS06_COD_FLT_CAR].$row_goods_trs[TS07_COD_FLT_NUM].', ('.$row_goods_trs[TS09_COD_APT_BRD].'-'.$row_goods_trs[TS10_COD_APT_OFF].')';
+                                        }else {
+                                        echo 'Hàng đã được vận chuyển đi';
+
+                                        }
+
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?
+                                }
+                                }
+
+                                foreach($param_arrays_trs_booking as $val_trs)
+                                {
+                                $row_goods_trs = explode('~|$|~', $val_trs);
+
+
+                                if ($row_goods_trs[TS09_COD_APT_BRD]=='SGN'){
+                                $temp++;
+
+                                ?>
+                                <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <td>
+                                        <div align="center">
+                                            <? echo $temp;?>
+                                        </div>
+                                    </td>
+                                    <td align="center">Xuất&nbsp;</td>
+                                    <td align="center">
+                                        &nbsp;
+                                        <? echo $row_goods_trs[TS06_COD_FLT_CAR].$row_goods_trs[TS07_COD_FLT_NUM];?>
+                                        <br>
+                                        <?
+                                        //echo date ("d-M-Y H:i A", strtotime($row_goods_trs['atd']));
+                                        if ($row_goods_trs[TS08_DAT_FLT_ORI] ==''){
+                                        echo '&nbsp;';
+                                        }else
+                                        {
+                                        echo date ("d-M-Y", strtotime($row_goods_trs[TS08_DAT_FLT_ORI])).' '.$row_goods_trs[TS21_TIME_STA];
+                                        }
+                                        ?>
+                                    </td>
+                                    <td align="center">
+                                        &nbsp;
+                                        <? echo $row_goods_trs[TS11_QTY_SHP_PCS];?>
+                                    </td>
+                                    <td align="right">
+                                        &nbsp;
+                                        <? echo doubleval($row_goods_trs[TS12_QTY_SHP_WGT]);?>
+                                        (kg)
+                                    </td>
+                                    <td align="center">
+                                        &nbsp;
+                                        <?
+
+                                        if($row_goods_trs[TS08_DAT_FLT_ORI] ==''){ echo 'Hàng dự định đi trên chuyến bay : '.$row_goods_trs[TS06_COD_FLT_CAR].$row_goods_trs[TS07_COD_FLT_NUM].', ('.$row_goods_trs[TS09_COD_APT_BRD].'-'.$row_goods_trs[TS10_COD_APT_OFF].')';
+                                        }else {
+                                        echo 'Hàng đã được vận chuyển đi';
+
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?
+                                }
+                                }
+                                ?>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+        ****END: ******************TUYEN: dong toan bo cau lenh o day********************************@
+    }
+    else
+    {
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr bordercolor="#FFFFFF" bgcolor="#eaeaea">
+                @*if (!$awbFirst=="" and !$awbLast="")*@
+                @if (!String.IsNullOrEmpty(awbFirst) && !String.IsNullOrEmpty(awbLast))
+                {
+
+                    <td align="center" class="awb_title">SỐ KHÔNG VẬN ĐƠN KHÔNG TỒN TẠI </td>
+                }
+                else 
+                {
+                
+                    <td align="center" class="awb_title">HÃY NHẬP SÔ KHÔNG VẬN ĐƠN RỒI TIẾP TỤC</td>
+                }
+
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+
+      }
+ }
+
+    </td>
+    @*<?include('right-banner.php');?>//TUYEN: khong dung cau lenh nay*@
+    </tr>
+    </table>
+        <p>&nbsp;</p>
+</div>
+    
+<script language="JavaScript">
+    function checkForm() {
+        var awbFirst = document.frmAwb.awbFirst.value;
+        var awbLast = document.frmAwb.awbLast.value;
+        var serie = awbLast.substring(awbLast.length - 1);
+
+        if (awbFirst.length != 3) {
+            alert("So Khong Van Don Khong Hop Le");
+            return false;
+        }
+        if (awbLast.length != 8) {
+            alert("So Khong Van Don Khong Hop Le");
+            return false;
+        }
+        for (i = 0; i < awbFirst.length; i++) {
+            if ((awbFirst.charAt(i) != 0) && (awbFirst.charAt(i) != 1) && (awbFirst.charAt(i) != 2) && (awbFirst.charAt(i) != 3) && (awbFirst.charAt(i) != 4) && (awbFirst.charAt(i) != 5) && (awbFirst.charAt(i) != 6) && (awbFirst.charAt(i) != 7) && (awbFirst.charAt(i) != 8) && (awbFirst.charAt(i) != 9)) {
+                alert("So Khong Van Don Khong Hop Le");
+                return false;
+            }
+        }
+        for (i = 0; i < awbLast.length; i++) {
+            if ((awbLast.charAt(i) != 0) && (awbLast.charAt(i) != 1) && (awbLast.charAt(i) != 2) && (awbLast.charAt(i) != 3) && (awbLast.charAt(i) != 4) && (awbLast.charAt(i) != 5) && (awbLast.charAt(i) != 6) && (awbLast.charAt(i) != 7) && (awbLast.charAt(i) != 8) && (awbLast.charAt(i) != 9)) {
+                alert("So Khong Van Don Khong Hop Le");
+                return false;
+            }
+        }
+
+        if ((serie % 7) != awbLast.charAt(awbLast.length - 1)) {
+            alert("So Khong Van Don Khong Hop Le");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+<script language="JavaScript">
+    function onKeyUpField() {
+        var iLen = document.frmAwb.awbFirst.value.length;
+
+        if (iLen == 3) {
+            eval("document.frmAwb.awbLast.focus()");
+            eval("document.frmAwb.awbLast.select()");
+        }
+    }
+</script>
+<script type="text/javascript">
+    $('document').ready(function () {
+        $(".btn").click(function () {
+            value = $(this).attr('value');
+            form_id = $(this).attr('form');
+            action_input_id = form_id + '_action';
+            $('#' + action_input_id).attr({ 'value': value });
+            $('#' + form_id).submit();
+        });
+
+        $('#input_awb').keypress(function (event) {
+            if (event.keyCode == '13') {
+                $(this).find('.btn').click();
+            }
+        });
+        //	}
+    });
+</script>
+

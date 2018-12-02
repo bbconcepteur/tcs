@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewBag.Title = "ChangePass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container container_css">
+
+    <div>
+        <div id="user_profile" style="float:right;">
+            <a href="/Home/Index?frontPage=1&menu=39">
+                @HCSVNewWebsite.Commons.TitleConst.getTitleConst("DANG_XUAT")
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="layout">
+
+
+        <title>TCS - A Joint Venture between VIETNAM AIRLINES, SASCO and SATS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="../../wwwroot_PC21jul/TCS/html/tcs.css" type="text/css">
+        <script language="JavaScript">
+            function checkForm() {
+                var error = 0;
+                var error_message = "Errors have occured during the process of your form!\nPlease make the following corrections:\n\n";
+
+                var user_name = document.frm.user_name.value;
+                var user_passwd = document.frm.user_passwd.value;
+                var passwd = document.frm.passwd.value;
+                var re_passwd = document.frm.re_passwd.value;
+
+                if (user_name.length < 3) {
+                    error_message = error_message + "* The 'Username' must have at least 3 characters.\n";
+                    error = 1;
+                }
+                if (user_passwd.length < 4) {
+                    error_message = error_message + "* The 'Old Password' must be not null and  have at least 4 characters.\n";
+                    error = 1;
+                }
+                if ((passwd.length < 4) || (re_passwd != passwd)) {
+                    error_message = error_message + "* The 'New Password' and 'Retype New Password' entries must match and  have at least 4 characters.\n";
+                    error = 1;
+                }
+
+                if (error == 1) {
+                    alert(error_message);
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        </script>
+
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tbody>
+                <tr valign="top">
+                    <td>
+                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><h5>@HCSVNewWebsite.Commons.TitleConst.getTitleConst("CHANGE_PASSWORD")</h5></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">&nbsp;</td>
+                                </tr>
+                                <form name="frm" id="frm_id" method="post" action="index.php?section=agent&amp;layout=cp_06" onsubmit="return checkForm();"></form>
+
+                                <tr>
+                                    <td class="text" align="right" width="50%"> Username *</td>
+                                    <td class="text" align="left" width="50%">&nbsp; <input class="text" name="user_name" type="Text"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text" align="right" width="50%"> Old Password *</td>
+                                    <td class="text" align="left" width="50%">&nbsp; <input class="text" name="user_passwd" type="Password"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text" align="right" width="50%"> New Password *</td>
+                                    <td class="text" align="left" width="50%">&nbsp; <input class="text" name="passwd" type="Password"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text" align="right" width="50%"> Retype New Password *</td>
+                                    <td class="text" align="left" width="50%">&nbsp; <input class="text" name="re_passwd" type="Password"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input value="Submit" name="submit" id="submit" style="display:none" type="Submit">
+                                        <a class="btn" value="Submit" name="submit" action_btn="submit" form="frm_id"><span>Submit</span></a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&nbsp;</p>
+
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $(".btn").click(function () {
+                    value = $(this).attr('value');
+                    form_id = $(this).attr('form');
+                    action_btn_id = $(this).attr('action_btn');
+                    $('#' + action_btn_id).click();
+                });
+            });
+        </script>
+        <!-- iware end -->
+    </div>
+
+</div>

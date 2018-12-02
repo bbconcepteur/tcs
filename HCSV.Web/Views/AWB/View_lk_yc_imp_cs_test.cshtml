@@ -1,0 +1,1192 @@
+﻿@{
+    ViewBag.Title = "View_lk_yc_imp_cs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<html>
+<head>
+    <title>TCS - A Joint Venture between VIETNAM AIRLINES, SASCO and SATS</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="tcs.css" type="text/css">
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+    <div class="text" id="spiffycalendar"></div>
+    @{
+    //if((!isset($HTTP_GET_VARS['expires_date']))||($msg)){
+    if((String.IsNullOrEmpty(Request.QueryString["expires_date"])) || (!String.IsNullOrEmpty(msg)))
+    {
+
+        <form name="lk_yc" id="lk_yc_id" action="index.php" method="get">
+            @*<input type="hidden" name="section" value="<? echo $section?>" />*@
+            <input type="hidden" name="section" value="@Html.Raw(section)" />
+
+            <input type="hidden" name="layout" value="lk_yc_imp_cs" />
+            @*<input type="Hidden" name="hawb_no" value="<?echo $awbFirst.$awbLast;?>">*@
+            <input type="Hidden" name="hawb_no" value="@Html.Raw(awbFirst + awbLast)" />
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+
+                    <td class="awb_title">GIÁ LƯU KHO TẠI THỜI ĐIỂM - HÀNG NHẬP</td>
+                </tr>
+                @{
+                //if($msg){
+                if(!String.IsNullOrEmpty(msg))
+                {
+
+                    <tr>
+                        <td class="form" align="center">
+                            @*<script language="JavaScript">alert("<?echo $msg;?>");</script>*@
+                            <script language="JavaScript">alert("@Html.Raw(msg)");</script>
+                        </td>
+                    </tr>
+                }
+                }
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <table class="awb_tbl02" width="80%">
+                            <tr bordercolor="#FDECE1" bgcolor="#FDECE1">
+                                <td valign="top" bordercolor="#FFFFFF" bgcolor="#FFFFFF"><strong>Số không vận đơn&nbsp;: @Html.Raw(awbFirst + "-" + awbLast)</strong> </td>
+                            </tr>
+                            <tr bordercolor="#FDECE1" bgcolor="#FDECE1">
+                                <td valign="top" bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                    <table class="form" width="100%" border="0" cellspacing="0" cellpadding="3">
+                                        <tr>
+                                            <td width="36%" align="right"><b><font size="2" face="Arial, Helvetica, sans-serif">Chọn ngày:</font></b></td>
+                                            <td width="64%" valign="top" nowrap>
+                                                @{
+                                                //include('includes/date.php'); /**********TUYEN KIEM TRA LAI CHO NAY*****************/
+                                                }
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="center">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td>
+                                        <div align="center" class="marginT10">
+                                            @*<a href="#" class="btn" value="<?echo $awbFirst.$awbLast;?>" form="lk_yc_id">*@
+                                            <a href="#" class="btn" value="@Html.Raw(awbFirst + awbLast)" form="lk_yc_id">
+                                                <span>Chọn</span>
+                                            </a>
+                                            @*<a href="index.php?section=<?php echo $section ?>&layout=03_cs&awbFirst=<?echo $awbFirst;?>&awbLast=<?echo $awbLast;?>" class="btn" form="lk_yc">*@
+                                            <a href="index.php?section=@Html.Raw(section)&layout=03_cs&awbFirst=@Html.Raw(awbFirst)&awbLast=@Html.Raw(awbLast)" class="btn" form="lk_yc">
+                                                <span>
+                                                    Bỏ
+                                                    qua
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </form>
+
+  }
+  //else if($HTTP_GET_VARS['expires_date']){
+  else if(!String.IsNullOrEmpty(Request.QueryString["expires_date"]))
+  {
+    if(HCSV.Core.CommonTCS.Commons.checkDate (Request.QueryString["mm"], Request.QueryString["dd"], Request.QueryString["yyyy"] ))
+    {
+        string date=Request.QueryString["mm"] + "/" + Request.QueryString["dd"] + "/" + Request.QueryString["yyyy"].Substring(2,2) + " " + Request.QueryString["hh"] + ":" + Request.QueryString["pp"] + ":00";
+
+        //$ses_id = session_id();
+        string ses_id = Session.SessionID;
+
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr valign="top">
+                <td>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td span class="awb_title">GIÁ LƯU KHO TẠI THỜI ĐIỂM - HÀNG NHẬP</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        @{
+                            //$result_shp = $client->GET_SHIPMENT_INF(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'HAWB_NO'=>'*','FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+                            //$str_shp = $result_shp->GET_SHIPMENT_INFResult;
+                            string str_shp = obj.GET_SHIPMENT_INF("sss", awbFirst, awbLast, "*", "CX0767" ,"3/31/2013");
+
+                            //$param_arrays_shp = explode('*-$-*', $str_shp);//~|$|~
+                            string[] param_arrays_shp = HCSV.Core.CommonTCS.Commons.strSplit(str_shp, "*-$-*");
+
+                            //$cnt_goods=0;
+                            int cnt_goods=0;
+
+                            //$stt=0;
+                            int stt=0;
+
+                            //$num_rows=1;
+                            int num_rows=1;
+
+                            //foreach($param_arrays_shp as $val) // Phai dem so luong HAWB truoc
+                            foreach( var val in param_arrays_shp) // Phai dem so luong HAWB truoc
+                            {
+                                //$cnt_goods = $cnt_goods + 1;
+                                cnt_goods = cnt_goods + 1;
+                            }
+
+                            //if($cnt_goods>1)
+                            if(cnt_goods>1)
+                            {
+                                //$num_rows=2;
+                                num_rows=2;
+                            }
+                        }
+                        <tr>
+                            <td valign="top">
+                                <table class="awb_tbl02" width="94%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tr bordercolor="#EAEAEA">
+                                        @*<? if($num_rows==2){?>*@
+                                        @{
+                                            if(num_rows==2)
+                                            {
+
+                                                <td colspan="5" width="100%" valign="top" bgcolor="#EAEAEA">
+                                                    <strong>
+                                                        Số
+                                                        không vận đơn: &nbsp;
+                                                        @*<? echo $awbFirst."-".$awbLast;?>*@
+                                                        @Html.Raw(awbFirst + "-" + awbLast)
+                                                    </strong>
+                                                </td>
+                                             }
+                                             else
+                                             {
+
+                                                <td colspan="4" width="100%" valign="top" bgcolor="#EAEAEA">
+                                                    <strong>
+                                                        Số
+                                                        không vận đơn: &nbsp;
+                                                        @*<? echo $awbFirst."-".$awbLast;?>*@
+                                                        @Html.Raw(awbFirst + "-" + awbLast)
+                                                    </strong>
+                                                </td>
+                                             }
+                                        }
+                                    </tr>
+                                    <tr bordercolor="#FFFFFF">
+                                        @{
+                                            @*<? if($num_rows==2){?>*@
+                                        if(num_rows==2)
+                                        {
+                                            <td colspan="2" align="center" valign="top" bgcolor="#FFFFFF">
+                                                <strong>
+                                                    Số
+                                                    kiện hàng
+                                                </strong>
+                                            </td>
+                                            <td colspan="3" align="center" valign="top" bgcolor="#FFFFFF">
+                                                <strong>
+                                                    Trọng
+                                                    lượng
+                                                </strong>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td colspan="2" align="center" valign="top" bgcolor="#FFFFFF">
+                                                <strong>
+                                                    Số
+                                                    kiện hàng
+                                                </strong>
+                                            </td>
+                                            <td colspan="2" align="center" valign="top" bgcolor="#FFFFFF">
+                                                <strong>
+                                                    Trọng
+                                                    lượng
+                                                </strong>
+                                            </td>
+                                        }
+                                        }
+                                    </tr>
+                                    <tr>
+                                        @{
+                                            @*<? if($num_rows==2){?>*@
+                                        if(num_rows==2)
+                                        {
+                                            <td colspan="2" align="center" bgcolor="#FFFFFF" valign="top">
+                                                @*<? echo $row_bill[B07_PCS];?>*@
+                                                @Html.Raw(row_bill[B07_PCS])
+                                                &nbsp;
+                                            </td>
+                                            <td colspan="3" align="center" bgcolor="#FFFFFF" valign="top">
+                                                @*<? echo doubleval($row_bill[B08_WEIGHT]);?>*@
+                                                @Html.Raw(row_bill[B08_WEIGHT])
+                                                kg&nbsp;
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td colspan="2" align="center" bgcolor="#FFFFFF" valign="top">
+                                                @*<? echo $row_bill[B07_PCS];?>*@
+                                                @Html.Raw(row_bill[B07_PCS])
+                                                &nbsp;
+                                            </td>
+                                            <td colspan="2" align="center" bgcolor="#FFFFFF" valign="top">
+                                                @*<? echo doubleval($row_bill[B08_WEIGHT]);?>*@
+                                                @Html.Raw(Convert.ToDouble(row_bill[B08_WEIGHT]))
+                                                kg&nbsp;
+                                            </td>
+                                        }
+                                        }
+                                    </tr>
+                                    <tr bordercolor="#EAEAEA">
+                                        @{
+                                            @*<? if($num_rows==2){?>*@
+                                        if(num_rows==2)
+                                        {
+                                            <td width="100%" colspan="5" valign="top" bgcolor="#EAEAEA">
+                                                <strong>
+                                                    Thông
+                                                    tin giá cả
+                                                </strong>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td width="100%" colspan="4" valign="top" bgcolor="#EAEAEA">
+                                                <strong>
+                                                    Thông
+                                                    tin giá cả
+                                                </strong>
+                                            </td>
+                                        }
+                                        }
+                                    </tr>
+                                    @{ //THIEU DAU NGOAC DONG *********************TUYEN********************************
+                                        //$total_storage=0;
+                                        int total_storage=0;
+
+                                        //$total_service=0;
+                                        int total_service=0;
+
+                                        //$tinh_free_day=0;
+                                        int tinh_free_day=0;
+
+                                        //$grand_total=0;
+                                        grand_total=0;
+
+                                        //foreach($param_arrays_shp as $val)
+                                        foreach(var val in param_arrays_shp)
+                                        {
+                                            //$row_goods = explode('~|$|~', $val);
+                                            string[] row_goods = HCSV.Core.CommonTCS.Commons.strSplit(val, "~|$|~");
+
+
+                                            //$awb_sfx = $row_goods[S03_COD_AWB_SFX];
+                                            string awb_sfx = row_goods[S03_COD_AWB_SFX];
+
+                                            //$result_mawb_loca = $client->GET_MAWB_LOCATION(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'AWB_SFX'=>$awb_sfx,'FL_NO'=>'CX0767','FL_DATE'=>'3/31/2013'));
+                                            //$str_mawb_loca = $result_mawb_loca->GET_MAWB_LOCATIONResult;
+                                            string str_mawb_loca = obj.GET_MAWB_LOCATION("sss", awbFirst, awbLast, awb_sfx, "CX0767", "3/31/2013");
+
+                                            //$param_arrays_mawb_loca = explode('*-$-*', $str_mawb_loca);//~|$|~
+                                            string[] param_arrays_mawb_loca = HCSV.Core.CommonTCS.Commons.strSplit(str_mawb_loca, "*-$-*");
+
+                                            //$date =date ("m/d/Y H:i", strtotime($date));
+                                            date = HCSV.Core.CommonTCS.Commons.date_m_d_Y_H_i (HCSV.Core.CommonTCS.Commons.strToTime(date));
+
+                                            //$result_calc_chg = $client->CALC_CHARGE(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'AWB_SFX'=>$awb_sfx,'HAWB_NO'=>'','CALC_DATE'=>$date,'S_SESSTION_ID'=>$ses_id));
+                                            //$str_calc_chg = $result_calc_chg->CALC_CHARGEResult;
+                                            string str_calc_chg = obj.CALC_CHARGE("sss", awbFirst, awbLast, awb_sfx,"", date, ses_id);
+
+                                            //$LOCA_CODE ='';
+                                            string LOCA_CODE ="";
+
+                                            //$FL_NO='';
+                                            string FL_NO="";
+
+                                            //$FL_DATE ='';
+                                            string FL_DATE ="";
+
+                                            //$result_stg_web_mov = $client->GET_CHARGE_INF_CS(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'AWB_SFX'=>$awb_sfx,'HAWB_NO'=>'','LOCATION_CODE'=>$LOCA_CODE ,'FL_NO'=>$FL_NO ,'FL_DATE'=>$FL_DATE,'S_SESSTION_ID'=>$ses_id));
+                                            //$str_stg_web_mov = $result_stg_web_mov->GET_CHARGE_INF_CSResult;
+                                            string str_stg_web_mov = obj.GET_CHARGE_INF_CS("sss", awbFirst, awbLast, awb_sfx,"", LOCA_CODE , FL_NO , FL_DATE, ses_id);
+
+                                            //$row_stg_mov_dtl = explode('~|$|~', $str_stg_web_mov);
+                                            string[] row_stg_mov_dtl = HCSV.Core.CommonTCS.Commons.strSplit(str_stg_web_mov, "~|$|~");
+
+
+                                            //$multi_stg = $row_stg_mov_dtl[WM10_MULTI_STG] ;
+                                            string multi_stg = row_stg_mov_dtl[WM10_MULTI_STG] ;
+
+                                            //$result_calc_chg_code = $client->GET_CHARGE_CODE_CS(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'AWB_SFX'=>$awb_sfx,'HAWB_NO'=>'','CALC_DATE'=>$date,'S_SESSTION_ID'=>$ses_id));
+                                            //$str_calc_chg_code = $result_calc_chg_code->GET_CHARGE_CODE_CSResult;
+                                            string str_calc_chg_code = obj.GET_CHARGE_CODE_CS("sss", awbFirst, awbLast, awb_sfx,"", date, ses_id);
+
+
+                                            //$param_arrays_chg_code = explode('*-$-*', $str_calc_chg_code);//~|$|~
+                                            string[] param_arrays_chg_code = HCSV.Core.CommonTCS.Commons.strSplit(str_calc_chg_code, "*-$-*");
+
+                                            //$cnt_loca =0;
+                                            int cnt_loca =0;
+
+                                            //foreach($param_arrays_mawb_loca as $val_loca)
+                                            foreach(var val_loca in param_arrays_mawb_loca)
+                                            {
+                                                //$cnt_loca = $cnt_loca +1;
+                                                cnt_loca = cnt_loca +1;
+                                            }
+
+                                            //if ($cnt_loca ==1)
+                                            if (cnt_loca ==1)
+                                            {
+                                                //$row_goods_loca = explode('~|$|~', $str_mawb_loca); //Neu chi co 1 dong thi phai dung cai nay
+                                                row_goods_loca = HCSV.Core.CommonTCS.Commons.strSplit(str_mawb_loca, "~|$|~"); //Neu chi co 1 dong thi phai dung cai nay
+                                            }
+
+                                            tinh_free_day=1;
+
+                                            //if($row_goods[S18_SHP_RE_WGT] > 0)
+                                            if(Convert.ToDecimal(row_goods[S18_SHP_RE_WGT]) > 0)
+                                            {
+                                               // $row_goods[S06_QTY_SHP_WGT]=$row_goods[S18_SHP_RE_WGT];
+                                                row_goods[S06_QTY_SHP_WGT]=row_goods[S18_SHP_RE_WGT];
+                                            }
+
+                                            //$storage=0;
+                                            int storage=0;
+
+                                            //$text_storage="";
+                                            string text_storage="";
+
+                                            //$service=0;
+                                            int service=0;
+
+                                            //$text_service="";
+                                            string text_service="";
+
+                                            //$stt++;
+                                            stt++;
+
+                                            //if($stt==1)
+                                            if(stt==1)
+                                            {
+                                                $date_begin= date ("d-M-Y H:i A", strtotime($row_goods[S17_FLT_ATA]));
+                                            }
+
+                                            <tr bordercolor="#FFFFFF">
+                                                @{
+                                                    @*<? if($num_rows==2){?>*@
+                                          if(num_rows==2)
+                                          {
+                                            <td rowspan="3" valign="top" bgcolor="#FFFFFF" align="center">
+                                                <strong>
+                                                    Lô
+                                                    hàng thứ
+                                                    @*<?echo $stt;?>*@
+                                                    @Html.Raw(stt)
+                                                    <br>
+                                                    (
+                                                    @*<? echo doubleval($row_goods[S06_QTY_SHP_WGT]);?>*@
+                                                    @Html.Raw(Convert.ToDouble(row_goods[S06_QTY_SHP_WGT]))
+                                                    kg)
+                                                </strong>
+                                            </td>
+                                         }
+                                                }@*END @*@
+                                                <td colspan="4" valign="top" bgcolor="#FFFFFF">
+                                                    <table align="center" class="form" width="95%" border="0" cellspacing="0" cellpadding="0" bordercolor=#EAEAEA bgcolor="#FFFFFF">
+                                                        @*BGIN @ - PART 11*@
+                                                        @{
+
+                                                //$start_date= date ("m/d/Y H:i", strtotime($row_goods[S17_FLT_ATA]));
+                                                string start_date= date ("m/d/Y H:i", strtotime($row_goods[S17_FLT_ATA]));
+
+                                                //$end_date= date ("m/d/Y H:i", strtotime($date));
+                                                string end_date= date ("m/d/Y H:i", strtotime($date));
+
+                                                //$result_chg_imp = $client->GET_CHARGE_INF(array('STR_CONNECT'=>'sss','START_DATE'=>$start_date,'END_DATE'=>$end_date,'REMARK'=>'AAA'));
+                                                //$str_chg_imp = $result_chg_imp->GET_CHARGE_INFResult;
+                                                string str_chg_imp = obj.GET_CHARGE_INF("sss", start_date, end_date,"AAA");
+
+                                                //$row_chg_imp = explode('~|$|~', $str_chg_imp); //Chi co 1 dong, k chap nhan nhieu AWB
+                                                string[] row_chg_imp = HCSV.Core.CommonTCS.Commons.strSplit(str_chg_imp, "~|$|~"); //Chi co 1 dong, k chap nhan nhieu AWB
+
+
+                                                //$ngay_hang_vao_kho=date ("d-M-Y H:i A", strtotime($row_goods[S17_FLT_ATA]));
+                                                string ngay_hang_vao_kho=date ("d-M-Y H:i A", strtotime($row_goods[S17_FLT_ATA]));
+
+                                                //$ngay_hang_xuat_kho=date ("d-M-Y H:i A", strtotime($date));
+                                                string ngay_hang_xuat_kho=date ("d-M-Y H:i A", strtotime($date));
+
+                                                <tr>
+                                                    <td valign="top" width="40%"><strong>Số hiệu chuyến bay</strong></td>
+                                                    <td valign="top" width="60%">
+                                                        :
+                                                        @*<? echo $row_goods[S09_COD_SHP_CAR].$row_goods[S10_COD_SHP_FLT];?>*@
+                                                        @Html.Raw(row_goods[S09_COD_SHP_CAR] + row_goods[S10_COD_SHP_FLT])
+                                                    </td>
+                                                </tr>
+
+
+                                                //if($cnt_loca >1)
+                                                if(cnt_loca >1)
+                                                {// hang multi
+                                                    <tr>
+                                                        <td valign="top"><strong>Loại lưu kho</strong></td>
+                                                        <td valign="top">
+                                                            :
+                                                            @{
+                                                                //$msg_temp="";
+                                                                string msg_temp="";
+
+                                                                string aaa;
+
+                                                                //foreach($param_arrays_mawb_loca as $val_loca)
+                                                                foreach(var val_loca in param_arrays_mawb_loca)
+                                                                {
+                                                                    //$row_goods_split_temp = explode('~|$|~', $val_loca);
+                                                                    string[] row_goods_split_temp = HCSV.Core.CommonTCS.Commons.strSplit(val_loca, "~|$|~");
+
+                                                                    //if ( $row_goods_split_temp[L04_RE_WT_YN]  > 0 )
+                                                                    if (Convert.ToDecimal(row_goods_split_temp[L04_RE_WT_YN]) > 0 )
+                                                                    {
+                                                                        //$row_goods_split_temp[L02_KG_WT] = $row_goods_split_temp[L03_RE_WT];
+                                                                        row_goods_split_temp[L02_KG_WT] = row_goods_split_temp[L03_RE_WT];
+                                                                    }
+
+                                                                    //if($msg_temp==""){
+                                                                    if("".Equals(msg_temp))
+                                                                    {
+                                                                        aaa="";
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        aaa="<br>&nbsp;&nbsp;";
+                                                                    }
+
+                                                                    /*if ($row_goods_split_temp[L01_STOR_RQ]=='AVI'){$msg_temp=$msg_temp.$aaa."Hàng động vật sống (".$row_goods_split_temp[L02_KG_WT]." kg)";}
+                                                                    else if($row_goods_split_temp[L01_STOR_RQ]=='COL'){$msg_temp=$msg_temp.$aaa."Hàng chứa trong kho lạnh (".$row_goods_split_temp[L02_KG_WT]." kg)";}
+                                                                    else if($row_goods_split_temp[L01_STOR_RQ]=='DGR'){$msg_temp=$msg_temp.$aaa."Hàng nguy hiểm (".$row_goods_split_temp[L02_KG_WT]." kg)";}
+                                                                    else if($row_goods_split_temp[L01_STOR_RQ]=='RXB'){$msg_temp=$msg_temp.$aaa."Hàng vũ khí, chất nổ (".$row_goods_split_temp[L02_KG_WT]." kg)";}
+                                                                    else if($row_goods_split_temp[L01_STOR_RQ]=='VAL'){$msg_temp=$msg_temp.$aaa."Hàng quý hiếm (".$row_goods_split_temp[L02_KG_WT]." kg)";}
+                                                                    else if($row_goods_split_temp[L01_STOR_RQ]=='GEN'){$msg_temp=$msg_temp.$aaa."Hàng thông thường (".$row_goods_split_temp[L02_KG_WT]." kg)";}
+                                                                    else if($row_goods_split_temp[L01_STOR_RQ]=='PER'){$msg_temp=$msg_temp.$aaa."Hàng dễ hư hỏng (".$row_goods_split_temp[L02_KG_WT]." kg)";}
+                                                                    */
+                                                                    if ("AVI".Equals(row_goods_split_temp[L01_STOR_RQ]))
+                                                                    {
+                                                                        msg_temp = msg_temp + aaa + "Hàng động vật sống (" + row_goods_split_temp[L02_KG_WT] + " kg)";
+                                                                    }
+                                                                    else if ("COL".Equals(row_goods_split_temp[L01_STOR_RQ]))
+                                                                    {
+                                                                        msg_temp = msg_temp + aaa + "Hàng chứa trong kho lạnh (" + row_goods_split_temp[L02_KG_WT]+ " kg)";
+                                                                    }
+                                                                    else if ("DGR".Equals(row_goods_split_temp[L01_STOR_RQ]))
+                                                                    {
+                                                                        msg_temp = msg_temp + aaa +"Hàng nguy hiểm (" + row_goods_split_temp[L02_KG_WT] + " kg)";
+                                                                    }
+                                                                    else if ("RXB".Equals(row_goods_split_temp[L01_STOR_RQ]))
+                                                                    {
+                                                                        msg_temp = msg_temp + aaa + "Hàng vũ khí, chất nổ (" + row_goods_split_temp[L02_KG_WT] + " kg)";
+                                                                    }
+                                                                    else if ("VAL".Equals(row_goods_split_temp[L01_STOR_RQ]))
+                                                                    {
+                                                                        msg_temp= msg_temp + aaa + "Hàng quý hiếm (" + row_goods_split_temp[L02_KG_WT] + " kg)";
+                                                                    }
+                                                                    else if ("GEN".Equals(row_goods_split_temp[L01_STOR_RQ]))
+                                                                    {
+                                                                        msg_temp = msg_temp + aaa + "Hàng thông thường (" + row_goods_split_temp[L02_KG_WT] + " kg)";
+                                                                    }
+                                                                    else if ("PER".Equals(row_goods_split_temp[L01_STOR_RQ]))
+                                                                    {
+                                                                        msg_temp = msg_temp + aaa + "Hàng dễ hư hỏng (" + row_goods_split_temp[L02_KG_WT] + " kg)";
+                                                                    }
+
+                                                                }
+                                                                //echo $msg_temp;
+                                                                @Html.Raw(msg_temp)
+                                                            }@*END @*@
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                else
+                                                {//Chi co 1 loai hang
+                                                    //if ( $row_goods_loca[L04_RE_WT_YN]  > 0 )
+                                                    if (Convert.ToDecimal(row_goods_loca[L04_RE_WT_YN])  > 0 )
+                                                    {
+                                                        //$row_goods_loca[L02_KG_WT] = $row_goods_loca[L03_RE_WT];
+                                                        row_goods_loca[L02_KG_WT] = row_goods_loca[L03_RE_WT];
+                                                    }
+
+
+                                                    <tr>
+                                                        <td valign="top"><strong>Loại lưu kho</strong></td>
+                                                        <td valign="top">
+                                                            :
+                                                            @{
+                                                                //Chi co 1 loai lK
+                                                                /*if ($row_goods_loca[L01_STOR_RQ]=='AVI'){echo "Hàng động vật sống";}
+                                                                else if($row_goods_loca[L01_STOR_RQ]=='COL'){echo "Hàng chứa trong kho lạnh";}
+                                                                else if($row_goods_loca[L01_STOR_RQ]=='DGR'){echo "Hàng nguy hiểm";}
+                                                                else if($row_goods_loca[L01_STOR_RQ]=='RXB'){echo "Hàng vũ khí, chất nổ";}
+                                                                else if($row_goods_loca[L01_STOR_RQ]=='VAL'){echo "Hàng quý hiếm";}
+                                                                else if($row_goods_loca[L01_STOR_RQ]=='GEN'){echo "Hàng thông thường";}
+                                                                else if($row_goods_loca[L01_STOR_RQ]=='PER'){echo "Hàng dễ hư hỏng";}
+                                                                else if($row_goods_loca[L01_STOR_RQ]=='VUN'){echo "Hàng có giá trị cao";}*/
+
+                                                                //Chi co 1 loai lK
+                                                                if ("AVI".Equals(row_goods_loca[L01_STOR_RQ]))
+                                                                {
+                                                                    @Html.Raw("Hàng động vật sống");
+                                                                }
+                                                                else if ("COL".Equals(row_goods_loca[L01_STOR_RQ]))
+                                                                {@Html.Raw("Hàng chứa trong kho lạnh");}
+                                                                else if("DGR".Equals(row_goods_loca[L01_STOR_RQ]))
+                                                                {@Html.Raw("Hàng nguy hiểm");}
+                                                                else if("RXB".Equals(row_goods_loca[L01_STOR_RQ]))
+                                                                {@Html.Raw("Hàng vũ khí, chất nổ");}
+                                                                else if("VAL".Equals(row_goods_loca[L01_STOR_RQ]))
+                                                                {@Html.Raw("Hàng quý hiếm");}
+                                                                else if("GEN".Equals(row_goods_loca[L01_STOR_RQ]))
+                                                                {@Html.Raw("Hàng thông thường");}
+                                                                else if("PER".Equals(row_goods_loca[L01_STOR_RQ]))
+                                                                {@Html.Raw("Hàng dễ hư hỏng");}
+                                                                else if("VUN".Equals(row_goods_loca[L01_STOR_RQ]))
+                                                                {@Html.Raw("Hàng có giá trị cao");}
+                                                            }@*END @*@
+                                                        </td>
+                                                    </tr>
+                                                }
+
+                                                <tr>
+                                                    <td valign="top"><strong>Loại phục vụ</strong></td>
+                                                    <td valign="top">
+                                                        :
+                                                        @{
+                                                            /*if($row_goods[S26_IS_EXP]=='Y'){
+                                                            echo "Phát chuyển nhanh";
+                                                            }else{
+                                                            if ($row_goods[S25_SERVICE_RQ]=='GEN'){echo "Hàng thông thường";}
+                                                            else if ($row_goods[S25_SERVICE_RQ]=='AVI'){echo "Hàng động vật sống";}
+                                                            else if ($row_goods[S25_SERVICE_RQ]=='VAL'){echo "Hàng quý hiếm";}
+                                                            else if ($row_goods[S25_SERVICE_RQ]=='PER'){echo "Hàng dễ hư hỏng";}
+                                                            else if ($row_goods[S25_SERVICE_RQ]=='DGR'){echo "Hàng nguy hiểm";}
+                                                            else if ($row_goods[S25_SERVICE_RQ]=='RXB'){echo "Hàng vũ khí, chất nổ";}
+                                                            else if ($row_goods[S25_SERVICE_RQ]=='COL'){echo "Hàng chứa trong kho lạnh";}
+                                                            else if ($row_goods[S25_SERVICE_RQ]=='EXP'){echo "Hàng phát chuyển nhanh";}
+                                                            else if ($row_goods[S25_SERVICE_RQ]=='EXP'){echo "Hàng có giá trị cao";}
+                                                            }*/
+
+                                                            if("Y".Equals(row_goods[S26_IS_EXP]))
+                                                            {
+                                                                @Html.Raw("Phát chuyển nhanh");
+                                                            }
+                                                            else
+                                                            {
+                                                                if ("GEN".Equals(row_goods[S25_SERVICE_RQ]))
+                                                                {@Html.Raw("Hàng thông thường");}
+                                                                else if ("AVI".Equals(row_goods[S25_SERVICE_RQ]))
+                                                                {@Html.Raw("Hàng động vật sống");}
+                                                                else if ("VAL".Equals(row_goods[S25_SERVICE_RQ]))
+                                                                {@Html.Raw("Hàng quý hiếm");}
+                                                                else if ("PER".Equals(row_goods[S25_SERVICE_RQ]))
+                                                                {@Html.Raw("Hàng dễ hư hỏng");}
+                                                                else if ("DGR".Equals(row_goods[S25_SERVICE_RQ]))
+                                                                {@Html.Raw("Hàng nguy hiểm");}
+                                                                else if ("RXB".Equals(row_goods[S25_SERVICE_RQ]))
+                                                                {@Html.Raw("Hàng vũ khí, chất nổ");}
+                                                                else if ("COL".Equals(row_goods[S25_SERVICE_RQ]))
+                                                                {@Html.Raw("Hàng chứa trong kho lạnh");}
+                                                                else if ("EXP".Equals(row_goods[S25_SERVICE_RQ]))
+                                                                {@Html.Raw("Hàng phát chuyển nhanh");}
+                                                                else if ("EXP".Equals(row_goods[S25_SERVICE_RQ]))
+                                                                {@Html.Raw("Hàng có giá trị cao");}
+                                                            }
+                                                        }@*END @*@
+                                                    </td>
+                                                </tr>
+
+                                                            @{
+                                                 //if($num_rows<>2)
+                                                 if(num_rows!=2)
+                                                 {
+
+                                                    //if($row_goods[S18_SHP_RE_WGT] > 0)
+                                                    if(Convert.ToDecimal(row_goods[S18_SHP_RE_WGT]) > 0)
+                                                    {
+
+                                                        <tr>
+                                                            <td valign="top"><strong>Trọng lượng (cân lại)</strong></td>
+                                                            <td valign="top">
+                                                                :
+                                                                @*<? echo doubleval($row_goods[S18_SHP_RE_WGT]); ?>*@
+                                                                @Html.Raw(Convert.ToDouble(row_goods[S18_SHP_RE_WGT]))
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+
+                                                    }
+                                                 }
+                                                            }@*END @*@
+
+                                                            @{
+                                                    //if($num_rows==2)
+                                                    if(num_rows==2)
+                                                    {
+
+                                                        <tr>
+                                                            <td valign="top"><strong>Số kiện hàng</strong></td>
+                                                            <td valign="top">
+                                                                :
+                                                                @*<? echo doubleval($row_goods[S05_QTY_SHP_PCS]);?>*@
+                                                                @Html.Raw(Convert.ToDouble(row_goods[S05_QTY_SHP_PCS]))
+                                                            </td>
+                                                        </tr>
+                                                                <tr>
+                                                                    <td valign="top"><strong>Trọng lượng</strong></td>
+                                                                    <td valign="top">
+                                                                        :
+                                                                        @*<? echo doubleval($row_goods[S06_QTY_SHP_WGT]);?>*@
+                                                                        @Html.Raw(Convert.ToDouble(row_goods[S06_QTY_SHP_WGT]))
+                                                                    </td>
+                                                                </tr>
+
+
+                                                        // kiem tra xem co can lai hang hay khong
+                                                        //if($row_goods[S18_SHP_RE_WGT] > 0){
+                                                        if(Convert.ToDecimal(row_goods[S18_SHP_RE_WGT]) > 0)
+                                                        {
+
+                                                            <tr>
+                                                                <td valign="top"><strong>Trọng lượng (cân lại)</strong></td>
+                                                                <td valign="top">
+                                                                    :
+                                                                    @*<? echo doubleval($row_goods[S18_SHP_RE_WGT]); ?>*@
+                                                                    @Html.Raw(Convert.ToDouble(row_goods[S18_SHP_RE_WGT]))
+                                                                    &nbsp;
+                                                                </td>
+                                                            </tr>
+
+                                                        }
+                                                    }
+                                                            }@*END @*@
+
+                                                            <tr>
+                                                                <td valign="top"><strong>Ngày nhập kho</strong></td>
+                                                                <td valign="top">
+                                                                    :
+                                                                    @{
+                                                            //if ($multi_stg =='Y')
+                                                            if ("Y".Equals(multi_stg))
+                                                            {
+                                                                //echo $str_multi_msg;
+                                                                @Html.Raw(str_multi_msg);
+                                                            }
+                                                            else
+                                                            {
+                                                                //echo $row_stg_mov_dtl[WM04_DAT_START];
+                                                                @Html.Raw(row_stg_mov_dtl[WM04_DAT_START]);
+                                                            }
+                                                                    }@*END @*@
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top"><strong>Ngày xuất kho</strong></td>
+                                                                <td valign="top">
+                                                                    :
+                                                                    @{
+                                                            if ("Y".Equals(multi_stg))
+                                                            {
+                                                                //echo $str_multi_msg;
+                                                                @Html.Raw(str_multi_msg);
+                                                            }
+                                                            else
+                                                            {
+                                                                //echo $row_stg_mov_dtl[WM05_DAT_END];
+                                                                @Html.Raw(row_stg_mov_dtl[WM05_DAT_END]);
+                                                            }
+
+                                                                    }@*END @*@
+                                                                </td>
+                                                            </tr>
+
+                                                            @*END @ - PART 12*@
+                                                            @{
+                                                //if((trim($row_goods_loca[L01_STOR_RQ])=='GEN')||($cnt_loca >1))
+                                                if(("GEN".Equals(row_goods_loca[L01_STOR_RQ].Trim()))||(cnt_loca >1))
+                                                {
+                                                    //Tinh so ngay chu nhat, khong tinh ngay nhan hang
+                                                    //$sub_date_sat_sun=0;
+                                                    int sub_date_sat_sun=0;
+
+                                                    //$not_free_on_sunday=0;
+                                                    int not_free_on_sunday=0;
+
+                                                    //Tinh so ngay le duoc nghi theo qui dinh, khong tinh ngay thu bay va chu nhat, khong tinh ngay nhan hang
+                                                    //$sub_date_holiday=0;
+                                                    int sub_date_holiday=0;
+
+                                                    //$not_free_on_holiday=0;
+                                                    int not_free_on_holiday=0;
+
+                                                    <tr>
+                                                        <td valign="top"><strong>Chủ nhật, Ngày lễ</strong></td>
+                                                        <td valign="top">
+                                                            :
+                                                            @{
+                                                            //if ($multi_stg =='Y')
+                                                            if ("Y".Equals(multi_stg))
+                                                            {
+                                                                //echo $str_multi_msg;
+                                                                @Html.Raw(str_multi_msg);
+                                                            }
+                                                            else
+                                                            {
+                                                                //echo $row_stg_mov_dtl[WM06_TOTAL_SUNDAY] +$row_stg_mov_dtl[WM07_TOTAL_HOLIDAY] ;
+                                                                @Html.Raw(Convert.ToDecimal(row_stg_mov_dtl[WM06_TOTAL_SUNDAY]) + Convert.ToDecimal(row_stg_mov_dtl[WM07_TOTAL_HOLIDAY])) ;
+                                                            }
+                                                            }@*END @*@
+                                                            &nbsp;
+                                                        </td>
+                                                    </tr>
+
+                                                                <tr>
+                                                                    <td valign="top"><strong>Miễn phí</strong></td>
+                                                                    <td valign="top">
+                                                                        :
+                                                                        @{
+                                                            //if ($multi_stg =='Y')
+                                                            if ("Y".Equals(multi_stg))
+                                                            {
+                                                                //echo $str_multi_msg;
+                                                                @Html.Raw(str_multi_msg);
+                                                            }
+                                                            else
+                                                            {
+                                                                //echo $row_stg_mov_dtl[WM09_TOTAL_FREE_DAY] ;
+                                                                @Html.Raw(row_stg_mov_dtl[WM09_TOTAL_FREE_DAY]);
+                                                            }
+                                                                        }@*END @*@
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td valign="top"><strong>Số ngày tính phí</strong></td>
+                                                                    <td valign="top">
+                                                                        :
+                                                                        @{
+                                                            //if ($multi_stg =='Y')
+                                                            if ("Y".Equals(multi_stg))
+                                                            {
+                                                                //echo $str_multi_msg;
+                                                                @Html.Raw(str_multi_msg);
+                                                            }
+                                                            else
+                                                            {
+                                                                //echo  $row_stg_mov_dtl[WM10_TOTAL_CHARGE_DAY]. '&nbsp;(đối với hàng thông thường)' ;
+                                                                @Html.Raw(row_stg_mov_dtl[WM10_TOTAL_CHARGE_DAY] + "&nbsp;(đối với hàng thông thường)") ;
+                                                            }
+                                                                        }@*END @*@
+
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td valign="top"></td>
+                                                                    <td valign="top">
+                                                                        :
+                                                                        @{
+                                                            if ("Y".Equals(multi_stg))
+                                                            {
+                                                                //echo $str_multi_msg;
+                                                                @Html.Raw(str_multi_msg);
+                                                            }
+                                                            else
+                                                            {
+                                                                //echo $row_stg_mov_dtl[WM10_TOTAL_CHARGE_DAY] +$row_stg_mov_dtl[WM09_TOTAL_FREE_DAY] .'&nbsp;(đối với hàng khác)';
+                                                                @Html.Raw((Convert.ToDecimal(row_stg_mov_dtl[WM10_TOTAL_CHARGE_DAY]) + Convert.ToDecimal(row_stg_mov_dtl[WM09_TOTAL_FREE_DAY])).ToString() + "&nbsp;(đối với hàng khác)");
+                                                            }
+
+                                                                        }@*END @*@
+                                                                    </td>
+                                                                </tr>
+
+                                              }
+                                              //else if(trim($row_goods_loca[L01_STOR_RQ])=='COL')
+                                              else if("COL".Equals(row_goods_loca[L01_STOR_RQ].Trim()))
+                                              {
+                                                //hang Lanh, tinh theo 24 h la 1 ngay
+                                                <tr>
+                                                    <td valign="top"><strong>Số ngày tính phí</strong></td>
+                                                    <td valign="top">
+                                                        :
+                                                        @{
+
+                                                            if ("Y".Equals(multi_stg))
+                                                            {
+                                                                //echo $str_multi_msg;
+                                                                @Html.Raw(str_multi_msg);
+                                                            }
+                                                            else
+                                                            {
+                                                                //echo $row_stg_mov_dtl[WM10_TOTAL_CHARGE_DAY] +$row_stg_mov_dtl[WM09_TOTAL_FREE_DAY];
+                                                                @Html.Raw(Convert.ToDecimal(row_stg_mov_dtl[WM10_TOTAL_CHARGE_DAY]) + Convert.ToDecimal(row_stg_mov_dtl[WM09_TOTAL_FREE_DAY]));
+                                                            }
+                                                        }@*END @*@
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+
+                                              }
+                                              else
+                                              {
+                                                <tr>
+                                                    <td valign="top"><strong>Số ngày tính phí</strong></td>
+                                                    <td valign="top">
+                                                        :
+                                                        @{
+
+                                                            if ("Y".Equals(multi_stg))
+                                                            {
+                                                                //echo $str_multi_msg;
+                                                                @Html.Raw(str_multi_msg);
+                                                            }
+                                                            else
+                                                            {
+                                                                //echo $row_stg_mov_dtl[WM10_TOTAL_CHARGE_DAY] +$row_stg_mov_dtl[WM09_TOTAL_FREE_DAY];
+                                                                @Html.Raw(Convert.ToDecimal(row_stg_mov_dtl[WM10_TOTAL_CHARGE_DAY]) + Convert.ToDecimal(row_stg_mov_dtl[WM09_TOTAL_FREE_DAY]));
+                                                            }
+                                                        }@*END @*@
+                                                        &nbsp;
+                                                    </td>
+                                                </tr>
+
+                                               }
+
+                                                            } @*END @ - PART 12*@
+                                                        }@*END @ - PART 11*@
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr bordercolor="#EAEAEA">
+                                                <td valign="top" align="center" bgcolor="#EAEAEA">
+                                                    <strong>
+                                                        Nội
+                                                        dung
+                                                    </strong>
+                                                </td>
+                                                <td valign="top" align="center" bgcolor="#EAEAEA">
+                                                    <strong>
+                                                        Diễn
+                                                        giải
+                                                    </strong>
+                                                </td>
+                                                <td valign="top" align="center" bgcolor="#EAEAEA"><strong>Thuế</strong></td>
+                                                <td valign="top" align="center" bgcolor="#EAEAEA"><strong>Tổng</strong></td>
+
+                                            </tr>
+
+                                            @*BEGIN @ - PART 13*@
+                                            @{
+                                        //Dien giai Luu kho
+                                    //$param_arrays_chg_code = explode('*-$-*', $str_calc_chg_code);//~|$|~
+                                    param_arrays_chg_code = HCSV.Core.CommonTCS.Commons.strSplit(str_calc_chg_code, "*-$-*");//~|$|~
+
+
+                                    //foreach($param_arrays_chg_code as $val_chg_code)
+                                    foreach(var val_chg_code in param_arrays_chg_code)
+                                    {
+                                        //$str_chg_code = explode('~|$|~', $val_chg_code);
+                                        string[] str_chg_code = HCSV.Core.CommonTCS.Commons.strSplit(val_chg_code, "~|$|~");
+
+                                        //$str_svc =(substr($str_chg_code[W01_CHG_COD],0,4));
+                                        string str_svc = str_chg_code[W01_CHG_COD].Substring(0,4);
+
+                                        if ("I_ST".Equals(str_svc))
+                                        {
+                                            //$chg_code=$str_chg_code[W01_CHG_COD];
+                                            string chg_code=str_chg_code[W01_CHG_COD];
+
+                                            //$result_dtl_st = $client->GET_CHG_DTL_WEB(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'AWB_SFX'=>$awb_sfx,'HAWB_NO'=>'','CHG_CODE'=>$chg_code,'FL_NO'=>'','FL_DATE'=>$date,'S_SESSTION_ID'=>$ses_id,'E_V'=>'V'));
+                                            //$str_dtl_st = $result_dtl_st->GET_CHG_DTL_WEBResult;
+                                            string str_dtl_st = obj.GET_CHG_DTL_WEB("sss",awbFirst,awbLast,awb_sfx,"",chg_code,"",date,ses_id,"V");
+
+                                            //$param_str_dtl_st = explode('*-$-*', $str_dtl_st);//~|$|~
+                                            string[] param_str_dtl_st = HCSV.Core.CommonTCS.Commons.strSplit(str_dtl_st, "*-$-*");//~|$|~
+
+
+                                            //$str_chg_dtl=$param_str_dtl_st[WD01_CHG_DTL];
+                                            string str_chg_dtl=param_str_dtl_st[WD01_CHG_DTL];
+
+                                            //$str_vat_rate=$param_str_dtl_st[WD02_VAT_PER];
+                                            string str_vat_rate=param_str_dtl_st[WD02_VAT_PER];
+
+                                            //$total_st=$param_str_dtl_st[WD04_CHG_AMT];
+                                            string total_st=param_str_dtl_st[WD04_CHG_AMT];
+
+                                            //$grand_total=$grand_total+ (double)str_replace(',', '', $total_st);
+                                            grand_total= grand_total+ Convert.ToDouble(total_st.Replace(",", ""));
+
+                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                <td valign="top">
+                                                    <strong>Giá lưu kho </strong>
+                                                    @{
+                                                    //if ($multi_stg =='Y') {
+                                                    if ("Y".Equals(multi_stg)) {
+                                                        <br>
+
+
+                                                        //$str_stg_chg_code =(substr($str_chg_code[W01_CHG_COD],5,3));
+                                                        str_stg_chg_code =str_chg_code[W01_CHG_COD].Substring(5,3);
+
+                                                        /*if ($str_stg_chg_code=='AVI'){echo "(Hàng động vật sống)";}
+                                                        else if($str_stg_chg_code=='COL'){echo "(Hàng chứa trong kho lạnh)";}
+                                                        else if($str_stg_chg_code=='DGR'){echo "(Hàng nguy hiểm)";}
+                                                        else if($str_stg_chg_code=='RXB'){echo "(Hàng vũ khí, chất nổ)";}
+                                                        else if($str_stg_chg_code=='VAL'){echo "(Hàng quý hiếm)";}
+                                                        else if($str_stg_chg_code=='GEN'){echo "(Hàng thông thường)";}
+                                                        else if($str_stg_chg_code=='PER'){echo "(Hàng dễ hư hỏng)";}
+                                                        else if($str_stg_chg_code=='VUN'){echo "(Hàng có giá trị cao)";}
+                                                        else {echo '(Hàng '. $str_stg_chg_code.')';}*/
+
+                                                        if ("AVI".Equals(str_stg_chg_code))
+                                                        {@Html.Raw("(Hàng động vật sống)");}
+                                                        else if("COL".Equals(str_stg_chg_code))
+                                                        {@Html.Raw("(Hàng chứa trong kho lạnh)");}
+                                                        else if("DGR".Equals(str_stg_chg_code))
+                                                        {@Html.Raw("(Hàng nguy hiểm)");}
+                                                        else if("RXB".Equals(str_stg_chg_code))
+                                                        {@Html.Raw("(Hàng vũ khí, chất nổ)");}
+                                                        else if("VAL".Equals(str_stg_chg_code))
+                                                        {@Html.Raw("(Hàng quý hiếm)");}
+                                                        else if("GEN".Equals(str_stg_chg_code))
+                                                        {@Html.Raw("(Hàng thông thường)");}
+                                                        else if("PER".Equals(str_stg_chg_code))
+                                                        {@Html.Raw("(Hàng dễ hư hỏng)";)}
+                                                        else if("VUN".Equals(str_stg_chg_code))
+                                                        {@Html.Raw("(Hàng có giá trị cao)");}
+                                                        else
+                                                        {@Html.Raw("(Hàng " + str_stg_chg_code + ")");}
+                                                    }
+                                                    }@*END @*@
+                                                </td>
+
+                                                @*<td valign="top" align="center"> <? echo $str_chg_dtl ;?></td>*@
+                                                <td valign="top" align="center"> @Html.Raw(str_chg_dtl)</td>
+
+                                                @*<td valign="top" align="right"><? echo $str_vat_rate.'%' ; ?> </td>*@
+                                                <td valign="top" align="right">@Html.Raw(str_vat_rate + '%')</td>
+                                                <td valign="top" align="right">
+                                                    @{
+                                                    //echo $total_st ;
+                                                    @Html.Raw(total_st);
+
+                                                    //if ($multi_stg =='Y')
+                                                    if ("Y".Equals(multi_stg))
+                                                    {
+
+                                                        //$LOCA_CODE_MT =$str_stg_chg_code;
+                                                        string LOCA_CODE_MT = str_stg_chg_code;
+
+                                                        //$FL_NO_MT='';
+                                                        string FL_NO_MT="";
+
+                                                        //$FL_DATE_MT ='';
+                                                        string FL_DATE_MT ="";
+
+                                                        //$str_stg_web_mov_mt = $result_stg_web_mov_mt->GET_CHARGE_INF_CSResult;
+                                                        string str_stg_web_mov_mt = obj.GET_CHARGE_INF_CS("sss", awbFirst, awbLast, awb_sfx,"", LOCA_CODE_MT , FL_NO_MT , FL_DATE_MT, ses_id);
+
+                                                        <br>
+                                                        <br>
+                                                        @*<a href="index.php?section=<?php echo $section ?>&layout=lk_popup_cs&awbFirst=<?echo $awbFirst;?>&awbLast=<? echo $awbLast;?>&str_mov_inf=<? echo $str_stg_web_mov_mt;?>" target="_parent" class="btn"><span>Chi tiết</span></a>*@
+                                                        <a href="index.php?section=@Html.Raw(section)&layout=lk_popup_cs&awbFirst=@Html.Raw(awbFirst)&awbLast=@Html.Raw(awbLast)&str_mov_inf=@Html.Raw(str_stg_web_mov_mt)" target="_parent" class="btn"><span>Chi tiết</span></a>
+
+
+                                                    }
+                                                    }@*END @*@
+                                                </td>
+
+                                            </tr>
+
+                                    }//END IF
+                                }//END FOREACH
+                                            }@*END @ - PART 13*@
+
+                                            @{
+                                    //if($row_goods[S18_SHP_RE_WGT]>0)
+                                    if(Convert.ToDecimal(row_goods[S18_SHP_RE_WGT])>0)
+                                    {
+                                        //$row_goods[S06_QTY_SHP_WGT]=$row_goods[S18_SHP_RE_WGT];
+                                        row_goods[S06_QTY_SHP_WGT]=row_goods[S18_SHP_RE_WGT];
+                                    }
+                                            }@*END @*@
+
+
+                                            @{ //Dien giai Lao vu
+                                    //$param_arrays_chg_code = explode('*-$-*', $str_calc_chg_code);//~|$|~
+                                    param_arrays_chg_code = HCSV.Core.CommonTCS.Commons.strSplit(str_calc_chg_code, "*-$-*");//~|$|~
+
+                                    //foreach($param_arrays_chg_code as $val_chg_code)
+                                    foreach(var val_chg_code in param_arrays_chg_code)
+                                    {
+                                        //$str_chg_code = explode('~|$|~', $val_chg_code);
+                                        string[] str_chg_code = HCSV.Core.CommonTCS.Commons.strSplit(val_chg_code, "~|$|~");
+
+                                        //$str_svc =(substr($str_chg_code[W01_CHG_COD],0,4));
+                                        string str_svc =str_chg_code[W01_CHG_COD].Substring(0,4);
+
+                                        //if ($str_svc=='I_SV')
+                                        if ("I_SV".Equals(str_svc))
+                                        {
+                                            //$chg_code=$str_chg_code[W01_CHG_COD];
+                                            string chg_code=str_chg_code[W01_CHG_COD];
+
+                                            //$result_dtl_sv = $client->GET_CHG_DTL_WEB(array('STR_CONNECT'=>'sss','AWB_PFX'=>$awbFirst,'AWB_NO'=>$awbLast,'AWB_SFX'=>$awb_sfx,'HAWB_NO'=>'','CHG_CODE'=>$chg_code,'FL_NO'=>'','FL_DATE'=>$date,'S_SESSTION_ID'=>$ses_id,'E_V'=>'V'));
+                                            //$str_dtl_sv = $result_dtl_sv->GET_CHG_DTL_WEBResult;
+                                            string str_dtl_sv = obj.GET_CHG_DTL_WEB("sss",awbFirst,awbLast,awb_sfx,"",chg_code,"",date,ses_id,"V");
+
+                                            //$param_str_dtl_sv = explode('*-$-*', $str_dtl_sv);//~|$|~
+                                            string[] param_str_dtl_sv = HCSV.Core.CommonTCS.Commons.strSplit(str_dtl_sv, "*-$-*");//~|$|~
+
+                                            //$str_svc_dtl=$param_str_dtl_sv[WD01_CHG_DTL];
+                                            //$str_vat_rate=$param_str_dtl_sv[WD02_VAT_PER];
+                                            //$total_sv=$param_str_dtl_sv[WD04_CHG_AMT];
+                                            //$grand_total=$grand_total+ (double)str_replace(',', '', $total_sv);
+
+                                            string str_svc_dtl=param_str_dtl_sv[WD01_CHG_DTL];
+                                            string str_vat_rate=param_str_dtl_sv[WD02_VAT_PER];
+                                            string total_sv=param_str_dtl_sv[WD04_CHG_AMT];
+                                            grand_total=grand_total+ Convert.ToDouble(total_sv.Replace(",", ""));
+
+                                            <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+                                                <td valign="top"><strong>Giá dịch vụ</strong></td>
+
+                                                @*<td valign="top" align="center"><? echo $str_svc_dtl; ?></td>
+                                                    <td valign="top" align="right"><? echo $str_vat_rate.'%'; ?></td>
+                                                    <td valign="top" align="right"><? echo $total_sv; ?></td>*@
+
+                                                <td valign="top" align="center">@Html.Raw(str_svc_dtl)</td>
+                                                <td valign="top" align="right">@Html.Raw(str_vat_rate+'%')</td>
+                                                <td valign="top" align="right">@Html.Raw(total_sv)</td>
+                                            </tr>
+
+                                        }
+                                    }
+                                            }@*END @*@
+                                            <?
+                                            }
+                                            ?>
+
+                                            <tr bordercolor="#FFFFFF">
+                                                @{
+                                                    @*<? if($num_rows==2){?>*@
+                                        if(num_rows==2)
+                                        {
+                                            <td align="right" colspan="5" valign="top" bgcolor="#FFFFFF">
+                                                <div align="right">
+                                                    <strong>
+                                                        Tổng cộng:
+                                                        @*<?echo number_format($grand_total,0);?>*@
+                                                        @Html.Raw((double)grand_total)
+                                                    </strong>
+                                                </div>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td align="right" colspan="4" valign="top" bgcolor="#FFFFFF">
+                                                <div align="right">
+                                                    <strong>
+                                                        Tổng cộng:
+                                                        @*<? echo number_format($grand_total ,0);?>*@
+                                                        @Html.Raw((double)grand_total)
+                                                    </strong>
+                                                </div>
+                                            </td>
+                                        }
+                                                }
+                                            </tr>
+                                            <tr bordercolor="#FFFFFF">
+                                                <td colspan="9" valign="top" bgcolor="#FFFFFF">
+                                                    Lưu ý: Giá này chỉ
+                                                    áp dụng với những lô hàng chưa làm thủ tục lần nào và chưa bao gồm  phụ thu nếu có.
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div align="center">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+
+                                                            <td>
+                                                                <div align="center" class="marginT10">
+                                                                    <a href="index.php?section=@Html.Raw(section)&layout=body_banggia1" target="_blank" class="btn">
+                                                                        <span>
+                                                                            Bảng
+                                                                            giá áp dụng
+                                                                        </span>
+                                                                    </a> <a href="index.php?section=@Html.Raw(section)&layout=03_cs&awbFirst=@Html.Raw(awbFirst)&awbLast=@Html.Raw(awbLast)" target="_parent" class="btn"><span>Trở lại</span></a>
+                                                                </div>
+                                                            </td>
+
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                        @*<?include('right-banner.php');?>***********TUYEN Khong dung file PHP nay*@
+                                    </tr>
+                                </table>
+
+   } //END IF
+                                    }@*END @*@
+
+                                    <p>&nbsp;</p>
+                                </body>
+                            </html>
+                            <!-- iware add javascript handle form -->
+                            <script type="text/javascript">
+                                $('document').ready(function () {
+                                    $(".btn").click(function () {
+                                        value = $(this).attr('value');
+                                        form_id = $(this).attr('form');
+                                        action_input_id = form_id + '_action';
+                                        $('#' + action_input_id).attr({ 'value': value });
+                                        $('#' + form_id).submit();
+                                    });
+                                });
+                            </script>
