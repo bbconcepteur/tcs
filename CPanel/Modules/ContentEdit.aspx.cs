@@ -13,6 +13,7 @@ namespace CPanel.Modules
         {
             if (!IsPostBack)
             {
+                getStatus(drpStatus);
                 getPosition(drpPosition);
                 string strContentID = null;
                 
@@ -155,6 +156,68 @@ namespace CPanel.Modules
             Response.Redirect("/Modules/ContentList");            
         }
 
+
+        protected void btnPreview_Click(object sender, EventArgs e)
+        {
+            if (!validate())//Validation before updating            
+            {
+                return;
+            }            
+
+            //jos_content objContent;
+            ////in case of create new item
+            //if (String.IsNullOrEmpty(txtContentID.Text))
+            //{
+            //    objContent = new jos_content();
+            //    objContent.created = null;
+            //    objContent.modified = null;
+            //    objContent.checked_out_time = null;
+            //    objContent.publish_down = null;
+            //    objContent.publish_up = null;                        
+            //    entities.jos_content.Add(objContent);
+            //}
+            //else//in case of update info
+            //{
+            //    int intContentID = Convert.ToInt32 (txtContentID.Text);
+            //    objContent = entities.jos_content.Where(x=>x.id == intContentID).FirstOrDefault();
+                
+            //}
+            //objContent.mask = (cbSpecialContentType.Checked ? 1 : 0);
+            //objContent.title = txtTitle.Text;
+            //objContent.introtext = edtIntroContent.Value;
+            //objContent.fulltext = edtFullContent.Value;
+            //objContent.images = edtRepresentativeImage.Text;
+            //objContent.catid = Convert.ToInt32(drpCategories.SelectedValue);
+            //objContent.lang_id = Convert.ToInt32(drpLanguages.SelectedValue);
+            //objContent.position = drpPosition.SelectedValue;
+            
+            //if (!String.IsNullOrEmpty(txtOrder.Text))
+            //    objContent.ordering = Convert.ToInt32(txtOrder.Text);
+            //else
+            //    objContent.ordering = 1;
+            //objContent.state = 1;//1 ~ public
+            
+            
+            //entities.SaveChanges();
+
+            //set session for finding content
+            setSessionForFindingContent();
+
+            ////redirect URL
+            //Response.Redirect("/Modules/ContentList");            
+        }
+        public static void getStatus(DropDownList drpStatus)
+        { 
+
+            drpStatus.Items.Insert(0, new ListItem(Commons.CommonFuncs.BLANK_ITEM_TITLE, Commons.CommonFuncs.BLANK_ITEM_VALUE));
+            drpStatus.Items.Insert(1, new ListItem("Pending","Pending"));
+            drpStatus.Items.Insert(2, new ListItem("Publish", "Publish"));
+            drpStatus.SelectedIndex = 0;
+        }
+        protected void drpStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ;
+        }
         //set session for finding content
         protected void setSessionForFindingContent()
         {

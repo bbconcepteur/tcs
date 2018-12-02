@@ -112,15 +112,6 @@ namespace CPanel {
         protected global::System.Web.UI.WebControls.Button btnClose;
         
         /// <summary>
-        /// irm1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl irm1;
-        
-        /// <summary>
         /// btnShow2 control.
         /// </summary>
         /// <remarks>
@@ -155,14 +146,5 @@ namespace CPanel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnClose2;
-        
-        /// <summary>
-        /// Iframe1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Iframe1;
     }
 }

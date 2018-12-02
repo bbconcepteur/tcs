@@ -22,6 +22,15 @@ namespace CPanel.Modules {
         protected global::System.Web.UI.WebControls.Button btnBack;
         
         /// <summary>
+        /// btnPreview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPreview;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,15 @@ namespace CPanel.Modules {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbSpecialContentType;
+        
+        /// <summary>
+        /// drpStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drpStatus;
         
         /// <summary>
         /// edtRepresentativeImage control.

@@ -73,7 +73,7 @@
     </cc1:ModalPopupExtender>
     <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup modalPopupMenu_css" align="center" style = "display:none">
         <asp:Button ID="btnClose" CssClass="popUpClose_css" runat="server" Text="Close" />
-        <iframe style=" width: 460px; height: 400px;" id="irm1" src="/Modules/Kiem_Tra_Du_Lieu/XemSoLieuTKKT_PopupMenu.aspx" runat="server"></iframe>            
+       <%-- <iframe style=" width: 460px; height: 400px;" id="irm1" src="/Modules/Kiem_Tra_Du_Lieu/XemSoLieuTKKT_PopupMenu.aspx" runat="server"></iframe>      --%>      
     </asp:Panel>
     <!--END: POPUP Xem so lieu cac tai khoan ke toan -->
 
@@ -84,7 +84,7 @@
     </cc1:ModalPopupExtender>
     <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup modalPopupMenu_css_2" align="center" style = "display:none">
         <asp:Button ID="btnClose2" CssClass="popUpClose_css" runat="server" Text="Close" />
-        <iframe style=" width: 480px; height: 490px;" id="Iframe1" src="/Modules/Kiem_Tra_Du_Lieu/DanhMucCacLoaiLQ_PopupMenu.aspx" runat="server"></iframe>            
+       <%-- <iframe style=" width: 480px; height: 490px;" id="Iframe1" src="/Modules/Kiem_Tra_Du_Lieu/DanhMucCacLoaiLQ_PopupMenu.aspx" runat="server"></iframe>    --%>        
     </asp:Panel>
     <!--BEGIN: POPUP DANH muc cac loai lien quan -->   
 

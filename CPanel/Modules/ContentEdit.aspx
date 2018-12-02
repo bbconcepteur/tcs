@@ -3,12 +3,16 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit.HTMLEditor" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="../Plugins/ckeditor/ckeditor.js"></script>
-    <script src="../Plugins/CKFinderScripts/ckfinder.js"></script>
+    <script src="./../Plugins/ckeditor/ckeditor.js"></script>
+    <script src="./../Plugins/CKFinderScripts/ckfinder.js"></script>
+    <script src="./../Scripts/jquery-1.10.2.min.js"></script>
+    <script src="./../Plugins/datepicker/datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./../Plugins/datepicker/datepicker.min.css" />
     <div class="main_contain_css main_contain_css_1 main_2">
 
         <div class="bg_100pecents_css bg_button_css">
             <asp:Button ID="btnBack" CssClass="btn btn-default" OnClick="btnBack_Click" Text="Back" runat="server" />
+            <asp:Button ID="btnPreview" CssClass="btn btn-info" OnClick="btnPreview_Click" Text="Preview" runat="server" />
             <asp:Button ID="btnSave" CssClass="btn btn-warning" OnClick="btnSave_Click" Text="Save" runat="server" />
         </div>
 
@@ -31,7 +35,7 @@
 
         <div class="bg_100pecents_css">
             <div class="col-md-6">
-                <label class="control-label">Choose Category<span class="mandatory__css">(*)</span></label>
+                <label class="control-label line_lb_css">Choose Category<span class="mandatory__css">(*)</span></label>
                 <asp:DropDownList ID="drpCategories" CssClass="form-control" runat="server"></asp:DropDownList>
             </div>
 
@@ -43,13 +47,26 @@
 
         <div class="bg_100pecents_css">
             <div class="col-md-6">
-                <label class="control-label">Order</label>
+                <label class="control-label line_lb_css">Order</label>
                 <asp:TextBox ID="txtOrder" CssClass="number form-control" runat="server"></asp:TextBox>
             </div>
 
             <div class="col-md-6">
-                <label class="control-label">Special Content Type</label>
+                <label class="control-label line_lb_css">Special Content Type</label>
                 <asp:CheckBox runat="server" ID="cbSpecialContentType"></asp:CheckBox>
+            </div>
+        </div>
+        <div class="bg_100pecents_css">
+            <div class="col-md-2">
+                <label class="control-label line_lb_css">Publish Time</label>
+                <input type="text" id="PublishDateTime" name="PublishDateTime" placeholder="" class="form-control input-sm datepicker" autocomplete="off" />
+            </div>
+            <div class="col-md-4">
+                &nbsp;
+            </div>
+            <div class="col-md-6">
+                <label class="control-label line_lb_css">Status</label>
+                  <asp:DropDownList ID="drpStatus" CssClass="form-control element_tab_css" runat="server" AutoPostBack="true" OnSelectedIndexChanged="drpStatus_SelectedIndexChanged"></asp:DropDownList>
             </div>
         </div>
         <div class="bg_100pecents_css">
@@ -59,7 +76,8 @@
 
             </div>
             <div class="col-md-2">
-                <button id="ckfinder-popup-1" type="button" class="control-label line_lb_css btn btn-warning">Chọn ảnh</button></div>
+                <button id="ckfinder-popup-1" type="button" class="control-label line_lb_css btn btn-warning">Chọn ảnh</button>
+            </div>
         </div>
         <div class="bg_100pecents_css">
             <div class="bg_100pecents_css">
@@ -112,7 +130,10 @@
 
 
         };
-
+        datePickerInit({
+            ELEMENT: ".datepicker",
+            INIT_DATE: false
+        });
         function ShowFileInfo(fileUrl, data) {
             alert('The selected file URL is "' + fileUrl + '"');
 
