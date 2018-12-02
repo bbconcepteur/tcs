@@ -49,5 +49,9 @@ namespace HCSV.Models
         public string position { get; set; }
         public int lang_id { get; set; }
         public string content_type { get; set; }
+        public Nullable<long> comment_count { get; set; }
+        public Nullable<long> approved_by { get; set; }
+        public Nullable<long> publish_by { get; set; }
+        public Nullable<System.DateTime> publish_time { get; set; }
     }
 }

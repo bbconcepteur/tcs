@@ -386,6 +386,15 @@ namespace HCSV.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dịch vụ TCS.
+        /// </summary>
+        public static string DICHVU_TCS {
+            get {
+                return ResourceManager.GetString("DICHVU_TCS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Điểm đến.
         /// </summary>
         public static string DIEM_DEN {

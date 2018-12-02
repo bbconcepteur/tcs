@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="chuy7808_tcsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="chuy7808_tcsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="jos_ function_rights">
           <Key>
             <PropertyRef Name="id" />
@@ -233,6 +233,10 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.jos_bannertrack' does not
           <Property Name="position" Type="nvarchar(max)" />
           <Property Name="lang_id" Type="int" Nullable="false" />
           <Property Name="content_type" Type="varchar" MaxLength="255" />
+          <Property Name="comment_count" Type="bigint" />
+          <Property Name="approved_by" Type="bigint" />
+          <Property Name="publish_by" Type="bigint" />
+          <Property Name="publish_time" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="jos_content_frontpage">
           <Key>
@@ -1373,8 +1377,7 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.Tmp_jos_users' does not h
     FROM [chuy7808_sa].[Tmp_jos_users] AS [Tmp_jos_users]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="chuy7808_tcsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1594,6 +1597,10 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.Tmp_jos_users' does not h
           <Property Name="position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="lang_id" Type="Int32" Nullable="false" />
           <Property Name="content_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comment_count" Type="Int64" />
+          <Property Name="approved_by" Type="Int64" />
+          <Property Name="publish_by" Type="Int64" />
+          <Property Name="publish_time" Type="DateTime" Precision="7" />
         </EntityType>
         <EntityType Name="jos_content_frontpage">
           <Key>
@@ -2838,6 +2845,10 @@ warning 6002: The table/view 'chuy7808_tcs.chuy7808_sa.Tmp_jos_users' does not h
           <EntitySetMapping Name="jos_content">
             <EntityTypeMapping TypeName="chuy7808_tcsModel.jos_content">
               <MappingFragment StoreEntitySet="jos_content">
+                <ScalarProperty Name="publish_time" ColumnName="publish_time" />
+                <ScalarProperty Name="publish_by" ColumnName="publish_by" />
+                <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+                <ScalarProperty Name="comment_count" ColumnName="comment_count" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="old_cat_id" ColumnName="old_cat_id" />
                 <ScalarProperty Name="old_id" ColumnName="old_id" />

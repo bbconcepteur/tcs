@@ -59,24 +59,31 @@
         <div class="bg_100pecents_css">
             <div class="col-md-2">
                 <label class="control-label line_lb_css">Publish Time</label>
-                <input type="text" id="PublishDateTime" name="PublishDateTime" placeholder="" class="form-control input-sm datepicker" autocomplete="off" />
+                <%--   <input type="text" id="PublishDateTime" name="PublishDateTime" placeholder="" class="form-control input-sm datepicker" autocomplete="off" />--%>
+                <asp:TextBox runat="server" ID="datePublishDateTime" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="col-md-4">
                 &nbsp;
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <label class="control-label line_lb_css">Status</label>
-                  <asp:DropDownList ID="drpStatus" CssClass="form-control element_tab_css" runat="server" AutoPostBack="true" OnSelectedIndexChanged="drpStatus_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="drpStatus" CssClass="form-control element_tab_css" runat="server" AutoPostBack="true" OnSelectedIndexChanged="drpStatus_SelectedIndexChanged"></asp:DropDownList>
+            </div>
+            <div class="col-md-3">
+                &nbsp;
             </div>
         </div>
         <div class="bg_100pecents_css">
             <div class="col-md-6">
                 <label class="control-label line_lb_css">Representative Images</label>
                 <asp:TextBox runat="server" ID="edtRepresentativeImage" CssClass="form-control"></asp:TextBox>
-
             </div>
             <div class="col-md-2">
-                <button id="ckfinder-popup-1" type="button" class="control-label line_lb_css btn btn-warning">Chọn ảnh</button>
+                <label class="control-label line_lb_css">Chọn ảnh</label>
+                <button id="ckfinder-popup-1" type="button" class="control-label line_lb_css btn btn-warning">Browse</button>
+            </div>
+            <div class="col-md-4">
+                &nbsp;
             </div>
         </div>
         <div class="bg_100pecents_css">
@@ -84,25 +91,17 @@
                 <label class="control-label line_lb_css">Intro Content</label>
             </div>
             <div class="bg_100pecents_css">
-                <textarea name="edtIntroContent" id="edtIntroContent" rows="10" cols="80" runat="server">
-                    
-                   </textarea>
+                <textarea name="edtIntroContent" id="edtIntroContent" rows="10" cols="80" runat="server">  </textarea>
             </div>
-
         </div>
-
         <div class="bg_100pecents_css bg_css_1">
             <label class="control-label line_lb_css" for="edtFullContent">Full Content</label>
         </div>
         <div class="bg_100pecents_css bg_css_1">
             <div>
-                <textarea name="edtFullContent" id="edtFullContent" rows="10" cols="80" runat="server">
-                    
-                </textarea>
+                <textarea name="edtFullContent" id="edtFullContent" rows="10" cols="80" runat="server">  </textarea>
             </div>
-
         </div>
-
         <asp:TextBox ID="txtContentID" CssClass="invisible_css" runat="server" Text=""></asp:TextBox>
     </div>
 

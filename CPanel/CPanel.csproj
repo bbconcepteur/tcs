@@ -364,6 +364,8 @@
     <Content Include="Plugins\CKFinderScripts\config.js" />
     <None Include="Plugins\CKFinderScripts\lang\en.json" />
     <None Include="Plugins\CKFinderScripts\lang\vi.json" />
+    <Content Include="Plugins\CKFinderScripts\lang\en.js" />
+    <Content Include="Plugins\CKFinderScripts\lang\vi.js" />
     <Content Include="Plugins\CKFinderScripts\libs\caman.js" />
     <Content Include="Plugins\CKFinderScripts\libs\images\ajax-loader.gif" />
     <Content Include="Plugins\CKFinderScripts\libs\images\icons-png\action-black.png" />
@@ -715,6 +717,11 @@
     <Content Include="Plugins\CKFinderScripts\skins\moono\icons.css" />
     <Content Include="Plugins\CKFinderScripts\skins\moono\images\ajax-loader.gif" />
     <Content Include="Plugins\CKFinderScripts\userfiles\README.html" />
+    <Content Include="Plugins\datepicker\datepicker.common.js" />
+    <Content Include="Plugins\datepicker\datepicker.esm.js" />
+    <Content Include="Plugins\datepicker\datepicker.min.css" />
+    <Content Include="Plugins\datepicker\datepicker.min.js" />
+    <Content Include="Plugins\datepicker\moment.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
@@ -736,6 +743,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />

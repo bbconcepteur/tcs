@@ -23,10 +23,18 @@ namespace CPanel.Modules
 
                 //get Categories
                 getCategories();
+                //tiêu chí
+                getTieuChi(drpTieuChi);
             }
             searchContents();
         }
-
+        public static void getTieuChi(DropDownList drpTieuChi)
+        {
+            drpTieuChi.Items.Insert(0, new ListItem(Commons.CommonFuncs.BLANK_ITEM_TITLE, Commons.CommonFuncs.BLANK_ITEM_VALUE));
+            drpTieuChi.Items.Insert(1, new ListItem("Bài đọc nhiều nhất", "0"));
+            drpTieuChi.Items.Insert(2, new ListItem("Bài nhiều comment nhất", "1"));
+            drpTieuChi.SelectedIndex = 0;
+        }
         public void getCategories()
         {
             //get Categories
@@ -97,6 +105,11 @@ namespace CPanel.Modules
 
         }
 
+        protected void drpTieuChi_DataBinding(object sender, EventArgs e)
+        {
+
+        }
+        
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             var lstContents = grvContents.GetSelectedFieldValues(grvContents.KeyFieldName);

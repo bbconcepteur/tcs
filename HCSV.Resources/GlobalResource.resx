@@ -226,6 +226,9 @@
   <data name="DIA_CHI_EMAIL" xml:space="preserve">
     <value>Địa chỉ mail</value>
   </data>
+  <data name="DICHVU_TCS" xml:space="preserve">
+    <value>Dịch vụ TCS</value>
+  </data>
   <data name="DIEM_DEN" xml:space="preserve">
     <value>Điểm đến</value>
   </data>
