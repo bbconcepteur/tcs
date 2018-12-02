@@ -1,0 +1,253 @@
+/*For Ipad*/
+@media (max-width: 767px)
+{
+    .bg_header_css {
+        background-color: #F26522 !important;
+    }
+
+    .header-top .text-white {
+        color: #ffffff !important;
+    }
+
+    .hot_line_css .email_css{
+        display: none;
+    }
+
+    .clients {
+        background: #e2e2e2 !important;
+        height: 63px;
+    }
+
+    .copyright_css {
+        float: left !important;
+    }
+
+    .bot_menu_css {
+        float: left !important;
+    }
+
+    .bg-black-333 {
+        height: auto !important;
+    }
+
+    .level_2_css a {
+        color: #0076a7 !important;
+    }
+    
+    #mobile-nav ul li li {
+        padding-left: 0 !important;
+    }
+
+    #mobile-nav {
+        background: #fda400 !important;
+    }
+    
+    .banner_css .img-banner-css {
+        height: 200px !important;
+    }
+    .banner_1_css .img-b-css {
+        height: 200px !important;
+    }
+    .bg_logo_css {
+        margin-top: 0 !important;
+        padding: 0 !important;
+    }
+
+    .bg_logo_css img {
+        height: 40px;
+
+        width: auto;
+    }
+
+    .main-menu {
+        height: 48px !important;
+    }
+
+    .menu-top .t1 b, .menu-top .t3 a {
+        color: #ffffff !important;
+    }
+
+    .menu-top .t2 {
+        display:none !important;
+    }
+
+    .bg_hot_line_css {
+        background: #ffa401;
+    }
+
+    .bg_hot_line_css .menu-top {
+         vertical-align: middle;
+    }
+
+    .bot_menu_css ul {
+        float: left !important;        
+    }
+    
+    .bot_menu_css ul li {
+        padding: 0 25px 0 0 !important;
+    }
+ 
+    .footer_content_css {
+        padding-top: 13px !important;
+    }
+
+    .copyright_css {
+        color: #808080;
+    }
+
+    .footer_css 
+    {
+        min-height: 64px !important;
+        height: auto !important;
+    }
+
+    .footer_css .col-lg-6 {
+        width: 100% !important;
+    }
+
+    .copyright_css {
+        float: right;
+        text-align: left;
+    }
+
+    .bg_contact_info_css img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .item_info_1 {
+        padding: 15px 0 10px 0;
+    }
+
+    .bg_client_2 .col-lg-3 {
+        width: 100% !important;
+    }
+
+    .site_map_css .col-lg-2-5 {
+        width: 100% !important;
+    }
+
+    .bg_contact_css .col-lg-3 {
+        width: 100% !important;
+    }
+
+    .guide_css img {
+        width: 100% !important;
+        height: auto;
+    }
+
+    .haiquan
+    {
+        width: 100% !important;
+    }
+
+    .item_info_8_css {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .item_info_css
+    {
+        padding-left: 0 !important;
+        height: auto !important;
+    }
+
+    .item_intro_css
+    {
+        padding-top: 5px;
+    }
+
+    .item_img_1_css img {
+        width: 100% !important;   
+        height: auto !important;             
+    }
+
+    .awb_bg_css {
+        visibility: hidden;
+        display: none;
+    }
+
+    .awb_bg_mobile_css {
+        visibility: visible !important;
+        display: block !important;
+    }
+
+    .intro_css {
+        display: none;
+    }
+
+    .intro_img img {
+        width: 100%;
+    }
+
+    .cont_css {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    .intro_title {
+        padding: 0 15px 0 15px;
+    }
+    .intro_content {
+        padding: 0 15px 0 15px;
+        height: auto !important;
+    }
+
+    .col_intro {
+        height: auto !important;
+        margin-bottom: 15px !important;
+    }
+
+    .intro_readmore {
+        padding: 15px 15px 15px 15px !important;
+    }
+
+    .home_news_css {
+        margin-right:0 !important;
+    }
+
+    .col-lg-4 {
+        width: auto !important;
+        float: none !important;
+    }
+}
+
+/*********************************************************/
+@media (max-width: 1137px)
+{
+    .container {
+        width: 100%;
+    }
+
+    .intro_content {
+        height: auto !important;
+    }
+
+    .bg_client_2 .col-lg-3 {
+        width: 33.3333333%;
+        float: left;
+    }
+
+    .bg_contact_css .col-lg-3 {
+        width: 33.3333333%;
+        float: left;
+    }
+
+    .footer_css .col-lg-6 {
+        width: 50%;
+    }
+
+    .level_2_css a {
+        color: #0076a7 !important;
+    }
+    
+    #mobile-nav ul li li {
+        padding-left: 0 !important;
+    }
+
+    #mobile-nav {
+        background: #fda400 !important;
+    }
+
+
+}
