@@ -104,6 +104,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -182,6 +184,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AirlineController.cs" />
+    <Compile Include="Controllers\AWBController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CareersController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
@@ -200,6 +205,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\COSYS_TCS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BoostrapTemplate\css\availability-calendar.css" />
@@ -331,8 +341,9 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Slider\animate.css" />
     <Content Include="Content\Slider\style.css" />
+    <Content Include="Content\TcsNewTemplate\css\tcs_theme.css" />
     <Content Include="Content\TcsNewTemplate\css\default.css" />
-    <Content Include="Content\TcsNewTemplate\css\responsive.css" />
+    <Content Include="Content\TcsNewTemplate\css\tcs_responsive.css" />
     <Content Include="Content\TcsNewTemplate\images\clock-icon.jpg" />
     <Content Include="Content\TcsNewTemplate\images\icon_arrow.jpg" />
     <Content Include="Content\TcsNewTemplate\images\intro_1.jpg" />
@@ -341,6 +352,14 @@
     <Content Include="Content\TcsNewTemplate\images\news_icon.jpg" />
     <Content Include="Content\TcsNewTemplate\images\tcs_news.jpg" />
     <Content Include="Content\TcsNewTemplate\images\tcs_news_1.jpg" />
+    <Content Include="Content\TcsTemplate\themes\orange\css\awb_main.css" />
+    <Content Include="Content\TcsTemplate\themes\orange\css\jquery.ui.accordion9932.css" />
+    <Content Include="Content\TcsTemplate\themes\orange\css\jScrollPane5bc9.css" />
+    <Content Include="Content\TcsTemplate\themes\orange\css\main.css" />
+    <Content Include="Content\TcsTemplate\themes\orange\css\mainae55.css" />
+    <Content Include="Content\TcsTemplate\themes\orange\css\scroll4427.css" />
+    <Content Include="Content\TcsTemplate\themes\orange\css\superfishb322.css" />
+    <Content Include="Content\TcsTemplate\themes\orange\css\tabs8f80.css" />
     <Content Include="Content\TcsTemplate\themes\orange\images\arrows-ffffff.html" />
     <Content Include="Content\TcsTemplate\themes\orange\images\banner_dich_vu.jpg" />
     <Content Include="Content\TcsTemplate\themes\orange\images\banner_gioi_thieu.jpg" />
@@ -2297,6 +2316,144 @@
     <Content Include="Scripts\tinymce\utils\mctabs.js" />
     <Content Include="Scripts\tinymce\utils\validate.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Service References\COSYS_TCS\configuration91.svcinfo" />
+    <None Include="Service References\COSYS_TCS\configuration.svcinfo" />
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.CALC_CHARGEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.CMP_GIAY_GT_COLL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AGENT_IMP_STATUS_DOCResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AGENT_IMP_STATUS_SHPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AGENT_NONEDLV_LISTResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AIRLINE_FLIGHT_REPORT_PART_AResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AIRLINE_FLIGHT_REPORT_PART_BResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AIRLINE_FLIGHT_REPORT_PART_CResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AIRLINE_FLIGHT_REPORT_PART_DResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AIRLINE_NONEDLV_HAWB_LISTResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AIRLINE_NONEDLV_LISTResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_AIRLINE_NONEDLV_MAWB_LISTResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_CHARGE_CODE_CSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_CHARGE_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_CHARGE_INF_CSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_CHARGE_INF_CS_INVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_CHG_DTL_WEBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_CUSTOMER_NAMEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_EXP_ACCEPTANCEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_EXP_BOOKING_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_EXP_FLIGHT_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_EXP_MAWB_LOCATIONResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_EXP_SHIPMENTS_STATUSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_EXP_SHIPMENT_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_EXP_SHPMENTS_IN_WHResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_HAWB_CTC_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_HAWB_DOC_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_HAWB_LOCATIONResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_HAWB_SHIPMENT_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_IMP_FLIGHT_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_LETTER_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_MAWB_CTC_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_MAWB_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_MAWB_LOCATIONResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_SHIPMENT_INFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_SS_EXP_STATUS_SHPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_SS_IMP_STATUS_SHPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_SS_IMP_STATUS_SHP_V2Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_STORAGE_CHG_DTLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.GET_TRS_BOOKINGResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.KIEMTRA_CMNDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.UPDATE_FAX_STATUSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.ZZZ_GET_STORAGE_CHG_LISTResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\COSYS_TCS\HCSV.Web.COSYS_TCS.ZZZ_GET_STORAGE_CHG_LIST_WEBResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\COSYS_TCS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2402,6 +2559,24 @@
     <Content Include="Views\Shared\_Module_Image_Path.v2.cshtml" />
     <Content Include="Views\Airline\Statistics_default.cshtml" />
     <Content Include="Views\Airline\Statistics.cshtml" />
+    <Content Include="Views\AWB\ChangePass.cshtml" />
+    <Content Include="Views\AWB\m1.cshtml" />
+    <Content Include="Views\AWB\test.cshtml" />
+    <Content Include="Views\AWB\View_03_cs.cshtml" />
+    <Content Include="Views\AWB\View_07_cs.cshtml" />
+    <Content Include="Views\AWB\View_08_cs.cshtml" />
+    <Content Include="Views\AWB\View_Body_BangGia1.cshtml" />
+    <Content Include="Views\AWB\View_body_banggia1_e.cshtml" />
+    <Content Include="Views\AWB\View_body_banggia2.cshtml" />
+    <Content Include="Views\AWB\View_body_banggia2_e.cshtml" />
+    <Content Include="Views\AWB\View_body_banggia3.cshtml" />
+    <Content Include="Views\AWB\View_body_banggia3_e.cshtml" />
+    <Content Include="Views\AWB\View_body_banggia4.cshtml" />
+    <Content Include="Views\AWB\View_body_banggia4_e.cshtml" />
+    <Content Include="Views\AWB\View_Letter_v_cs.cshtml" />
+    <Content Include="Views\AWB\View_lk_yc_imp_cs.cshtml" />
+    <Content Include="Views\AWB\View_lk_yc_imp_cs_test.cshtml" />
+    <None Include="Service References\COSYS_TCS\COSYS.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -2423,6 +2598,9 @@
       <Project>{9344b672-4d30-4886-a9b3-726aafecd455}</Project>
       <Name>HCSV.Resources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\COSYS_TCS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
