@@ -1,0 +1,2043 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.tcs.com.vn/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.tcs.com.vn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.tcs.com.vn/">
+      <s:element name="GET_LETTER_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_LETTER_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_LETTER_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_NONEDLV_LIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CARRIER_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AGENT_CODE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_NONEDLV_LISTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AIRLINE_NONEDLV_LISTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_NONEDLV_MAWB_LIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CARRIER_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AGENT_CODE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_NONEDLV_MAWB_LISTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AIRLINE_NONEDLV_MAWB_LISTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_NONEDLV_HAWB_LIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CARRIER_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AGENT_CODE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_NONEDLV_HAWB_LISTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AIRLINE_NONEDLV_HAWB_LISTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_FLIGHT_REPORT_PART_A">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_FLIGHT_REPORT_PART_AResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AIRLINE_FLIGHT_REPORT_PART_AResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_FLIGHT_REPORT_PART_B">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_FLIGHT_REPORT_PART_BResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AIRLINE_FLIGHT_REPORT_PART_BResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_FLIGHT_REPORT_PART_C">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_FLIGHT_REPORT_PART_CResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AIRLINE_FLIGHT_REPORT_PART_CResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_FLIGHT_REPORT_PART_D">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AIRLINE_FLIGHT_REPORT_PART_DResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AIRLINE_FLIGHT_REPORT_PART_DResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CUSTOMER_NAME">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CUSTOMER_CODE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CUSTOMER_NAMEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_CUSTOMER_NAMEResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AGENT_NONEDLV_LIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AGENT_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CARRIER_CODE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AGENT_NONEDLV_LISTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AGENT_NONEDLV_LISTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AGENT_IMP_STATUS_DOC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AGENT_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="START_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="END_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AGENT_IMP_STATUS_DOCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AGENT_IMP_STATUS_DOCResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AGENT_IMP_STATUS_SHP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AGENT_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="START_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="END_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_AGENT_IMP_STATUS_SHPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_AGENT_IMP_STATUS_SHPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MAWB_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MAWB_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_MAWB_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MAWB_CTC_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MAWB_CTC_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_MAWB_CTC_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_SHIPMENT_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_SHIPMENT_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_SHIPMENT_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_HAWB_CTC_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_HAWB_CTC_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_HAWB_CTC_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_HAWB_DOC_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_HAWB_DOC_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_HAWB_DOC_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_HAWB_SHIPMENT_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_HAWB_SHIPMENT_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_HAWB_SHIPMENT_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_FLIGHT_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COD_FLT_CAR" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COD_FLT_NUM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DAT_FLT_ORI" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_FLIGHT_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_EXP_FLIGHT_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_SHIPMENTS_STATUS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CARR_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_SHIPMENTS_STATUSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_EXP_SHIPMENTS_STATUSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_SHPMENTS_IN_WH">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CARR_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_SHPMENTS_IN_WHResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_EXP_SHPMENTS_IN_WHResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_IMP_FLIGHT_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COD_FLT_CAR" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COD_FLT_NUM" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DAT_FLT_ORI" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_IMP_FLIGHT_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_IMP_FLIGHT_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHARGE_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="START_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="END_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="REMARK" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHARGE_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_CHARGE_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_HAWB_LOCATION">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_HAWB_LOCATIONResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_HAWB_LOCATIONResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MAWB_LOCATION">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_MAWB_LOCATIONResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_MAWB_LOCATIONResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_SHIPMENT_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_SHIPMENT_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_EXP_SHIPMENT_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_MAWB_LOCATION">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_MAWB_LOCATIONResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_EXP_MAWB_LOCATIONResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_BOOKING_INF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_BOOKING_INFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_EXP_BOOKING_INFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_SS_IMP_STATUS_SHP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AGENT_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="START_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="END_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_SS_IMP_STATUS_SHPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_SS_IMP_STATUS_SHPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_SS_IMP_STATUS_SHP_V2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AGENT_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="START_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="END_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LD_BY_FLT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LD_BY_DLV" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LD_BY_CUS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_SS_IMP_STATUS_SHP_V2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_SS_IMP_STATUS_SHP_V2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_SS_EXP_STATUS_SHP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AGENT_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FLIGHT_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="START_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="END_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_SS_EXP_STATUS_SHPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_SS_EXP_STATUS_SHPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_ACCEPTANCE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_EXP_ACCEPTANCEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_EXP_ACCEPTANCEResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_TRS_BOOKING">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_TRS_BOOKINGResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_TRS_BOOKINGResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_STORAGE_CHG_DTL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CHG_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_STORAGE_CHG_DTLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_STORAGE_CHG_DTLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZZZ_GET_STORAGE_CHG_LIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="START_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="END_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZZZ_GET_STORAGE_CHG_LISTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZZZ_GET_STORAGE_CHG_LISTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHG_DTL_WEB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CHG_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="S_SESSION_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="E_V" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHG_DTL_WEBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_CHG_DTL_WEBResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZZZ_GET_STORAGE_CHG_LIST_WEB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="START_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="END_DATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ZZZ_GET_STORAGE_CHG_LIST_WEBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ZZZ_GET_STORAGE_CHG_LIST_WEBResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CALC_CHARGE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CALC_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="S_SESSTION_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CALC_CHARGEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CALC_CHARGEResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHARGE_INF_CS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LOCATION_CODE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FL_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="S_SESSTION_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHARGE_INF_CSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_CHARGE_INF_CSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHARGE_INF_CS_INV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CALC_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="S_SESSTION_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHARGE_INF_CS_INVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_CHARGE_INF_CS_INVResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHARGE_CODE_CS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_PFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AWB_SFX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HAWB_NO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CALC_DATE" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="S_SESSTION_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GET_CHARGE_CODE_CSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GET_CHARGE_CODE_CSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPDATE_FAX_STATUS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STR_AWB_UPDATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPDATE_FAX_STATUSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPDATE_FAX_STATUSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="KIEMTRA_CMND">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STR_CONNECT" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="STR_AWB_UPDATE" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="KIEMTRA_CMNDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="KIEMTRA_CMNDResult" type="tns:CMP_GIAY_GT_COLL" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CMP_GIAY_GT_COLL">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="mCol" type="tns:ArrayOfCMP_GIAY_GT_Cls" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY_PARA" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSaveInput" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCMP_GIAY_GT_Cls">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CMP_GIAY_GT_Cls" nillable="true" type="tns:CMP_GIAY_GT_Cls" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CMP_GIAY_GT_Cls">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD_ICP_NUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAM_AUT_PER" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="COD_SEQ_NUM" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD_APT_PSS" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DAT_RCV_LET" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DES_LET_REF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD_CMP_CON" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DAT_COD_AUT_EFF" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DAT_COD_AUT_EXP" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD_USR_CRE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DAT_CRE" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_UPD_USR" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DAT_LST_UPD" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAM_CMP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DES_ADD_STT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DES_ADD_PLC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAM_CMP1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DES_ADD_STT1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAM_VTN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAM_ENG" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COD_CMP_CMS" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GET_LETTER_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_LETTER_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_LETTER_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_LETTER_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_NONEDLV_LISTSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_NONEDLV_LIST" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_NONEDLV_LISTSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_NONEDLV_LISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_NONEDLV_MAWB_LISTSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_NONEDLV_MAWB_LIST" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_NONEDLV_MAWB_LISTSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_NONEDLV_MAWB_LISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_NONEDLV_HAWB_LISTSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_NONEDLV_HAWB_LIST" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_NONEDLV_HAWB_LISTSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_NONEDLV_HAWB_LISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_FLIGHT_REPORT_PART_ASoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_FLIGHT_REPORT_PART_A" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_FLIGHT_REPORT_PART_ASoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_FLIGHT_REPORT_PART_AResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_FLIGHT_REPORT_PART_BSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_FLIGHT_REPORT_PART_B" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_FLIGHT_REPORT_PART_BSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_FLIGHT_REPORT_PART_BResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_FLIGHT_REPORT_PART_CSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_FLIGHT_REPORT_PART_C" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_FLIGHT_REPORT_PART_CSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_FLIGHT_REPORT_PART_CResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_FLIGHT_REPORT_PART_DSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_FLIGHT_REPORT_PART_D" />
+  </wsdl:message>
+  <wsdl:message name="GET_AIRLINE_FLIGHT_REPORT_PART_DSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AIRLINE_FLIGHT_REPORT_PART_DResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_CUSTOMER_NAMESoapIn">
+    <wsdl:part name="parameters" element="tns:GET_CUSTOMER_NAME" />
+  </wsdl:message>
+  <wsdl:message name="GET_CUSTOMER_NAMESoapOut">
+    <wsdl:part name="parameters" element="tns:GET_CUSTOMER_NAMEResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AGENT_NONEDLV_LISTSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AGENT_NONEDLV_LIST" />
+  </wsdl:message>
+  <wsdl:message name="GET_AGENT_NONEDLV_LISTSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AGENT_NONEDLV_LISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AGENT_IMP_STATUS_DOCSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AGENT_IMP_STATUS_DOC" />
+  </wsdl:message>
+  <wsdl:message name="GET_AGENT_IMP_STATUS_DOCSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AGENT_IMP_STATUS_DOCResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_AGENT_IMP_STATUS_SHPSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_AGENT_IMP_STATUS_SHP" />
+  </wsdl:message>
+  <wsdl:message name="GET_AGENT_IMP_STATUS_SHPSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_AGENT_IMP_STATUS_SHPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_MAWB_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_MAWB_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_MAWB_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_MAWB_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_MAWB_CTC_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_MAWB_CTC_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_MAWB_CTC_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_MAWB_CTC_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_SHIPMENT_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_SHIPMENT_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_SHIPMENT_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_SHIPMENT_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_HAWB_CTC_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_HAWB_CTC_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_HAWB_CTC_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_HAWB_CTC_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_HAWB_DOC_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_HAWB_DOC_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_HAWB_DOC_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_HAWB_DOC_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_HAWB_SHIPMENT_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_HAWB_SHIPMENT_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_HAWB_SHIPMENT_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_HAWB_SHIPMENT_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_FLIGHT_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_EXP_FLIGHT_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_FLIGHT_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_EXP_FLIGHT_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_SHIPMENTS_STATUSSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_EXP_SHIPMENTS_STATUS" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_SHIPMENTS_STATUSSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_EXP_SHIPMENTS_STATUSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_SHPMENTS_IN_WHSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_EXP_SHPMENTS_IN_WH" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_SHPMENTS_IN_WHSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_EXP_SHPMENTS_IN_WHResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_IMP_FLIGHT_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_IMP_FLIGHT_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_IMP_FLIGHT_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_IMP_FLIGHT_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHARGE_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_CHARGE_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHARGE_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_CHARGE_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_HAWB_LOCATIONSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_HAWB_LOCATION" />
+  </wsdl:message>
+  <wsdl:message name="GET_HAWB_LOCATIONSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_HAWB_LOCATIONResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_MAWB_LOCATIONSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_MAWB_LOCATION" />
+  </wsdl:message>
+  <wsdl:message name="GET_MAWB_LOCATIONSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_MAWB_LOCATIONResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_SHIPMENT_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_EXP_SHIPMENT_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_SHIPMENT_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_EXP_SHIPMENT_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_MAWB_LOCATIONSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_EXP_MAWB_LOCATION" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_MAWB_LOCATIONSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_EXP_MAWB_LOCATIONResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_BOOKING_INFSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_EXP_BOOKING_INF" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_BOOKING_INFSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_EXP_BOOKING_INFResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_SS_IMP_STATUS_SHPSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_SS_IMP_STATUS_SHP" />
+  </wsdl:message>
+  <wsdl:message name="GET_SS_IMP_STATUS_SHPSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_SS_IMP_STATUS_SHPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_SS_IMP_STATUS_SHP_V2SoapIn">
+    <wsdl:part name="parameters" element="tns:GET_SS_IMP_STATUS_SHP_V2" />
+  </wsdl:message>
+  <wsdl:message name="GET_SS_IMP_STATUS_SHP_V2SoapOut">
+    <wsdl:part name="parameters" element="tns:GET_SS_IMP_STATUS_SHP_V2Response" />
+  </wsdl:message>
+  <wsdl:message name="GET_SS_EXP_STATUS_SHPSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_SS_EXP_STATUS_SHP" />
+  </wsdl:message>
+  <wsdl:message name="GET_SS_EXP_STATUS_SHPSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_SS_EXP_STATUS_SHPResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_ACCEPTANCESoapIn">
+    <wsdl:part name="parameters" element="tns:GET_EXP_ACCEPTANCE" />
+  </wsdl:message>
+  <wsdl:message name="GET_EXP_ACCEPTANCESoapOut">
+    <wsdl:part name="parameters" element="tns:GET_EXP_ACCEPTANCEResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_TRS_BOOKINGSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_TRS_BOOKING" />
+  </wsdl:message>
+  <wsdl:message name="GET_TRS_BOOKINGSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_TRS_BOOKINGResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_STORAGE_CHG_DTLSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_STORAGE_CHG_DTL" />
+  </wsdl:message>
+  <wsdl:message name="GET_STORAGE_CHG_DTLSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_STORAGE_CHG_DTLResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZZZ_GET_STORAGE_CHG_LISTSoapIn">
+    <wsdl:part name="parameters" element="tns:ZZZ_GET_STORAGE_CHG_LIST" />
+  </wsdl:message>
+  <wsdl:message name="ZZZ_GET_STORAGE_CHG_LISTSoapOut">
+    <wsdl:part name="parameters" element="tns:ZZZ_GET_STORAGE_CHG_LISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHG_DTL_WEBSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_CHG_DTL_WEB" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHG_DTL_WEBSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_CHG_DTL_WEBResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZZZ_GET_STORAGE_CHG_LIST_WEBSoapIn">
+    <wsdl:part name="parameters" element="tns:ZZZ_GET_STORAGE_CHG_LIST_WEB" />
+  </wsdl:message>
+  <wsdl:message name="ZZZ_GET_STORAGE_CHG_LIST_WEBSoapOut">
+    <wsdl:part name="parameters" element="tns:ZZZ_GET_STORAGE_CHG_LIST_WEBResponse" />
+  </wsdl:message>
+  <wsdl:message name="CALC_CHARGESoapIn">
+    <wsdl:part name="parameters" element="tns:CALC_CHARGE" />
+  </wsdl:message>
+  <wsdl:message name="CALC_CHARGESoapOut">
+    <wsdl:part name="parameters" element="tns:CALC_CHARGEResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHARGE_INF_CSSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_CHARGE_INF_CS" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHARGE_INF_CSSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_CHARGE_INF_CSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHARGE_INF_CS_INVSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_CHARGE_INF_CS_INV" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHARGE_INF_CS_INVSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_CHARGE_INF_CS_INVResponse" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHARGE_CODE_CSSoapIn">
+    <wsdl:part name="parameters" element="tns:GET_CHARGE_CODE_CS" />
+  </wsdl:message>
+  <wsdl:message name="GET_CHARGE_CODE_CSSoapOut">
+    <wsdl:part name="parameters" element="tns:GET_CHARGE_CODE_CSResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPDATE_FAX_STATUSSoapIn">
+    <wsdl:part name="parameters" element="tns:UPDATE_FAX_STATUS" />
+  </wsdl:message>
+  <wsdl:message name="UPDATE_FAX_STATUSSoapOut">
+    <wsdl:part name="parameters" element="tns:UPDATE_FAX_STATUSResponse" />
+  </wsdl:message>
+  <wsdl:message name="KIEMTRA_CMNDSoapIn">
+    <wsdl:part name="parameters" element="tns:KIEMTRA_CMND" />
+  </wsdl:message>
+  <wsdl:message name="KIEMTRA_CMNDSoapOut">
+    <wsdl:part name="parameters" element="tns:KIEMTRA_CMNDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="COSYS_WEBTRACKSoap">
+    <wsdl:operation name="GET_LETTER_INF">
+      <wsdl:input message="tns:GET_LETTER_INFSoapIn" />
+      <wsdl:output message="tns:GET_LETTER_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_NONEDLV_LIST">
+      <wsdl:input message="tns:GET_AIRLINE_NONEDLV_LISTSoapIn" />
+      <wsdl:output message="tns:GET_AIRLINE_NONEDLV_LISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_NONEDLV_MAWB_LIST">
+      <wsdl:input message="tns:GET_AIRLINE_NONEDLV_MAWB_LISTSoapIn" />
+      <wsdl:output message="tns:GET_AIRLINE_NONEDLV_MAWB_LISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_NONEDLV_HAWB_LIST">
+      <wsdl:input message="tns:GET_AIRLINE_NONEDLV_HAWB_LISTSoapIn" />
+      <wsdl:output message="tns:GET_AIRLINE_NONEDLV_HAWB_LISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_A">
+      <wsdl:input message="tns:GET_AIRLINE_FLIGHT_REPORT_PART_ASoapIn" />
+      <wsdl:output message="tns:GET_AIRLINE_FLIGHT_REPORT_PART_ASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_B">
+      <wsdl:input message="tns:GET_AIRLINE_FLIGHT_REPORT_PART_BSoapIn" />
+      <wsdl:output message="tns:GET_AIRLINE_FLIGHT_REPORT_PART_BSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_C">
+      <wsdl:input message="tns:GET_AIRLINE_FLIGHT_REPORT_PART_CSoapIn" />
+      <wsdl:output message="tns:GET_AIRLINE_FLIGHT_REPORT_PART_CSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_D">
+      <wsdl:input message="tns:GET_AIRLINE_FLIGHT_REPORT_PART_DSoapIn" />
+      <wsdl:output message="tns:GET_AIRLINE_FLIGHT_REPORT_PART_DSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_CUSTOMER_NAME">
+      <wsdl:input message="tns:GET_CUSTOMER_NAMESoapIn" />
+      <wsdl:output message="tns:GET_CUSTOMER_NAMESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AGENT_NONEDLV_LIST">
+      <wsdl:input message="tns:GET_AGENT_NONEDLV_LISTSoapIn" />
+      <wsdl:output message="tns:GET_AGENT_NONEDLV_LISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AGENT_IMP_STATUS_DOC">
+      <wsdl:input message="tns:GET_AGENT_IMP_STATUS_DOCSoapIn" />
+      <wsdl:output message="tns:GET_AGENT_IMP_STATUS_DOCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_AGENT_IMP_STATUS_SHP">
+      <wsdl:input message="tns:GET_AGENT_IMP_STATUS_SHPSoapIn" />
+      <wsdl:output message="tns:GET_AGENT_IMP_STATUS_SHPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_MAWB_INF">
+      <wsdl:input message="tns:GET_MAWB_INFSoapIn" />
+      <wsdl:output message="tns:GET_MAWB_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_MAWB_CTC_INF">
+      <wsdl:input message="tns:GET_MAWB_CTC_INFSoapIn" />
+      <wsdl:output message="tns:GET_MAWB_CTC_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_SHIPMENT_INF">
+      <wsdl:input message="tns:GET_SHIPMENT_INFSoapIn" />
+      <wsdl:output message="tns:GET_SHIPMENT_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_CTC_INF">
+      <wsdl:input message="tns:GET_HAWB_CTC_INFSoapIn" />
+      <wsdl:output message="tns:GET_HAWB_CTC_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_DOC_INF">
+      <wsdl:input message="tns:GET_HAWB_DOC_INFSoapIn" />
+      <wsdl:output message="tns:GET_HAWB_DOC_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_SHIPMENT_INF">
+      <wsdl:input message="tns:GET_HAWB_SHIPMENT_INFSoapIn" />
+      <wsdl:output message="tns:GET_HAWB_SHIPMENT_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_FLIGHT_INF">
+      <wsdl:input message="tns:GET_EXP_FLIGHT_INFSoapIn" />
+      <wsdl:output message="tns:GET_EXP_FLIGHT_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_SHIPMENTS_STATUS">
+      <wsdl:input message="tns:GET_EXP_SHIPMENTS_STATUSSoapIn" />
+      <wsdl:output message="tns:GET_EXP_SHIPMENTS_STATUSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_SHPMENTS_IN_WH">
+      <wsdl:input message="tns:GET_EXP_SHPMENTS_IN_WHSoapIn" />
+      <wsdl:output message="tns:GET_EXP_SHPMENTS_IN_WHSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_IMP_FLIGHT_INF">
+      <wsdl:input message="tns:GET_IMP_FLIGHT_INFSoapIn" />
+      <wsdl:output message="tns:GET_IMP_FLIGHT_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_INF">
+      <wsdl:input message="tns:GET_CHARGE_INFSoapIn" />
+      <wsdl:output message="tns:GET_CHARGE_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_LOCATION">
+      <wsdl:input message="tns:GET_HAWB_LOCATIONSoapIn" />
+      <wsdl:output message="tns:GET_HAWB_LOCATIONSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_MAWB_LOCATION">
+      <wsdl:input message="tns:GET_MAWB_LOCATIONSoapIn" />
+      <wsdl:output message="tns:GET_MAWB_LOCATIONSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_SHIPMENT_INF">
+      <wsdl:input message="tns:GET_EXP_SHIPMENT_INFSoapIn" />
+      <wsdl:output message="tns:GET_EXP_SHIPMENT_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_MAWB_LOCATION">
+      <wsdl:input message="tns:GET_EXP_MAWB_LOCATIONSoapIn" />
+      <wsdl:output message="tns:GET_EXP_MAWB_LOCATIONSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_BOOKING_INF">
+      <wsdl:input message="tns:GET_EXP_BOOKING_INFSoapIn" />
+      <wsdl:output message="tns:GET_EXP_BOOKING_INFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_SS_IMP_STATUS_SHP">
+      <wsdl:input message="tns:GET_SS_IMP_STATUS_SHPSoapIn" />
+      <wsdl:output message="tns:GET_SS_IMP_STATUS_SHPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_SS_IMP_STATUS_SHP_V2">
+      <wsdl:input message="tns:GET_SS_IMP_STATUS_SHP_V2SoapIn" />
+      <wsdl:output message="tns:GET_SS_IMP_STATUS_SHP_V2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_SS_EXP_STATUS_SHP">
+      <wsdl:input message="tns:GET_SS_EXP_STATUS_SHPSoapIn" />
+      <wsdl:output message="tns:GET_SS_EXP_STATUS_SHPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_ACCEPTANCE">
+      <wsdl:input message="tns:GET_EXP_ACCEPTANCESoapIn" />
+      <wsdl:output message="tns:GET_EXP_ACCEPTANCESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_TRS_BOOKING">
+      <wsdl:input message="tns:GET_TRS_BOOKINGSoapIn" />
+      <wsdl:output message="tns:GET_TRS_BOOKINGSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_STORAGE_CHG_DTL">
+      <wsdl:input message="tns:GET_STORAGE_CHG_DTLSoapIn" />
+      <wsdl:output message="tns:GET_STORAGE_CHG_DTLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZZZ_GET_STORAGE_CHG_LIST">
+      <wsdl:input message="tns:ZZZ_GET_STORAGE_CHG_LISTSoapIn" />
+      <wsdl:output message="tns:ZZZ_GET_STORAGE_CHG_LISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHG_DTL_WEB">
+      <wsdl:input message="tns:GET_CHG_DTL_WEBSoapIn" />
+      <wsdl:output message="tns:GET_CHG_DTL_WEBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ZZZ_GET_STORAGE_CHG_LIST_WEB">
+      <wsdl:input message="tns:ZZZ_GET_STORAGE_CHG_LIST_WEBSoapIn" />
+      <wsdl:output message="tns:ZZZ_GET_STORAGE_CHG_LIST_WEBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CALC_CHARGE">
+      <wsdl:input message="tns:CALC_CHARGESoapIn" />
+      <wsdl:output message="tns:CALC_CHARGESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_INF_CS">
+      <wsdl:input message="tns:GET_CHARGE_INF_CSSoapIn" />
+      <wsdl:output message="tns:GET_CHARGE_INF_CSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_INF_CS_INV">
+      <wsdl:input message="tns:GET_CHARGE_INF_CS_INVSoapIn" />
+      <wsdl:output message="tns:GET_CHARGE_INF_CS_INVSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_CODE_CS">
+      <wsdl:input message="tns:GET_CHARGE_CODE_CSSoapIn" />
+      <wsdl:output message="tns:GET_CHARGE_CODE_CSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPDATE_FAX_STATUS">
+      <wsdl:input message="tns:UPDATE_FAX_STATUSSoapIn" />
+      <wsdl:output message="tns:UPDATE_FAX_STATUSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="KIEMTRA_CMND">
+      <wsdl:input message="tns:KIEMTRA_CMNDSoapIn" />
+      <wsdl:output message="tns:KIEMTRA_CMNDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="COSYS_WEBTRACKSoap" type="tns:COSYS_WEBTRACKSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GET_LETTER_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_LETTER_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_NONEDLV_LIST">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_NONEDLV_LIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_NONEDLV_MAWB_LIST">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_NONEDLV_MAWB_LIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_NONEDLV_HAWB_LIST">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_NONEDLV_HAWB_LIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_A">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_FLIGHT_REPORT_PART_A" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_B">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_FLIGHT_REPORT_PART_B" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_C">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_FLIGHT_REPORT_PART_C" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_D">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_FLIGHT_REPORT_PART_D" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CUSTOMER_NAME">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_CUSTOMER_NAME" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AGENT_NONEDLV_LIST">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AGENT_NONEDLV_LIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AGENT_IMP_STATUS_DOC">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AGENT_IMP_STATUS_DOC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AGENT_IMP_STATUS_SHP">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_AGENT_IMP_STATUS_SHP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MAWB_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_MAWB_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MAWB_CTC_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_MAWB_CTC_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SHIPMENT_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_SHIPMENT_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_CTC_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_HAWB_CTC_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_DOC_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_HAWB_DOC_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_SHIPMENT_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_HAWB_SHIPMENT_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_FLIGHT_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_EXP_FLIGHT_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_SHIPMENTS_STATUS">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_EXP_SHIPMENTS_STATUS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_SHPMENTS_IN_WH">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_EXP_SHPMENTS_IN_WH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_IMP_FLIGHT_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_IMP_FLIGHT_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_CHARGE_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_LOCATION">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_HAWB_LOCATION" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MAWB_LOCATION">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_MAWB_LOCATION" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_SHIPMENT_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_EXP_SHIPMENT_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_MAWB_LOCATION">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_EXP_MAWB_LOCATION" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_BOOKING_INF">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_EXP_BOOKING_INF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SS_IMP_STATUS_SHP">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_SS_IMP_STATUS_SHP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SS_IMP_STATUS_SHP_V2">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_SS_IMP_STATUS_SHP_V2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SS_EXP_STATUS_SHP">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_SS_EXP_STATUS_SHP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_ACCEPTANCE">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_EXP_ACCEPTANCE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_TRS_BOOKING">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_TRS_BOOKING" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_STORAGE_CHG_DTL">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_STORAGE_CHG_DTL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZZZ_GET_STORAGE_CHG_LIST">
+      <soap:operation soapAction="http://www.tcs.com.vn/ZZZ_GET_STORAGE_CHG_LIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHG_DTL_WEB">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_CHG_DTL_WEB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZZZ_GET_STORAGE_CHG_LIST_WEB">
+      <soap:operation soapAction="http://www.tcs.com.vn/ZZZ_GET_STORAGE_CHG_LIST_WEB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CALC_CHARGE">
+      <soap:operation soapAction="http://www.tcs.com.vn/CALC_CHARGE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_INF_CS">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_CHARGE_INF_CS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_INF_CS_INV">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_CHARGE_INF_CS_INV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_CODE_CS">
+      <soap:operation soapAction="http://www.tcs.com.vn/GET_CHARGE_CODE_CS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPDATE_FAX_STATUS">
+      <soap:operation soapAction="http://www.tcs.com.vn/UPDATE_FAX_STATUS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KIEMTRA_CMND">
+      <soap:operation soapAction="http://www.tcs.com.vn/KIEMTRA_CMND" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="COSYS_WEBTRACKSoap12" type="tns:COSYS_WEBTRACKSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GET_LETTER_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_LETTER_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_NONEDLV_LIST">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_NONEDLV_LIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_NONEDLV_MAWB_LIST">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_NONEDLV_MAWB_LIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_NONEDLV_HAWB_LIST">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_NONEDLV_HAWB_LIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_A">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_FLIGHT_REPORT_PART_A" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_B">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_FLIGHT_REPORT_PART_B" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_C">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_FLIGHT_REPORT_PART_C" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AIRLINE_FLIGHT_REPORT_PART_D">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AIRLINE_FLIGHT_REPORT_PART_D" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CUSTOMER_NAME">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_CUSTOMER_NAME" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AGENT_NONEDLV_LIST">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AGENT_NONEDLV_LIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AGENT_IMP_STATUS_DOC">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AGENT_IMP_STATUS_DOC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_AGENT_IMP_STATUS_SHP">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_AGENT_IMP_STATUS_SHP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MAWB_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_MAWB_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MAWB_CTC_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_MAWB_CTC_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SHIPMENT_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_SHIPMENT_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_CTC_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_HAWB_CTC_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_DOC_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_HAWB_DOC_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_SHIPMENT_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_HAWB_SHIPMENT_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_FLIGHT_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_EXP_FLIGHT_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_SHIPMENTS_STATUS">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_EXP_SHIPMENTS_STATUS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_SHPMENTS_IN_WH">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_EXP_SHPMENTS_IN_WH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_IMP_FLIGHT_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_IMP_FLIGHT_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_CHARGE_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_HAWB_LOCATION">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_HAWB_LOCATION" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MAWB_LOCATION">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_MAWB_LOCATION" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_SHIPMENT_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_EXP_SHIPMENT_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_MAWB_LOCATION">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_EXP_MAWB_LOCATION" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_BOOKING_INF">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_EXP_BOOKING_INF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SS_IMP_STATUS_SHP">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_SS_IMP_STATUS_SHP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SS_IMP_STATUS_SHP_V2">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_SS_IMP_STATUS_SHP_V2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SS_EXP_STATUS_SHP">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_SS_EXP_STATUS_SHP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_EXP_ACCEPTANCE">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_EXP_ACCEPTANCE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_TRS_BOOKING">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_TRS_BOOKING" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_STORAGE_CHG_DTL">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_STORAGE_CHG_DTL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZZZ_GET_STORAGE_CHG_LIST">
+      <soap12:operation soapAction="http://www.tcs.com.vn/ZZZ_GET_STORAGE_CHG_LIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHG_DTL_WEB">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_CHG_DTL_WEB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZZZ_GET_STORAGE_CHG_LIST_WEB">
+      <soap12:operation soapAction="http://www.tcs.com.vn/ZZZ_GET_STORAGE_CHG_LIST_WEB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CALC_CHARGE">
+      <soap12:operation soapAction="http://www.tcs.com.vn/CALC_CHARGE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_INF_CS">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_CHARGE_INF_CS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_INF_CS_INV">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_CHARGE_INF_CS_INV" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CHARGE_CODE_CS">
+      <soap12:operation soapAction="http://www.tcs.com.vn/GET_CHARGE_CODE_CS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPDATE_FAX_STATUS">
+      <soap12:operation soapAction="http://www.tcs.com.vn/UPDATE_FAX_STATUS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KIEMTRA_CMND">
+      <soap12:operation soapAction="http://www.tcs.com.vn/KIEMTRA_CMND" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="COSYS_WEBTRACK">
+    <wsdl:port name="COSYS_WEBTRACKSoap" binding="tns:COSYS_WEBTRACKSoap">
+      <soap:address location="http://192.168.14.10:8080/COSYS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="COSYS_WEBTRACKSoap12" binding="tns:COSYS_WEBTRACKSoap12">
+      <soap12:address location="http://192.168.14.10:8080/COSYS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
