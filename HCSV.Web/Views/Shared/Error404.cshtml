@@ -68,7 +68,7 @@
                                     <h3>Some Useful Links</h3>
                                     <div class="widget">
                                         <ul class="list-border">
-                                            @if (Model.Any())
+                                            @if (Model != null && Model.Any())
                                             {
                                                 foreach (var item in Model)
                                                 {
