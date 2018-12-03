@@ -38,6 +38,16 @@ namespace HCSV.Web
                 url: "gia-tri-cot-loi/{menu}/{metatitle}-{contentID}",
                 defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
             );
+            routes.MapRoute(
+               name: "Dich vu",
+               url: "dich-vu",
+               defaults: new { controller = "Service", action = "Index" }
+           );
+            routes.MapRoute(
+                name: "Dich vu chi tiet",
+                url: "dich-vu/{menu}/{metatitle}-{catID}",
+                defaults: new { controller = "Service", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, catID = UrlParameter.Optional }
+            );
             #endregion
 
 
@@ -67,6 +77,18 @@ namespace HCSV.Web
                 url: "value/{menu}/{metatitle}-{contentID}",
                 defaults: new { controller = "News", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, contentID = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+              name: "Service",
+              url: "service",
+              defaults: new { controller = "Service", action = "Index" }
+          );
+            routes.MapRoute(
+                name: "Service detail",
+                url: "service/{menu}/{metatitle}-{catID}",
+                defaults: new { controller = "Service", action = "Details", menu = UrlParameter.Optional, metatitle = UrlParameter.Optional, catID = UrlParameter.Optional }
+            );
+
             #endregion
 
             routes.MapRoute(

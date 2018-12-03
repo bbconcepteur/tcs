@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCSV.Web", "HCSV.Web\HCSV.Web.csproj", "{EF78F950-8E8B-415E-A452-F40172BC88E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D5307F38-2E32-4CB8-921B-83273CB6CE23} = {D5307F38-2E32-4CB8-921B-83273CB6CE23}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCSV.Models", "HCSV.Models\HCSV.Models.csproj", "{9FC26A76-3B64-4094-80E0-7C2584CA6DAD}"
 EndProject
