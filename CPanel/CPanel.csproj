@@ -45,7 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\AjaxControlToolkit.dll</HintPath>
+      <HintPath>..\packages\Extensions\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="AspNet.ScriptManager.bootstrap, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.bootstrap.4.1.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
@@ -107,58 +107,58 @@
       <HintPath>..\packages\Extensions\CKSource.FileSystem.Local.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Data.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Data.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxGauges.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxGauges.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxGauges.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxHtmlEditor.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxHtmlEditor.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxHtmlEditor.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxHtmlEditor.v13.1.resources">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxHtmlEditor.v13.1.resources.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxHtmlEditor.v13.1.resources.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxPivotGrid.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxPivotGrid.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxPivotGrid.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxScheduler.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxScheduler.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxScheduler.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxScheduler.v13.1.Design">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxScheduler.v13.1.Design.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxScheduler.v13.1.Design.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxScheduler.v13.1.resources">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxScheduler.v13.1.resources.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxScheduler.v13.1.resources.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxSpellChecker.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxSpellChecker.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxSpellChecker.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxSpellChecker.v13.1.resources">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxSpellChecker.v13.1.resources.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxSpellChecker.v13.1.resources.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxThemes.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxThemes.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxThemes.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxTreeList.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxTreeList.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxTreeList.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxTreeList.v13.1.resources">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.ASPxTreeList.v13.1.resources.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.ASPxTreeList.v13.1.resources.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Web.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.Web.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.Web.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v13.1">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.XtraCharts.v13.1.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.XtraCharts.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v13.1.Web">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.XtraCharts.v13.1.Web.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.XtraCharts.v13.1.Web.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v13.1.Design">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.XtraEditors.v13.1.Design.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.XtraEditors.v13.1.Design.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraScheduler.v13.1.Core">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\DevExpress.XtraScheduler.v13.1.Core.dll</HintPath>
+      <HintPath>..\packages\Extensions\DevExpress.XtraScheduler.v13.1.Core.dll</HintPath>
     </Reference>
     <Reference Include="Dropbox.Api">
       <HintPath>..\packages\Extensions\Dropbox.Api.dll</HintPath>
@@ -238,7 +238,7 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Telerik.Web.UI">
-      <HintPath>..\..\CPanel\StandardLib_WebForm\bin\Telerik.Web.UI.dll</HintPath>
+      <HintPath>..\packages\Extensions\Telerik.Web.UI.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -1276,7 +1276,6 @@
     <Content Include="FontPage.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="HCS\" />
     <Folder Include="Plugins\ckeditor\adapters\" />
     <Folder Include="Plugins\ckeditor\lang\" />
     <Folder Include="Plugins\ckeditor\plugins\" />

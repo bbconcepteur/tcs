@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CPanel.Commons;
 
 namespace CPanel
 {
@@ -49,6 +50,8 @@ namespace CPanel
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
         {
+            if(HttpContext.Current.Session["UserId"] == null)
+                HttpContext.Current.Response.Redirect(String.Format(ConstURL.URL_SIGN_IN, HttpContext.Current.Request.RawUrl));
             if (!IsPostBack)
             {
                 // Set Anti-XSRF token

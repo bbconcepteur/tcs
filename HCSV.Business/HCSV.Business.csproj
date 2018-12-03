@@ -70,7 +70,6 @@
     <Compile Include="Business\LanguageBusiness.cs" />
     <Compile Include="Business\MenuBusiness.cs" />
     <Compile Include="Business\NewsBusiness.cs" />
-    <Compile Include="Business\ServiceBusiness.cs" />
     <Compile Include="Business\TranslateBusiness.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\ContentModel.cs" />
