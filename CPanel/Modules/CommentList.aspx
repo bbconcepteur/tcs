@@ -82,7 +82,7 @@
                 <Settings ShowFilterRow="True"/>                
             </dx:ASPxGridView>
             <asp:Button ID="btnViewComment" runat="server" OnClick="btnViewComment_Click" CssClass="invisible_css" />
-            <asp:Button ID="btnViewTranslation" runat="server"  OnClick="btnViewTranslation_Click" CssClass="invisible_css"/>
+           <%-- <asp:Button ID="btnViewTranslation" runat="server"  OnClick="btnViewTranslation_Click" CssClass="invisible_css"/>--%>
             <asp:TextBox ID="txtCommentID" runat="server" CssClass="invisible_css"></asp:TextBox>
         </div>        
     </div>
@@ -91,10 +91,10 @@
             $("#<%=txtCommentID.ClientID%>").val(strCommentID);
             __doPostBack("<%= btnViewComment.UniqueID %>", "OnClick");
         }
-        function viewTranslation(strCommentID) {
+      <%--  function viewTranslation(strCommentID) {
             $("#<%=txtCommentID.ClientID%>").val(strCommentID);
             __doPostBack("<%= btnViewTranslation.UniqueID %>", "OnClick");
-        }
+        }--%>
         
        
     </script>
