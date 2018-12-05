@@ -5,7 +5,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="./../Plugins/ckeditor/ckeditor.js"></script>
     <script src="./../Plugins/CKFinderScripts/ckfinder.js"></script>
-    <script src="./../Scripts/jquery-1.10.2.min.js"></script>
     <script src="./../Plugins/datepicker/datepicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./../Plugins/datepicker/datepicker.min.css" />
     <div class="main_contain_css main_contain_css_1 main_2">
@@ -129,23 +128,6 @@
 
 
         };
-        datePickerInit({
-            ELEMENT: ".datepicker",
-            INIT_DATE: false
-        });
-        function ShowFileInfo(fileUrl, data) {
-            alert('The selected file URL is "' + fileUrl + '"');
-
-            var formatDate = function (date) {
-                return date.substr(0, 4) + "-" + date.substr(4, 2) + "-" + date.substr(6, 2) + " " + date.substr(8, 2) + ":" + date.substr(10, 2);
-            }
-
-            alert('The selected file URL is: "' + data['fileUrl'] + '"');
-            alert('The size of selected file is: "' + data['fileSize'] + 'KB"');
-            alert('The selected file was last modifed on: "' + formatDate(data['fileDate']) + '"');
-            alert('The data passed to the function is: "' + data['selectFunctionData'] + '"');
-        }
-        var xxxx = null;
         function selectFileWithCKFinder(elementId) {
 
             CKFinder.popup({
@@ -155,27 +137,6 @@
 
                 onInit: function (finder) {
                     finder.on('files:choose', function (evt) {
-                        evt.data.files.forEach(function (file) {
-                            // Send command to the server.
-                            finder.request('command:send', {
-                                name: 'ImageInfo',
-                                folder: file.get('folder'),
-                                params: { fileName: file.get('name') }
-                            }).done(function (response) {
-                                // Process server response.
-                                if (response.error) {
-                                    // Some error handling.
-                                    return;
-                                }
-
-                                // Log image data:
-                                console.log('-------------------');
-                                console.log('Name:', file.get('name'));
-                                console.log('URL:', file.getUrl());
-                                console.log('Dimensions:', response.width + 'x' + response.height);
-                                console.log('Size:', response.size + 'B');
-                            });
-                        });
                         var file = evt.data.files.first();
                         var output = document.getElementById(elementId);
                         output.value = file.getUrl();
