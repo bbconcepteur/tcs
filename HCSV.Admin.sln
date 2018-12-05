@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCSV.Models", "HCSV.Models\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCSV.Core", "HCSV.Core\HCSV.Core.csproj", "{C644C33D-2C6C-4BA3-A8D2-C87A6F47EF3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPanel", "CPanel\CPanel.csproj", "{6763B280-A169-4FF9-9085-C53F20C0E4BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPanel", "HCSV.Web\CPanel\CPanel.csproj", "{6763B280-A169-4FF9-9085-C53F20C0E4BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

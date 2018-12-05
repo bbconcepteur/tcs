@@ -11,7 +11,7 @@ namespace HCSV.Business.Business
 {
     public interface IMenuBusiness : IRepository<jos_menu>
     {
-        jos_menu GetMenuById(long langId, long menuId);
+        jos_menu GetMenuById(long langId, long DefaultLangId, long menuId);
 
         List<Menu> GetTopMenu(long langId, long defaultLangId);
 
@@ -31,15 +31,20 @@ namespace HCSV.Business.Business
             db = new TCSEntities();
         }
 
-        public jos_menu GetMenuById(long langId, long menuId)
+        public jos_menu GetMenuById(long langId, long DefaultLangId, long menuId)
         {
-            var menu = GetSingle(s => s.lang_id == langId && s.id == menuId && s.published);
-            if (menu == null)
+            var menu = GetSingle(s => s.lang_id == DefaultLangId && s.id == menuId && s.published) ?? new jos_menu();
+            
+            if (DefaultLangId != langId)
             {
-                var defaultLang = db.jos_languages.AsNoTracking().FirstOrDefault(s => s.default_status == 1) ??
-                                  new jos_languages();
-                menu = GetSingle(s => s.lang_id == defaultLang.lang_id && s.id == menuId && s.published);
+                var translate = new TranslateBusiness(db);
+                var translateMenu = translate.GetTranslatetion(menu.id, Constants.TranslateTable.TBL_JOS_MENU);
+                var currentMenu = GetSingle(s => s.id == translateMenu.reference_id && s.lang_id == langId);
+                menu.name = currentMenu.name;
+               
             }
+            //TODO: Replace data
+            StringHelper.RepalceData(menu);
             return menu;
         }
 

@@ -66,6 +66,7 @@
     <Compile Include="reCAPTCHA\RecaptchaKeyHelper.cs" />
     <Compile Include="reCAPTCHA\RecaptchaResponse.cs" />
     <Compile Include="reCAPTCHA\RecaptchaValidator.cs" />
+    <Compile Include="StringHelper.cs" />
     <Compile Include="UrlHelper.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

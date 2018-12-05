@@ -42,6 +42,12 @@ namespace HCSV.Business.Business
                 content.PageName = objCategory.name;
                 var lstContents = GetMany(x => (x.lang_id == langId) && (x.catid == categoryId) && (x.state == 1)).OrderByDescending(y => y.publish_up).ToList();
                 content.ListValues = lstContents.ToPagedList(pageNumber, 10);
+
+                //TODO: Replace data
+                foreach (var josContent in content.ListValues)
+                {
+                    StringHelper.RepalceData(josContent);
+                }
                 return content;
             });
         }
@@ -70,6 +76,12 @@ namespace HCSV.Business.Business
                 {
                     content.ListValues = defaultContents.ToPagedList(1, 99999);
                 }
+
+                //TODO: Replace data
+                foreach (var josContent in content.ListValues)
+                {
+                    StringHelper.RepalceData(josContent);
+                }
                 return content;
             });
         }
@@ -88,6 +100,11 @@ namespace HCSV.Business.Business
                 {
                     var objCategory = db.jos_categories.AsNoTracking().FirstOrDefault(x => x.id == lstContents[0].catid) ?? new jos_categories();
                     content.PageName = objCategory.name;
+                }
+                //TODO: Replace data
+                foreach (var josContent in content.ListValues)
+                {
+                    StringHelper.RepalceData(josContent);
                 }
                 return content;
             });
@@ -121,7 +138,8 @@ namespace HCSV.Business.Business
                         }
                     }
                 }
-
+                //TODO: Replace data
+                StringHelper.RepalceData(objContent);
                 contentDetail.Value = objContent;
                 return contentDetail;
             });
@@ -145,6 +163,8 @@ namespace HCSV.Business.Business
                     }
                 }
             }
+            //TODO: Replace data
+            StringHelper.RepalceData(objContent);
             return objContent;
         }
 

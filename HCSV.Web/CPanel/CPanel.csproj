@@ -1294,12 +1294,7 @@
   <ItemGroup>
     <Content Include="FontPage.Master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Plugins\ckeditor\adapters\" />
-    <Folder Include="Plugins\ckeditor\lang\" />
-    <Folder Include="Plugins\ckeditor\plugins\" />
-    <Folder Include="Plugins\ckeditor\skins\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Plugins\CKFinderScripts\plugins\README.md" />
     <None Include="Properties\PublishProfiles\CPanel.pubxml" />

@@ -2551,12 +2551,6 @@
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Offer_Advise\Index.cshtml" />
     <Content Include="Views\Guides\Index.cshtml" />
-    <Content Include="Views\Shared\_Layout.v2.cshtml" />
-    <Content Include="Views\Shared\_Header.v2.cshtml" />
-    <Content Include="Views\Shared\_Menu.v2.cshtml" />
-    <Content Include="Views\Shared\_Footer.v2.cshtml" />
-    <Content Include="Views\Shared\_Module_Logo_Footer.v2.cshtml" />
-    <Content Include="Views\Shared\_Module_Image_Path.v2.cshtml" />
     <Content Include="Views\Airline\Statistics_default.cshtml" />
     <Content Include="Views\Airline\Statistics.cshtml" />
     <Content Include="Views\AWB\ChangePass.cshtml" />

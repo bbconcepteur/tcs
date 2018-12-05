@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -47,6 +48,13 @@ namespace HCSV.Business.Business
 
                 returnResult.IndustrialNews = newsBusiness.GetTopNews(langId, Constants.TcsContentType.INDUSTRIAL_NEWS, 4);
 
+                //TODO: Replace data
+                StringHelper.RepalceData(returnResult.MissionArea);
+                StringHelper.RepalceData(returnResult.ValueArea);
+                StringHelper.RepalceData(returnResult.VisionArea);
+                returnResult.TcsNews.ForEach(StringHelper.RepalceData);
+                returnResult.CustomerNews.ForEach(StringHelper.RepalceData);
+                returnResult.IndustrialNews.ForEach(StringHelper.RepalceData);
                 return returnResult;
             });
         }

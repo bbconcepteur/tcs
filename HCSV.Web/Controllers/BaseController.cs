@@ -89,10 +89,10 @@ namespace HCSV.Web.Controllers
                 if (menuId > 0)
                 {
                     Session[Constants.Session.SESSION_MENU_ID] = menuId;
-                    var menu = UnitOfWork.MenuBusiness.GetMenuById(LanguageId, menuId);
+                    var menu = UnitOfWork.MenuBusiness.GetMenuById(LanguageId, DefaultLanguageId, menuId);
                     if (menu != null)
                     {
-                        var parentMenu = UnitOfWork.MenuBusiness.GetMenuById(LanguageId, menu.parent);
+                        var parentMenu = UnitOfWork.MenuBusiness.GetMenuById(LanguageId, DefaultLanguageId, menu.parent);
                         if (parentMenu != null)
                         {
                             HttpContext.Application[Constants.Page.PAGE_BANNER] = parentMenu.@params;

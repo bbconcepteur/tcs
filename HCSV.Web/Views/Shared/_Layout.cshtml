@@ -2,19 +2,17 @@
 <html dir="ltr" lang="vi">
 <head>
     <!-- Mobile Specific Meta -->
-    @*@if (true)
+
+    @*@if (HCSV.Core.CommonTCS.Commons.checkAWB(Request.Url.AbsolutePath))
     {
-        if (HCSV.Core.CommonTCS.Commons.checkAWB(Request.Url.AbsolutePath))
-        {
-            <meta name="viewport" content="width=1170">
-            <link rel="stylesheet" type="text/css" href="~/Content/TcsTemplate/themes/orange/css/mainae55.css?m=1443022774" />         
-        }
-        else
-        {
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        }
+        <meta name="viewport" content="width=1170">
+        <link rel="stylesheet" type="text/css" href="~/Content/TcsTemplate/themes/orange/css/mainae55.css?m=1443022774" />         
+    }
+    else
+    {
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     }*@
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/fav.png">
     <!-- Author Meta -->
