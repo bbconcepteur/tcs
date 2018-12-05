@@ -1,0 +1,200 @@
+.menusys_moo {	
+	margin-bottom: 5px;
+}
+.layout-left .menusys_moo {
+
+}
+.layout-right .menusys_moo,
+.layout-full .menusys_moo {
+	margin-left: 0;
+}
+
+#menusys_moo {
+	margin: 0;
+	padding: 0;
+	float: left;
+	height: 42px;
+}
+#menusys_moo ul {
+	margin: 0; 
+	padding: 0;
+}
+#menusys_moo li {
+	margin: 5px; 
+	padding: 0;
+	float: left;
+	display: block;
+	background: none;
+	cursor: pointer;
+}
+
+#menusys_moo li ul {
+	width: 16.9em;
+	position: absolute;
+	z-index: 99;
+	left: -999em; 
+	height: auto;
+}
+
+#menusys_moo li ul ul {
+	margin: -1.8em 0 0 15.5em;
+}
+#menusys_moo li li {
+	padding: 0;
+	line-height: 24px;
+	margin: 0;
+	width: 16.9em;
+}
+#menusys_moo ul a {
+}
+#menusys_moo li:hover ul ul, #menusys_moo li:hover ul ul ul,
+#menusys_moo li.hover ul ul, #menusys_moo li.havechildhover ul ul, #menusys_moo li.havechild-activehover ul ul, #menusys_moo li.activehover ul ul,
+#menusys_moo li.hover ul ul ul, #menusys_moo li.havechildhover ul ul ul, #menusys_moo li.havechild-activehover ul ul ul, #menusys_moo li.activehover ul ul ul {
+	left: -999em;
+}
+
+#menusys_moo li:hover ul, #menusys_moo li li:hover ul, #menusys_moo li li li:hover ul,
+#menusys_moo li.hover ul, #menusys_moo li.havechildhover ul, #menusys_moo li.havechild-activehover ul, #menusys_moo li.activehover ul,
+#menusys_moo li li.hover ul, #menusys_moo li li.havesubchildhover ul, #menusys_moo li li.havesubchild-activehover ul, #menusys_moo li li.activehover ul,
+#menusys_moo li li li.hover ul, #menusys_moo li li li.havesubchildhover ul, #menusys_moo li li li.havesubchild-activehover ul, #menusys_moo li li li.activehover ul {
+	left: auto;
+}
+
+/* Menu styling begin */
+#menusys_moo li a {
+	padding: 0;
+	display: block;
+	text-decoration: none;
+	line-height: 32px;
+	font-weight: bold;
+}
+#menusys_moo li a span {
+	padding: 0 10px;
+	border: none;
+	display: block;
+	line-height: 32px;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+#menusys_moo li a:hover,
+#menusys_moo li a:active,
+#menusys_moo li a:focus {
+}
+
+#menusys_moo li:hover a,
+#menusys_moo li.hover a,
+#menusys_moo li.havechildhover a,
+#menusys_moo li.havechild-activehover a {
+}
+
+#menusys_moo li a:hover span,
+#menusys_moo li a:active span,
+#menusys_moo li a:focus span,
+#menusys_moo li:hover a span,
+#menusys_moo li.hover a span,
+#menusys_moo li.havechildhover a span,
+#menusys_moo li.havechild-activehover a span {
+	color: #fb971d;
+}
+
+#menusys_moo li a.active,
+#menusys_moo li a.active:hover,
+#menusys_moo li a.active:active,
+#menusys_moo li a.active:focus {
+	color: #FFF;
+}
+
+#menusys_moo li a.active span,
+#menusys_moo li a.active:hover span,
+#menusys_moo li a.active:active span,
+#menusys_moo li a.active:focus span {
+	color: #ffffff !important;
+	background: #fb971d;
+	/*-webkit-box-shadow: 0 0 10px 0 #ffffff;
+	-moz-box-shadow: 0 0 10px 0 #ffffff;
+	box-shadow: 0 0 10px 0 #ffffff;*/
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	height: 30px;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+}
+
+#menusys_moo li ul {
+	/*background: #525252;*/
+    
+}
+
+#menusys_moo li ul ul {
+}
+#menusys_moo li ul li {
+	
+	background: none;
+}
+
+#menusys_moo li ul a,
+#menusys_moo li ul a:hover,
+#menusys_moo li ul a:active {
+	margin-top: 1px;
+	padding: 7px 0;
+	line-height: 15px;
+	color: #FFF !important;
+	background: url(../images/bg-mainmenu-sub.png) repeat-x 0 0 !important;
+	border: none !important;
+	text-shadow: none;
+    
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    border-bottom: solid 1px #37b31f;
+}
+
+#menusys_moo li ul a span {
+	padding: 0 0 0 20px;
+	font-weight: normal;
+	line-height: 15px;
+	color: #FFF !important;
+	background: none !important;
+	text-transform: none;
+}
+
+#menusys_moo li.havesubchild,
+#menusys_moo li.havesubchild-active {
+}
+
+#menusys_moo li ul a:hover,
+#menusys_moo li ul a:active,
+#menusys_moo li ul a:focus,
+#menusys_moo ul li:hover,
+#menusys_moo ul li.hover,
+#menusys_moo ul li.havesubchildhover,
+#menusys_moo ul li.havesubchild-activehover,
+#menusys_moo ul ul li:hover,
+#menusys_moo ul ul li.hover,
+#menusys_moo ul ul li.havesubchildhover,
+#menusys_moo ul ul li.havesubchild-activehover {
+	background: #03a3ab !important;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    border-bottom: solid 1px #37b31f;
+    margin-top: 1px;
+}
+#menusys_moo li ul a.active span,
+#menusys_moo li ul a:hover span,
+#menusys_moo li ul a:active span,
+#menusys_moo li ul a:focus span {
+	color: #FFF;
+}
+#menusys_moo ul li a.active {
+}
+
+#menusys_moo ul li a.active:hover,
+#menusys_moo ul li a.active:active,
+#menusys_moo ul li a.active:focus {
+}

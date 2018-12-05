@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Root.master" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="CPanel.MainMaster" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%-- DXCOMMENT: Page Main.master is a master page that contains central area layout --%>
+<asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
+    <dx:SplitterContentControl>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </dx:SplitterContentControl>
+
+    <dx:ASPxSplitter ID="ContentSplitter" Visible="false" runat="server" AllowResize="true" Width="100%">
+        <Styles>
+            <Pane>
+                <Paddings Padding="0px" />
+                <Border BorderWidth="0px" />
+            </Pane>
+        </Styles>
+        <Panes>
+            <dx:SplitterPane Name="ContentLeft" ShowCollapseBackwardButton="True" Size="14%">
+				<PaneStyle CssClass="leftPane"></PaneStyle>
+                <PaneStyle>
+                    <Paddings Padding="1px" />
+                </PaneStyle>
+                <ContentCollection>
+                    <dx:SplitterContentControl>
+                        <div class="leftPanel">
+							<%-- DXCOMMENT: Configure the left panel's ASPxNavBar --%>
+                            <div class="year_css">
+                                                        
+                                <dx:ASPxLabel ID="lblNam" runat="server" Text="Chọn năm"></dx:ASPxLabel>
+                                <dx:ASPxComboBox ID="cbNam" runat="server" Width="60px" AutoPostBack="true"
+                                    OnDataBinding="cbNam_DataBinding" OnSelectedIndexChanged="cbNam_SelectedIndexChanged">
+                                        
+                                    </dx:ASPxComboBox>
+                                 
+                                <dx:ASPxLabel id="news_selection_ID" runat ="server" Text="Danh mục chính">                                    
+                                </dx:ASPxLabel>
+                                
+                            </div>
+                            <br />
+                            <dx:ASPxMenu ID="ASPxMenu1" runat="server" RenderMode="Lightweight" Width="100%" EnableSubMenuScrolling="true"
+                                 Orientation="Vertical" ItemStyle-HorizontalAlign="Left" >
+                                <Border BorderWidth="0px" />
+                                <BorderTop BorderWidth="1px" />                                
+                                <ItemStyle Wrap="True"/>
+                            </dx:ASPxMenu>                            
+                            
+                        </div>
+                    </dx:SplitterContentControl>
+                </ContentCollection>
+            </dx:SplitterPane>
+            <dx:SplitterPane Name="ContentCenter" ScrollBars="Auto">
+				<PaneStyle CssClass="contentPane"></PaneStyle>
+                <Separator Visible="True">
+                    <SeparatorStyle>
+                        <Border BorderWidth="1px" />
+                        <BorderTop BorderWidth="0px" />                        
+                    </SeparatorStyle>
+                </Separator>
+                <ContentCollection>
+                    
+                </ContentCollection>
+            </dx:SplitterPane>
+        </Panes>
+    </dx:ASPxSplitter>	
+
+
+    <!-- ModalPopupExtender --> 
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    
+    <!--BEGIN: POPUP Xem so lieu cac tai khoan ke toan -->   
+    <asp:Button ID="btnShow"  CssClass="invisible_css" runat="server" />
+    <cc1:ModalPopupExtender ID="mp1" BehaviorID="popUpBehaviorID_XemSoLieuTKKT" runat="server" PopupControlID="Panel1" TargetControlID="btnShow"
+        CancelControlID="btnClose" BackgroundCssClass="modalBackground">
+    </cc1:ModalPopupExtender>
+    <asp:Panel ID="Panel1" runat="server" CssClass="modalPopup modalPopupMenu_css" align="center" style = "display:none">
+        <asp:Button ID="btnClose" CssClass="popUpClose_css" runat="server" Text="Close" />
+       <%-- <iframe style=" width: 460px; height: 400px;" id="irm1" src="/Modules/Kiem_Tra_Du_Lieu/XemSoLieuTKKT_PopupMenu.aspx" runat="server"></iframe>      --%>      
+    </asp:Panel>
+    <!--END: POPUP Xem so lieu cac tai khoan ke toan -->
+
+    <!--BEGIN: POPUP DANH muc cac loai lien quan -->   
+    <asp:Button ID="btnShow2" CssClass="invisible_css" runat="server" />
+    <cc1:ModalPopupExtender ID="mp2" BehaviorID="popUpBehaviorID_DMCacLoaiLQ" runat="server" PopupControlID="Panel2" TargetControlID="btnShow2"
+        CancelControlID="btnClose2" BackgroundCssClass="modalBackground">
+    </cc1:ModalPopupExtender>
+    <asp:Panel ID="Panel2" runat="server" CssClass="modalPopup modalPopupMenu_css_2" align="center" style = "display:none">
+        <asp:Button ID="btnClose2" CssClass="popUpClose_css" runat="server" Text="Close" />
+       <%-- <iframe style=" width: 480px; height: 490px;" id="Iframe1" src="/Modules/Kiem_Tra_Du_Lieu/DanhMucCacLoaiLQ_PopupMenu.aspx" runat="server"></iframe>    --%>        
+    </asp:Panel>
+    <!--BEGIN: POPUP DANH muc cac loai lien quan -->   
+
+    <!-- ModalPopupExtender -->
+
+    <script type="text/javascript">
+        function funXemSoLieuTKKT_Popup() {
+            $find('popUpBehaviorID_XemSoLieuTKKT').show();
+        }
+
+        function closeBrowser() {
+            window.close();
+        }
+
+        function funDanhMucCacLoaiLQ_Popup() {
+            $find('popUpBehaviorID_DMCacLoaiLQ').show();
+        }
+
+        function funRedirectUrl(strUrl) {
+            $find('popUpBehaviorID_XemSoLieuTKKT').hide();
+            window.location.href = strUrl;            
+        }
+    </script>        
+</asp:Content>

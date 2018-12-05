@@ -1,0 +1,204 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Root.master.cs" Inherits="CPanel.RootMaster" %>
+
+<%-- DXCOMMENT: Page Root.master is a master page that contains the root layout (it includes Header, Cental Area, and Footer) --%>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Đầu tư ra ngoài doanh nghiệp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/Templates/css/bootstrap.css" rel="stylesheet" />
+    <link href="/Templates/css/bootstrap-theme.css" rel="stylesheet" />
+    <script src="/Templates/js/jquery-1.10.2.min.js"></script>
+    
+    <!-- BEGIN: Jquery for All of Format (Interger, Date, Email, Card Number, ... -->
+    <script src="/Templates/js/jquery.formance.min.js"></script>
+    <script src="/Templates/js/awesome_form.js"></script>
+    <!-- END: Jquery for All of Format (Interger, Date, Email, Card Number, ... -->
+    
+    <!-- BEGIN: Jquery for Accounting Format (Currency Format) -->
+    <script type="text/javascript" src="/Templates/js/accounting.min.js"></script>
+    <!-- END: Jquery for Accounting Format (Currency Format) -->
+
+        
+
+<!--<script type="text/javascript" src="/Templates/js/jd.gallery.js"></script>-->
+<!--<script type="text/javascript" src="/Templates/js/jd.gallery.transitions.js"></script>-->
+<script type="text/javascript" src="/Templates/js/sweetalert-dev.js"></script>
+<script type="text/javascript" src="/Templates/js/lib_waiting_load_page.js"></script>
+    
+
+
+
+  
+<!--<script type="text/javascript" src="/Templates/js/jv.moomenu.js"></script>-->
+
+
+    <link rel="stylesheet" type="text/css" href="/Templates/style.css" />
+    <link rel="stylesheet" type="text/css" href="/Templates/Site.css" />
+
+
+
+    <link rel="stylesheet" href="/Templates/css/system.css" type="text/css"/>
+    <link rel="stylesheet" href="/Templates/css/general.css" type="text/css"/>
+	
+    <link type="text/css" rel="stylesheet" media="screen" href="/Templates/css/home.css"/>
+    <link type="text/css" rel="stylesheet" media="screen" href="/Templates/css/layout.css"/>
+    <link type="text/css" rel="stylesheet" media="screen" href="/Templates/css/style.css"/>
+
+    <link rel="stylesheet" href="/Templates/css/default.css" type="text/css"/>
+    <link rel="stylesheet" href="/Templates/css/template.css" type="text/css"/>
+    <link rel="stylesheet" href="/Templates/css/typo.css" type="text/css"/>
+    <link rel="stylesheet" href="/Templates/css/blue.css" type="text/css"/>
+
+
+    <link rel="stylesheet" href="/Templates/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/Templates/css/calendar-jos.css" type="text/css" title="green" media="all">
+    <link rel="stylesheet" href="/Templates/css/jv.moomenu.css" type="text/css">
+    <link rel="stylesheet" href="/Templates/css/sweetalert.css" type="text/css">
+    <%--<link rel="stylesheet" href="/Templates/css/jvslideshow.php" type="text/css">--%>
+    <script type="text/javascript" src="/Templates/js/lib_js.js"></script>
+</head>
+<body runat="server" id="bd" class="fs3  ">
+
+<!--BEGIN: waiting for uploading Page completely ==> Paste this code after body tag -->
+<div class="se-pre-con"></div>
+<!-- Ends -->
+
+<form id="form1" runat="server" defaultbutton="btnDisableEnter">
+<asp:Button ID="btnDisableEnter" runat="server" Text="" OnClientClick="return false;" style="display:none;"/>    
+
+
+<div class="container" id="jv-wrapper">	
+	<div id="jv-userwrap1" class="clearfix">
+		<div class="jv-wrapper">
+			
+			<!--MENU-->
+			<div id="jv-userwrap1-inner-logo">							
+	            <img src="/Templates/images/slideshow1.jpg" border="0">
+                        
+                        
+                            
+                        
+            </div>
+    <div id="jv-userwrap1" class="clearfix">
+		<div class="jv-wrapper">
+			<div id="jv-userwrap1-inner-logo">							
+			</div>
+			<div id="jv-userwrap1-inner">
+				<div id="jv-mainmenu-inner" class="layout-full">
+					<div class="menusys_moo">
+                        <asp:Label ID="lbMenus" runat="server"></asp:Label>                        
+				    </div>									
+			</div>
+				
+				
+				
+							
+
+
+
+							</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+	
+	<!-- MAINBODY -->
+	<div id="jv-mainbody" class="clearfix">
+		<div class="jv-wrapper">
+			<!-- CONTAINER -->
+			<div id="jv-container-full" class="clearfix">
+				<div id="jv-maincontent">
+					
+                    <asp:ContentPlaceHolder ID="Content" runat="server">                            
+                        </asp:ContentPlaceHolder>
+
+				</div>
+			</div>
+			<!-- END CONTAINER -->
+		</div>
+	</div>
+	<!-- END MAINBODY -->
+
+	
+		<div id="jv-inset" class="clearfix">
+		<div class="jv-wrapper">
+			<div id="jv-inset-inner">
+				<div id="jv-maininset"></div>
+								<div id="jv-tools">
+									</div>
+							</div>
+		</div>
+	</div>
+
+	
+
+	
+	<!--BEGIN: BOTTOM-->
+	<div id="jv-bottom" class="clearfix">
+			<div class="jv-wrapper">
+				<div id="jv-bottom-inner">
+	
+						<div id="jv-footer">
+							<div id="jv-footer-inner">
+								<table border="0">
+									<tbody>
+										<tr>
+											<td style="width: 100%;" valign="top">
+												<strong>
+													Content Management System
+												</strong>
+												<br/>
+												<span>
+													Address: Hanoi city - Vietnam     -      Copyright 2016
+												</span>												
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div id="jv-copyright">
+							<div id="jv-copyright-inner">
+										<div class="moduletable__login_css">
+							<div class="modulecontent">								
+									<asp:Label ID="txtFullName" runat="server"></asp:Label>; &nbsp;&nbsp;                                    
+                                    <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Logout"></asp:LinkButton> | 
+                                    <asp:LinkButton ID="btnChangePassword" runat="server" OnClick="btnChangePassword_Click" Text="Change Password"></asp:LinkButton>									
+								
+							</div>
+						</div>
+						
+						<div class="moduletable__designed_by_css">
+							<div class="modulecontent"><!--Designed by--></div>
+						</div>
+									
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<!--END: BOTTOM-->	
+</div>
+
+	
+    <%-- DXCOMMENT: Configure a datasource for the header menu --%>     
+           
+        <asp:XmlDataSource ID="XmlDataSourceHeader" runat="server" DataFile="~/App_Data/TopMenu.xml"
+        XPath="/items/*"></asp:XmlDataSource>        
+    </form>
+    <script src="/Templates/js/bootstrap.js"></script>    
+</body>
+</html>

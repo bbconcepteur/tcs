@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<items>  
+  <group Text="Content Management">    
+    <item Text="List Of Contents" NavigateUrl="/Modules/ContentList" />
+    <item Text="List Of Section" NavigateUrl="/Modules/Sections" />
+    <item Text="List Of Categories" NavigateUrl="/Modules/CategoryList" />
+  </group>
+  
+  <item Text="Function Menus" NavigateUrl="/Modules/MenuChucNang" />
+  <item Text="Partner Link" NavigateUrl="/Modules/PartnersLinkList" />
+  <item Text="Function Menus" NavigateUrl="/Modules/MenuChucNang" />
+  <item Text="User Management" NavigateUrl="/Modules/GroupMng" />
+  <item Text="Email Configuration" NavigateUrl="/Modules/EmailConfig" />
+  <item Text="Recycle Bin" NavigateUrl="/Modules/RecycleBin" />
+  <!--<group Text="Hỗ trợ">    
+    <item Text="File hướng dẫn sử dụng" NavigateUrl=""  />
+  </group>-->
+</items>
