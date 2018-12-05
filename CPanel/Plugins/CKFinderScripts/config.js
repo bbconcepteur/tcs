@@ -7,9 +7,5 @@ var config = {};
 
 // Set your configuration options below.
 
-// Examples:
-config.language = 'en';
-config.baseUrl = 'http://localhost:2000/';
-config.startupPath = 'Files:/Public Folder/';
 // config.skin = 'jquery-mobile';
 CKFinder.define( config );
