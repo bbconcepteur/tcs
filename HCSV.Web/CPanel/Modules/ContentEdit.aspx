@@ -3,10 +3,10 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit.HTMLEditor" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="./../Plugins/ckeditor/ckeditor.js"></script>
-    <script src="./../Plugins/CKFinderScripts/ckfinder.js"></script>
-    <script src="./../Plugins/datepicker/datepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./../Plugins/datepicker/datepicker.min.css" />
+    <script src="/Plugins/ckeditor/ckeditor.js"></script>
+    <script src="/Plugins/CKFinderScripts/ckfinder.js"></script>
+    <script src="/Plugins/datepicker/datepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Plugins/datepicker/datepicker.min.css" />
     <div class="main_contain_css main_contain_css_1 main_2">
 
         <div class="bg_100pecents_css bg_button_css">
@@ -118,6 +118,8 @@
                 $(this).val(strTemp);
             }
         });
+
+        $("#<%= datePublishDateTime.ClientID%>").datepicker();
 
         CKFinder.setupCKEditor(CKEDITOR.replace('<%= edtIntroContent.ClientID %>'));
         CKFinder.setupCKEditor(CKEDITOR.replace('<%= edtFullContent.ClientID %>'));
